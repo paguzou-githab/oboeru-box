@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="おぼえるBOX">
+<meta name="theme-color" content="#FFFBF2">
+<title>おぼえるBOX 🔥</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFBF2;
+    --surface:#FFFFFF;
+    --surface-2:#FFF4E1;
+    --ink:#2B2440;
+    --muted:#93889F;
+    --line:#F0E6D6;
+    --box1:#FF5D5D; /* 翌日: 熱い */
+    --box2:#FF9F45;
+    --box3:#FFD23F;
+    --box4:#6BCB77;
+    --box5:#3EC6E0; /* 30日後: 冷たい=よく覚えている */
+    --mastered:#8B6BFF;
+    --accent:#FF5D8F;
+    --accent-ink:#7A1339;
+    --flame:#FF9F1C;
+    --shadow:0 2px 6px rgba(43,36,64,.06), 0 10px 24px rgba(43,36,64,.08);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;overscroll-behavior-y:contain;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Zen Maru Gothic','Hiragino Sans',sans-serif;
+    min-height:100vh;
+    padding-bottom:calc(84px + env(safe-area-inset-bottom));
+    padding-top:env(safe-area-inset-top);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;}
+  .app{max-width:520px;margin:0 auto;padding:20px 18px 8px;}
+  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+  .brand{display:flex;align-items:center;gap:8px;}
+  .brand .logo{font-size:26px;}
+  .brand .name{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:19px;letter-spacing:.02em;}
+  .deck-pill{
+    display:flex;align-items:center;gap:6px;background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 10px;
+    box-shadow:var(--shadow);font-weight:700;font-size:14px;
+  }
+  .deck-pill .dot{width:10px;height:10px;border-radius:50%;}
+
+  .panel{display:none;}
+  .panel.active{display:block;animation:fadein .25s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  /* ===== Hero (今日) ===== */
+  .hero-card{
+    background:linear-gradient(160deg,#FFF 0%,var(--surface-2) 100%);
+    border-radius:28px;padding:26px 22px;box-shadow:var(--shadow);
+    border:1px solid var(--line);position:relative;overflow:hidden;
+  }
+  .streak-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .streak-flame{font-size:22px;filter:drop-shadow(0 2px 3px rgba(255,159,28,.4));}
+  .streak-num{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:20px;color:var(--flame);}
+  .streak-label{font-size:12px;color:var(--muted);font-weight:500;}
+  .due-headline{font-size:14px;color:var(--muted);margin:14px 0 2px;font-weight:500;}
+  .due-count{font-family:'M PLUS Rounded 1c';font-size:56px;font-weight:800;line-height:1;color:var(--ink);}
+  .due-unit{font-size:16px;font-weight:700;color:var(--muted);margin-left:6px;}
+  .start-btn{
+    margin-top:18px;width:100%;border:none;border-radius:18px;padding:16px;
+    background:var(--accent);color:#fff;font-family:'M PLUS Rounded 1c';font-weight:800;
+    font-size:17px;box-shadow:0 8px 18px rgba(255,93,143,.35);cursor:pointer;
+  }
+  .start-btn:disabled{background:#E7E1F0;color:#B3A9C4;box-shadow:none;}
+  .start-btn:active:not(:disabled){transform:scale(.98);}
+
+  /* ===== Box shelf (signature element) ===== */
+  .shelf-title{font-size:13px;font-weight:700;color:var(--muted);margin:22px 0 8px;display:flex;justify-content:space-between;}
+  .shelf{display:flex;gap:6px;align-items:flex-end;height:74px;}
+  .shelf .drawer{
+    flex:1;border-radius:12px 12px 6px 6px;position:relative;display:flex;
+    align-items:flex-start;justify-content:center;padding-top:8px;
+    color:#fff;font-family:'M PLUS Rounded 1c';font-weight:800;font-size:15px;
+    transition:height .3s ease;box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);
+  }
+  .shelf .drawer .lbl{position:absolute;bottom:-20px;font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap;}
+  .mastered-chip{
+    margin-top:26px;display:flex;align-items:center;justify-content:space-between;
+    background:#F3EFFF;border:1px solid #E2D8FF;border-radius:16px;padding:12px 16px;
+  }
+  .mastered-chip .n{font-family:'M PLUS Rounded 1c';font-weight:800;color:var(--mastered);font-size:20px;}
+
+  /* ===== Deck list ===== */
+  .deck-item{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:16px;margin-bottom:12px;box-shadow:var(--shadow);
+  }
+  .deck-item.active-deck{outline:2px solid var(--accent);}
+  .deck-item .row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .deck-item .row1 .left{display:flex;align-items:center;gap:10px;}
+  .deck-item .emoji{font-size:22px;}
+  .deck-item .dname{font-weight:700;font-size:16px;}
+  .deck-item .total{font-size:12px;color:var(--muted);}
+  .mini-shelf{display:flex;gap:4px;height:14px;border-radius:8px;overflow:hidden;}
+  .mini-shelf div{flex:1;}
+  .btn-sm{
+    border:none;border-radius:12px;padding:8px 12px;font-weight:700;font-size:13px;
+    background:var(--surface-2);color:var(--ink);cursor:pointer;
+  }
+  .btn-sm.primary{background:var(--accent);color:#fff;}
+  .btn-sm.danger{background:#FFE3E3;color:#C4374A;}
+  .row-actions{display:flex;gap:8px;margin-top:10px;}
+
+  .add-deck{
+    display:flex;gap:8px;margin-top:6px;
+  }
+  input[type=text], textarea, select{
+    font-family:'Zen Maru Gothic',sans-serif;border:1px solid var(--line);
+    border-radius:14px;padding:12px 14px;font-size:15px;background:var(--surface);
+    color:var(--ink);width:100%;
+  }
+  textarea{min-height:160px;resize:vertical;line-height:1.5;}
+
+  /* ===== Import ===== */
+  .section-title{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:18px;margin:4px 0 10px;}
+  .hint{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+  code.ex{
+    display:block;background:#F5F0FF;border-radius:12px;padding:10px 12px;
+    font-size:11.5px;color:#5B4B8A;white-space:pre-wrap;margin-bottom:12px;
+  }
+  .msg{
+    margin-top:10px;padding:10px 14px;border-radius:12px;font-size:13.5px;font-weight:600;
+  }
+  .msg.ok{background:#E6F8EA;color:#1F8A44;}
+  .msg.err{background:#FFE3E3;color:#C4374A;}
+
+  /* ===== Stats ===== */
+  .stat-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:18px;margin-bottom:12px;box-shadow:var(--shadow);
+  }
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .stat-box{background:var(--surface-2);border-radius:16px;padding:14px;text-align:center;}
+  .stat-box .v{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:26px;}
+  .stat-box .l{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:2px;}
+  .deck-stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .deck-stat-row:last-child{border-bottom:none;}
+
+  /* ===== Review overlay ===== */
+  .review-overlay{
+    position:fixed;inset:0;background:var(--bg);z-index:50;display:none;flex-direction:column;
+    padding:env(safe-area-inset-top) 18px calc(24px + env(safe-area-inset-bottom));
+  }
+  .review-overlay.active{display:flex;}
+  #hwFullOverlay{z-index:60;}
+  .review-top{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .close-btn{background:none;border:none;font-size:22px;color:var(--muted);cursor:pointer;padding:6px;}
+  .progress-track{flex:1;height:6px;background:var(--line);border-radius:3px;margin:0 12px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .25s ease;}
+  .progress-txt{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;}
+
+  .card-stage{flex:1;display:flex;align-items:center;justify-content:center;perspective:1200px;}
+  .flashcard{
+    width:100%;max-width:400px;height:360px;position:relative;cursor:pointer;
+  }
+  .flashcard .face{
+    position:absolute;inset:0;border-radius:26px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    text-align:center;padding:28px;box-shadow:var(--shadow);backface-visibility:hidden;
+    border:1px solid var(--line);overflow:auto;
+  }
+  .flashcard .front{background:var(--surface);}
+  .flashcard .back{background:var(--surface-2);transform:rotateY(180deg);}
+  .flashcard.flipped .front{transform:rotateY(180deg);}
+  .flashcard.flipped .back{transform:rotateY(360deg);}
+  .flashcard .face{transition:transform .45s cubic-bezier(.4,.2,.2,1);}
+  .term-txt{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:26px;line-height:1.4;}
+  .meaning-txt{font-family:'M PLUS Rounded 1c';font-weight:700;font-size:22px;line-height:1.5;color:var(--accent-ink);}
+  .tap-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:600;}
+  .box-badge{
+    position:absolute;top:14px;left:14px;font-size:11px;font-weight:800;color:#fff;
+    padding:4px 10px;border-radius:999px;font-family:'M PLUS Rounded 1c';
+  }
+  .gemini-btn{
+    position:absolute;top:12px;right:12px;border:none;border-radius:999px;
+    background:#EFEBFF;color:#5B4B8A;font-size:11.5px;font-weight:700;
+    padding:6px 12px;cursor:pointer;font-family:'Zen Maru Gothic',sans-serif;
+  }
+  .memo-input{
+    margin-top:14px;width:100%;max-width:280px;min-height:56px;font-size:13px;
+    border:1px solid #E2D8FF;border-radius:12px;padding:10px 12px;background:#FBF9FF;
+    color:var(--ink);resize:none;
+  }
+  .hw-wrap{margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;}
+  .hw-placeholder{
+    width:100%;max-width:280px;min-height:64px;border:2px dashed #D8CCFF;border-radius:16px;
+    background:#FBF9FF;color:#7A6BAF;font-weight:700;font-size:13.5px;line-height:1.5;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+  }
+  .hw-canvas{
+    border:1.5px solid var(--line);border-radius:12px;touch-action:none;
+    box-shadow:inset 0 1px 3px rgba(43,36,64,.06);background:#fff;
+  }
+
+  .answer-row{display:flex;gap:12px;margin-top:22px;}
+  .ans-btn{
+    flex:1;border:none;border-radius:18px;padding:18px 10px;font-weight:800;font-size:16px;
+    font-family:'M PLUS Rounded 1c';cursor:pointer;color:#fff;
+  }
+  .ans-btn.wrong{background:var(--box1);}
+  .ans-btn.correct{background:var(--box5);}
+  .ans-btn:disabled{opacity:.4;}
+
+  .done-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;}
+  .done-screen .emoji{font-size:56px;}
+  .done-screen h2{font-size:22px;margin:0;}
+  .done-screen p{color:var(--muted);font-size:14px;margin:0;}
+  .done-close{
+    margin-top:18px;border:none;border-radius:16px;padding:14px 28px;background:var(--accent);
+    color:#fff;font-family:'M PLUS Rounded 1c';font-weight:800;font-size:15px;cursor:pointer;
+  }
+
+  /* ===== Tab bar ===== */
+  .tabbar{
+    position:fixed;bottom:0;left:0;right:0;background:var(--surface);
+    border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom);
+    z-index:20;
+  }
+  .tabbar button{
+    flex:1;background:none;border:none;padding:10px 2px 8px;display:flex;flex-direction:column;
+    align-items:center;gap:2px;color:var(--muted);font-size:10px;font-weight:700;cursor:pointer;
+  }
+  .tabbar button .ic{font-size:18px;}
+  .tabbar button.active{color:var(--accent);}
+
+  /* ===== カード一覧 ===== */
+  .cardrow{
+    background:var(--surface);border:1px solid var(--line);border-radius:16px;
+    padding:12px 14px;margin-bottom:10px;
+  }
+  .cardrow.is-hidden{opacity:.5;}
+  .cardrow .crow-top{display:flex;align-items:flex-start;gap:8px;justify-content:space-between;}
+  .cardrow .crow-badges{display:flex;gap:6px;align-items:center;margin-bottom:4px;}
+  .cardrow .crow-term{font-weight:700;font-size:15px;}
+  .cardrow .crow-meaning{font-size:13px;color:var(--muted);margin-top:2px;}
+  .cardrow .crow-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+  .hidden-tag{
+    font-size:10px;font-weight:800;color:#8D8399;background:#EFEBFF;
+    padding:2px 8px;border-radius:999px;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="top">
+    <div class="brand"><span class="logo">📦</span><span class="name">おぼえるBOX</span></div>
+    <div class="deck-pill" id="deckPillTop" onclick="switchTab('deck')">
+      <span class="dot" id="deckPillDot"></span>
+      <span id="deckPillName">-</span>
+    </div>
+  </div>
+
+  <!-- ===== 今日タブ ===== -->
+  <div class="panel active" id="panel-today">
+    <div class="hero-card">
+      <div class="streak-row">
+        <span class="streak-flame">🔥</span>
+        <span class="streak-num" id="streakNum">0</span>
+        <span class="streak-label">日連続</span>
+      </div>
+      <div class="due-headline">今日の復習</div>
+      <div><span class="due-count" id="dueCount">0</span><span class="due-unit">枚</span></div>
+      <button class="start-btn" id="startBtn" onclick="startReview()">復習スタート</button>
+
+      <div class="shelf-title"><span>箱の中身(このデッキ)</span><span id="shelfTotal"></span></div>
+      <div class="shelf" id="shelf"></div>
+
+      <div class="mastered-chip">
+        <div>
+          <div style="font-size:12px;color:var(--muted);font-weight:700;">習得済み</div>
+        </div>
+        <div class="n" id="masteredCount">0<span style="font-size:12px;color:var(--muted);font-weight:600;"> 語</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== デッキタブ ===== -->
+  <div class="panel" id="panel-deck">
+    <div class="section-title">デッキ切り替え</div>
+    <div id="deckList"></div>
+    <div class="add-deck">
+      <input type="text" id="newDeckName" placeholder="新しいデッキ名(例: 国語)">
+      <button class="btn-sm primary" onclick="addDeck()">追加</button>
+    </div>
+  </div>
+
+  <!-- ===== 取込タブ ===== -->
+  <div class="panel" id="panel-import">
+    <div class="section-title">🔎 Geminiでカードを作ってもらう</div>
+    <div class="hint">
+      1. 下の「プロンプトをコピー」を押す<br>
+      2. Geminiを開いて、コピーした文章を貼り付ける<br>
+      3. 教科書やノートを撮った写真があれば、いっしょに貼り付ける(写真がなければ「〇〇について」と一言書くだけでもOK)<br>
+      4. Geminiが出してくれた <code>[{"term":...}]</code> の文章をぜんぶコピー<br>
+      5. 下の「JSON貼り付け欄」に貼って「追加する」を押す<br>
+      <br>
+      ⚠️ もしGeminiが独自の画面(フラッシュカードやCanvasなど)で答えてしまったら、続けて「JSON形式のテキストだけで、それ以外は書かずに出力して」ともう一度お願いしてね
+    </div>
+    <textarea id="geminiPromptBox" readonly style="min-height:170px;font-size:12.5px;color:var(--muted);background:var(--surface-2);">写真またはメモに写っている用語・問題を読み取って、暗記用のデータを作ってください。
+
+絶対のルール:
+・アプリ内のカード作成機能やCanvasなどの機能は使わず、ふつうのテキストメッセージとして回答すること
+・説明文、前置き、感想、まとめコメントは一切書かないこと
+・回答はJSON配列だけにすること（他の文字を一切含めない）
+・コードブロック記号（```など）も付けないこと
+・1つの用語やポイントにつき1件のデータにする
+・termには「用語」、meaningには「意味や答えの説明」を日本語で短く書く
+
+出力形式（これだけを回答してください）:
+[{"term":"用語","meaning":"意味の説明"}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
+    <div class="row-actions">
+      <button class="btn-sm primary" onclick="copyGeminiPrompt()">📋 プロンプトをコピー</button>
+      <button class="btn-sm" onclick="window.open('https://gemini.google.com/app','_blank')">Geminiを開く</button>
+    </div>
+    <div id="geminiCopyMsg"></div>
+
+    <div class="section-title" style="margin-top:26px;">JSON貼り付け欄</div>
+    <div class="hint">現在のデッキ「<b id="importDeckName">-</b>」にカードを追加します。</div>
+    <div id="extraSampleBtnWrap"></div>
+    <code class="ex">[
+  {"term": "onomatopoeia", "meaning": "擬音語・擬態語"},
+  {"term": "光合成", "meaning": "植物が光エネルギーで栄養を作る働き"}
+]</code>
+    <textarea id="importArea" placeholder="ここにJSONを貼り付け"></textarea>
+    <div class="row-actions">
+      <button class="btn-sm primary" onclick="importCards()">追加する</button>
+      <button class="btn-sm" onclick="exportDeck()">このデッキをJSON書き出し</button>
+    </div>
+    <div id="importMsg"></div>
+
+    <div class="section-title" style="margin-top:26px;">バックアップ</div>
+    <div class="hint">全デッキ・全カード・統計をまとめて保存/復元できます。機種変更前などに使ってください。</div>
+    <div class="row-actions">
+      <button class="btn-sm" onclick="exportAll()">全体バックアップ書き出し</button>
+      <button class="btn-sm" onclick="document.getElementById('restoreFile').click()">復元(ファイル選択)</button>
+      <input type="file" id="restoreFile" accept="application/json" style="display:none" onchange="restoreAll(event)">
+    </div>
+    <div id="backupMsg"></div>
+  </div>
+
+  <!-- ===== 統計タブ ===== -->
+  <div class="panel" id="panel-stats">
+    <div class="section-title">統計</div>
+    <div class="stat-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="v" id="statStreak">0</div><div class="l">連続日数</div></div>
+        <div class="stat-box"><div class="v" id="statLongest">0</div><div class="l">最長連続</div></div>
+        <div class="stat-box"><div class="v" id="statMastered">0</div><div class="l">総習得語数</div></div>
+        <div class="stat-box"><div class="v" id="statTotalCards">0</div><div class="l">総カード数</div></div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="section-title" style="font-size:14px;margin-bottom:4px;">デッキ別 習得数</div>
+      <div id="deckStatsList"></div>
+    </div>
+  </div>
+
+  <!-- ===== 使い方タブ ===== -->
+  <div class="panel" id="panel-help">
+    <div class="section-title">📖 おぼえるBOXの使い方</div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">📦 このアプリについて</div>
+      <div class="hint" style="font-size:13px;">
+        忘却曲線(エビングハウスの実験)をもとにした「5箱式」の暗記アプリです。正解した単語は間隔を空けながら少しずつ「習得済み」に近づき、間違えた単語はすぐまた出題されます。
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">🗓 5箱のルール</div>
+      <div class="hint" style="font-size:13px;">正解すると1つ上の箱へ、不正解だと箱1に戻ります。</div>
+      <div class="deck-stat-row"><span>📮 箱1</span><span>翌日また出る</span></div>
+      <div class="deck-stat-row"><span>📮 箱2</span><span>3日後に出る</span></div>
+      <div class="deck-stat-row"><span>📮 箱3</span><span>7日後に出る</span></div>
+      <div class="deck-stat-row"><span>📮 箱4</span><span>14日後に出る</span></div>
+      <div class="deck-stat-row"><span>📮 箱5</span><span>30日後に出る</span></div>
+      <div class="deck-stat-row"><span>🏆 習得済み</span><span>もう出ない</span></div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">👆 復習のやり方</div>
+      <div class="hint" style="font-size:13px;">
+        1. 「今日」タブで「復習スタート」をタップ<br>
+        2. カードをタップすると答えが見える(もう一度タップで問題に戻る)<br>
+        3. 「覚えた✅」か「まだ😵」を自分で判定してタップ<br>
+        4. 答え面には自由に書き込めるメモ欄もあります<br>
+        5. 問題面の「🔎 Geminiで調べる」で、その場でもっと詳しい解説を調べられます<br>
+        6. 「✏️ ひろく手書き練習」があるデッキでは、全画面の手書きボードで書く練習ができます(自動採点はせず自己チェック用)
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">➕ カードの追加方法</div>
+      <div class="hint" style="font-size:13px;">
+        「取込」タブから3つの方法が使えます。<br>
+        ・🎲 サンプルボタン:あらかじめ入っている問題をワンタップで追加<br>
+        ・🔎 Gemini:写真やメモから問題をAIに作ってもらい、出てきたJSONを貼り付け<br>
+        ・✍️ 手動貼り付け:自分で作ったJSONを直接貼り付け
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">📚 デッキ・カードの管理</div>
+      <div class="hint" style="font-size:13px;">
+        「デッキ」タブから、教科(デッキ)の追加・名前変更・削除・手書き練習のON/OFFができます。<br>
+        各デッキの「📋 カードを編集」を開くと、カード1枚ごとに以下ができます。<br>
+        ・🙈 非表示にする(消さずに復習対象から外す)<br>
+        ・削除(完全に消す)<br>
+        ・他のデッキへ移動(教科を間違えた時に便利)<br>
+        ・箱を手動で移動(テスト前に一気に箱1へ戻す、など)
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">💾 データの保存について</div>
+      <div class="hint" style="font-size:13px;">
+        カードの内容・進捗・メモ・ストリークは、すべてこの端末のブラウザの中だけに保存されます(他の端末とは同期されません)。「取込」タブの「全体バックアップ書き出し」で定期的に保存しておくと安心です。
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">🔥 ストリークって?</div>
+      <div class="hint" style="font-size:13px;">
+        毎日1回でも復習すると連続日数(ストリーク)が増えていきます。1日でもサボると1に戻るので、「今日の分だけ終わらせる」を毎日の習慣にするための目印です。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 手書き全画面ボード ===== -->
+<div class="review-overlay" id="hwFullOverlay">
+  <div class="review-top">
+    <button class="close-btn" onclick="closeHwFull()">✕</button>
+    <div class="section-title" style="margin:0;font-size:16px;">✏️ 手書き練習</div>
+    <button class="btn-sm" onclick="clearHwFullCanvas()">🧹 消す</button>
+  </div>
+  <div id="hwFullCanvasWrap" style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <canvas id="hwFullCanvas" class="hw-canvas"></canvas>
+  </div>
+</div>
+
+<!-- ===== カード一覧オーバーレイ ===== -->
+<div class="review-overlay" id="cardListOverlay">
+  <div class="review-top">
+    <button class="close-btn" onclick="closeCardList()">✕</button>
+    <div class="section-title" id="cardListTitle" style="margin:0;font-size:16px;">カード一覧</div>
+    <div style="width:22px;"></div>
+  </div>
+  <div id="cardListBody" style="overflow-y:auto;flex:1;padding-bottom:12px;"></div>
+</div>
+
+<!-- ===== レビュー全画面 ===== -->
+<div class="review-overlay" id="reviewOverlay">
+  <div class="review-top">
+    <button class="close-btn" onclick="closeReview()">✕</button>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-txt" id="progressTxt">0/0</div>
+  </div>
+  <div class="card-stage" id="cardStage"></div>
+  <div class="answer-row" id="answerRow" style="display:none;">
+    <button class="ans-btn wrong" onclick="answer(false)">まだ 😵</button>
+    <button class="ans-btn correct" onclick="answer(true)">覚えた ✅</button>
+  </div>
+</div>
+
+<div class="tabbar">
+  <button class="active" data-tab="today" onclick="switchTab('today')"><span class="ic">🏠</span>今日</button>
+  <button data-tab="deck" onclick="switchTab('deck')"><span class="ic">📚</span>デッキ</button>
+  <button data-tab="import" onclick="switchTab('import')"><span class="ic">➕</span>取込</button>
+  <button data-tab="stats" onclick="switchTab('stats')"><span class="ic">📈</span>統計</button>
+  <button data-tab="help" onclick="switchTab('help')"><span class="ic">📖</span>使い方</button>
+</div>
+
+<script>
+/* =====================================================
+   コアロジック(忘却曲線ベース 5箱ライトナー方式)
+   ===================================================== */
+const BOX_INTERVAL_DAYS = { 1: 1, 2: 3, 3: 7, 4: 14, 5: 30 };
+const BOX_COLOR = { 1:'var(--box1)', 2:'var(--box2)', 3:'var(--box3)', 4:'var(--box4)', 5:'var(--box5)' };
+
+/* 修正: toISOString()はUTC基準のため、日本時間の朝9時前が「前日」扱いになる。
+   端末のローカル日付でYYYY-MM-DDを組み立てる。 */
+function todayStr(d){
+  d = d || new Date();
+  return d.getFullYear() + '-' +
+    String(d.getMonth() + 1).padStart(2, '0') + '-' +
+    String(d.getDate()).padStart(2, '0');
+}
+function addDays(dateStr, days){
+  const d = new Date(dateStr + 'T00:00:00');
+  d.setDate(d.getDate() + days);
+  return todayStr(d);
+}
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+function makeCard(term, meaning, now){
+  now = now || todayStr();
+  return {
+    id: uid(), term, meaning, box: 1, nextReview: now,
+    mastered: false, masteredAt: null,
+    correctStreak: 0, totalCorrect: 0, totalWrong: 0, lastAnswer: null,
+    memo: '', hidden: false
+  };
+}
+
+function answerCard(card, isCorrect, now){
+  now = now || todayStr();
+  const c = Object.assign({}, card);
+  if(isCorrect){
+    c.totalCorrect += 1; c.correctStreak += 1; c.lastAnswer = 'correct';
+    if(c.box >= 5){
+      c.mastered = true; c.masteredAt = now; c.nextReview = addDays(now, BOX_INTERVAL_DAYS[5]);
+    } else {
+      c.box = c.box + 1; c.nextReview = addDays(now, BOX_INTERVAL_DAYS[c.box]);
+    }
+  } else {
+    c.totalWrong += 1; c.correctStreak = 0; c.lastAnswer = 'wrong';
+    c.box = 1; c.nextReview = addDays(now, BOX_INTERVAL_DAYS[1]);
+  }
+  return c;
+}
+
+function dueCards(cards, now){
+  now = now || todayStr();
+  return cards.filter(c => !c.mastered && !c.hidden && c.nextReview <= now);
+}
+
+function boxCounts(cards){
+  const counts = {1:0,2:0,3:0,4:0,5:0,mastered:0,hidden:0};
+  for(const c of cards){
+    if(c.hidden){ counts.hidden += 1; }
+    else if(c.mastered) counts.mastered += 1;
+    else counts[c.box] += 1;
+  }
+  return counts;
+}
+
+function updateStreak(s, now){
+  now = now || todayStr();
+  s = Object.assign({currentStreak:0, longestStreak:0, lastStudyDate:null}, s);
+  if(s.lastStudyDate === now) return s;
+  if(s.lastStudyDate === addDays(now, -1)){ s.currentStreak += 1; }
+  else { s.currentStreak = 1; }
+  s.lastStudyDate = now;
+  s.longestStreak = Math.max(s.longestStreak || 0, s.currentStreak);
+  return s;
+}
+
+/* =====================================================
+   永続化(localStorage)
+   ===================================================== */
+const LS_DECKS = 'wordbox:decks';
+const LS_ACTIVE = 'wordbox:activeDeck';
+const LS_STREAK = 'wordbox:streak';
+function lsCardsKey(deckId){ return 'wordbox:cards:' + deckId; }
+
+function loadDecks(){
+  try{
+    const raw = localStorage.getItem(LS_DECKS);
+    if(raw) return JSON.parse(raw);
+  } catch(e){}
+  const initial = [
+    {id:'eng', name:'英語', emoji:'🇬🇧', color:'#FF9F45'},
+    {id:'soc', name:'社会', emoji:'🗾', color:'#6BCB77'},
+    {id:'sci', name:'理科', emoji:'🧪', color:'#3EC6E0'},
+  ];
+  saveDecks(initial);
+  return initial;
+}
+function saveDecks(decks){ localStorage.setItem(LS_DECKS, JSON.stringify(decks)); }
+
+function loadCards(deckId){
+  try{
+    const raw = localStorage.getItem(lsCardsKey(deckId));
+    if(raw) return JSON.parse(raw);
+  } catch(e){}
+  return [];
+}
+function saveCards(deckId, cards){ localStorage.setItem(lsCardsKey(deckId), JSON.stringify(cards)); }
+
+function loadActiveDeck(decks){
+  const saved = localStorage.getItem(LS_ACTIVE);
+  if(saved && decks.some(d => d.id === saved)) return saved;
+  return decks[0] ? decks[0].id : null;
+}
+function saveActiveDeck(id){ localStorage.setItem(LS_ACTIVE, id); }
+
+function loadStreak(){
+  try{
+    const raw = localStorage.getItem(LS_STREAK);
+    if(raw) return JSON.parse(raw);
+  } catch(e){}
+  return {currentStreak:0, longestStreak:0, lastStudyDate:null};
+}
+function saveStreak(s){ localStorage.setItem(LS_STREAK, JSON.stringify(s)); }
+
+/* =====================================================
+   初回サンプルデータ
+   ===================================================== */
+const EXTRA_SAMPLE_CARDS = {
+  eng: [
+    {term:'inevitable', meaning:'避けられない、必然の'},
+    {term:'perspective', meaning:'観点、見方'},
+    {term:'accomplish', meaning:'成し遂げる'},
+    {term:'contrast', meaning:'対比する、対照'},
+    {term:'flexible', meaning:'柔軟な'},
+    {term:'awareness', meaning:'気づき、意識'},
+    {term:'previous', meaning:'以前の'},
+    {term:'valuable', meaning:'価値のある'},
+    {term:'circumstance', meaning:'状況、事情'},
+    {term:'generation', meaning:'世代'},
+  ],
+  soc: [
+    {term:'摂関政治', meaning:'藤原氏が摂政・関白として実権を握った政治'},
+    {term:'楽市楽座', meaning:'織田信長が行った商業自由化政策'},
+    {term:'地方自治', meaning:'地域の政治を住民自身が行うこと'},
+    {term:'需要と供給', meaning:'商品を買いたい量と売りたい量の関係'},
+    {term:'公共の福祉', meaning:'社会全体の利益のために人権が制限されることがあるという考え方'},
+    {term:'為替相場', meaning:'異なる通貨を交換する際の比率'},
+    {term:'冷戦', meaning:'米ソを中心とした東西陣営の対立'},
+    {term:'廃藩置県', meaning:'明治政府が藩を廃止し県を置いた改革'},
+    {term:'インフレーション', meaning:'物価が継続的に上昇し続けること'},
+    {term:'三権分立の目的', meaning:'権力の集中を防ぎ、国民の自由と権利を守ること'},
+  ],
+  sci: [
+    {term:'消化酵素', meaning:'食べ物を分解するはたらきを持つ物質'},
+    {term:'化学変化', meaning:'物質が別の物質に変わる変化'},
+    {term:'露点', meaning:'空気中の水蒸気が水滴に変わり始める温度'},
+    {term:'電磁誘導', meaning:'コイルを貫く磁界が変化して電流が生じる現象'},
+    {term:'遺伝子', meaning:'生物の形質を親から子へ伝える情報のもと'},
+    {term:'質量保存の法則', meaning:'化学変化の前後で物質全体の質量は変わらないという法則'},
+    {term:'対流', meaning:'温度差によって液体や気体が循環する現象'},
+    {term:'中和', meaning:'酸とアルカリが互いの性質を打ち消し合う反応'},
+    {term:'恒星', meaning:'みずから光を放つ天体'},
+    {term:'分解者', meaning:'生物の死骸やふんを分解する生物'},
+  ],
+  kok: [
+    {term:'温故知新', meaning:'昔のことを研究して新しい知識や見解を得ること'},
+    {term:'杞憂', meaning:'必要のない心配をすること'},
+    {term:'呉越同舟', meaning:'仲の悪い者同士が同じ場所や状況に居合わせること'},
+    {term:'五十歩百歩', meaning:'本質的にはあまり違いがないこと'},
+    {term:'助長', meaning:'ある傾向をさらに強めてしまうこと'},
+    {term:'対義語', meaning:'意味が反対の言葉'},
+    {term:'敬語', meaning:'相手への敬意を表す言葉づかい'},
+    {term:'助動詞', meaning:'用言などに付いて意味を添える語'},
+    {term:'慣用句', meaning:'二つ以上の言葉が結びつき特別な意味を表す言い回し'},
+    {term:'完璧', meaning:'欠点がなく完全なこと'},
+  ],
+  math: [
+    {term:'二次方程式', meaning:'xの2乗を含む方程式'},
+    {term:'素数', meaning:'1とその数自身以外に約数を持たない数'},
+    {term:'展開', meaning:'式のかっこをはずして単項式の和の形にすること'},
+    {term:'確率', meaning:'ある事柄が起こりやすさの割合'},
+    {term:'中央値', meaning:'データを大きさ順に並べたときの中央の値'},
+    {term:'反比例', meaning:'一方が2倍、3倍になると他方が1/2倍、1/3倍になる関係'},
+    {term:'合同', meaning:'形も大きさも全く同じであること'},
+    {term:'標本調査', meaning:'集団の一部を調べて全体を推測する調査方法'},
+    {term:'有理数', meaning:'分数の形で表せる数'},
+    {term:'三平方の定理', meaning:'直角三角形の3辺の関係を表す定理(a²+b²=c²)'},
+  ],
+};
+const SAMPLE_CARDS = {
+  eng: [
+    {term:'resolve', meaning:'決心する'},
+    {term:'ambitious', meaning:'野心的な、意欲的な'},
+    {term:'context', meaning:'文脈、状況'},
+    {term:'efficient', meaning:'効率的な'},
+    {term:'global warming', meaning:'地球温暖化'},
+  ],
+  soc: [
+    {term:'三権分立', meaning:'立法・行政・司法を分けて権力の集中を防ぐしくみ'},
+    {term:'平安京', meaning:'794年に桓武天皇が遷都した都'},
+    {term:'参勤交代', meaning:'大名を定期的に江戸と領地を往復させた江戸幕府の制度'},
+    {term:'基本的人権', meaning:'人が生まれながらに持つ、侵すことのできない権利'},
+    {term:'ODA', meaning:'政府開発援助の略称'},
+  ],
+  sci: [
+    {term:'光合成', meaning:'植物が光エネルギーを使って栄養分を作るはたらき'},
+    {term:'慣性の法則', meaning:'物体は外から力が働かない限り、運動の状態を保ち続ける法則'},
+    {term:'相同器官', meaning:'起源は同じで、形やはたらきが異なる器官'},
+    {term:'電離', meaning:'物質が水に溶けてイオンに分かれる現象'},
+    {term:'示準化石', meaning:'地層が堆積した時代を知る手がかりとなる化石'},
+  ],
+  kok: [
+    {term:'一石二鳥', meaning:'一つの行動で二つの利益を得ること'},
+    {term:'意気投合', meaning:'互いの気持ちがぴったり合うこと'},
+    {term:'推敲', meaning:'文章を何度も練り直すこと'},
+    {term:'破天荒', meaning:'誰もなし得なかったことを成し遂げること'},
+    {term:'情けは人のためならず', meaning:'人に親切にすると巡り巡って自分に返ってくるという意味'},
+  ],
+  math: [
+    {term:'因数分解', meaning:'多項式をいくつかの因数の積の形に表すこと'},
+    {term:'相似', meaning:'形が同じで大きさが異なる図形の関係'},
+    {term:'一次関数', meaning:'y=ax+bの形で表される関数'},
+    {term:'平方根', meaning:'2乗するとある数になる数'},
+    {term:'円周角の定理', meaning:'同じ弧に対する円周角は、中心角の半分になるという定理'},
+  ],
+};
+function ensureDefaultDecks(decks){
+  const wanted = [
+    {id:'kok', name:'国語', emoji:'📖', color:'#FF5D8F', handwriting:true},
+    {id:'math', name:'数学', emoji:'➗', color:'#8B6BFF', handwriting:false},
+  ];
+  let changed = false;
+  wanted.forEach(w => {
+    if(!decks.some(d => d.id === w.id)){
+      decks.push(w);
+      changed = true;
+      if(SAMPLE_CARDS[w.id] && loadCards(w.id).length === 0){
+        saveCards(w.id, SAMPLE_CARDS[w.id].map(x => makeCard(x.term, x.meaning)));
+      }
+    }
+  });
+  if(changed) saveDecks(decks);
+  return decks;
+}
+function seedSampleDataIfNeeded(decks){
+  if(localStorage.getItem('wordbox:seeded')) return;
+  decks.forEach(d => {
+    if(SAMPLE_CARDS[d.id] && loadCards(d.id).length === 0){
+      const cards = SAMPLE_CARDS[d.id].map(x => makeCard(x.term, x.meaning));
+      saveCards(d.id, cards);
+    }
+  });
+  localStorage.setItem('wordbox:seeded', '1');
+}
+
+/* =====================================================
+   アプリ状態
+   ===================================================== */
+let decks = loadDecks();
+seedSampleDataIfNeeded(decks);
+decks = ensureDefaultDecks(decks);
+let activeDeckId = loadActiveDeck(decks);
+let streak = loadStreak();
+
+function activeDeck(){ return decks.find(d => d.id === activeDeckId); }
+function activeCards(){ return loadCards(activeDeckId); }
+
+/* =====================================================
+   タブ切り替え
+   ===================================================== */
+function switchTab(tab){
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tabbar button').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  document.querySelector('.tabbar button[data-tab="' + tab + '"]').classList.add('active');
+  if(tab === 'deck') renderDeckList();
+  if(tab === 'import') renderImportTab();
+  if(tab === 'stats') renderStats();
+}
+
+/* =====================================================
+   今日タブ描画
+   ===================================================== */
+function renderToday(){
+  const deck = activeDeck();
+  document.getElementById('deckPillName').textContent = deck ? (deck.emoji + ' ' + deck.name) : '-';
+  document.getElementById('deckPillDot').style.background = deck ? deck.color : '#ccc';
+
+  document.getElementById('streakNum').textContent = streak.currentStreak || 0;
+
+  const cards = activeCards();
+  const due = dueCards(cards);
+  document.getElementById('dueCount').textContent = due.length;
+  document.getElementById('startBtn').disabled = due.length === 0;
+  document.getElementById('startBtn').textContent = due.length === 0 ? '今日の分は完了！🎉' : '復習スタート';
+
+  const counts = boxCounts(cards);
+  document.getElementById('shelfTotal').textContent = cards.length + ' 枚' + (counts.hidden ? '(非表示' + counts.hidden + ')' : '');
+  const shelf = document.getElementById('shelf');
+  shelf.innerHTML = '';
+  const maxCount = Math.max(1, counts[1], counts[2], counts[3], counts[4], counts[5]);
+  [1,2,3,4,5].forEach(b => {
+    const h = 18 + Math.round((counts[b] / maxCount) * 52);
+    const div = document.createElement('div');
+    div.className = 'drawer';
+    div.style.background = BOX_COLOR[b];
+    div.style.height = h + 'px';
+    div.innerHTML = counts[b] + '<span class="lbl">箱' + b + '</span>';
+    shelf.appendChild(div);
+  });
+  document.getElementById('masteredCount').innerHTML = counts.mastered + '<span style="font-size:12px;color:var(--muted);font-weight:600;"> 語</span>';
+}
+
+/* =====================================================
+   デッキタブ
+   ===================================================== */
+function renderDeckList(){
+  const wrap = document.getElementById('deckList');
+  wrap.innerHTML = '';
+  decks.forEach(d => {
+    const cards = loadCards(d.id);
+    const counts = boxCounts(cards);
+    const total = cards.length || 1;
+    const item = document.createElement('div');
+    item.className = 'deck-item' + (d.id === activeDeckId ? ' active-deck' : '');
+    item.innerHTML = `
+      <div class="row1">
+        <div class="left"><span class="emoji">${d.emoji}</span><span class="dname">${escapeHtml(d.name)}</span></div>
+        <span class="total">${cards.length}枚 / 習得${counts.mastered}${counts.hidden ? ' / 非表示' + counts.hidden : ''}</span>
+      </div>
+      <div class="mini-shelf">
+        ${[1,2,3,4,5].map(b => `<div style="background:${BOX_COLOR[b]};flex:${counts[b]||0.001}"></div>`).join('')}
+        <div style="background:var(--mastered);flex:${counts.mastered||0.001}"></div>
+      </div>
+      <div class="row-actions">
+        <button class="btn-sm primary" onclick="selectDeck('${d.id}')">${d.id === activeDeckId ? '選択中' : 'これにする'}</button>
+        <button class="btn-sm" onclick="renameDeck('${d.id}')">名前変更</button>
+        <button class="btn-sm danger" onclick="deleteDeck('${d.id}')">削除</button>
+      </div>
+      <div class="row-actions">
+        <button class="btn-sm" onclick="openCardList('${d.id}')">📋 カードを編集(${cards.length}枚)</button>
+        <button class="btn-sm${d.handwriting ? ' primary' : ''}" onclick="toggleHandwriting('${d.id}')">✏️ 手書き練習: ${d.handwriting ? 'ON' : 'OFF'}</button>
+      </div>
+    `;
+    wrap.appendChild(item);
+  });
+}
+function selectDeck(id){
+  activeDeckId = id; saveActiveDeck(id);
+  renderDeckList(); renderToday();
+}
+function addDeck(){
+  const input = document.getElementById('newDeckName');
+  const name = input.value.trim();
+  if(!name) return;
+  const palette = ['#FF9F45','#6BCB77','#3EC6E0','#FF5D8F','#8B6BFF','#FFD23F'];
+  const color = palette[decks.length % palette.length];
+  const id = 'd' + uid();
+  decks.push({id, name, emoji:'📘', color, handwriting:false});
+  saveDecks(decks);
+  input.value = '';
+  selectDeck(id);
+}
+function toggleHandwriting(id){
+  const d = decks.find(x => x.id === id);
+  if(!d) return;
+  d.handwriting = !d.handwriting;
+  saveDecks(decks);
+  renderDeckList();
+}
+function renameDeck(id){
+  const d = decks.find(x => x.id === id);
+  const name = prompt('新しいデッキ名', d.name);
+  if(name && name.trim()){ d.name = name.trim(); saveDecks(decks); renderDeckList(); renderToday(); }
+}
+function deleteDeck(id){
+  if(decks.length <= 1){ alert('最後の1つのデッキは削除できません。'); return; }
+  const d = decks.find(x => x.id === id);
+  if(!confirm(`「${d.name}」を削除しますか？中のカードも全て消えます。`)) return;
+  decks = decks.filter(x => x.id !== id);
+  localStorage.removeItem(lsCardsKey(id));
+  saveDecks(decks);
+  if(activeDeckId === id){ activeDeckId = decks[0].id; saveActiveDeck(activeDeckId); }
+  renderDeckList(); renderToday();
+}
+
+/* =====================================================
+   取込タブ
+   ===================================================== */
+function copyGeminiPrompt(){
+  const text = document.getElementById('geminiPromptBox').value;
+  const msgEl = document.getElementById('geminiCopyMsg');
+  const done = () => { msgEl.innerHTML = '<div class="msg ok">コピーしました!Geminiに貼り付けてね</div>'; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+function fallbackCopy(text, done){
+  const ta = document.getElementById('geminiPromptBox');
+  ta.focus(); ta.select();
+  try{ document.execCommand('copy'); done(); } catch(e){}
+}
+function renderImportTab(){
+  const d = activeDeck();
+  document.getElementById('importDeckName').textContent = d ? d.name : '-';
+  document.getElementById('importMsg').innerHTML = '';
+  const btnWrap = document.getElementById('extraSampleBtnWrap');
+  if(d && EXTRA_SAMPLE_CARDS[d.id]){
+    btnWrap.innerHTML = `<div class="row-actions" style="margin-bottom:14px;">
+      <button class="btn-sm primary" onclick="addExtraSamples()">🎲 このデッキにサンプル${EXTRA_SAMPLE_CARDS[d.id].length}問を追加</button>
+    </div>`;
+  } else {
+    btnWrap.innerHTML = '';
+  }
+}
+function addExtraSamples(){
+  const d = activeDeck();
+  if(!d || !EXTRA_SAMPLE_CARDS[d.id]) return;
+  const cards = activeCards();
+  const existingTerms = new Set(cards.map(c => c.term));
+  let added = 0;
+  EXTRA_SAMPLE_CARDS[d.id].forEach(x => {
+    if(!existingTerms.has(x.term)){
+      cards.push(makeCard(x.term, x.meaning));
+      added++;
+    }
+  });
+  saveCards(activeDeckId, cards);
+  document.getElementById('importMsg').innerHTML = added > 0
+    ? `<div class="msg ok">${added}枚のサンプルを追加しました!</div>`
+    : `<div class="msg ok">追加できるサンプルはもうありません(すでに全部入っています)</div>`;
+  renderToday();
+}
+function importCards(){
+  const area = document.getElementById('importArea');
+  const msgEl = document.getElementById('importMsg');
+  let raw = area.value.trim();
+  // AIの出力によくある ```json ... ``` のコードフェンスを自動除去
+  raw = raw.replace(/^```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
+  let data;
+  try{
+    data = JSON.parse(raw);
+    if(!Array.isArray(data)) throw new Error('配列形式ではありません');
+  } catch(e){
+    msgEl.innerHTML = '<div class="msg err">JSONの形式が正しくありません: ' + escapeHtml(e.message) + '</div>';
+    return;
+  }
+  const cards = activeCards();
+  /* 修正: 同じ用語の二重登録を防止(既存カード+今回貼り付け分の中の重複もスキップ) */
+  const existingTerms = new Set(cards.map(c => c.term));
+  let added = 0, skipped = 0;
+  data.forEach(item => {
+    if(item && item.term && item.meaning){
+      const term = String(item.term);
+      if(existingTerms.has(term)){ skipped++; return; }
+      existingTerms.add(term);
+      cards.push(makeCard(term, String(item.meaning)));
+      added++;
+    }
+  });
+  saveCards(activeDeckId, cards);
+  msgEl.innerHTML = `<div class="msg ok">${added}枚のカードを追加しました！${skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : ''}</div>`;
+  area.value = '';
+  renderToday();
+}
+function exportDeck(){
+  const cards = activeCards();
+  const data = cards.map(c => ({term:c.term, meaning:c.meaning}));
+  downloadJson(data, (activeDeck().name || 'deck') + '.json');
+}
+function exportAll(){
+  const backup = {decks, streak, cards:{}};
+  decks.forEach(d => { backup.cards[d.id] = loadCards(d.id); });
+  downloadJson(backup, 'wordbox-backup.json');
+  document.getElementById('backupMsg').innerHTML = '<div class="msg ok">バックアップを書き出しました</div>';
+}
+function restoreAll(evt){
+  const file = evt.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const data = JSON.parse(reader.result);
+      if(!data.decks) throw new Error('バックアップ形式が不正です');
+      decks = data.decks; saveDecks(decks);
+      streak = data.streak || streak; saveStreak(streak);
+      Object.keys(data.cards || {}).forEach(id => saveCards(id, data.cards[id]));
+      activeDeckId = decks[0] ? decks[0].id : null;
+      saveActiveDeck(activeDeckId);
+      document.getElementById('backupMsg').innerHTML = '<div class="msg ok">復元が完了しました</div>';
+      renderAll();
+    } catch(e){
+      document.getElementById('backupMsg').innerHTML = '<div class="msg err">復元に失敗しました: ' + escapeHtml(e.message) + '</div>';
+    }
+  };
+  reader.readAsText(file);
+  /* 修正: 同じファイルをもう一度選んでもonchangeが発火するようリセット */
+  evt.target.value = '';
+}
+function downloadJson(obj, filename){
+  const blob = new Blob([JSON.stringify(obj, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* =====================================================
+   統計タブ
+   ===================================================== */
+function renderStats(){
+  document.getElementById('statStreak').textContent = streak.currentStreak || 0;
+  document.getElementById('statLongest').textContent = streak.longestStreak || 0;
+  let totalMastered = 0, totalCards = 0;
+  const rows = decks.map(d => {
+    const cards = loadCards(d.id);
+    const counts = boxCounts(cards);
+    totalMastered += counts.mastered; totalCards += cards.length;
+    return `<div class="deck-stat-row"><span>${d.emoji} ${escapeHtml(d.name)}</span><span>${counts.mastered} / ${cards.length}</span></div>`;
+  }).join('');
+  document.getElementById('statMastered').textContent = totalMastered;
+  document.getElementById('statTotalCards').textContent = totalCards;
+  document.getElementById('deckStatsList').innerHTML = rows || '<div class="hint">デッキがありません</div>';
+}
+
+/* =====================================================
+   レビューフロー
+   ===================================================== */
+let reviewQueue = [];
+let reviewIndex = 0;
+let reviewTotal = 0;
+let currentCard = null;
+let isFlipped = false;
+
+function shuffleArray(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function startReview(){
+  const cards = activeCards();
+  reviewQueue = shuffleArray(dueCards(cards));
+  if(reviewQueue.length === 0) return;
+  reviewTotal = reviewQueue.length;
+  reviewIndex = 0;
+  document.getElementById('reviewOverlay').classList.add('active');
+  showCurrentCard();
+}
+function closeReview(){
+  document.getElementById('reviewOverlay').classList.remove('active');
+  renderToday();
+}
+function showCurrentCard(){
+  const stage = document.getElementById('cardStage');
+  const answerRow = document.getElementById('answerRow');
+  if(reviewIndex >= reviewQueue.length){
+    answerRow.style.display = 'none';
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressTxt').textContent = reviewTotal + '/' + reviewTotal;
+    stage.innerHTML = `
+      <div class="done-screen">
+        <div class="emoji">🎉</div>
+        <h2>今日の分、おつかれさま！</h2>
+        <p>${reviewTotal}枚を復習しました</p>
+        <button class="done-close" onclick="closeReview()">閉じる</button>
+      </div>`;
+    return;
+  }
+  currentCard = reviewQueue[reviewIndex];
+  isFlipped = false;
+  document.getElementById('progressFill').style.width = Math.round((reviewIndex / reviewTotal) * 100) + '%';
+  document.getElementById('progressTxt').textContent = (reviewIndex + 1) + '/' + reviewTotal;
+  answerRow.style.display = 'none';
+  const deck = activeDeck();
+  const hwEnabled = !!(deck && deck.handwriting);
+  stage.innerHTML = `
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="face front">
+        <span class="box-badge" style="background:${BOX_COLOR[currentCard.box]}">箱${currentCard.box}</span>
+        <button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 Geminiで調べる</button>
+        <div class="term-txt">${escapeHtml(currentCard.term)}</div>
+        ${hwEnabled ? `
+        <div class="hw-wrap" onclick="event.stopPropagation();openHwFull()">
+          <div class="hw-placeholder">✏️ タップして<br>ひろく手書き練習</div>
+        </div>` : ''}
+        <div class="tap-hint">タップして答えを見る</div>
+      </div>
+      <div class="face back">
+        <div class="meaning-txt">${escapeHtml(currentCard.meaning)}</div>
+        <textarea class="memo-input" id="memoInput" placeholder="メモ(自由に書き込めます)"
+          onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"
+          oninput="saveMemo(this.value)">${escapeHtml(currentCard.memo || '')}</textarea>
+        <div class="tap-hint">タップして問題に戻る</div>
+      </div>
+    </div>`;
+}
+function drawHwGuide(ctx, w, h){
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, w, h);
+  ctx.strokeStyle = '#E2D8FF';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(w / 2, 0); ctx.lineTo(w / 2, h);
+  ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2);
+  ctx.stroke();
+  ctx.setLineDash([]);
+}
+function bindCanvasDrawing(canvas){
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  function posFromEvent(e){
+    const rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+  canvas.onpointerdown = (e) => {
+    drawing = true;
+    const p = posFromEvent(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    e.preventDefault();
+  };
+  canvas.onpointermove = (e) => {
+    if(!drawing) return;
+    const p = posFromEvent(e);
+    ctx.strokeStyle = '#2B2440';
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    e.preventDefault();
+  };
+  canvas.onpointerup = () => { drawing = false; };
+  canvas.onpointerleave = () => { drawing = false; };
+  /* 修正: addEventListenerは開閉のたびに蓄積するため、一度だけバインドする */
+  if(!canvas.dataset.touchBound){
+    // iOS Safariはtouch-action:noneだけではスクロールを防げないことがあるため明示的に止める
+    canvas.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
+    canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+    canvas.addEventListener('touchend', (e) => e.preventDefault(), { passive: false });
+    canvas.dataset.touchBound = '1';
+  }
+}
+let hwCanvasCardId = null;
+function openHwFull(){
+  const overlay = document.getElementById('hwFullOverlay');
+  overlay.classList.add('active');
+  const canvas = document.getElementById('hwFullCanvas');
+  const wrap = document.getElementById('hwFullCanvasWrap');
+  const isSameCard = currentCard && hwCanvasCardId === currentCard.id;
+  if(!isSameCard){
+    // 別のカードに切り替わった時だけ、サイズ調整してまっさらにする
+    const w = Math.min(wrap.clientWidth, 520);
+    const h = Math.min(wrap.clientHeight, 520);
+    canvas.width = w;
+    canvas.height = h;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    drawHwGuide(canvas.getContext('2d'), w, h);
+    hwCanvasCardId = currentCard ? currentCard.id : null;
+  }
+  bindCanvasDrawing(canvas);
+}
+function closeHwFull(){
+  document.getElementById('hwFullOverlay').classList.remove('active');
+}
+function clearHwFullCanvas(){
+  const canvas = document.getElementById('hwFullCanvas');
+  if(!canvas) return;
+  drawHwGuide(canvas.getContext('2d'), canvas.width, canvas.height);
+}
+function flipCard(){
+  isFlipped = !isFlipped;
+  document.getElementById('flashcard').classList.toggle('flipped', isFlipped);
+  document.getElementById('answerRow').style.display = isFlipped ? 'flex' : 'none';
+}
+function saveMemo(text){
+  if(!currentCard) return;
+  currentCard.memo = text;
+  const cards = activeCards();
+  const idx = cards.findIndex(c => c.id === currentCard.id);
+  if(idx !== -1){ cards[idx].memo = text; saveCards(activeDeckId, cards); }
+}
+function lookupOnGemini(){
+  if(!currentCard) return;
+  const prompt = `「${currentCard.term}」について、中学生にもわかるように解説して。意味は「${currentCard.meaning}」だけど、もう少し詳しく教えて。`;
+  navigator.clipboard && navigator.clipboard.writeText(prompt).catch(()=>{});
+  window.open('https://gemini.google.com/app?q=' + encodeURIComponent(prompt), '_blank');
+}
+function answer(isCorrect){
+  const cards = activeCards();
+  const idx = cards.findIndex(c => c.id === currentCard.id);
+  if(idx !== -1){
+    cards[idx] = answerCard(cards[idx], isCorrect);
+    saveCards(activeDeckId, cards);
+  }
+  streak = updateStreak(streak);
+  saveStreak(streak);
+  reviewIndex++;
+  showCurrentCard();
+}
+
+/* =====================================================
+   カード一覧(削除・非表示・デッキ移動)
+   ===================================================== */
+let cardListDeckId = null;
+
+function openCardList(deckId){
+  cardListDeckId = deckId;
+  renderCardList();
+  document.getElementById('cardListOverlay').classList.add('active');
+}
+function closeCardList(){
+  document.getElementById('cardListOverlay').classList.remove('active');
+  renderDeckList(); renderToday();
+}
+function renderCardList(){
+  const deck = decks.find(d => d.id === cardListDeckId);
+  document.getElementById('cardListTitle').textContent = (deck ? deck.emoji + ' ' + deck.name : '') + ' のカード';
+  const cards = loadCards(cardListDeckId);
+  const body = document.getElementById('cardListBody');
+  if(cards.length === 0){
+    body.innerHTML = '<div class="hint">このデッキにはまだカードがありません。</div>';
+    return;
+  }
+  const otherDecks = decks.filter(d => d.id !== cardListDeckId);
+  body.innerHTML = cards.map(c => `
+    <div class="cardrow${c.hidden ? ' is-hidden' : ''}">
+      <div class="crow-top">
+        <div>
+          <div class="crow-badges">
+            <span class="box-badge" style="position:static;background:${c.mastered ? 'var(--mastered)' : BOX_COLOR[c.box]}">${c.mastered ? '習得済み' : '箱' + c.box}</span>
+            ${c.hidden ? '<span class="hidden-tag">非表示中</span>' : ''}
+          </div>
+          <div class="crow-term">${escapeHtml(c.term)}</div>
+          <div class="crow-meaning">${escapeHtml(c.meaning)}</div>
+        </div>
+      </div>
+      <div class="crow-actions">
+        <button class="btn-sm" onclick="toggleHidden('${c.id}')">${c.hidden ? '👁 表示に戻す' : '🙈 非表示にする'}</button>
+        <select onchange="setCardBox('${c.id}', this.value); this.selectedIndex=0;">
+          <option value="" disabled selected>箱を移動...</option>
+          <option value="1">箱1(翌日)</option>
+          <option value="2">箱2(3日後)</option>
+          <option value="3">箱3(7日後)</option>
+          <option value="4">箱4(14日後)</option>
+          <option value="5">箱5(30日後)</option>
+          <option value="mastered">習得済みにする</option>
+        </select>
+        <select onchange="moveCard('${c.id}', this.value); this.selectedIndex=0;">
+          <option value="">他のデッキへ移動...</option>
+          ${otherDecks.map(d => `<option value="${d.id}">${d.emoji} ${escapeHtml(d.name)}へ</option>`).join('')}
+        </select>
+        <button class="btn-sm danger" onclick="deleteCardById('${c.id}')">削除</button>
+      </div>
+    </div>
+  `).join('');
+}
+function setCardBox(cardId, value){
+  if(!value) return;
+  const cards = loadCards(cardListDeckId);
+  const idx = cards.findIndex(c => c.id === cardId);
+  if(idx === -1) return;
+  const now = todayStr();
+  if(value === 'mastered'){
+    cards[idx].mastered = true;
+    cards[idx].masteredAt = now;
+    cards[idx].hidden = false;
+    cards[idx].nextReview = addDays(now, BOX_INTERVAL_DAYS[5]);
+  } else {
+    const b = parseInt(value, 10);
+    cards[idx].box = b;
+    cards[idx].mastered = false;
+    cards[idx].masteredAt = null;
+    cards[idx].hidden = false;
+    cards[idx].nextReview = addDays(now, BOX_INTERVAL_DAYS[b]);
+  }
+  saveCards(cardListDeckId, cards);
+  renderCardList();
+}
+function toggleHidden(cardId){
+  const cards = loadCards(cardListDeckId);
+  const idx = cards.findIndex(c => c.id === cardId);
+  if(idx === -1) return;
+  cards[idx].hidden = !cards[idx].hidden;
+  saveCards(cardListDeckId, cards);
+  renderCardList();
+}
+function deleteCardById(cardId){
+  const cards = loadCards(cardListDeckId);
+  const target = cards.find(c => c.id === cardId);
+  if(!target) return;
+  if(!confirm(`「${target.term}」を削除しますか？この操作は元に戻せません。`)) return;
+  saveCards(cardListDeckId, cards.filter(c => c.id !== cardId));
+  renderCardList();
+}
+function moveCard(cardId, targetDeckId){
+  if(!targetDeckId) return;
+  const cards = loadCards(cardListDeckId);
+  const idx = cards.findIndex(c => c.id === cardId);
+  if(idx === -1) return;
+  const [moved] = cards.splice(idx, 1);
+  saveCards(cardListDeckId, cards);
+  const targetCards = loadCards(targetDeckId);
+  targetCards.push(moved);
+  saveCards(targetDeckId, targetCards);
+  renderCardList();
+}
+
+/* =====================================================
+   共通ユーティリティ・初期化
+   ===================================================== */
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function renderAll(){
+  renderToday();
+  renderDeckList();
+  renderImportTab();
+  renderStats();
+}
+renderAll();
+</script>
+</body>
+</html>
