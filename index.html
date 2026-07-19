@@ -6,54 +6,86 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="おぼえるBOX">
-<meta name="theme-color" content="#FFFBF2">
-<title>おぼえるBOX 🔥</title>
+<meta name="theme-color" content="#5FB93C">
+<title>おぼえるBOX ⛏️</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FFFBF2;
-    --surface:#FFFFFF;
-    --surface-2:#FFF4E1;
-    --ink:#2B2440;
-    --muted:#93889F;
-    --line:#F0E6D6;
-    --box1:#FF5D5D; /* 翌日: 熱い */
-    --box2:#FF9F45;
-    --box3:#FFD23F;
-    --box4:#6BCB77;
-    --box5:#3EC6E0; /* 30日後: 冷たい=よく覚えている */
-    --mastered:#8B6BFF;
-    --accent:#FF5D8F;
-    --accent-ink:#7A1339;
-    --flame:#FF9F1C;
-    --shadow:0 2px 6px rgba(43,36,64,.06), 0 10px 24px rgba(43,36,64,.08);
-    --radius:22px;
+    --bg:#8FCBEF;
+    --surface:#C6C6C6;
+    --surface-2:#DCD9C6;
+    --ink:#3B2F1E;
+    --muted:#6B6355;
+    --line:#575757;
+    --panel-light:#FFFFFF;
+    --panel-dark:#575757;
+    --panel-darker:#2B2B2B;
+    --box1:#E6433B; /* 翌日: 熱い(レッドストーン) */
+    --box2:#E8892E; /* 3日後(銅) */
+    --box3:#F0C93B; /* 7日後(金) */
+    --box4:#5FB93C; /* 14日後(エメラルド) */
+    --box5:#42D3D3; /* 30日後: 冷たい=よく覚えている(ダイヤ) */
+    --mastered:#B15CE0; /* 習得済み(アメジスト) */
+    --accent:#5FB93C;
+    --accent-ink:#1F4A12;
+    --flame:#F0A020;
+    --shadow:0 3px 0 rgba(0,0,0,.35);
+    --radius:0px;
+    --pixel-font:'DotGothic16','Zen Maru Gothic',sans-serif;
+    --pixel-display:'Press Start 2P','DotGothic16',sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;overscroll-behavior-y:contain;}
   body{
-    background:var(--bg);
+    background:
+      linear-gradient(180deg,#8FCBEF 0%,#8FCBEF 70%,#6ABE30 70%,#3F7D20 100%) fixed;
     color:var(--ink);
-    font-family:'Zen Maru Gothic','Hiragino Sans',sans-serif;
+    font-family:var(--pixel-font);
     min-height:100vh;
     padding-bottom:calc(84px + env(safe-area-inset-bottom));
     padding-top:env(safe-area-inset-top);
     -webkit-font-smoothing:antialiased;
+    image-rendering:pixelated;
   }
-  h1,h2,h3,.display{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;}
+  h1,h2,h3,.display{font-family:var(--pixel-font);}
+  /* ===== ドット絵パネル(マイクラGUI風ベベル) ===== */
+  .pixel-panel{
+    border-radius:0;
+    border:4px solid var(--panel-darker);
+    box-shadow:
+      inset 2px 2px 0 var(--panel-light),
+      inset -2px -2px 0 var(--panel-dark),
+      0 4px 0 rgba(0,0,0,.25);
+  }
+  .pixel-btn{
+    border-radius:0;
+    border:none;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,.55),
+      inset -3px -3px 0 rgba(0,0,0,.35),
+      0 3px 0 rgba(0,0,0,.3);
+    font-family:var(--pixel-font);
+    font-weight:700;
+    text-shadow:1px 1px 0 rgba(0,0,0,.35);
+  }
+  .pixel-btn:active{
+    box-shadow:
+      inset 2px 2px 0 rgba(0,0,0,.35),
+      inset -2px -2px 0 rgba(255,255,255,.3);
+    transform:translateY(2px);
+  }
   .app{max-width:520px;margin:0 auto;padding:20px 18px 8px;}
   .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
   .brand{display:flex;align-items:center;gap:8px;}
-  .brand .logo{font-size:26px;}
-  .brand .name{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:19px;letter-spacing:.02em;}
+  .brand .logo{font-size:26px;filter:drop-shadow(2px 2px 0 rgba(0,0,0,.3));}
+  .brand .name{font-family:var(--pixel-font);font-weight:700;font-size:19px;letter-spacing:.02em;color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.45);}
   .deck-pill{
     display:flex;align-items:center;gap:6px;background:var(--surface);
-    border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 10px;
-    box-shadow:var(--shadow);font-weight:700;font-size:14px;
+    padding:7px 14px 7px 10px;font-weight:700;font-size:14px;cursor:pointer;
   }
-  .deck-pill .dot{width:10px;height:10px;border-radius:50%;}
+  .deck-pill .dot{width:10px;height:10px;border-radius:0;border:1px solid rgba(0,0,0,.4);}
 
   .panel{display:none;}
   .panel.active{display:block;animation:fadein .25s ease;}
@@ -61,96 +93,134 @@
 
   /* ===== Hero (今日) ===== */
   .hero-card{
-    background:linear-gradient(160deg,#FFF 0%,var(--surface-2) 100%);
-    border-radius:28px;padding:26px 22px;box-shadow:var(--shadow);
-    border:1px solid var(--line);position:relative;overflow:hidden;
+    background:var(--surface-2);
+    padding:26px 22px;position:relative;overflow:hidden;
   }
   .streak-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
-  .streak-flame{font-size:22px;filter:drop-shadow(0 2px 3px rgba(255,159,28,.4));}
-  .streak-num{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:20px;color:var(--flame);}
-  .streak-label{font-size:12px;color:var(--muted);font-weight:500;}
-  .due-headline{font-size:14px;color:var(--muted);margin:14px 0 2px;font-weight:500;}
-  .due-count{font-family:'M PLUS Rounded 1c';font-size:56px;font-weight:800;line-height:1;color:var(--ink);}
+  .streak-flame{font-size:22px;filter:drop-shadow(0 2px 0 rgba(0,0,0,.3));}
+  .streak-num{font-family:var(--pixel-display);font-weight:400;font-size:16px;color:var(--flame);text-shadow:1px 1px 0 rgba(0,0,0,.3);}
+  .streak-label{font-size:12px;color:var(--muted);font-weight:700;}
+  .due-headline{font-size:14px;color:var(--muted);margin:14px 0 2px;font-weight:700;}
+  .due-count{font-family:var(--pixel-display);font-size:40px;font-weight:400;line-height:1.3;color:var(--ink);text-shadow:2px 2px 0 rgba(255,255,255,.4);}
   .due-unit{font-size:16px;font-weight:700;color:var(--muted);margin-left:6px;}
+  .xp-bar{
+    margin-top:14px;height:22px;background:#000;border:3px solid #1c1c1c;
+    box-shadow:inset 0 0 0 2px #000;position:relative;overflow:hidden;
+  }
+  .xp-bar .xp-fill{
+    height:100%;background:linear-gradient(180deg,#8CE83E 0%,#5FB93C 55%,#3F8A22 100%);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,.5);transition:width .3s ease;width:0%;
+  }
+  .xp-bar .xp-txt{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--pixel-display);font-size:10px;color:#fff;
+    text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;
+  }
   .start-btn{
-    margin-top:18px;width:100%;border:none;border-radius:18px;padding:16px;
-    background:var(--accent);color:#fff;font-family:'M PLUS Rounded 1c';font-weight:800;
-    font-size:17px;box-shadow:0 8px 18px rgba(255,93,143,.35);cursor:pointer;
+    margin-top:18px;width:100%;padding:16px;
+    background:var(--accent);color:#fff;font-family:var(--pixel-font);font-weight:700;
+    font-size:17px;cursor:pointer;border:none;text-shadow:1px 1px 0 rgba(0,0,0,.35);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.55),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
   }
-  .start-btn:disabled{background:#E7E1F0;color:#B3A9C4;box-shadow:none;}
-  .start-btn:active:not(:disabled){transform:scale(.98);}
+  .start-btn:disabled{background:#9AA08F;color:#5c6152;box-shadow:none;}
+  .start-btn:active:not(:disabled){transform:translateY(2px);box-shadow:inset 2px 2px 0 rgba(0,0,0,.35);}
 
-  /* ===== Box shelf (signature element) ===== */
-  .shelf-title{font-size:13px;font-weight:700;color:var(--muted);margin:22px 0 8px;display:flex;justify-content:space-between;}
-  .shelf{display:flex;gap:6px;align-items:flex-end;height:74px;}
-  .shelf .drawer{
-    flex:1;border-radius:12px 12px 6px 6px;position:relative;display:flex;
-    align-items:flex-start;justify-content:center;padding-top:8px;
-    color:#fff;font-family:'M PLUS Rounded 1c';font-weight:800;font-size:15px;
-    transition:height .3s ease;box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);
+  /* ===== Box shelf → チェスト列(signature element) ===== */
+  .shelf-title{font-size:13px;font-weight:700;color:var(--muted);margin:24px 0 10px;display:flex;justify-content:space-between;}
+  .shelf{display:flex;gap:8px;align-items:flex-start;padding-bottom:18px;}
+  .shelf .chest-cell{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .shelf .chest{
+    width:100%;aspect-ratio:1/1;position:relative;background:var(--wood,#A0714A);
+    border:3px solid #3B2711;
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.25), inset -2px -2px 0 rgba(0,0,0,.35);
+    display:flex;align-items:center;justify-content:center;
   }
-  .shelf .drawer .lbl{position:absolute;bottom:-20px;font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap;}
+  .shelf .chest::before{ /* 金具バンド */
+    content:'';position:absolute;left:0;right:0;top:38%;height:24%;background:#D8B23C;
+    border-top:2px solid #7A5C10;border-bottom:2px solid #7A5C10;
+  }
+  .shelf .chest::after{ /* 留め具 */
+    content:'';position:absolute;left:50%;top:44%;width:14%;height:14%;
+    background:#3B2711;transform:translate(-50%,0);
+  }
+  .shelf .chest.has-items{background:#B98652;}
+  .shelf .chest .badge{
+    position:absolute;top:-8px;right:-6px;background:#2B2B2B;color:#fff;
+    font-family:var(--pixel-display);font-size:10px;padding:2px 4px;
+    border:2px solid #000;min-width:18px;text-align:center;
+  }
+  .shelf .lbl{font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap;}
   .mastered-chip{
-    margin-top:26px;display:flex;align-items:center;justify-content:space-between;
-    background:#F3EFFF;border:1px solid #E2D8FF;border-radius:16px;padding:12px 16px;
+    margin-top:10px;display:flex;align-items:center;justify-content:space-between;
+    background:#E7D9F7;border:3px solid #3B2711;padding:12px 16px;
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.4), inset -2px -2px 0 rgba(0,0,0,.15);
   }
-  .mastered-chip .n{font-family:'M PLUS Rounded 1c';font-weight:800;color:var(--mastered);font-size:20px;}
+  .mastered-chip .n{font-family:var(--pixel-display);font-weight:400;color:var(--mastered);font-size:16px;}
 
   /* ===== Deck list ===== */
   .deck-item{
-    background:var(--surface);border:1px solid var(--line);border-radius:20px;
-    padding:16px;margin-bottom:12px;box-shadow:var(--shadow);
+    background:var(--surface);
+    padding:16px;margin-bottom:14px;
+    border:4px solid var(--panel-darker);
+    box-shadow:inset 2px 2px 0 var(--panel-light),inset -2px -2px 0 var(--panel-dark),0 4px 0 rgba(0,0,0,.25);
   }
-  .deck-item.active-deck{outline:2px solid var(--accent);}
+  .deck-item.active-deck{outline:3px solid var(--accent);outline-offset:2px;}
   .deck-item .row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
   .deck-item .row1 .left{display:flex;align-items:center;gap:10px;}
   .deck-item .emoji{font-size:22px;}
   .deck-item .dname{font-weight:700;font-size:16px;}
   .deck-item .total{font-size:12px;color:var(--muted);}
-  .mini-shelf{display:flex;gap:4px;height:14px;border-radius:8px;overflow:hidden;}
+  .mini-shelf{display:flex;gap:2px;height:14px;border:2px solid #2B2B2B;overflow:hidden;}
   .mini-shelf div{flex:1;}
   .btn-sm{
-    border:none;border-radius:12px;padding:8px 12px;font-weight:700;font-size:13px;
+    padding:9px 12px;font-weight:700;font-size:12.5px;
     background:var(--surface-2);color:var(--ink);cursor:pointer;
+    font-family:var(--pixel-font);border:none;
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.55),inset -3px -3px 0 rgba(0,0,0,.25),0 3px 0 rgba(0,0,0,.3);
   }
+  .btn-sm:active{box-shadow:inset 2px 2px 0 rgba(0,0,0,.3);transform:translateY(2px);}
   .btn-sm.primary{background:var(--accent);color:#fff;}
-  .btn-sm.danger{background:#FFE3E3;color:#C4374A;}
-  .row-actions{display:flex;gap:8px;margin-top:10px;}
+  .btn-sm.danger{background:#E6433B;color:#fff;}
+  .row-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
 
   .add-deck{
     display:flex;gap:8px;margin-top:6px;
   }
   input[type=text], textarea, select{
-    font-family:'Zen Maru Gothic',sans-serif;border:1px solid var(--line);
-    border-radius:14px;padding:12px 14px;font-size:15px;background:var(--surface);
-    color:var(--ink);width:100%;
+    font-family:var(--pixel-font);border:3px solid var(--panel-darker);
+    box-shadow:inset 2px 2px 0 rgba(0,0,0,.25);
+    padding:12px 14px;font-size:15px;background:#fff;
+    color:var(--ink);width:100%;border-radius:0;
   }
   textarea{min-height:160px;resize:vertical;line-height:1.5;}
 
   /* ===== Import ===== */
-  .section-title{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:18px;margin:4px 0 10px;}
+  .section-title{font-family:var(--pixel-font);font-weight:700;font-size:18px;margin:4px 0 10px;color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.4);}
+  .panel .section-title{color:var(--ink);text-shadow:none;}
   .hint{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
   code.ex{
-    display:block;background:#F5F0FF;border-radius:12px;padding:10px 12px;
-    font-size:11.5px;color:#5B4B8A;white-space:pre-wrap;margin-bottom:12px;
+    display:block;background:#2B2B2B;color:#8CE83E;padding:10px 12px;
+    font-size:11.5px;white-space:pre-wrap;margin-bottom:12px;border:3px solid #000;
   }
   .msg{
-    margin-top:10px;padding:10px 14px;border-radius:12px;font-size:13.5px;font-weight:600;
+    margin-top:10px;padding:10px 14px;font-size:13.5px;font-weight:700;border:3px solid #000;
   }
-  .msg.ok{background:#E6F8EA;color:#1F8A44;}
-  .msg.err{background:#FFE3E3;color:#C4374A;}
+  .msg.ok{background:#CFF2D2;color:#1F6B2E;}
+  .msg.err{background:#F8D2CE;color:#8A2418;}
   .preset-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 
   /* ===== Stats ===== */
   .stat-card{
-    background:var(--surface);border:1px solid var(--line);border-radius:20px;
-    padding:18px;margin-bottom:12px;box-shadow:var(--shadow);
+    background:var(--surface);
+    padding:18px;margin-bottom:14px;
+    border:4px solid var(--panel-darker);
+    box-shadow:inset 2px 2px 0 var(--panel-light),inset -2px -2px 0 var(--panel-dark),0 4px 0 rgba(0,0,0,.25);
   }
   .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .stat-box{background:var(--surface-2);border-radius:16px;padding:14px;text-align:center;}
-  .stat-box .v{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:26px;}
-  .stat-box .l{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:2px;}
-  .deck-stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .stat-box{background:var(--surface-2);border:2px solid var(--panel-darker);padding:14px;text-align:center;}
+  .stat-box .v{font-family:var(--pixel-display);font-weight:400;font-size:20px;}
+  .stat-box .l{font-size:11.5px;color:var(--muted);font-weight:700;margin-top:6px;}
+  .deck-stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:2px dashed var(--line);font-size:14px;}
   .deck-stat-row:last-child{border-bottom:none;}
 
   /* ===== Review overlay ===== */
@@ -161,104 +231,140 @@
   .review-overlay.active{display:flex;}
   #hwFullOverlay{z-index:60;}
   .review-top{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
-  .close-btn{background:none;border:none;font-size:22px;color:var(--muted);cursor:pointer;padding:6px;}
-  .progress-track{flex:1;height:6px;background:var(--line);border-radius:3px;margin:0 12px;overflow:hidden;}
-  .progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .25s ease;}
-  .progress-txt{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;}
+  .close-btn{background:none;border:none;font-size:22px;color:var(--ink);cursor:pointer;padding:6px;text-shadow:1px 1px 0 #fff;}
+  .progress-track{
+    flex:1;height:18px;background:#000;margin:0 12px;position:relative;overflow:hidden;
+    border:3px solid #1c1c1c;box-shadow:inset 0 0 0 2px #000;
+  }
+  .progress-fill{
+    height:100%;
+    background:
+      repeating-linear-gradient(90deg,rgba(0,0,0,.15) 0 2px,transparent 2px 14px),
+      linear-gradient(180deg,#8CE83E 0%,#5FB93C 55%,#3F8A22 100%);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,.5);transition:width .25s ease;
+  }
+  .progress-txt{
+    font-size:9px;font-family:var(--pixel-display);font-weight:400;color:var(--ink);white-space:nowrap;
+  }
 
   .card-stage{flex:1;display:flex;align-items:center;justify-content:center;perspective:1200px;}
   .flashcard{
     width:100%;max-width:400px;height:360px;position:relative;cursor:pointer;
   }
   .flashcard .face{
-    position:absolute;inset:0;border-radius:26px;display:flex;flex-direction:column;
+    position:absolute;inset:0;display:flex;flex-direction:column;
     align-items:center;justify-content:center;
-    text-align:center;padding:28px;box-shadow:var(--shadow);backface-visibility:hidden;
-    border:1px solid var(--line);overflow:auto;
+    text-align:center;padding:28px;backface-visibility:hidden;
+    overflow:auto;
   }
   .flashcard .front{background:var(--surface);}
   .flashcard .back{background:var(--surface-2);transform:rotateY(180deg);}
   .flashcard.flipped .front{transform:rotateY(180deg);}
   .flashcard.flipped .back{transform:rotateY(360deg);}
   .flashcard .face{transition:transform .45s cubic-bezier(.4,.2,.2,1);}
-  .term-txt{font-family:'M PLUS Rounded 1c';font-weight:800;font-size:26px;line-height:1.4;}
-  .meaning-txt{font-family:'M PLUS Rounded 1c';font-weight:700;font-size:22px;line-height:1.5;color:var(--accent-ink);}
-  .tap-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:600;}
+  .term-txt{font-family:var(--pixel-font);font-weight:700;font-size:26px;line-height:1.4;}
+  .meaning-txt{font-family:var(--pixel-font);font-weight:700;font-size:20px;line-height:1.5;color:var(--accent-ink);}
+  .tap-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:700;}
   .box-badge{
-    position:absolute;top:14px;left:14px;font-size:11px;font-weight:800;color:#fff;
-    padding:4px 10px;border-radius:999px;font-family:'M PLUS Rounded 1c';
+    position:absolute;top:14px;left:14px;font-size:10px;font-weight:400;color:#fff;
+    padding:5px 8px;font-family:var(--pixel-display);border:2px solid #000;
   }
   .gemini-btn{
-    position:absolute;top:12px;right:12px;border:none;border-radius:999px;
+    position:absolute;top:12px;right:12px;
     background:#EFEBFF;color:#5B4B8A;font-size:11.5px;font-weight:700;
-    padding:6px 12px;cursor:pointer;font-family:'Zen Maru Gothic',sans-serif;
+    padding:6px 12px;cursor:pointer;font-family:var(--pixel-font);border:2px solid #000;
   }
   .memo-input{
     margin-top:14px;width:100%;max-width:280px;min-height:56px;font-size:13px;
-    border:1px solid #E2D8FF;border-radius:12px;padding:10px 12px;background:#FBF9FF;
-    color:var(--ink);resize:none;
+    border:2px solid #000;padding:10px 12px;background:#FBF9FF;
+    color:var(--ink);resize:none;font-family:var(--pixel-font);
   }
   .hw-wrap{margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;}
   .hw-placeholder{
-    width:100%;max-width:280px;min-height:64px;border:2px dashed #D8CCFF;border-radius:16px;
+    width:100%;max-width:280px;min-height:64px;border:3px dashed #7A6BAF;
     background:#FBF9FF;color:#7A6BAF;font-weight:700;font-size:13.5px;line-height:1.5;
     display:flex;align-items:center;justify-content:center;text-align:center;
   }
   .hw-canvas{
-    border:1.5px solid var(--line);border-radius:12px;touch-action:none;
-    box-shadow:inset 0 1px 3px rgba(43,36,64,.06);background:#fff;
+    border:3px solid #000;touch-action:none;background:#fff;
   }
 
   .answer-row{display:flex;gap:12px;margin-top:22px;}
   .ans-btn{
-    flex:1;border:none;border-radius:18px;padding:18px 10px;font-weight:800;font-size:16px;
-    font-family:'M PLUS Rounded 1c';cursor:pointer;color:#fff;
+    flex:1;padding:18px 10px;font-weight:700;font-size:15px;border:none;
+    font-family:var(--pixel-font);cursor:pointer;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,.35);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
   }
+  .ans-btn:active:not(:disabled){transform:translateY(2px);box-shadow:inset 2px 2px 0 rgba(0,0,0,.35);}
   .ans-btn.wrong{background:var(--box1);}
-  .ans-btn.correct{background:var(--box5);}
+  .ans-btn.correct{background:var(--box4);}
   .ans-btn:disabled{opacity:.4;}
 
   .done-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;}
   .done-screen .emoji{font-size:56px;}
-  .done-screen h2{font-size:22px;margin:0;}
+  .done-screen h2{font-size:20px;margin:0;font-family:var(--pixel-font);}
   .done-screen p{color:var(--muted);font-size:14px;margin:0;}
   .done-close{
-    margin-top:18px;border:none;border-radius:16px;padding:14px 28px;background:var(--accent);
-    color:#fff;font-family:'M PLUS Rounded 1c';font-weight:800;font-size:15px;cursor:pointer;
+    margin-top:18px;padding:14px 28px;background:var(--accent);border:none;
+    color:#fff;font-family:var(--pixel-font);font-weight:700;font-size:15px;cursor:pointer;
+    text-shadow:1px 1px 0 rgba(0,0,0,.35);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.55),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
   }
 
   /* ===== Tab bar ===== */
   .tabbar{
     position:fixed;bottom:0;left:0;right:0;background:var(--surface);
-    border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom);
+    border-top:4px solid var(--panel-darker);display:flex;padding-bottom:env(safe-area-inset-bottom);
     z-index:20;
   }
   .tabbar button{
     flex:1;background:none;border:none;padding:10px 2px 8px;display:flex;flex-direction:column;
-    align-items:center;gap:2px;color:var(--muted);font-size:10px;font-weight:700;cursor:pointer;
+    align-items:center;gap:2px;color:var(--muted);font-size:9.5px;font-weight:700;cursor:pointer;
+    font-family:var(--pixel-font);
   }
   .tabbar button .ic{font-size:18px;}
-  .tabbar button.active{color:var(--accent);}
+  .tabbar button.active{color:var(--accent-ink);background:var(--surface-2);}
 
   /* ===== カード一覧 ===== */
   .cardrow{
-    background:var(--surface);border:1px solid var(--line);border-radius:16px;
-    padding:12px 14px;margin-bottom:10px;
+    background:var(--surface);
+    padding:12px 14px;margin-bottom:12px;
+    border:3px solid var(--panel-darker);
+    box-shadow:inset 2px 2px 0 var(--panel-light),inset -2px -2px 0 var(--panel-dark);
   }
   .cardrow.is-hidden{opacity:.5;}
   .cardrow .crow-top{display:flex;align-items:flex-start;gap:8px;justify-content:space-between;}
-  .cardrow .crow-badges{display:flex;gap:6px;align-items:center;margin-bottom:4px;}
+  .cardrow .crow-badges{display:flex;gap:6px;align-items:center;margin-bottom:4px;flex-wrap:wrap;}
   .cardrow .crow-term{font-weight:700;font-size:15px;}
   .cardrow .crow-meaning{font-size:13px;color:var(--muted);margin-top:2px;}
   .cardrow .crow-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
   .hidden-tag{
-    font-size:10px;font-weight:800;color:#8D8399;background:#EFEBFF;
-    padding:2px 8px;border-radius:999px;
+    font-size:10px;font-weight:700;color:#fff;background:#8D8399;
+    padding:2px 8px;border:2px solid #000;
   }
   .source-tag{
-    font-size:10px;font-weight:800;color:#5B4B8A;background:#EAF3FF;
-    padding:2px 8px;border-radius:999px;
+    font-size:10px;font-weight:700;color:#fff;background:#5B4B8A;
+    padding:2px 8px;border:2px solid #000;
   }
+
+  /* ===== 実績解除トースト ===== */
+  #achToastWrap{
+    position:fixed;top:calc(10px + env(safe-area-inset-top));left:0;right:0;
+    display:flex;flex-direction:column;align-items:center;gap:8px;z-index:80;
+    pointer-events:none;
+  }
+  .ach-toast{
+    display:flex;align-items:center;gap:12px;background:#1E1E1E;color:#fff;
+    border:3px solid #FFD32C;padding:10px 16px;min-width:240px;max-width:90vw;
+    box-shadow:0 4px 0 rgba(0,0,0,.5);
+    transform:translateY(-120%);opacity:0;
+    transition:transform .35s cubic-bezier(.2,.9,.3,1.3),opacity .35s ease;
+  }
+  .ach-toast.show{transform:translateY(0);opacity:1;}
+  .ach-toast .ach-ic{font-size:26px;filter:drop-shadow(2px 2px 0 rgba(0,0,0,.5));}
+  .ach-toast .ach-txt{display:flex;flex-direction:column;gap:2px;}
+  .ach-toast .ach-label{font-size:9px;color:#FFD32C;font-family:var(--pixel-display);letter-spacing:.03em;}
+  .ach-toast .ach-title{font-size:13px;font-weight:700;font-family:var(--pixel-font);}
 </style>
 </head>
 <body>
@@ -266,7 +372,7 @@
 
   <div class="top">
     <div class="brand"><span class="logo">📦</span><span class="name">おぼえるBOX</span></div>
-    <div class="deck-pill" id="deckPillTop" onclick="switchTab('deck')">
+    <div class="deck-pill pixel-panel" id="deckPillTop" onclick="switchTab('deck')">
       <span class="dot" id="deckPillDot"></span>
       <span id="deckPillName">-</span>
     </div>
@@ -274,7 +380,7 @@
 
   <!-- ===== 今日タブ ===== -->
   <div class="panel active" id="panel-today">
-    <div class="hero-card">
+    <div class="hero-card pixel-panel">
       <div class="streak-row">
         <span class="streak-flame">🔥</span>
         <span class="streak-num" id="streakNum">0</span>
@@ -282,7 +388,8 @@
       </div>
       <div class="due-headline">今日の復習</div>
       <div><span class="due-count" id="dueCount">0</span><span class="due-unit">枚</span></div>
-      <button class="start-btn" id="startBtn" onclick="startReview()">復習スタート</button>
+      <div class="xp-bar" id="dueXpBar"><div class="xp-fill" id="dueXpFill"></div><div class="xp-txt" id="dueXpTxt"></div></div>
+      <button class="start-btn pixel-btn" id="startBtn" onclick="startReview()">復習スタート</button>
 
       <div class="shelf-title"><span>箱の中身(このデッキ)</span><span id="shelfTotal"></span></div>
       <div class="shelf" id="shelf"></div>
@@ -302,7 +409,7 @@
     <div id="deckList"></div>
     <div class="add-deck">
       <input type="text" id="newDeckName" placeholder="新しいデッキ名(例: 国語)">
-      <button class="btn-sm primary" onclick="addDeck()">追加</button>
+      <button class="btn-sm primary pixel-btn" onclick="addDeck()">追加</button>
     </div>
   </div>
 
@@ -494,6 +601,8 @@
     <button class="ans-btn correct" onclick="answer(true)">覚えた ✅</button>
   </div>
 </div>
+
+<div id="achToastWrap"></div>
 
 <div class="tabbar">
   <button class="active" data-tab="today" onclick="switchTab('today')"><span class="ic">🏠</span>今日</button>
@@ -876,6 +985,22 @@ function activeDeck(){ return decks.find(d => d.id === activeDeckId); }
 function activeCards(){ return loadCards(activeDeckId); }
 
 /* =====================================================
+   XPバー用: 「今日の最初に見た時点での残り枚数」を基準に進捗を出す
+   ===================================================== */
+function xpTotalKey(deckId){ return 'wordbox:xpTotal:' + deckId; }
+let todaySessionTotal = 0;
+function getTodaySessionTotal(deckId, dueLen){
+  const now = todayStr();
+  let rec = null;
+  try{ rec = JSON.parse(localStorage.getItem(xpTotalKey(deckId)) || 'null'); } catch(e){}
+  if(!rec || rec.date !== now || dueLen > rec.total){
+    rec = { date: now, total: dueLen };
+    localStorage.setItem(xpTotalKey(deckId), JSON.stringify(rec));
+  }
+  return rec.total;
+}
+
+/* =====================================================
    タブ切り替え
    ===================================================== */
 function switchTab(tab){
@@ -904,19 +1029,27 @@ function renderToday(){
   document.getElementById('startBtn').disabled = due.length === 0;
   document.getElementById('startBtn').textContent = due.length === 0 ? '今日の分は完了！🎉' : '復習スタート';
 
+  /* XPバー: 今日の開始時点の枚数を基準に、片付けた分だけ緑ゲージが伸びる */
+  if(activeDeckId){
+    todaySessionTotal = getTodaySessionTotal(activeDeckId, due.length);
+    const doneToday = Math.max(0, todaySessionTotal - due.length);
+    const xpPct = todaySessionTotal > 0 ? Math.round((doneToday / todaySessionTotal) * 100) : 100;
+    document.getElementById('dueXpFill').style.width = xpPct + '%';
+    document.getElementById('dueXpTxt').textContent = todaySessionTotal === 0 ? 'MAX' : (doneToday + ' / ' + todaySessionTotal);
+  }
+
   const counts = boxCounts(cards);
   document.getElementById('shelfTotal').textContent = cards.length + ' 枚' + (counts.hidden ? '(非表示' + counts.hidden + ')' : '');
   const shelf = document.getElementById('shelf');
   shelf.innerHTML = '';
-  const maxCount = Math.max(1, counts[1], counts[2], counts[3], counts[4], counts[5]);
   [1,2,3,4,5].forEach(b => {
-    const h = 18 + Math.round((counts[b] / maxCount) * 52);
-    const div = document.createElement('div');
-    div.className = 'drawer';
-    div.style.background = BOX_COLOR[b];
-    div.style.height = h + 'px';
-    div.innerHTML = counts[b] + '<span class="lbl">箱' + b + '</span>';
-    shelf.appendChild(div);
+    const cell = document.createElement('div');
+    cell.className = 'chest-cell';
+    const n = counts[b] || 0;
+    cell.innerHTML = '<div class="chest' + (n > 0 ? ' has-items' : '') + '" style="border-color:' + (n > 0 ? '#3B2711' : '#3B2711') + '">'
+      + (n > 0 ? '<span class="badge" style="background:' + BOX_COLOR[b] + '">' + n + '</span>' : '')
+      + '</div><span class="lbl">箱' + b + '</span>';
+    shelf.appendChild(cell);
   });
   document.getElementById('masteredCount').innerHTML = counts.mastered + '<span style="font-size:12px;color:var(--muted);font-weight:600;"> 語</span>';
 }
@@ -1120,6 +1253,62 @@ function renderStats(){
 }
 
 /* =====================================================
+   実績解除トースト + 効果音(Web Audio, 外部音源なし)
+   ===================================================== */
+const SFX_ENABLED = true;
+const STREAK_MILESTONES = [3,7,14,30,50,100,200,365];
+let audioCtx = null;
+function getAudioCtx(){
+  if(!audioCtx){
+    try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){ return null; }
+  }
+  if(audioCtx.state === 'suspended'){ audioCtx.resume().catch(()=>{}); }
+  return audioCtx;
+}
+function beep(ctx, freq, startTime, duration, type, gainPeak){
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type || 'square';
+  osc.frequency.setValueAtTime(freq, startTime);
+  gain.gain.setValueAtTime(0.0001, startTime);
+  gain.gain.exponentialRampToValueAtTime(gainPeak || 0.15, startTime + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(startTime);
+  osc.stop(startTime + duration + 0.03);
+}
+function playSound(kind){
+  if(!SFX_ENABLED) return;
+  const ctx = getAudioCtx();
+  if(!ctx) return;
+  const t0 = ctx.currentTime;
+  if(kind === 'correct'){
+    beep(ctx, 660, t0, 0.09, 'square', 0.14);
+    beep(ctx, 880, t0 + 0.09, 0.12, 'square', 0.14);
+  } else if(kind === 'wrong'){
+    beep(ctx, 220, t0, 0.18, 'sawtooth', 0.12);
+    beep(ctx, 150, t0 + 0.1, 0.22, 'sawtooth', 0.1);
+  } else if(kind === 'levelup'){
+    [523, 659, 784, 1047].forEach((f, i) => beep(ctx, f, t0 + i * 0.08, 0.16, 'square', 0.13));
+  } else if(kind === 'achievement'){
+    [784, 988, 1175].forEach((f, i) => beep(ctx, f, t0 + i * 0.11, 0.24, 'triangle', 0.18));
+  }
+}
+function showAchievement(label, title, icon){
+  const wrap = document.getElementById('achToastWrap');
+  if(!wrap) return;
+  const el = document.createElement('div');
+  el.className = 'ach-toast';
+  el.innerHTML = '<span class="ach-ic">' + icon + '</span><div class="ach-txt"><span class="ach-label">' + escapeHtml(label) + '</span><span class="ach-title">' + escapeHtml(title) + '</span></div>';
+  wrap.appendChild(el);
+  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('show')));
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 400);
+  }, 3200);
+}
+
+/* =====================================================
    レビューフロー
    ===================================================== */
 let reviewQueue = [];
@@ -1156,7 +1345,9 @@ function showCurrentCard(){
     answerRow.style.display = 'none';
     document.getElementById('progressFill').style.width = '100%';
     document.getElementById('progressTxt').textContent = reviewTotal + '/' + reviewTotal;
-    stage.innerHTML = '<div class="done-screen"><div class="emoji">🎉</div><h2>今日の分、おつかれさま！</h2><p>' + reviewTotal + '枚を復習しました</p><button class="done-close" onclick="closeReview()">閉じる</button></div>';
+    stage.innerHTML = '<div class="done-screen"><div class="emoji">🎉</div><h2>今日の分、おつかれさま！</h2><p>' + reviewTotal + '枚を復習しました</p><button class="done-close pixel-btn" onclick="closeReview()">閉じる</button></div>';
+    playSound('achievement');
+    showAchievement('デイリークリア', '今日の分をぜんぶ終わらせた！', '🏆');
     return;
   }
   currentCard = reviewQueue[reviewIndex];
@@ -1278,12 +1469,30 @@ function lookupOnGemini(){
 function answer(isCorrect){
   const cards = activeCards();
   const idx = cards.findIndex(c => c.id === currentCard.id);
+  let justMastered = false;
+  let masteredTerm = '';
   if(idx !== -1){
-    cards[idx] = answerCard(cards[idx], isCorrect);
+    const before = cards[idx];
+    const updated = answerCard(before, isCorrect);
+    justMastered = !before.mastered && updated.mastered;
+    masteredTerm = before.term;
+    cards[idx] = updated;
     saveCards(activeDeckId, cards);
   }
+  const prevStreak = streak.currentStreak || 0;
   streak = updateStreak(streak);
   saveStreak(streak);
+
+  playSound(isCorrect ? 'correct' : 'wrong');
+  if(justMastered){
+    playSound('levelup');
+    showAchievement('カード習得', masteredTerm + ' をマスター！', '💎');
+  }
+  if(streak.currentStreak > prevStreak && STREAK_MILESTONES.indexOf(streak.currentStreak) !== -1){
+    playSound('achievement');
+    showAchievement('実績解除', streak.currentStreak + '日連続 達成！', '🔥');
+  }
+
   reviewIndex++;
   showCurrentCard();
 }
