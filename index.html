@@ -255,6 +255,10 @@
     font-size:10px;font-weight:800;color:#8D8399;background:#EFEBFF;
     padding:2px 8px;border-radius:999px;
   }
+  .source-tag{
+    font-size:10px;font-weight:800;color:#5B4B8A;background:#EAF3FF;
+    padding:2px 8px;border-radius:999px;
+  }
 </style>
 </head>
 <body>
@@ -521,13 +525,13 @@ function addDays(dateStr, days){
 }
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 
-function makeCard(term, meaning, now){
+function makeCard(term, meaning, now, source){
   now = now || todayStr();
   return {
     id: uid(), term, meaning, box: 1, nextReview: now,
     mastered: false, masteredAt: null,
     correctStreak: 0, totalCorrect: 0, totalWrong: 0, lastAnswer: null,
-    memo: '', hidden: false
+    memo: '', hidden: false, source: source || ''
   };
 }
 
@@ -624,6 +628,8 @@ function saveStreak(s){ localStorage.setItem(LS_STREAK, JSON.stringify(s)); }
 
 /* =====================================================
    公式デッキ(GitHub Pagesのdecksフォルダから1タップ取込)
+   manifest.jsonから一覧を自動取得し、取得できない時だけ
+   下のPRESET_DECKSをフォールバックとして使う。
    ===================================================== */
 const PRESET_DECKS = [
   {file:'decks/eigo50.json',   deckId:'eng',  label:'🇬🇧 英語 頻出50'},
@@ -632,6 +638,10 @@ const PRESET_DECKS = [
   {file:'decks/shakai50.json', deckId:'soc',  label:'🗾 社会 頻出50'},
   {file:'decks/kokugo50.json', deckId:'kok',  label:'📖 国語 頻出50'},
 ];
+const PRESET_MANIFEST_URL = 'decks/manifest.json';
+const LS_PRESET_DONE = 'wordbox:presetDone';
+let presetDeckList = PRESET_DECKS; /* manifest取得後はこちらに差し替わる */
+
 const DEFAULT_DECK_META = {
   eng:  {id:'eng',  name:'英語', emoji:'🇬🇧', color:'#FF9F45'},
   soc:  {id:'soc',  name:'社会', emoji:'🗾', color:'#6BCB77'},
@@ -644,18 +654,54 @@ function ensureDeckExists(deckId){
   const meta = DEFAULT_DECK_META[deckId];
   if(meta){ decks.push(Object.assign({}, meta)); saveDecks(decks); }
 }
+function normalizePresetFile(file){
+  return file.indexOf('decks/') === 0 ? file : 'decks/' + file;
+}
+function loadPresetDone(){
+  try{
+    const raw = localStorage.getItem(LS_PRESET_DONE);
+    if(raw) return JSON.parse(raw);
+  } catch(e){}
+  return [];
+}
+function markPresetDone(file){
+  const done = loadPresetDone();
+  if(done.indexOf(file) === -1){
+    done.push(file);
+    localStorage.setItem(LS_PRESET_DONE, JSON.stringify(done));
+  }
+}
+function presetLabelSource(label){
+  /* ラベル先頭の絵文字を取り除き、出どころタグ用の文字列にする(例: "🇬🇧 英語 頻出50" → "英語 頻出50") */
+  return String(label).replace(/^\S+\s*/, '').trim();
+}
+function loadPresetManifest(){
+  fetch(PRESET_MANIFEST_URL, {cache:'no-store'})
+    .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(data => {
+      if(Array.isArray(data) && data.length > 0){
+        presetDeckList = data;
+        renderPresetDecks();
+      }
+    })
+    .catch(() => { /* 取得失敗時はPRESET_DECKSのフォールバックのまま */ });
+}
 function renderPresetDecks(){
   const wrap = document.getElementById('presetDeckBtns');
   if(!wrap) return;
-  wrap.innerHTML = PRESET_DECKS.map((p, i) =>
-    `<button class="btn-sm primary" onclick="importPresetDeck(${i})">${p.label}</button>`
-  ).join('');
+  const done = loadPresetDone();
+  wrap.innerHTML = presetDeckList.map((p, i) => {
+    const file = normalizePresetFile(p.file);
+    const isDone = done.indexOf(file) !== -1;
+    return '<button class="btn-sm primary" onclick="importPresetDeck(' + i + ')">' + escapeHtml(p.label) + (isDone ? ' ✅済' : '') + '</button>';
+  }).join('');
 }
 function importPresetDeck(i){
-  const p = PRESET_DECKS[i];
+  const p = presetDeckList[i];
+  const file = normalizePresetFile(p.file);
   const msgEl = document.getElementById('presetMsg');
   msgEl.innerHTML = '<div class="msg ok">読み込み中...</div>';
-  fetch(p.file, {cache:'no-store'})
+  fetch(file, {cache:'no-store'})
     .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(data => {
       if(!Array.isArray(data)) throw new Error('デッキデータの形式が不正です');
@@ -663,20 +709,23 @@ function importPresetDeck(i){
       const cards = loadCards(p.deckId);
       /* 既存カードと二重にならないよう用語でスキップ(進捗は一切触らない) */
       const existingTerms = new Set(cards.map(c => c.term));
+      const sourceTag = presetLabelSource(p.label);
       let added = 0, skipped = 0;
       data.forEach(item => {
         if(item && item.term && item.meaning){
           const term = String(item.term);
           if(existingTerms.has(term)){ skipped++; return; }
           existingTerms.add(term);
-          cards.push(makeCard(term, String(item.meaning)));
+          cards.push(makeCard(term, String(item.meaning), null, sourceTag));
           added++;
         }
       });
       saveCards(p.deckId, cards);
+      markPresetDone(file);
       const deck = decks.find(d => d.id === p.deckId);
-      msgEl.innerHTML = `<div class="msg ok">「${deck ? escapeHtml(deck.name) : ''}」に${added}枚追加しました！${skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : ''}</div>`;
+      msgEl.innerHTML = '<div class="msg ok">「' + (deck ? escapeHtml(deck.name) : '') + '」に' + added + '枚追加しました！' + (skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : '') + '</div>';
       renderToday();
+      renderPresetDecks();
     })
     .catch(e => {
       msgEl.innerHTML = '<div class="msg err">読み込みに失敗しました: ' + escapeHtml(e.message) + '<br>ネット接続と、サイトにdecksフォルダが公開されているか確認してね</div>';
@@ -884,25 +933,10 @@ function renderDeckList(){
     const total = cards.length || 1;
     const item = document.createElement('div');
     item.className = 'deck-item' + (d.id === activeDeckId ? ' active-deck' : '');
-    item.innerHTML = `
-      <div class="row1">
-        <div class="left"><span class="emoji">${d.emoji}</span><span class="dname">${escapeHtml(d.name)}</span></div>
-        <span class="total">${cards.length}枚 / 習得${counts.mastered}${counts.hidden ? ' / 非表示' + counts.hidden : ''}</span>
-      </div>
-      <div class="mini-shelf">
-        ${[1,2,3,4,5].map(b => `<div style="background:${BOX_COLOR[b]};flex:${counts[b]||0.001}"></div>`).join('')}
-        <div style="background:var(--mastered);flex:${counts.mastered||0.001}"></div>
-      </div>
-      <div class="row-actions">
-        <button class="btn-sm primary" onclick="selectDeck('${d.id}')">${d.id === activeDeckId ? '選択中' : 'これにする'}</button>
-        <button class="btn-sm" onclick="renameDeck('${d.id}')">名前変更</button>
-        <button class="btn-sm danger" onclick="deleteDeck('${d.id}')">削除</button>
-      </div>
-      <div class="row-actions">
-        <button class="btn-sm" onclick="openCardList('${d.id}')">📋 カードを編集(${cards.length}枚)</button>
-        <button class="btn-sm${d.handwriting ? ' primary' : ''}" onclick="toggleHandwriting('${d.id}')">✏️ 手書き練習: ${d.handwriting ? 'ON' : 'OFF'}</button>
-      </div>
-    `;
+    item.innerHTML = '<div class="row1"><div class="left"><span class="emoji">' + d.emoji + '</span><span class="dname">' + escapeHtml(d.name) + '</span></div><span class="total">' + cards.length + '枚 / 習得' + counts.mastered + (counts.hidden ? ' / 非表示' + counts.hidden : '') + '</span></div>'
+      + '<div class="mini-shelf">' + [1,2,3,4,5].map(b => '<div style="background:' + BOX_COLOR[b] + ';flex:' + (counts[b]||0.001) + '"></div>').join('') + '<div style="background:var(--mastered);flex:' + (counts.mastered||0.001) + '"></div></div>'
+      + '<div class="row-actions"><button class="btn-sm primary" onclick="selectDeck(\'' + d.id + '\')">' + (d.id === activeDeckId ? '選択中' : 'これにする') + '</button><button class="btn-sm" onclick="renameDeck(\'' + d.id + '\')">名前変更</button><button class="btn-sm danger" onclick="deleteDeck(\'' + d.id + '\')">削除</button></div>'
+      + '<div class="row-actions"><button class="btn-sm" onclick="openCardList(\'' + d.id + '\')">📋 カードを編集(' + cards.length + '枚)</button><button class="btn-sm' + (d.handwriting ? ' primary' : '') + '" onclick="toggleHandwriting(\'' + d.id + '\')">✏️ 手書き練習: ' + (d.handwriting ? 'ON' : 'OFF') + '</button></div>';
     wrap.appendChild(item);
   });
 }
@@ -937,7 +971,7 @@ function renameDeck(id){
 function deleteDeck(id){
   if(decks.length <= 1){ alert('最後の1つのデッキは削除できません。'); return; }
   const d = decks.find(x => x.id === id);
-  if(!confirm(`「${d.name}」を削除しますか？中のカードも全て消えます。`)) return;
+  if(!confirm('「' + d.name + '」を削除しますか？中のカードも全て消えます。')) return;
   decks = decks.filter(x => x.id !== id);
   localStorage.removeItem(lsCardsKey(id));
   saveDecks(decks);
@@ -970,9 +1004,7 @@ function renderImportTab(){
   renderPresetDecks();
   const btnWrap = document.getElementById('extraSampleBtnWrap');
   if(d && EXTRA_SAMPLE_CARDS[d.id]){
-    btnWrap.innerHTML = `<div class="row-actions" style="margin-bottom:14px;">
-      <button class="btn-sm primary" onclick="addExtraSamples()">🎲 このデッキにサンプル${EXTRA_SAMPLE_CARDS[d.id].length}問を追加</button>
-    </div>`;
+    btnWrap.innerHTML = '<div class="row-actions" style="margin-bottom:14px;"><button class="btn-sm primary" onclick="addExtraSamples()">🎲 このデッキにサンプル' + EXTRA_SAMPLE_CARDS[d.id].length + '問を追加</button></div>';
   } else {
     btnWrap.innerHTML = '';
   }
@@ -991,8 +1023,8 @@ function addExtraSamples(){
   });
   saveCards(activeDeckId, cards);
   document.getElementById('importMsg').innerHTML = added > 0
-    ? `<div class="msg ok">${added}枚のサンプルを追加しました!</div>`
-    : `<div class="msg ok">追加できるサンプルはもうありません(すでに全部入っています)</div>`;
+    ? '<div class="msg ok">' + added + '枚のサンプルを追加しました!</div>'
+    : '<div class="msg ok">追加できるサンプルはもうありません(すでに全部入っています)</div>';
   renderToday();
 }
 function importCards(){
@@ -1023,7 +1055,7 @@ function importCards(){
     }
   });
   saveCards(activeDeckId, cards);
-  msgEl.innerHTML = `<div class="msg ok">${added}枚のカードを追加しました！${skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : ''}</div>`;
+  msgEl.innerHTML = '<div class="msg ok">' + added + '枚のカードを追加しました！' + (skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : '') + '</div>';
   area.value = '';
   renderToday();
 }
@@ -1080,7 +1112,7 @@ function renderStats(){
     const cards = loadCards(d.id);
     const counts = boxCounts(cards);
     totalMastered += counts.mastered; totalCards += cards.length;
-    return `<div class="deck-stat-row"><span>${d.emoji} ${escapeHtml(d.name)}</span><span>${counts.mastered} / ${cards.length}</span></div>`;
+    return '<div class="deck-stat-row"><span>' + d.emoji + ' ' + escapeHtml(d.name) + '</span><span>' + counts.mastered + ' / ' + cards.length + '</span></div>';
   }).join('');
   document.getElementById('statMastered').textContent = totalMastered;
   document.getElementById('statTotalCards').textContent = totalCards;
@@ -1124,13 +1156,7 @@ function showCurrentCard(){
     answerRow.style.display = 'none';
     document.getElementById('progressFill').style.width = '100%';
     document.getElementById('progressTxt').textContent = reviewTotal + '/' + reviewTotal;
-    stage.innerHTML = `
-      <div class="done-screen">
-        <div class="emoji">🎉</div>
-        <h2>今日の分、おつかれさま！</h2>
-        <p>${reviewTotal}枚を復習しました</p>
-        <button class="done-close" onclick="closeReview()">閉じる</button>
-      </div>`;
+    stage.innerHTML = '<div class="done-screen"><div class="emoji">🎉</div><h2>今日の分、おつかれさま！</h2><p>' + reviewTotal + '枚を復習しました</p><button class="done-close" onclick="closeReview()">閉じる</button></div>';
     return;
   }
   currentCard = reviewQueue[reviewIndex];
@@ -1140,26 +1166,19 @@ function showCurrentCard(){
   answerRow.style.display = 'none';
   const deck = activeDeck();
   const hwEnabled = !!(deck && deck.handwriting);
-  stage.innerHTML = `
-    <div class="flashcard" id="flashcard" onclick="flipCard()">
-      <div class="face front">
-        <span class="box-badge" style="background:${BOX_COLOR[currentCard.box]}">箱${currentCard.box}</span>
-        <button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 Geminiで調べる</button>
-        <div class="term-txt">${escapeHtml(currentCard.term)}</div>
-        ${hwEnabled ? `
-        <div class="hw-wrap" onclick="event.stopPropagation();openHwFull()">
-          <div class="hw-placeholder">✏️ タップして<br>ひろく手書き練習</div>
-        </div>` : ''}
-        <div class="tap-hint">タップして答えを見る</div>
-      </div>
-      <div class="face back">
-        <div class="meaning-txt">${escapeHtml(currentCard.meaning)}</div>
-        <textarea class="memo-input" id="memoInput" placeholder="メモ(自由に書き込めます)"
-          onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"
-          oninput="saveMemo(this.value)">${escapeHtml(currentCard.memo || '')}</textarea>
-        <div class="tap-hint">タップして問題に戻る</div>
-      </div>
-    </div>`;
+  stage.innerHTML = '<div class="flashcard" id="flashcard" onclick="flipCard()">'
+    + '<div class="face front">'
+    + '<span class="box-badge" style="background:' + BOX_COLOR[currentCard.box] + '">箱' + currentCard.box + '</span>'
+    + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 Geminiで調べる</button>'
+    + '<div class="term-txt">' + escapeHtml(currentCard.term) + '</div>'
+    + (hwEnabled ? '<div class="hw-wrap" onclick="event.stopPropagation();openHwFull()"><div class="hw-placeholder">✏️ タップして<br>ひろく手書き練習</div></div>' : '')
+    + '<div class="tap-hint">タップして答えを見る</div>'
+    + '</div>'
+    + '<div class="face back">'
+    + '<div class="meaning-txt">' + escapeHtml(currentCard.meaning) + '</div>'
+    + '<textarea class="memo-input" id="memoInput" placeholder="メモ(自由に書き込めます)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" oninput="saveMemo(this.value)">' + escapeHtml(currentCard.memo || '') + '</textarea>'
+    + '<div class="tap-hint">タップして問題に戻る</div>'
+    + '</div></div>';
 }
 function drawHwGuide(ctx, w, h){
   ctx.clearRect(0, 0, w, h);
@@ -1252,7 +1271,7 @@ function saveMemo(text){
 }
 function lookupOnGemini(){
   if(!currentCard) return;
-  const prompt = `「${currentCard.term}」について、中学生にもわかるように解説して。意味は「${currentCard.meaning}」だけど、もう少し詳しく教えて。`;
+  const prompt = '「' + currentCard.term + '」について、中学生にもわかるように解説して。意味は「' + currentCard.meaning + '」だけど、もう少し詳しく教えて。';
   navigator.clipboard && navigator.clipboard.writeText(prompt).catch(()=>{});
   window.open('https://gemini.google.com/app?q=' + encodeURIComponent(prompt), '_blank');
 }
@@ -1293,37 +1312,33 @@ function renderCardList(){
     return;
   }
   const otherDecks = decks.filter(d => d.id !== cardListDeckId);
-  body.innerHTML = cards.map(c => `
-    <div class="cardrow${c.hidden ? ' is-hidden' : ''}">
-      <div class="crow-top">
-        <div>
-          <div class="crow-badges">
-            <span class="box-badge" style="position:static;background:${c.mastered ? 'var(--mastered)' : BOX_COLOR[c.box]}">${c.mastered ? '習得済み' : '箱' + c.box}</span>
-            ${c.hidden ? '<span class="hidden-tag">非表示中</span>' : ''}
-          </div>
-          <div class="crow-term">${escapeHtml(c.term)}</div>
-          <div class="crow-meaning">${escapeHtml(c.meaning)}</div>
-        </div>
-      </div>
-      <div class="crow-actions">
-        <button class="btn-sm" onclick="toggleHidden('${c.id}')">${c.hidden ? '👁 表示に戻す' : '🙈 非表示にする'}</button>
-        <select onchange="setCardBox('${c.id}', this.value); this.selectedIndex=0;">
-          <option value="" disabled selected>箱を移動...</option>
-          <option value="1">箱1(翌日)</option>
-          <option value="2">箱2(3日後)</option>
-          <option value="3">箱3(7日後)</option>
-          <option value="4">箱4(14日後)</option>
-          <option value="5">箱5(30日後)</option>
-          <option value="mastered">習得済みにする</option>
-        </select>
-        <select onchange="moveCard('${c.id}', this.value); this.selectedIndex=0;">
-          <option value="">他のデッキへ移動...</option>
-          ${otherDecks.map(d => `<option value="${d.id}">${d.emoji} ${escapeHtml(d.name)}へ</option>`).join('')}
-        </select>
-        <button class="btn-sm danger" onclick="deleteCardById('${c.id}')">削除</button>
-      </div>
-    </div>
-  `).join('');
+  body.innerHTML = cards.map(c => {
+    const badges = '<span class="box-badge" style="position:static;background:' + (c.mastered ? 'var(--mastered)' : BOX_COLOR[c.box]) + '">' + (c.mastered ? '習得済み' : '箱' + c.box) + '</span>'
+      + (c.hidden ? '<span class="hidden-tag">非表示中</span>' : '')
+      + (c.source ? '<span class="source-tag">' + escapeHtml(c.source) + '</span>' : '');
+    const otherOptions = otherDecks.map(d => '<option value="' + d.id + '">' + d.emoji + ' ' + escapeHtml(d.name) + 'へ</option>').join('');
+    return '<div class="cardrow' + (c.hidden ? ' is-hidden' : '') + '">'
+      + '<div class="crow-top"><div>'
+      + '<div class="crow-badges">' + badges + '</div>'
+      + '<div class="crow-term">' + escapeHtml(c.term) + '</div>'
+      + '<div class="crow-meaning">' + escapeHtml(c.meaning) + '</div>'
+      + '</div></div>'
+      + '<div class="crow-actions">'
+      + '<button class="btn-sm" onclick="toggleHidden(\'' + c.id + '\')">' + (c.hidden ? '👁 表示に戻す' : '🙈 非表示にする') + '</button>'
+      + '<select onchange="setCardBox(\'' + c.id + '\', this.value); this.selectedIndex=0;">'
+      + '<option value="" disabled selected>箱を移動...</option>'
+      + '<option value="1">箱1(翌日)</option>'
+      + '<option value="2">箱2(3日後)</option>'
+      + '<option value="3">箱3(7日後)</option>'
+      + '<option value="4">箱4(14日後)</option>'
+      + '<option value="5">箱5(30日後)</option>'
+      + '<option value="mastered">習得済みにする</option>'
+      + '</select>'
+      + '<select onchange="moveCard(\'' + c.id + '\', this.value); this.selectedIndex=0;">'
+      + '<option value="">他のデッキへ移動...</option>' + otherOptions + '</select>'
+      + '<button class="btn-sm danger" onclick="deleteCardById(\'' + c.id + '\')">削除</button>'
+      + '</div></div>';
+  }).join('');
 }
 function setCardBox(cardId, value){
   if(!value) return;
@@ -1359,7 +1374,7 @@ function deleteCardById(cardId){
   const cards = loadCards(cardListDeckId);
   const target = cards.find(c => c.id === cardId);
   if(!target) return;
-  if(!confirm(`「${target.term}」を削除しますか？この操作は元に戻せません。`)) return;
+  if(!confirm('「' + target.term + '」を削除しますか？この操作は元に戻せません。')) return;
   saveCards(cardListDeckId, cards.filter(c => c.id !== cardId));
   renderCardList();
 }
@@ -1389,6 +1404,7 @@ function renderAll(){
   renderStats();
 }
 renderAll();
+loadPresetManifest();
 </script>
 </body>
 </html>
