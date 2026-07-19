@@ -139,6 +139,7 @@
   }
   .msg.ok{background:#E6F8EA;color:#1F8A44;}
   .msg.err{background:#FFE3E3;color:#C4374A;}
+  .preset-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 
   /* ===== Stats ===== */
   .stat-card{
@@ -303,7 +304,15 @@
 
   <!-- ===== 取込タブ ===== -->
   <div class="panel" id="panel-import">
-    <div class="section-title">🔎 Geminiでカードを作ってもらう</div>
+    <div class="section-title">📦 公式デッキ(1タップ取込)</div>
+    <div class="hint">
+      用意ずみの頻出カードセットです。ボタンを押すだけで、その教科のデッキに追加されます。<br>
+      すでに入っているカードは自動でスキップするので、何度押しても二重登録にはなりません。追加済みカードの進み具合(箱の位置)もそのまま守られます。
+    </div>
+    <div class="preset-grid" id="presetDeckBtns"></div>
+    <div id="presetMsg"></div>
+
+    <div class="section-title" style="margin-top:26px;">🔎 Geminiでカードを作ってもらう</div>
     <div class="hint">
       1. 下の「プロンプトをコピー」を押す<br>
       2. Geminiを開いて、コピーした文章を貼り付ける<br>
@@ -409,7 +418,8 @@
     <div class="stat-card">
       <div class="section-title" style="font-size:15px;">➕ カードの追加方法</div>
       <div class="hint" style="font-size:13px;">
-        「取込」タブから3つの方法が使えます。<br>
+        「取込」タブから4つの方法が使えます。<br>
+        ・📦 公式デッキ:用意ずみの頻出カードセットをワンタップで追加(いちばん簡単)<br>
         ・🎲 サンプルボタン:あらかじめ入っている問題をワンタップで追加<br>
         ・🔎 Gemini:写真やメモから問題をAIに作ってもらい、出てきたJSONを貼り付け<br>
         ・✍️ 手動貼り付け:自分で作ったJSONを直接貼り付け
@@ -611,6 +621,67 @@ function loadStreak(){
   return {currentStreak:0, longestStreak:0, lastStudyDate:null};
 }
 function saveStreak(s){ localStorage.setItem(LS_STREAK, JSON.stringify(s)); }
+
+/* =====================================================
+   公式デッキ(GitHub Pagesのdecksフォルダから1タップ取込)
+   ===================================================== */
+const PRESET_DECKS = [
+  {file:'decks/eigo50.json',   deckId:'eng',  label:'🇬🇧 英語 頻出50'},
+  {file:'decks/sugaku50.json', deckId:'math', label:'➗ 数学 頻出50'},
+  {file:'decks/rika50.json',   deckId:'sci',  label:'🧪 理科 頻出50'},
+  {file:'decks/shakai50.json', deckId:'soc',  label:'🗾 社会 頻出50'},
+  {file:'decks/kokugo50.json', deckId:'kok',  label:'📖 国語 頻出50'},
+];
+const DEFAULT_DECK_META = {
+  eng:  {id:'eng',  name:'英語', emoji:'🇬🇧', color:'#FF9F45'},
+  soc:  {id:'soc',  name:'社会', emoji:'🗾', color:'#6BCB77'},
+  sci:  {id:'sci',  name:'理科', emoji:'🧪', color:'#3EC6E0'},
+  kok:  {id:'kok',  name:'国語', emoji:'📖', color:'#FF5D8F', handwriting:true},
+  math: {id:'math', name:'数学', emoji:'➗', color:'#8B6BFF', handwriting:false},
+};
+function ensureDeckExists(deckId){
+  if(decks.some(d => d.id === deckId)) return;
+  const meta = DEFAULT_DECK_META[deckId];
+  if(meta){ decks.push(Object.assign({}, meta)); saveDecks(decks); }
+}
+function renderPresetDecks(){
+  const wrap = document.getElementById('presetDeckBtns');
+  if(!wrap) return;
+  wrap.innerHTML = PRESET_DECKS.map((p, i) =>
+    `<button class="btn-sm primary" onclick="importPresetDeck(${i})">${p.label}</button>`
+  ).join('');
+}
+function importPresetDeck(i){
+  const p = PRESET_DECKS[i];
+  const msgEl = document.getElementById('presetMsg');
+  msgEl.innerHTML = '<div class="msg ok">読み込み中...</div>';
+  fetch(p.file, {cache:'no-store'})
+    .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(data => {
+      if(!Array.isArray(data)) throw new Error('デッキデータの形式が不正です');
+      ensureDeckExists(p.deckId);
+      const cards = loadCards(p.deckId);
+      /* 既存カードと二重にならないよう用語でスキップ(進捗は一切触らない) */
+      const existingTerms = new Set(cards.map(c => c.term));
+      let added = 0, skipped = 0;
+      data.forEach(item => {
+        if(item && item.term && item.meaning){
+          const term = String(item.term);
+          if(existingTerms.has(term)){ skipped++; return; }
+          existingTerms.add(term);
+          cards.push(makeCard(term, String(item.meaning)));
+          added++;
+        }
+      });
+      saveCards(p.deckId, cards);
+      const deck = decks.find(d => d.id === p.deckId);
+      msgEl.innerHTML = `<div class="msg ok">「${deck ? escapeHtml(deck.name) : ''}」に${added}枚追加しました！${skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : ''}</div>`;
+      renderToday();
+    })
+    .catch(e => {
+      msgEl.innerHTML = '<div class="msg err">読み込みに失敗しました: ' + escapeHtml(e.message) + '<br>ネット接続と、サイトにdecksフォルダが公開されているか確認してね</div>';
+    });
+}
 
 /* =====================================================
    初回サンプルデータ
@@ -896,6 +967,7 @@ function renderImportTab(){
   const d = activeDeck();
   document.getElementById('importDeckName').textContent = d ? d.name : '-';
   document.getElementById('importMsg').innerHTML = '';
+  renderPresetDecks();
   const btnWrap = document.getElementById('extraSampleBtnWrap');
   if(d && EXTRA_SAMPLE_CARDS[d.id]){
     btnWrap.innerHTML = `<div class="row-actions" style="margin-bottom:14px;">
