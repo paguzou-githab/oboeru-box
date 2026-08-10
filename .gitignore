@@ -1,0 +1,13 @@
+# 素材（Adobe Stock等・ライセンス素材は公開リポジトリに含めない）
+素材/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+*~
