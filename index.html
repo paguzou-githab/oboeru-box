@@ -273,6 +273,13 @@
   .flashcard.flipped .back{transform:rotateY(360deg);}
   .flashcard .face{transition:transform .45s cubic-bezier(.4,.2,.2,1);}
   .term-txt{font-family:var(--pixel-font);font-weight:700;font-size:26px;line-height:1.4;}
+  .reading-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap;}
+  .reading-txt{font-family:var(--pixel-font);font-weight:700;font-size:14px;color:var(--muted);}
+  .speak-btn{
+    background:#DFF3D6;color:#2F5D22;font-size:15px;line-height:1;
+    padding:6px 12px;cursor:pointer;font-family:var(--pixel-font);border:2px solid #000;
+  }
+  .speak-btn:active{transform:translateY(2px);}
   .meaning-txt{font-family:var(--pixel-font);font-weight:700;font-size:20px;line-height:1.5;color:var(--accent-ink);}
   .tap-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:700;}
   .box-badge{
@@ -453,9 +460,10 @@
 ・コードブロック記号（```など）も付けないこと
 ・1つの用語やポイントにつき1件のデータにする
 ・termには「用語」、meaningには「意味や答えの説明」を日本語で短く書く
+・termが英単語・英熟語の場合は、readingに「カタカナの読み方」も入れる（日本語の用語ならreadingは省略してよい）
 
 出力形式（これだけを回答してください）:
-[{"term":"用語","meaning":"意味の説明"}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
+[{"term":"用語","meaning":"意味の説明","reading":"カタカナの読み方"}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
     <div class="row-actions">
       <button class="btn-sm primary" onclick="copyGeminiPrompt()">📋 プロンプトをコピー</button>
       <button class="btn-sm" onclick="window.open('https://gemini.google.com/app','_blank')">Geminiを開く</button>
@@ -568,6 +576,16 @@
     </div>
 
     <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">🔊 英単語の読み方</div>
+      <div class="hint" style="font-size:13px;">
+        英単語のカードには、問題面にカタカナの読み方と「🔊 発音」ボタンが出ます。ボタンを押すとネイティブ発音で読み上げます。<br>
+        ・カタカナはだいたいの目安です。正しい音は🔊で耳から確かめてください<br>
+        ・<b>iPhone/iPadの側面にあるサイレントスイッチがONだと音が鳴りません</b>。鳴らない時はスイッチと音量を確認してください<br>
+        ・カタカナは公式デッキのカードに付いています。自分で追加したカードでも🔊は使えます
+      </div>
+    </div>
+
+    <div class="stat-card">
       <div class="section-title" style="font-size:15px;">🔥 ストリークって?</div>
       <div class="hint" style="font-size:13px;">
         毎日1回でも復習すると連続日数(ストリーク)が増えていきます。1日でもサボると1に戻るので、「今日の分だけ終わらせる」を毎日の習慣にするための目印です。
@@ -645,14 +663,50 @@ function addDays(dateStr, days){
 }
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 
-function makeCard(term, meaning, now, source){
+function makeCard(term, meaning, now, source, reading){
   now = now || todayStr();
   return {
-    id: uid(), term, meaning, box: 1, nextReview: now,
+    id: uid(), term, meaning, reading: reading || '', box: 1, nextReview: now,
     mastered: false, masteredAt: null,
     correctStreak: 0, totalCorrect: 0, totalWrong: 0, lastAnswer: null,
     memo: '', hidden: false, source: source || ''
   };
+}
+
+/* ===== 英単語の読み上げ(Web Speech API・外部通信なし) =====
+   iOS Safariはユーザー操作きっかけでないと発話できないため、🔊ボタンのタップで再生する。
+   端末のサイレントスイッチがONだと鳴らない点は使い方タブで案内。 */
+function speechTextOf(term){
+  if(!term) return '';
+  return String(term)
+    .replace(/[（(][^）)]*[）)]/g, ' ')  /* (過去分詞)などの日本語注記を除去 */
+    .replace(/[〜～~]/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+}
+function isEnglishTerm(term){
+  const t = speechTextOf(term);
+  if(!t) return false;
+  if(!/[A-Za-z]/.test(t)) return false;                 /* 英字を含まない */
+  if(/[぀-ヿ㐀-鿿]/.test(t)) return false; /* かな・漢字を含む */
+  return true;
+}
+function speakText(term){
+  const text = speechTextOf(term);
+  if(!text || !isEnglishTerm(term)) return;
+  if(!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined'){
+    alert('このブラウザは音声読み上げに対応していません');
+    return;
+  }
+  try{
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    window.speechSynthesis.speak(u);
+  } catch(e){ /* 読み上げに失敗しても復習は続行 */ }
+}
+function speakCurrentTerm(){
+  if(currentCard) speakText(currentCard.term);
 }
 
 function answerCard(card, isCorrect, now){
@@ -836,7 +890,7 @@ function importPresetDeck(i){
           const term = String(item.term);
           if(existingTerms.has(term)){ skipped++; return; }
           existingTerms.add(term);
-          cards.push(makeCard(term, String(item.meaning), null, sourceTag));
+          cards.push(makeCard(term, String(item.meaning), null, sourceTag, item.reading ? String(item.reading) : ''));
           added++;
         }
       });
@@ -1161,7 +1215,7 @@ function addExtraSamples(){
   let added = 0;
   EXTRA_SAMPLE_CARDS[d.id].forEach(x => {
     if(!existingTerms.has(x.term)){
-      cards.push(makeCard(x.term, x.meaning));
+      cards.push(makeCard(x.term, x.meaning, null, '', x.reading || ''));
       added++;
     }
   });
@@ -1194,7 +1248,7 @@ function importCards(){
       const term = String(item.term);
       if(existingTerms.has(term)){ skipped++; return; }
       existingTerms.add(term);
-      cards.push(makeCard(term, String(item.meaning)));
+      cards.push(makeCard(term, String(item.meaning), null, '', item.reading ? String(item.reading) : ''));
       added++;
     }
   });
@@ -1205,7 +1259,7 @@ function importCards(){
 }
 function exportDeck(){
   const cards = activeCards();
-  const data = cards.map(c => ({term:c.term, meaning:c.meaning}));
+  const data = cards.map(c => c.reading ? ({term:c.term, meaning:c.meaning, reading:c.reading}) : ({term:c.term, meaning:c.meaning}));
   downloadJson(data, (activeDeck().name || 'deck') + '.json');
 }
 function exportAll(){
@@ -1373,7 +1427,13 @@ function showCurrentCard(){
     + '<span class="box-badge" style="background:' + BOX_COLOR[currentCard.box] + '">箱' + currentCard.box + '</span>'
     + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 Geminiで調べる</button>'
     + '<div class="term-txt">' + escapeHtml(currentCard.term) + '</div>'
-    + (hwEnabled ? '<div class="hw-wrap" onclick="event.stopPropagation();openHwFull()"><div class="hw-placeholder">✏️ タップして<br>ひろく手書き練習</div></div>' : '')
+    + ((currentCard.reading || isEnglishTerm(currentCard.term))
+        ? '<div class="reading-row">'
+          + (currentCard.reading ? '<span class="reading-txt">' + escapeHtml(currentCard.reading) + '</span>' : '')
+          + (isEnglishTerm(currentCard.term) ? '<button class="speak-btn" onclick="event.stopPropagation();speakCurrentTerm()">🔊 発音</button>' : '')
+          + '</div>'
+        : '')
+    + (hwEnabled ?'<div class="hw-wrap" onclick="event.stopPropagation();openHwFull()"><div class="hw-placeholder">✏️ タップして<br>ひろく手書き練習</div></div>' : '')
     + '<div class="tap-hint">タップして答えを見る</div>'
     + '</div>'
     + '<div class="face back">'

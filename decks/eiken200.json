@@ -1,802 +1,202 @@
 [
- {
-  "term": "agree",
-  "meaning": "同意する"
- },
- {
-  "term": "return",
-  "meaning": "戻る、返す"
- },
- {
-  "term": "become",
-  "meaning": "〜になる"
- },
- {
-  "term": "bring",
-  "meaning": "持ってくる"
- },
- {
-  "term": "build",
-  "meaning": "建てる"
- },
- {
-  "term": "carry",
-  "meaning": "運ぶ"
- },
- {
-  "term": "catch",
-  "meaning": "つかまえる、間に合う"
- },
- {
-  "term": "cross",
-  "meaning": "渡る、横切る"
- },
- {
-  "term": "enjoy",
-  "meaning": "楽しむ"
- },
- {
-  "term": "fall",
-  "meaning": "落ちる、転ぶ"
- },
- {
-  "term": "feel",
-  "meaning": "感じる"
- },
- {
-  "term": "finish",
-  "meaning": "終える"
- },
- {
-  "term": "climb",
-  "meaning": "登る"
- },
- {
-  "term": "grow",
-  "meaning": "育つ、栽培する"
- },
- {
-  "term": "happen",
-  "meaning": "起こる"
- },
- {
-  "term": "hurry",
-  "meaning": "急ぐ"
- },
- {
-  "term": "join",
-  "meaning": "参加する、加わる"
- },
- {
-  "term": "keep",
-  "meaning": "保つ、〜し続ける"
- },
- {
-  "term": "laugh",
-  "meaning": "笑う"
- },
- {
-  "term": "learn",
-  "meaning": "学ぶ、習う"
- },
- {
-  "term": "leave",
-  "meaning": "去る、置き忘れる"
- },
- {
-  "term": "move",
-  "meaning": "動く、引っ越す"
- },
- {
-  "term": "pass",
-  "meaning": "通る、渡す、合格する"
- },
- {
-  "term": "plan",
-  "meaning": "計画する"
- },
- {
-  "term": "practice",
-  "meaning": "練習する"
- },
- {
-  "term": "send",
-  "meaning": "送る"
- },
- {
-  "term": "show",
-  "meaning": "見せる、案内する"
- },
- {
-  "term": "sound",
-  "meaning": "〜に聞こえる"
- },
- {
-  "term": "stay",
-  "meaning": "滞在する、とどまる"
- },
- {
-  "term": "teach",
-  "meaning": "教える"
- },
- {
-  "term": "travel",
-  "meaning": "旅行する"
- },
- {
-  "term": "try",
-  "meaning": "試す、やってみる"
- },
- {
-  "term": "visit",
-  "meaning": "訪れる"
- },
- {
-  "term": "wait",
-  "meaning": "待つ"
- },
- {
-  "term": "airport",
-  "meaning": "空港"
- },
- {
-  "term": "bridge",
-  "meaning": "橋"
- },
- {
-  "term": "building",
-  "meaning": "建物"
- },
- {
-  "term": "cafeteria",
-  "meaning": "食堂、カフェテリア"
- },
- {
-  "term": "concert",
-  "meaning": "コンサート"
- },
- {
-  "term": "corner",
-  "meaning": "角、隅"
- },
- {
-  "term": "dream",
-  "meaning": "夢"
- },
- {
-  "term": "earth",
-  "meaning": "地球"
- },
- {
-  "term": "festival",
-  "meaning": "祭り"
- },
- {
-  "term": "floor",
-  "meaning": "床、階"
- },
- {
-  "term": "future",
-  "meaning": "未来、将来"
- },
- {
-  "term": "group",
-  "meaning": "集団、グループ"
- },
- {
-  "term": "hobby",
-  "meaning": "趣味"
- },
- {
-  "term": "holiday",
-  "meaning": "休日、祝日"
- },
- {
-  "term": "kitchen",
-  "meaning": "台所"
- },
- {
-  "term": "message",
-  "meaning": "伝言、メッセージ"
- },
- {
-  "term": "mountain",
-  "meaning": "山"
- },
- {
-  "term": "nature",
-  "meaning": "自然"
- },
- {
-  "term": "news",
-  "meaning": "知らせ、ニュース"
- },
- {
-  "term": "present",
-  "meaning": "贈り物"
- },
- {
-  "term": "price",
-  "meaning": "値段"
- },
- {
-  "term": "problem",
-  "meaning": "問題"
- },
- {
-  "term": "restaurant",
-  "meaning": "レストラン"
- },
- {
-  "term": "season",
-  "meaning": "季節"
- },
- {
-  "term": "sightseeing",
-  "meaning": "観光"
- },
- {
-  "term": "subject",
-  "meaning": "科目、話題"
- },
- {
-  "term": "ticket",
-  "meaning": "切符、チケット"
- },
- {
-  "term": "tourist",
-  "meaning": "観光客"
- },
- {
-  "term": "traffic",
-  "meaning": "交通、交通量"
- },
- {
-  "term": "trip",
-  "meaning": "旅行"
- },
- {
-  "term": "uniform",
-  "meaning": "制服"
- },
- {
-  "term": "village",
-  "meaning": "村"
- },
- {
-  "term": "weather",
-  "meaning": "天気"
- },
- {
-  "term": "delicious",
-  "meaning": "とてもおいしい"
- },
- {
-  "term": "exciting",
-  "meaning": "わくわくさせる"
- },
- {
-  "term": "quickly",
-  "meaning": "すばやく、急いで"
- },
- {
-  "term": "accept",
-  "meaning": "受け入れる"
- },
- {
-  "term": "choose",
-  "meaning": "選ぶ"
- },
- {
-  "term": "collect",
-  "meaning": "集める"
- },
- {
-  "term": "continue",
-  "meaning": "続ける、続く"
- },
- {
-  "term": "announce",
-  "meaning": "発表する、知らせる"
- },
- {
-  "term": "develop",
-  "meaning": "発展させる、開発する"
- },
- {
-  "term": "discover",
-  "meaning": "発見する"
- },
- {
-  "term": "explain",
-  "meaning": "説明する"
- },
- {
-  "term": "hold",
-  "meaning": "持つ、開催する"
- },
- {
-  "term": "improve",
-  "meaning": "改善する、上達する"
- },
- {
-  "term": "introduce",
-  "meaning": "紹介する"
- },
- {
-  "term": "contact",
-  "meaning": "連絡する"
- },
- {
-  "term": "deliver",
-  "meaning": "配達する"
- },
- {
-  "term": "prepare",
-  "meaning": "準備する"
- },
- {
-  "term": "produce",
-  "meaning": "生産する"
- },
- {
-  "term": "protect",
-  "meaning": "守る、保護する"
- },
- {
-  "term": "realize",
-  "meaning": "気づく、実現する"
- },
- {
-  "term": "describe",
-  "meaning": "描写する、説明する"
- },
- {
-  "term": "recommend",
-  "meaning": "推薦する、勧める"
- },
- {
-  "term": "repair",
-  "meaning": "修理する"
- },
- {
-  "term": "respect",
-  "meaning": "尊敬する"
- },
- {
-  "term": "share",
-  "meaning": "共有する、分け合う"
- },
- {
-  "term": "solve",
-  "meaning": "解決する、解く"
- },
- {
-  "term": "suggest",
-  "meaning": "提案する"
- },
- {
-  "term": "examine",
-  "meaning": "調べる、検査する"
- },
- {
-  "term": "accident",
-  "meaning": "事故"
- },
- {
-  "term": "advice",
-  "meaning": "助言、アドバイス"
- },
- {
-  "term": "article",
-  "meaning": "記事"
- },
- {
-  "term": "exchange",
-  "meaning": "交換する"
- },
- {
-  "term": "chance",
-  "meaning": "機会、可能性"
- },
- {
-  "term": "express",
-  "meaning": "表現する"
- },
- {
-  "term": "customer",
-  "meaning": "客、顧客"
- },
- {
-  "term": "dictionary",
-  "meaning": "辞書"
- },
- {
-  "term": "imagine",
-  "meaning": "想像する"
- },
- {
-  "term": "exam",
-  "meaning": "試験"
- },
- {
-  "term": "invent",
-  "meaning": "発明する"
- },
- {
-  "term": "factory",
-  "meaning": "工場"
- },
- {
-  "term": "government",
-  "meaning": "政府"
- },
- {
-  "term": "health",
-  "meaning": "健康"
- },
- {
-  "term": "information",
-  "meaning": "情報"
- },
- {
-  "term": "instrument",
-  "meaning": "楽器、器具"
- },
- {
-  "term": "knowledge",
-  "meaning": "知識"
- },
- {
-  "term": "notice",
-  "meaning": "気づく"
- },
- {
-  "term": "machine",
-  "meaning": "機械"
- },
- {
-  "term": "medicine",
-  "meaning": "薬"
- },
- {
-  "term": "neighbor",
-  "meaning": "隣人、近所の人"
- },
- {
-  "term": "opinion",
-  "meaning": "意見"
- },
- {
-  "term": "passenger",
-  "meaning": "乗客"
- },
- {
-  "term": "population",
-  "meaning": "人口"
- },
- {
-  "term": "reason",
-  "meaning": "理由"
- },
- {
-  "term": "afraid",
-  "meaning": "恐れて、怖がって"
- },
- {
-  "term": "boring",
-  "meaning": "退屈な"
- },
- {
-  "term": "careful",
-  "meaning": "注意深い"
- },
- {
-  "term": "common",
-  "meaning": "共通の、ふつうの"
- },
- {
-  "term": "convenient",
-  "meaning": "便利な"
- },
- {
-  "term": "offer",
-  "meaning": "申し出る、提供する"
- },
- {
-  "term": "excited",
-  "meaning": "わくわくして"
- },
- {
-  "term": "prefer",
-  "meaning": "〜のほうを好む"
- },
- {
-  "term": "reply",
-  "meaning": "返事をする"
- },
- {
-  "term": "support",
-  "meaning": "支える、支援する"
- },
- {
-  "term": "crowd",
-  "meaning": "群衆、人ごみ"
- },
- {
-  "term": "difference",
-  "meaning": "違い"
- },
- {
-  "term": "nervous",
-  "meaning": "緊張して、不安で"
- },
- {
-  "term": "popular",
-  "meaning": "人気のある"
- },
- {
-  "term": "discussion",
-  "meaning": "議論、話し合い"
- },
- {
-  "term": "education",
-  "meaning": "教育"
- },
- {
-  "term": "energy",
-  "meaning": "エネルギー、活力"
- },
- {
-  "term": "especially",
-  "meaning": "特に"
- },
- {
-  "term": "finally",
-  "meaning": "ついに、最後に"
- },
- {
-  "term": "suddenly",
-  "meaning": "突然"
- },
- {
-  "term": "achieve",
-  "meaning": "達成する"
- },
- {
-  "term": "admit",
-  "meaning": "認める"
- },
- {
-  "term": "afford",
-  "meaning": "〜する余裕がある"
- },
- {
-  "term": "allow",
-  "meaning": "許す、許可する"
- },
- {
-  "term": "appear",
-  "meaning": "現れる、〜に見える"
- },
- {
-  "term": "avoid",
-  "meaning": "避ける"
- },
- {
-  "term": "compare",
-  "meaning": "比較する"
- },
- {
-  "term": "complain",
-  "meaning": "不平を言う"
- },
- {
-  "term": "consider",
-  "meaning": "よく考える、検討する"
- },
- {
-  "term": "encourage",
-  "meaning": "励ます、促す"
- },
- {
-  "term": "expect",
-  "meaning": "予期する、期待する"
- },
- {
-  "term": "include",
-  "meaning": "含む"
- },
- {
-  "term": "increase",
-  "meaning": "増える、増やす"
- },
- {
-  "term": "maintain",
-  "meaning": "維持する"
- },
- {
-  "term": "provide",
-  "meaning": "提供する"
- },
- {
-  "term": "reduce",
-  "meaning": "減らす"
- },
- {
-  "term": "refuse",
-  "meaning": "断る、拒否する"
- },
- {
-  "term": "replace",
-  "meaning": "取り替える、取って代わる"
- },
- {
-  "term": "require",
-  "meaning": "必要とする、要求する"
- },
- {
-  "term": "succeed",
-  "meaning": "成功する"
- },
- {
-  "term": "ability",
-  "meaning": "能力"
- },
- {
-  "term": "advantage",
-  "meaning": "利点、有利な点"
- },
- {
-  "term": "amount",
-  "meaning": "量、額"
- },
- {
-  "term": "attention",
-  "meaning": "注意、注目"
- },
- {
-  "term": "benefit",
-  "meaning": "利益、恩恵"
- },
- {
-  "term": "concern",
-  "meaning": "心配、関心事"
- },
- {
-  "term": "condition",
-  "meaning": "状態、条件"
- },
- {
-  "term": "effect",
-  "meaning": "影響、効果"
- },
- {
-  "term": "effort",
-  "meaning": "努力"
- },
- {
-  "term": "equipment",
-  "meaning": "装備、機器"
- },
- {
-  "term": "evidence",
-  "meaning": "証拠"
- },
- {
-  "term": "industry",
-  "meaning": "産業、業界"
- },
- {
-  "term": "issue",
-  "meaning": "問題、争点"
- },
- {
-  "term": "method",
-  "meaning": "方法"
- },
- {
-  "term": "opportunity",
-  "meaning": "機会"
- },
- {
-  "term": "pressure",
-  "meaning": "圧力、重圧"
- },
- {
-  "term": "progress",
-  "meaning": "進歩、前進"
- },
- {
-  "term": "quality",
-  "meaning": "質"
- },
- {
-  "term": "resource",
-  "meaning": "資源"
- },
- {
-  "term": "situation",
-  "meaning": "状況"
- },
- {
-  "term": "accurate",
-  "meaning": "正確な"
- },
- {
-  "term": "available",
-  "meaning": "利用できる、手に入る"
- },
- {
-  "term": "aware",
-  "meaning": "気づいている"
- },
- {
-  "term": "confident",
-  "meaning": "自信のある"
- },
- {
-  "term": "curious",
-  "meaning": "好奇心の強い"
- },
- {
-  "term": "efficient",
-  "meaning": "効率的な"
- },
- {
-  "term": "familiar",
-  "meaning": "よく知っている、なじみのある"
- },
- {
-  "term": "obvious",
-  "meaning": "明らかな"
- },
- {
-  "term": "particular",
-  "meaning": "特定の、特別の"
- },
- {
-  "term": "previous",
-  "meaning": "以前の、前の"
- },
- {
-  "term": "rapid",
-  "meaning": "急速な"
- },
- {
-  "term": "reasonable",
-  "meaning": "妥当な、手ごろな"
- },
- {
-  "term": "responsible",
-  "meaning": "責任がある"
- },
- {
-  "term": "sufficient",
-  "meaning": "十分な"
- },
- {
-  "term": "various",
-  "meaning": "さまざまな"
- },
- {
-  "term": "apparently",
-  "meaning": "見たところ〜らしい"
- },
- {
-  "term": "approximately",
-  "meaning": "おおよそ、約"
- },
- {
-  "term": "currently",
-  "meaning": "現在は"
- },
- {
-  "term": "eventually",
-  "meaning": "最終的には、やがて"
- },
- {
-  "term": "immediately",
-  "meaning": "すぐに、ただちに"
- }
+{"term":"agree","meaning":"同意する","reading":"アグリー"},
+{"term":"return","meaning":"戻る、返す","reading":"リターン"},
+{"term":"become","meaning":"〜になる","reading":"ビカム"},
+{"term":"bring","meaning":"持ってくる","reading":"ブリング"},
+{"term":"build","meaning":"建てる","reading":"ビルド"},
+{"term":"carry","meaning":"運ぶ","reading":"キャリー"},
+{"term":"catch","meaning":"つかまえる、間に合う","reading":"キャッチ"},
+{"term":"cross","meaning":"渡る、横切る","reading":"クロス"},
+{"term":"enjoy","meaning":"楽しむ","reading":"インジョイ"},
+{"term":"fall","meaning":"落ちる、転ぶ","reading":"フォール"},
+{"term":"feel","meaning":"感じる","reading":"フィール"},
+{"term":"finish","meaning":"終える","reading":"フィニッシュ"},
+{"term":"climb","meaning":"登る","reading":"クライム"},
+{"term":"grow","meaning":"育つ、栽培する","reading":"グロウ"},
+{"term":"happen","meaning":"起こる","reading":"ハプン"},
+{"term":"hurry","meaning":"急ぐ","reading":"ハリー"},
+{"term":"join","meaning":"参加する、加わる","reading":"ジョイン"},
+{"term":"keep","meaning":"保つ、〜し続ける","reading":"キープ"},
+{"term":"laugh","meaning":"笑う","reading":"ラフ"},
+{"term":"learn","meaning":"学ぶ、習う","reading":"ラーン"},
+{"term":"leave","meaning":"去る、置き忘れる","reading":"リーブ"},
+{"term":"move","meaning":"動く、引っ越す","reading":"ムーブ"},
+{"term":"pass","meaning":"通る、渡す、合格する","reading":"パス"},
+{"term":"plan","meaning":"計画する","reading":"プラン"},
+{"term":"practice","meaning":"練習する","reading":"プラクティス"},
+{"term":"send","meaning":"送る","reading":"センド"},
+{"term":"show","meaning":"見せる、案内する","reading":"ショウ"},
+{"term":"sound","meaning":"〜に聞こえる","reading":"サウンド"},
+{"term":"stay","meaning":"滞在する、とどまる","reading":"ステイ"},
+{"term":"teach","meaning":"教える","reading":"ティーチ"},
+{"term":"travel","meaning":"旅行する","reading":"トラベル"},
+{"term":"try","meaning":"試す、やってみる","reading":"トライ"},
+{"term":"visit","meaning":"訪れる","reading":"ビジット"},
+{"term":"wait","meaning":"待つ","reading":"ウェイト"},
+{"term":"airport","meaning":"空港","reading":"エアポート"},
+{"term":"bridge","meaning":"橋","reading":"ブリッジ"},
+{"term":"building","meaning":"建物","reading":"ビルディング"},
+{"term":"cafeteria","meaning":"食堂、カフェテリア","reading":"キャフェテリア"},
+{"term":"concert","meaning":"コンサート","reading":"コンサート"},
+{"term":"corner","meaning":"角、隅","reading":"コーナー"},
+{"term":"dream","meaning":"夢","reading":"ドリーム"},
+{"term":"earth","meaning":"地球","reading":"アース"},
+{"term":"festival","meaning":"祭り","reading":"フェスティバル"},
+{"term":"floor","meaning":"床、階","reading":"フロア"},
+{"term":"future","meaning":"未来、将来","reading":"フューチャー"},
+{"term":"group","meaning":"集団、グループ","reading":"グループ"},
+{"term":"hobby","meaning":"趣味","reading":"ホビー"},
+{"term":"holiday","meaning":"休日、祝日","reading":"ホリデイ"},
+{"term":"kitchen","meaning":"台所","reading":"キッチン"},
+{"term":"message","meaning":"伝言、メッセージ","reading":"メッセージ"},
+{"term":"mountain","meaning":"山","reading":"マウンテン"},
+{"term":"nature","meaning":"自然","reading":"ネイチャー"},
+{"term":"news","meaning":"知らせ、ニュース","reading":"ニュース"},
+{"term":"present","meaning":"贈り物","reading":"プレゼント"},
+{"term":"price","meaning":"値段","reading":"プライス"},
+{"term":"problem","meaning":"問題","reading":"プロブレム"},
+{"term":"restaurant","meaning":"レストラン","reading":"レストラン"},
+{"term":"season","meaning":"季節","reading":"シーズン"},
+{"term":"sightseeing","meaning":"観光","reading":"サイトスィーイング"},
+{"term":"subject","meaning":"科目、話題","reading":"サブジェクト"},
+{"term":"ticket","meaning":"切符、チケット","reading":"チケット"},
+{"term":"tourist","meaning":"観光客","reading":"ツーリスト"},
+{"term":"traffic","meaning":"交通、交通量","reading":"トラフィック"},
+{"term":"trip","meaning":"旅行","reading":"トリップ"},
+{"term":"uniform","meaning":"制服","reading":"ユニフォーム"},
+{"term":"village","meaning":"村","reading":"ビレッジ"},
+{"term":"weather","meaning":"天気","reading":"ウェザー"},
+{"term":"delicious","meaning":"とてもおいしい","reading":"デリシャス"},
+{"term":"exciting","meaning":"わくわくさせる","reading":"イクサイティング"},
+{"term":"quickly","meaning":"すばやく、急いで","reading":"クイックリー"},
+{"term":"accept","meaning":"受け入れる","reading":"アクセプト"},
+{"term":"choose","meaning":"選ぶ","reading":"チューズ"},
+{"term":"collect","meaning":"集める","reading":"コレクト"},
+{"term":"continue","meaning":"続ける、続く","reading":"コンティニュー"},
+{"term":"announce","meaning":"発表する、知らせる","reading":"アナウンス"},
+{"term":"develop","meaning":"発展させる、開発する","reading":"ディベロップ"},
+{"term":"discover","meaning":"発見する","reading":"ディスカバー"},
+{"term":"explain","meaning":"説明する","reading":"イクスプレイン"},
+{"term":"hold","meaning":"持つ、開催する","reading":"ホウルド"},
+{"term":"improve","meaning":"改善する、上達する","reading":"インプルーブ"},
+{"term":"introduce","meaning":"紹介する","reading":"イントロデュース"},
+{"term":"contact","meaning":"連絡する","reading":"コンタクト"},
+{"term":"deliver","meaning":"配達する","reading":"デリバー"},
+{"term":"prepare","meaning":"準備する","reading":"プリペア"},
+{"term":"produce","meaning":"生産する","reading":"プロデュース"},
+{"term":"protect","meaning":"守る、保護する","reading":"プロテクト"},
+{"term":"realize","meaning":"気づく、実現する","reading":"リアライズ"},
+{"term":"describe","meaning":"描写する、説明する","reading":"ディスクライブ"},
+{"term":"recommend","meaning":"推薦する、勧める","reading":"レコメンド"},
+{"term":"repair","meaning":"修理する","reading":"リペア"},
+{"term":"respect","meaning":"尊敬する","reading":"リスペクト"},
+{"term":"share","meaning":"共有する、分け合う","reading":"シェア"},
+{"term":"solve","meaning":"解決する、解く","reading":"ソルブ"},
+{"term":"suggest","meaning":"提案する","reading":"サジェスト"},
+{"term":"examine","meaning":"調べる、検査する","reading":"イグザミン"},
+{"term":"accident","meaning":"事故","reading":"アクシデント"},
+{"term":"advice","meaning":"助言、アドバイス","reading":"アドバイス"},
+{"term":"article","meaning":"記事","reading":"アーティクル"},
+{"term":"exchange","meaning":"交換する","reading":"イクスチェンジ"},
+{"term":"chance","meaning":"機会、可能性","reading":"チャンス"},
+{"term":"express","meaning":"表現する","reading":"イクスプレス"},
+{"term":"customer","meaning":"客、顧客","reading":"カスタマー"},
+{"term":"dictionary","meaning":"辞書","reading":"ディクショナリー"},
+{"term":"imagine","meaning":"想像する","reading":"イマジン"},
+{"term":"exam","meaning":"試験","reading":"イグザム"},
+{"term":"invent","meaning":"発明する","reading":"インベント"},
+{"term":"factory","meaning":"工場","reading":"ファクトリー"},
+{"term":"government","meaning":"政府","reading":"ガバメント"},
+{"term":"health","meaning":"健康","reading":"ヘルス"},
+{"term":"information","meaning":"情報","reading":"インフォメーション"},
+{"term":"instrument","meaning":"楽器、器具","reading":"インストゥルメント"},
+{"term":"knowledge","meaning":"知識","reading":"ナレッジ"},
+{"term":"notice","meaning":"気づく","reading":"ノウティス"},
+{"term":"machine","meaning":"機械","reading":"マシーン"},
+{"term":"medicine","meaning":"薬","reading":"メディスン"},
+{"term":"neighbor","meaning":"隣人、近所の人","reading":"ネイバー"},
+{"term":"opinion","meaning":"意見","reading":"オピニオン"},
+{"term":"passenger","meaning":"乗客","reading":"パセンジャー"},
+{"term":"population","meaning":"人口","reading":"ポピュレーション"},
+{"term":"reason","meaning":"理由","reading":"リーズン"},
+{"term":"afraid","meaning":"恐れて、怖がって","reading":"アフレイド"},
+{"term":"boring","meaning":"退屈な","reading":"ボーリング"},
+{"term":"careful","meaning":"注意深い","reading":"ケアフル"},
+{"term":"common","meaning":"共通の、ふつうの","reading":"コモン"},
+{"term":"convenient","meaning":"便利な","reading":"コンビニエント"},
+{"term":"offer","meaning":"申し出る、提供する","reading":"オファー"},
+{"term":"excited","meaning":"わくわくして","reading":"イクサイティッド"},
+{"term":"prefer","meaning":"〜のほうを好む","reading":"プリファー"},
+{"term":"reply","meaning":"返事をする","reading":"リプライ"},
+{"term":"support","meaning":"支える、支援する","reading":"サポート"},
+{"term":"crowd","meaning":"群衆、人ごみ","reading":"クラウド"},
+{"term":"difference","meaning":"違い","reading":"ディファレンス"},
+{"term":"nervous","meaning":"緊張して、不安で","reading":"ナーバス"},
+{"term":"popular","meaning":"人気のある","reading":"ポピュラー"},
+{"term":"discussion","meaning":"議論、話し合い","reading":"ディスカッション"},
+{"term":"education","meaning":"教育","reading":"エデュケーション"},
+{"term":"energy","meaning":"エネルギー、活力","reading":"エナジー"},
+{"term":"especially","meaning":"特に","reading":"イスペシャリー"},
+{"term":"finally","meaning":"ついに、最後に","reading":"ファイナリー"},
+{"term":"suddenly","meaning":"突然","reading":"サドンリー"},
+{"term":"achieve","meaning":"達成する","reading":"アチーブ"},
+{"term":"admit","meaning":"認める","reading":"アドミット"},
+{"term":"afford","meaning":"〜する余裕がある","reading":"アフォード"},
+{"term":"allow","meaning":"許す、許可する","reading":"アラウ"},
+{"term":"appear","meaning":"現れる、〜に見える","reading":"アピア"},
+{"term":"avoid","meaning":"避ける","reading":"アボイド"},
+{"term":"compare","meaning":"比較する","reading":"コンペア"},
+{"term":"complain","meaning":"不平を言う","reading":"コンプレイン"},
+{"term":"consider","meaning":"よく考える、検討する","reading":"コンシダー"},
+{"term":"encourage","meaning":"励ます、促す","reading":"インカレッジ"},
+{"term":"expect","meaning":"予期する、期待する","reading":"イクスペクト"},
+{"term":"include","meaning":"含む","reading":"インクルード"},
+{"term":"increase","meaning":"増える、増やす","reading":"インクリース"},
+{"term":"maintain","meaning":"維持する","reading":"メインテイン"},
+{"term":"provide","meaning":"提供する","reading":"プロバイド"},
+{"term":"reduce","meaning":"減らす","reading":"リデュース"},
+{"term":"refuse","meaning":"断る、拒否する","reading":"リフューズ"},
+{"term":"replace","meaning":"取り替える、取って代わる","reading":"リプレイス"},
+{"term":"require","meaning":"必要とする、要求する","reading":"リクワイア"},
+{"term":"succeed","meaning":"成功する","reading":"サクシード"},
+{"term":"ability","meaning":"能力","reading":"アビリティ"},
+{"term":"advantage","meaning":"利点、有利な点","reading":"アドバンテージ"},
+{"term":"amount","meaning":"量、額","reading":"アマウント"},
+{"term":"attention","meaning":"注意、注目","reading":"アテンション"},
+{"term":"benefit","meaning":"利益、恩恵","reading":"ベネフィット"},
+{"term":"concern","meaning":"心配、関心事","reading":"コンサーン"},
+{"term":"condition","meaning":"状態、条件","reading":"コンディション"},
+{"term":"effect","meaning":"影響、効果","reading":"イフェクト"},
+{"term":"effort","meaning":"努力","reading":"エフォート"},
+{"term":"equipment","meaning":"装備、機器","reading":"イクイップメント"},
+{"term":"evidence","meaning":"証拠","reading":"エビデンス"},
+{"term":"industry","meaning":"産業、業界","reading":"インダストリー"},
+{"term":"issue","meaning":"問題、争点","reading":"イシュー"},
+{"term":"method","meaning":"方法","reading":"メソッド"},
+{"term":"opportunity","meaning":"機会","reading":"オポチュニティ"},
+{"term":"pressure","meaning":"圧力、重圧","reading":"プレッシャー"},
+{"term":"progress","meaning":"進歩、前進","reading":"プログレス"},
+{"term":"quality","meaning":"質","reading":"クオリティ"},
+{"term":"resource","meaning":"資源","reading":"リソース"},
+{"term":"situation","meaning":"状況","reading":"シチュエーション"},
+{"term":"accurate","meaning":"正確な","reading":"アキュレット"},
+{"term":"available","meaning":"利用できる、手に入る","reading":"アベイラブル"},
+{"term":"aware","meaning":"気づいている","reading":"アウェア"},
+{"term":"confident","meaning":"自信のある","reading":"コンフィデント"},
+{"term":"curious","meaning":"好奇心の強い","reading":"キュリアス"},
+{"term":"efficient","meaning":"効率的な","reading":"イフィシェント"},
+{"term":"familiar","meaning":"よく知っている、なじみのある","reading":"ファミリア"},
+{"term":"obvious","meaning":"明らかな","reading":"オブビアス"},
+{"term":"particular","meaning":"特定の、特別の","reading":"パティキュラー"},
+{"term":"previous","meaning":"以前の、前の","reading":"プリビアス"},
+{"term":"rapid","meaning":"急速な","reading":"ラピッド"},
+{"term":"reasonable","meaning":"妥当な、手ごろな","reading":"リーズナブル"},
+{"term":"responsible","meaning":"責任がある","reading":"リスポンシブル"},
+{"term":"sufficient","meaning":"十分な","reading":"サフィシェント"},
+{"term":"various","meaning":"さまざまな","reading":"ベアリアス"},
+{"term":"apparently","meaning":"見たところ〜らしい","reading":"アパレントリー"},
+{"term":"approximately","meaning":"おおよそ、約","reading":"アプロキシメットリー"},
+{"term":"currently","meaning":"現在は","reading":"カレントリー"},
+{"term":"eventually","meaning":"最終的には、やがて","reading":"イベンチュアリー"},
+{"term":"immediately","meaning":"すぐに、ただちに","reading":"イミーディエットリー"}
 ]
