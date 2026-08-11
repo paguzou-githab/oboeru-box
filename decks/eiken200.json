@@ -552,751 +552,1651 @@
   {
     "term": "mountain",
     "meaning": "山",
-    "reading": "マウンテン"
+    "reading": "マウンテン",
+    "ipa": "ˈmaʊntn",
+    "phonics": "ou → 「アウ」と二重母音になる／ t の後の ain は軽く「トゥン」",
+    "core": "地面が大きく盛り上がってそびえ立つ地形。見上げるほどの高さがあるというイメージ",
+    "usage": "数えられる名詞。固有名には Mt. をつける（Mt. Fuji）",
+    "example": "We climbed the mountain together.｜私たちは一緒にその山に登った",
+    "confuse": ""
   },
   {
     "term": "nature",
     "meaning": "自然",
-    "reading": "ネイチャー"
+    "reading": "ネイチャー",
+    "ipa": "ˈneɪtʃər",
+    "phonics": "a → 「エイ」。語尾のサイレントEが a を名前どおりの音にする",
+    "core": "人の手が加わっていない、もともとある世界のありのままの姿。山や海、動植物すべてを含む",
+    "usage": "数えられない名詞。love nature／nature study(自然観察)のように使う",
+    "example": "I love spending time in nature.｜自然の中で過ごすのが好きだ",
+    "confuse": ""
   },
   {
     "term": "news",
     "meaning": "知らせ、ニュース",
-    "reading": "ニュース"
+    "reading": "ニュース",
+    "ipa": "njuːz",
+    "phonics": "s → 濁って「ズ」。名詞なのに複数のsではなく元から濁る音",
+    "core": "新しく伝わってきた出来事の情報。まだ知らなかったことが届くというイメージ",
+    "usage": "見た目は複数形だが数えられない名詞。単数扱いで is を使う",
+    "example": "That is good news for us.｜それは私たちにとって良い知らせだ",
+    "confuse": "見た目にだまされない。数えるときは a piece of news。many news とは言わない"
   },
   {
     "term": "present",
     "meaning": "贈り物",
-    "reading": "プレゼント"
+    "reading": "プレゼント",
+    "ipa": "ˈpreznt",
+    "phonics": "e → 「エ」。名詞・形容詞は第一音節にアクセントを置く",
+    "core": "誰かのために選んで手渡す、気持ちのこもった品物。贈るという行為の結果としての物",
+    "usage": "名詞は前にアクセント(プレゼント)。動詞「贈呈する」は後ろにアクセントが移る",
+    "example": "This present is for you.｜このプレゼントはあなたへです",
+    "confuse": "品詞でアクセント位置が変わる語。名詞は prés-ent、動詞は pre-sént と後ろが強くなる"
   },
   {
     "term": "price",
     "meaning": "値段",
-    "reading": "プライス"
+    "reading": "プライス",
+    "ipa": "praɪs",
+    "phonics": "i → 「アイ」。語尾のサイレントEが i を名前どおりの音にする",
+    "core": "その物を手に入れるために支払わなければならない金額。値札に書かれている数字そのもの",
+    "usage": "値段そのものを指す名詞。形容詞にしたいときは expensive／cheap を使う",
+    "example": "The price of this bag is high.｜このかばんの値段は高い",
+    "confuse": ""
   },
   {
     "term": "problem",
     "meaning": "問題",
-    "reading": "プロブレム"
+    "reading": "プロブレム",
+    "ipa": "ˈprɑːbləm",
+    "phonics": "o → 「アー」に近い音。ロと伸ばさない短い音",
+    "core": "解決しなければ先に進めない、困った状況やもめごと。答えを必要とする課題",
+    "usage": "have a problem with 〜（〜に問題がある）。No problem.は決まり文句",
+    "example": "We have a problem to solve.｜解決すべき問題がある",
+    "confuse": ""
   },
   {
     "term": "restaurant",
     "meaning": "レストラン",
-    "reading": "レストラン"
+    "reading": "レストラン",
+    "ipa": "ˈrestərɑːnt",
+    "phonics": "au → 「アー」と読む。フランス語由来でつづりと発音がずれる語",
+    "core": "お金を払って料理を作ってもらい、その場で食べる店。家庭料理と違い人に作ってもらう食事",
+    "usage": "at a restaurant(店の中で)。eat out at a restaurant の形でよく使う",
+    "example": "Let's eat at that restaurant.｜あのレストランで食べよう",
+    "confuse": ""
   },
   {
     "term": "season",
     "meaning": "季節",
-    "reading": "シーズン"
+    "reading": "シーズン",
+    "ipa": "ˈsiːzn",
+    "phonics": "ea → 「イー」と長くのばす音",
+    "core": "一年を四つに分けたうちの一つの時期。気候や行事がひとまとまりになった期間",
+    "usage": "in summer season のように使う。favorite season(好きな季節)は頻出",
+    "example": "Which season do you like best?｜どの季節が一番好き",
+    "confuse": ""
   },
   {
     "term": "sightseeing",
     "meaning": "観光",
-    "reading": "サイトスィーイング"
+    "reading": "サイトスィーイング",
+    "ipa": "ˈsaɪtsiːɪŋ",
+    "phonics": "sight → 「サイト」。gh は読まないサイレント文字",
+    "core": "その土地の景色や名所を見て回ること。sight(景色)をseeing(見る)という組み合わせの語",
+    "usage": "go sightseeing(観光に行く)の形で頻出。数えられない名詞",
+    "example": "We went sightseeing in Kyoto.｜京都で観光をした",
+    "confuse": ""
   },
   {
     "term": "subject",
     "meaning": "科目、話題",
-    "reading": "サブジェクト"
+    "reading": "サブジェクト",
+    "ipa": "ˈsʌbdʒɪkt",
+    "phonics": "u → 「ア」。サブと短く読む",
+    "core": "学校で習う一つの分野、または話し合いの中心になっている事柄。焦点が当たっているテーマ",
+    "usage": "favorite subject(好きな科目)。文法用語では「主語」の意味にもなる",
+    "example": "Math is my favorite subject.｜数学は一番好きな科目だ",
+    "confuse": ""
   },
   {
     "term": "ticket",
     "meaning": "切符、チケット",
-    "reading": "チケット"
+    "reading": "チケット",
+    "ipa": "ˈtɪkɪt",
+    "phonics": "i → 「イ」。短く切る音でティケットにしない",
+    "core": "お金を払った証拠として渡される、乗り物や会場に入るために必要な紙やカード",
+    "usage": "a ticket for/to 〜 の形。buy a ticket(切符を買う)で頻出",
+    "example": "I bought a ticket for the concert.｜コンサートのチケットを買った",
+    "confuse": ""
   },
   {
     "term": "tourist",
     "meaning": "観光客",
-    "reading": "ツーリスト"
+    "reading": "ツーリスト",
+    "ipa": "ˈtʊrɪst",
+    "phonics": "our → 「ウア」。oはウの音になる",
+    "core": "自分の住んでいる場所を離れて、旅行や観光のために訪れている人",
+    "usage": "a tourist from 〜（〜から来た観光客）。tourism(観光業)は関連語",
+    "example": "Many tourists visit this temple.｜多くの観光客がこの寺を訪れる",
+    "confuse": ""
   },
   {
     "term": "traffic",
     "meaning": "交通、交通量",
-    "reading": "トラフィック"
+    "reading": "トラフィック",
+    "ipa": "ˈtræfɪk",
+    "phonics": "a → 「ア」。短く切る音でトラとのばさない",
+    "core": "道路を行き交う車や人の流れ全体。多いか少ないかで混み具合を表す",
+    "usage": "数えられない名詞。heavy traffic(交通量が多い)／traffic jam(渋滞)",
+    "example": "The traffic was heavy this morning.｜今朝は交通量が多かった",
+    "confuse": ""
   },
   {
     "term": "trip",
     "meaning": "旅行",
-    "reading": "トリップ"
+    "reading": "トリップ",
+    "ipa": "trɪp",
+    "phonics": "i → 「イ」。短く切る音",
+    "core": "目的地へ行って戻ってくる、一回分のまとまった移動。日帰りから長期まで使える",
+    "usage": "a trip to 〜（〜への旅行）。go on a trip(旅行に行く)の形で頻出",
+    "example": "We went on a trip to Kyoto.｜京都へ旅行に行った",
+    "confuse": ""
   },
   {
     "term": "uniform",
     "meaning": "制服",
-    "reading": "ユニフォーム"
+    "reading": "ユニフォーム",
+    "ipa": "ˈjuːnɪfɔːrm",
+    "phonics": "u → 「ユー」。語頭で母音の名前どおりに読む",
+    "core": "同じ集団の人が全員そろって着る、決まった形の服。uni(一つ)＋form(形)から成る",
+    "usage": "wear a uniform(制服を着る)。school uniform の形で頻出",
+    "example": "Students wear a uniform at school.｜生徒は学校で制服を着る",
+    "confuse": ""
   },
   {
     "term": "village",
     "meaning": "村",
-    "reading": "ビレッジ"
+    "reading": "ビレッジ",
+    "ipa": "ˈvɪlɪdʒ",
+    "phonics": "age → 「イッジ」。語尾は「エイジ」ではなく弱い音になる",
+    "core": "町よりも小さく、家々が集まって暮らしている地域。city／townより規模が小さい単位",
+    "usage": "a small village(小さな村)。live in a village の形で使う",
+    "example": "She lives in a small village.｜彼女は小さな村に住んでいる",
+    "confuse": ""
   },
   {
     "term": "weather",
     "meaning": "天気",
-    "reading": "ウェザー"
+    "reading": "ウェザー",
+    "ipa": "ˈweðər",
+    "phonics": "th → 舌を挟んで濁る音。whether(〜かどうか)と同じ発音なので注意",
+    "core": "その日その場所の空模様全体。晴れ・雨・気温などをまとめて指す言葉",
+    "usage": "数えられない名詞。How is the weather?(天気はどう)の形で頻出",
+    "example": "The weather is nice today.｜今日は天気がいい",
+    "confuse": "同じ発音の whether(〜かどうか)と混同注意。天気の話なら weather、選択を表すなら whether"
   },
   {
     "term": "delicious",
     "meaning": "とてもおいしい",
-    "reading": "デリシャス"
+    "reading": "デリシャス",
+    "ipa": "dɪˈlɪʃəs",
+    "phonics": "ci → 「シャ」。ciはシ系の音になる",
+    "core": "味わうほどに強く感じるおいしさ。goodより一段上の、感動するようなおいしさ",
+    "usage": "very delicious とは言わない。すでに強い意味を含む形容詞",
+    "example": "This cake is delicious.｜このケーキはとてもおいしい",
+    "confuse": "very delicious は不自然。very good や really delicious のように程度をずらして使う"
   },
   {
     "term": "exciting",
     "meaning": "わくわくさせる",
-    "reading": "イクサイティング"
+    "reading": "イクサイティング",
+    "ipa": "ɪkˈsaɪtɪŋ",
+    "phonics": "x → 「クス」／ i → 「アイ」",
+    "core": "見ている人や体験する人の気持ちを高ぶらせる。物や出来事の側が持つ性質",
+    "usage": "物が主語なら exciting、人が主語で気持ちを表すなら excited を使う",
+    "example": "This game is very exciting.｜このゲームはとてもわくわくする",
+    "confuse": "excited と混同注意。excited は人の気持ち、exciting は物事の性質を表す形容詞"
   },
   {
     "term": "quickly",
     "meaning": "すばやく、急いで",
-    "reading": "クイックリー"
+    "reading": "クイックリー",
+    "ipa": "ˈkwɪkli",
+    "phonics": "qu → 「クヮ」。qは常にuとセットでクの音になる",
+    "core": "動作にかかる時間が短い。ぐずぐずせずに素早く事を進めるという速さ",
+    "usage": "動詞を修飾する副詞。quick(形容詞)にlyをつけた形",
+    "example": "She finished her homework quickly.｜彼女は宿題を素早く終えた",
+    "confuse": ""
   },
   {
     "term": "accept",
     "meaning": "受け入れる",
-    "reading": "アクセプト"
+    "reading": "アクセプト",
+    "ipa": "əkˈsept",
+    "phonics": "c → 「セ」。eの前のcはサ行の音になる",
+    "core": "差し出されたものや申し出を、よいと判断して受け止める。断らずに引き受ける意思",
+    "usage": "他動詞。accept an offer(申し出を受け入れる)の形で頻出",
+    "example": "I accepted his invitation.｜彼の招待を受け入れた",
+    "confuse": "receive と混同注意。receive は物を単に受け取る、accept は良いと納得して受け入れる意思を伴う"
   },
   {
     "term": "choose",
     "meaning": "選ぶ",
-    "reading": "チューズ"
+    "reading": "チューズ",
+    "ipa": "tʃuːz",
+    "phonics": "oo → 「ウー」と長くのばす音",
+    "core": "複数の中から自分の意思で一つを選び取る。決める前段階の選択という動き",
+    "usage": "他動詞。choose A from B(BからAを選ぶ)。過去形は chose、過去分詞は chosen",
+    "example": "Choose one from these three.｜この3つから1つ選んで",
+    "confuse": ""
   },
   {
     "term": "collect",
     "meaning": "集める",
-    "reading": "コレクト"
+    "reading": "コレクト",
+    "ipa": "kəˈlekt",
+    "phonics": "o → 弱い「ア」。強勢がないのでコとはっきり読まない",
+    "core": "あちこちに散らばっているものを一箇所に集めてまとめる。趣味の収集にもよく使う",
+    "usage": "他動詞。collect stamps(切手を集める)のように集める対象を目的語にとる",
+    "example": "He collects old coins.｜彼は古いコインを集めている",
+    "confuse": ""
   },
   {
     "term": "continue",
     "meaning": "続ける、続く",
-    "reading": "コンティニュー"
+    "reading": "コンティニュー",
+    "ipa": "kənˈtɪnjuː",
+    "phonics": "u → 「ユー」。語尾は名前どおりの音",
+    "core": "止まらずに同じ状態や動作をそのまま先へ進める。途切れさせないというイメージ",
+    "usage": "continue to 〜／continue 〜ing どちらも可。stop の反対語",
+    "example": "Please continue reading the book.｜その本を読み続けてください",
+    "confuse": ""
   },
   {
     "term": "announce",
     "meaning": "発表する、知らせる",
-    "reading": "アナウンス"
+    "reading": "アナウンス",
+    "ipa": "əˈnaʊns",
+    "phonics": "ou → 「アウ」の二重母音",
+    "core": "多くの人に向けて、まだ知らない情報を正式に公に伝える。個人的な内緒話ではない伝え方",
+    "usage": "他動詞。announce that 〜(〜だと発表する)の形もよく使う",
+    "example": "They announced the results today.｜彼らは今日結果を発表した",
+    "confuse": ""
   },
   {
     "term": "develop",
     "meaning": "発展させる、開発する",
-    "reading": "ディベロップ"
+    "reading": "ディベロップ",
+    "ipa": "dɪˈveləp",
+    "phonics": "e → 弱い「ア」。最後の音節は強く読まない",
+    "core": "小さな状態から時間をかけて大きく、より良い形へ育てていく。段階を踏んで進歩させる動き",
+    "usage": "他動詞・自動詞どちらも可。develop a new product(新製品を開発する)",
+    "example": "The city has developed quickly.｜その都市は急速に発展した",
+    "confuse": "improve と混同注意。improve は今あるものを良くする、develop は段階を踏んで大きく成長・発展させる"
   },
   {
     "term": "discover",
     "meaning": "発見する",
-    "reading": "ディスカバー"
+    "reading": "ディスカバー",
+    "ipa": "dɪˈskʌvər",
+    "phonics": "cover → 「カバー」。discの後にcoverがつながった形と考えると覚えやすい",
+    "core": "隠れていて誰も知らなかったことを初めて見つけ出す。覆い(cover)を外す(dis)イメージ",
+    "usage": "他動詞。discover that 〜(〜だと発見する)の形もある",
+    "example": "Scientists discovered a new star.｜科学者たちは新しい星を発見した",
+    "confuse": "realize と混同注意。discover は新しい事実を見つけ出すこと、realize は気づいていなかったことに気づくこと"
   },
   {
     "term": "explain",
     "meaning": "説明する",
-    "reading": "イクスプレイン"
+    "reading": "イクスプレイン",
+    "ipa": "ɪkˈspleɪn",
+    "phonics": "x → 「クス」／ ai → 「エイ」",
+    "core": "分かりにくいことを、順序立てて相手に分かるように言葉で明らかにする",
+    "usage": "explain to 人（人に説明する）。explain 人 とは言えず必ず to が必要",
+    "example": "Please explain this word to me.｜この単語を私に説明して",
+    "confuse": "describe と混同注意。explain は理由や仕組みを筋道立てて示す、describe は物事の様子をことばで写し取る"
   },
   {
     "term": "hold",
     "meaning": "持つ、開催する",
-    "reading": "ホウルド"
+    "reading": "ホウルド",
+    "ipa": "hoʊld",
+    "phonics": "o → 「オウ」。サイレントEはないが二重母音になる語",
+    "core": "手や場所でしっかりつかんで離さない。イベントを開くときも「その場に留める」イメージから広がる",
+    "usage": "他動詞。hold a meeting(会議を開く)のように行事にも使う",
+    "example": "She held the baby gently.｜彼女は赤ちゃんをやさしく抱いた",
+    "confuse": "keep と混同注意。hold は今まさに手でしっかり握る動作、keep はそのままの状態を保ち続けること"
   },
   {
     "term": "improve",
     "meaning": "改善する、上達する",
-    "reading": "インプルーブ"
+    "reading": "インプルーブ",
+    "ipa": "ɪmˈpruːv",
+    "phonics": "oo → 「ウー」と長くのばす音",
+    "core": "今ある状態より良い方向へ変えていく。以前と比べて質が上がるという変化",
+    "usage": "他動詞・自動詞どちらも可。improve one's English(英語を上達させる)",
+    "example": "I want to improve my English.｜英語を上達させたい",
+    "confuse": ""
   },
   {
     "term": "introduce",
     "meaning": "紹介する",
-    "reading": "イントロデュース"
+    "reading": "イントロデュース",
+    "ipa": "ˌɪntrəˈduːs",
+    "phonics": "du → 「デュ」。iのあとの母音は弱く読む",
+    "core": "まだ知らない人や物を、初めて相手に知らせて引き合わせる。中(intro)へ導く(duce)動き",
+    "usage": "introduce A to B(AをBに紹介する)。名詞は introduction",
+    "example": "Let me introduce my friend.｜友達を紹介させて",
+    "confuse": ""
   },
   {
     "term": "contact",
     "meaning": "連絡する",
-    "reading": "コンタクト"
+    "reading": "コンタクト",
+    "ipa": "ˈkɑːntækt",
+    "phonics": "a → 「ア」。第一音節にアクセントを置く",
+    "core": "離れている相手と手段を使ってつながりを持つ。電話やメールで接触するイメージ",
+    "usage": "他動詞・名詞どちらも可。contact 人(人に連絡する)にtoは不要",
+    "example": "Please contact me by email.｜メールで連絡してください",
+    "confuse": ""
   },
   {
     "term": "deliver",
     "meaning": "配達する",
-    "reading": "デリバー"
+    "reading": "デリバー",
+    "ipa": "dɪˈlɪvər",
+    "phonics": "i → 「イ」。第二音節にアクセントを置く",
+    "core": "物を出発点から届け先まで運んで、相手の手元に届ける。渡す最後の一歩を担う動き",
+    "usage": "他動詞。deliver A to B(AをBに配達する)の形で使う",
+    "example": "They deliver pizza to your house.｜彼らはピザを家まで届ける",
+    "confuse": ""
   },
   {
     "term": "prepare",
     "meaning": "準備する",
-    "reading": "プリペア"
+    "reading": "プリペア",
+    "ipa": "prɪˈper",
+    "phonics": "pare → 「ペア」。サイレントEでaが名前どおりの音になる",
+    "core": "これから起こることに備えて、必要なものを前もって整えておく。事前の一手間",
+    "usage": "prepare for 〜(〜に備える)／prepare 物(物を準備する)。名詞は preparation",
+    "example": "I prepared for the exam.｜試験に備えて準備した",
+    "confuse": ""
   },
   {
     "term": "produce",
     "meaning": "生産する",
-    "reading": "プロデュース"
+    "reading": "プロデュース",
+    "ipa": "prəˈduːs",
+    "phonics": "du → 「デュ」。動詞は後ろにアクセントを置く",
+    "core": "材料や労力を使って、新しく形あるものを作り出す。ゼロから何かを生み出す動き",
+    "usage": "他動詞。名詞のproduce(農産物)はアクセントが前に移り発音が変わる",
+    "example": "This factory produces cars.｜この工場は車を生産する",
+    "confuse": ""
   },
   {
     "term": "protect",
     "meaning": "守る、保護する",
-    "reading": "プロテクト"
+    "reading": "プロテクト",
+    "ipa": "prəˈtekt",
+    "phonics": "o → 弱い「ア」。強勢がないのでプロとはっきり読まない",
+    "core": "危険や害から相手を守って、安全な状態を保とうとする。盾になって守るイメージ",
+    "usage": "protect A from B(BからAを守る)の形で頻出",
+    "example": "We must protect our environment.｜私たちは環境を守るべきだ",
+    "confuse": ""
   },
   {
     "term": "realize",
     "meaning": "気づく、実現する",
-    "reading": "リアライズ"
+    "reading": "リアライズ",
+    "ipa": "ˈriːəlaɪz",
+    "phonics": "ea → 「イー」／ i → 「アイ」",
+    "core": "気づいていなかったことが、はっきり頭の中で分かる状態になる。理解が現実として定まる瞬間",
+    "usage": "他動詞。realize that 〜(〜だと気づく)の形でよく使う",
+    "example": "I realized my mistake later.｜あとで自分の間違いに気づいた",
+    "confuse": ""
   },
   {
     "term": "describe",
     "meaning": "描写する、説明する",
-    "reading": "ディスクライブ"
+    "reading": "ディスクライブ",
+    "ipa": "dɪˈskraɪb",
+    "phonics": "i → 「アイ」。語尾のサイレントEで名前どおりの音になる",
+    "core": "物や人の様子、特徴を言葉を使って相手に思い浮かべさせるように伝える",
+    "usage": "describe A to B(AをBに説明する)。名詞は description",
+    "example": "Can you describe your dog?｜あなたの犬について説明できる",
+    "confuse": ""
   },
   {
     "term": "recommend",
     "meaning": "推薦する、勧める",
-    "reading": "レコメンド"
+    "reading": "レコメンド",
+    "ipa": "ˌrekəˈmend",
+    "phonics": "e → 弱い「ア」。二番目の音節は弱く読む",
+    "core": "自分がよいと思うものを、根拠を持って相手に強くすすめる。太鼓判を押すイメージ",
+    "usage": "recommend 物 to 人／recommend that 〜。名詞は recommendation",
+    "example": "She recommended this restaurant to me.｜彼女はこのレストランを勧めてくれた",
+    "confuse": "suggest と混同注意。recommend は良いと確信してすすめる、suggest は控えめに案を出すだけで確信の強さが弱い"
   },
   {
     "term": "repair",
     "meaning": "修理する",
-    "reading": "リペア"
+    "reading": "リペア",
+    "ipa": "rɪˈper",
+    "phonics": "pair → 「ペア」。サイレントEでaが名前どおりの音になる",
+    "core": "壊れたり傷んだりした部分を直して、元どおり使えるようにする。fixよりかたい語",
+    "usage": "他動詞。repair a car(車を修理する)のように機械や建物によく使う",
+    "example": "He repaired the broken window.｜彼は割れた窓を修理した",
+    "confuse": ""
   },
   {
     "term": "respect",
     "meaning": "尊敬する",
-    "reading": "リスペクト"
+    "reading": "リスペクト",
+    "ipa": "rɪˈspekt",
+    "phonics": "e → 「エ」。第二音節にアクセントを置く",
+    "core": "相手の考えや行いを価値あるものとして高く評価し、大切に扱う気持ち",
+    "usage": "他動詞・名詞どちらも可。respect A for B(BゆえにAを尊敬する)",
+    "example": "I respect my grandfather very much.｜祖父をとても尊敬している",
+    "confuse": ""
   },
   {
     "term": "share",
     "meaning": "共有する、分け合う",
-    "reading": "シェア"
+    "reading": "シェア",
+    "ipa": "ʃer",
+    "phonics": "are → 「エア」。サイレントEでaが名前どおりの音になる",
+    "core": "自分が持っているものを一人占めせず、他の人と一緒に使ったり分けたりする",
+    "usage": "share A with B(AをBと共有する)。名詞としても使う",
+    "example": "Let's share this pizza together.｜このピザを一緒に分けよう",
+    "confuse": ""
   },
   {
     "term": "solve",
     "meaning": "解決する、解く",
-    "reading": "ソルブ"
+    "reading": "ソルブ",
+    "ipa": "sɑːlv",
+    "phonics": "o → 「アー」。ソウとのばさない短い音",
+    "core": "難しい問題やもめごとに答えを出して、うまくいかない状態を終わらせる",
+    "usage": "他動詞。solve a problem(問題を解決する)の形で頻出",
+    "example": "We solved the problem together.｜私たちはその問題を一緒に解決した",
+    "confuse": ""
   },
   {
     "term": "suggest",
     "meaning": "提案する",
-    "reading": "サジェスト"
+    "reading": "サジェスト",
+    "ipa": "səgˈdʒest",
+    "phonics": "gg → 「ジェ」。gの後にeが続くとジ系の音になる",
+    "core": "こうしたらどうかという考えを、控えめに相手の前に差し出す。強制しない提案",
+    "usage": "suggest 〜ing／suggest that 〜。suggest to doとは言えない",
+    "example": "I suggested going to the park.｜公園に行くことを提案した",
+    "confuse": ""
   },
   {
     "term": "examine",
     "meaning": "調べる、検査する",
-    "reading": "イグザミン"
+    "reading": "イグザミン",
+    "ipa": "ɪgˈzæmɪn",
+    "phonics": "x → 「グズ」と濁る音。examの前にeがつくと濁点がつく",
+    "core": "細かい部分まで注意深く見て、状態や中身を確かめる。医者の診察にもよく使う",
+    "usage": "他動詞。名詞 exam(試験)や examination と関連する語",
+    "example": "The doctor examined the patient.｜医者はその患者を検査した",
+    "confuse": ""
   },
   {
     "term": "accident",
     "meaning": "事故",
-    "reading": "アクシデント"
+    "reading": "アクシデント",
+    "ipa": "ˈæksɪdənt",
+    "phonics": "ci → 「シ」。cはiの前でサ行の音になる",
+    "core": "誰も望んでいなかったのに突然起きてしまう、望ましくない出来事。予定外という点がポイント",
+    "usage": "by accident(偶然に)。have an accident(事故に遭う)の形で頻出",
+    "example": "He had a car accident.｜彼は自動車事故にあった",
+    "confuse": ""
   },
   {
     "term": "advice",
     "meaning": "助言、アドバイス",
-    "reading": "アドバイス"
+    "reading": "アドバイス",
+    "ipa": "ədˈvaɪs",
+    "phonics": "i → 「アイ」。動詞adviseとはsの発音が濁るか濁らないかで違う",
+    "core": "経験や知識をもとに、こうしたほうがいいと相手に伝える言葉。押しつけではない助け船",
+    "usage": "数えられない名詞。a piece of advice(1つの助言)で数える",
+    "example": "She gave me good advice.｜彼女は私に良い助言をくれた",
+    "confuse": "動詞のadvise(勧める)と混同注意。advice は名詞でsが濁らない、advise は動詞でsが「ズ」と濁る"
   },
   {
     "term": "article",
     "meaning": "記事",
-    "reading": "アーティクル"
+    "reading": "アーティクル",
+    "ipa": "ˈɑːrtɪkl",
+    "phonics": "ar → 「アー」と口を開けてのばす音",
+    "core": "新聞や雑誌に載っている、一つのまとまったテーマについて書かれた文章",
+    "usage": "a newspaper article(新聞記事)。文法用語では「冠詞」の意味にもなる",
+    "example": "I read an article about space.｜宇宙についての記事を読んだ",
+    "confuse": ""
   },
   {
     "term": "exchange",
     "meaning": "交換する",
-    "reading": "イクスチェンジ"
+    "reading": "イクスチェンジ",
+    "ipa": "ɪksˈtʃeɪndʒ",
+    "phonics": "x → 「クス」／ ch → 「チ」",
+    "core": "自分が持っているものを相手のものと入れ替える。お互いに渡し合うという双方向の動き",
+    "usage": "exchange A for B(AをBと交換する)。名詞としても使う",
+    "example": "I exchanged seats with my friend.｜友達と席を交換した",
+    "confuse": ""
   },
   {
     "term": "chance",
     "meaning": "機会、可能性",
-    "reading": "チャンス"
+    "reading": "チャンス",
+    "ipa": "tʃæns",
+    "phonics": "ch → 「チ」。chはチャ行の音になる",
+    "core": "何かが起きるかもしれないという可能性、またはやってみるのにちょうどいいタイミング",
+    "usage": "a chance to 〜(〜する機会)。by chance(偶然に)も頻出",
+    "example": "This is a good chance for you.｜これはあなたにとって良い機会だ",
+    "confuse": ""
   },
   {
     "term": "express",
     "meaning": "表現する",
-    "reading": "イクスプレス"
+    "reading": "イクスプレス",
+    "ipa": "ɪkˈspres",
+    "phonics": "x → 「クス」／ e は弱く「イ」",
+    "core": "心の中にある思いや感じたことを、言葉や表情、行動という目に見える形にして外に出すこと",
+    "usage": "他動詞。express oneself(自分の考えを表現する)の形もよく使う",
+    "example": "I can't express my feelings well.｜自分の気持ちをうまく表現できない",
+    "confuse": ""
   },
   {
     "term": "customer",
     "meaning": "客、顧客",
-    "reading": "カスタマー"
+    "reading": "カスタマー",
+    "ipa": "ˈkʌstəmər",
+    "phonics": "u → 「ア」。カスと短く読む",
+    "core": "お店で商品やサービスにお金を払う人。売る側からみた「お客さん」",
+    "usage": "customer service(顧客サービス)の形で頻出。guest(来客)とは使い分ける",
+    "example": "The store has many customers.｜その店には多くの客がいる",
+    "confuse": "guest と混同注意。customer はお金を払う客、guest は招かれた客やホテルの宿泊客"
   },
   {
     "term": "dictionary",
     "meaning": "辞書",
-    "reading": "ディクショナリー"
+    "reading": "ディクショナリー",
+    "ipa": "ˈdɪkʃəneri",
+    "phonics": "ary → 「エリー」。弱く読む語尾",
+    "core": "言葉の意味やつづりを調べるために、たくさんの単語を集めてまとめた本",
+    "usage": "look up a word in a dictionary(辞書で単語を調べる)の形で頻出",
+    "example": "I looked up the word in a dictionary.｜辞書でその単語を調べた",
+    "confuse": ""
   },
   {
     "term": "imagine",
     "meaning": "想像する",
-    "reading": "イマジン"
+    "reading": "イマジン",
+    "ipa": "ɪˈmædʒɪn",
+    "phonics": "g → 「ジ」。gがiの前でジ系の音になる",
+    "core": "実際には目の前にないことを、頭の中であれこれ思い浮かべて考えてみること",
+    "usage": "imagine 〜ing／imagine that 〜。to不定詞ではなく動名詞をとる",
+    "example": "Imagine living on the moon.｜月で暮らすことを想像して",
+    "confuse": ""
   },
   {
     "term": "exam",
     "meaning": "試験",
-    "reading": "イグザム"
+    "reading": "イグザム",
+    "ipa": "ɪgˈzæm",
+    "phonics": "x → 「グズ」と濁る音",
+    "core": "学んだ内容がどれだけ身についたかを確かめるためのテスト。examinationの短縮形",
+    "usage": "take an exam(試験を受ける)／pass an exam(試験に合格する)",
+    "example": "I have a math exam tomorrow.｜明日数学の試験がある",
+    "confuse": ""
   },
   {
     "term": "invent",
     "meaning": "発明する",
-    "reading": "インベント"
+    "reading": "インベント",
+    "ipa": "ɪnˈvent",
+    "phonics": "in → 「イン」。第二音節にアクセントを置く",
+    "core": "それまで世界のどこにもなかったものを、初めて自分の手でゼロから作り出すこと",
+    "usage": "他動詞。名詞は invention(発明品)、inventor(発明者)",
+    "example": "Edison invented the light bulb.｜エジソンは電球を発明した",
+    "confuse": "discover と混同注意。discover はすでにあったものを見つける、invent は世界になかったものを作り出す"
   },
   {
     "term": "factory",
     "meaning": "工場",
-    "reading": "ファクトリー"
+    "reading": "ファクトリー",
+    "ipa": "ˈfæktəri",
+    "phonics": "o → 弱い「ア」。強勢がないのでファクトと読む",
+    "core": "機械や大勢の人の手を使って、同じ製品を数多く作り出すための建物や施設のこと",
+    "usage": "work at a factory(工場で働く)。car factory のように前に物を置く",
+    "example": "My father works at a factory.｜父は工場で働いている",
+    "confuse": ""
   },
   {
     "term": "government",
     "meaning": "政府",
-    "reading": "ガバメント"
+    "reading": "ガバメント",
+    "ipa": "ˈɡʌvərnmənt",
+    "phonics": "n → 発音しにくいがしっかり「ンメント」と読む",
+    "core": "国や地域全体をまとめて動かし、法律や決まりごとを作って治めていく組織のこと",
+    "usage": "the government で自国の政府を指す。単数扱いが基本",
+    "example": "The government made a new law.｜政府は新しい法律を作った",
+    "confuse": ""
   },
   {
     "term": "health",
     "meaning": "健康",
-    "reading": "ヘルス"
+    "reading": "ヘルス",
+    "ipa": "helθ",
+    "phonics": "ea → 「エ」。長くのばさない短い音",
+    "core": "体や心が悪いところなく、良い状態でいること。病気やけがをしていない状態",
+    "usage": "数えられない名詞。in good health(健康で)の形で使う",
+    "example": "Exercise is good for health.｜運動は健康に良い",
+    "confuse": ""
   },
   {
     "term": "information",
     "meaning": "情報",
-    "reading": "インフォメーション"
+    "reading": "インフォメーション",
+    "ipa": "ˌɪnfərˈmeɪʃn",
+    "phonics": "a → 「エイ」。tionは「ション」の音になる",
+    "core": "何かを知るために役立つ、伝えられたり集められたりした知らせや事実",
+    "usage": "数えられない名詞。a piece of information(1つの情報)で数える",
+    "example": "I need more information about it.｜それについてもっと情報が必要だ",
+    "confuse": ""
   },
   {
     "term": "instrument",
     "meaning": "楽器、器具",
-    "reading": "インストゥルメント"
+    "reading": "インストゥルメント",
+    "ipa": "ˈɪnstrəmənt",
+    "phonics": "u → 弱い「ア」。強勢がないのでルメントと軽く読む",
+    "core": "何かの作業をしたり音楽を演奏したりするために、目的を持って作られた道具や器具",
+    "usage": "musical instrument(楽器)の形で頻出。play an instrument",
+    "example": "She plays a musical instrument.｜彼女は楽器を演奏する",
+    "confuse": ""
   },
   {
     "term": "knowledge",
     "meaning": "知識",
-    "reading": "ナレッジ"
+    "reading": "ナレッジ",
+    "ipa": "ˈnɑːlɪdʒ",
+    "phonics": "k → 読まない。語頭のknは「ン」ではなく「ナ行」の音だけ",
+    "core": "勉強したり経験したりする中で、少しずつ頭の中に積み重なっていく物事についての理解",
+    "usage": "数えられない名詞。have knowledge of 〜(〜の知識を持つ)",
+    "example": "He has a lot of knowledge.｜彼は多くの知識を持っている",
+    "confuse": ""
   },
   {
     "term": "notice",
     "meaning": "気づく",
-    "reading": "ノウティス"
+    "reading": "ノウティス",
+    "ipa": "ˈnoʊtɪs",
+    "phonics": "o → 「オウ」。サイレントEでoが名前どおりの音になる",
+    "core": "目や耳を使わなくても自然と意識に入ってきて、そこにあると分かる",
+    "usage": "他動詞。notice that 〜／notice 人 〜ing の形もある",
+    "example": "I didn't notice the change.｜その変化に気づかなかった",
+    "confuse": "realize と混同注意。notice は見たり聞いたりして自然に気づくこと、realize は頭の中で理解して気づくこと"
   },
   {
     "term": "machine",
     "meaning": "機械",
-    "reading": "マシーン"
+    "reading": "マシーン",
+    "ipa": "məˈʃiːn",
+    "phonics": "chi → 「シー」。chがシ系の音になる",
+    "core": "人の代わりに力を使って動き、あらかじめ決められた作業をしてくれる装置のこと",
+    "usage": "washing machine(洗濯機)のように前に用途を置いて使う",
+    "example": "This machine makes coffee.｜この機械はコーヒーを作る",
+    "confuse": ""
   },
   {
     "term": "medicine",
     "meaning": "薬",
-    "reading": "メディスン"
+    "reading": "メディスン",
+    "ipa": "ˈmedɪsn",
+    "phonics": "ci → 「シ」。cはiの前でサ行の音になる",
+    "core": "病気やけがを治すために飲んだり塗ったりするもの。体を元の良い状態に戻す手段",
+    "usage": "数えられない名詞。take medicine(薬を飲む)の形で使う",
+    "example": "Take this medicine after meals.｜食後にこの薬を飲んで",
+    "confuse": ""
   },
   {
     "term": "neighbor",
     "meaning": "隣人、近所の人",
-    "reading": "ネイバー"
+    "reading": "ネイバー",
+    "ipa": "ˈneɪbər",
+    "phonics": "ei → 「エイ」。gh は読まないサイレント文字",
+    "core": "自分の家のすぐ近くに住んでいて、日常的に顔を合わせる機会が多い相手のこと",
+    "usage": "my neighbor(私の隣人)。neighborhood(近所)は関連語",
+    "example": "My neighbor is very kind.｜私の隣人はとても親切だ",
+    "confuse": ""
   },
   {
     "term": "opinion",
     "meaning": "意見",
-    "reading": "オピニオン"
+    "reading": "オピニオン",
+    "ipa": "əˈpɪnjən",
+    "phonics": "io → 「ヤ」に近い弱い音",
+    "core": "物事について、自分がどう思うか、どう考えるかという個人の判断や気持ち",
+    "usage": "in my opinion(私の意見では)。give an opinion(意見を述べる)",
+    "example": "In my opinion, this is right.｜私の意見ではこれは正しい",
+    "confuse": ""
   },
   {
     "term": "passenger",
     "meaning": "乗客",
-    "reading": "パセンジャー"
+    "reading": "パセンジャー",
+    "ipa": "ˈpæsɪndʒər",
+    "phonics": "ss → 「ス」。sの連続は1つの音になる",
+    "core": "自分で運転せず、電車や飛行機などの乗り物に乗って運んでもらう人",
+    "usage": "a passenger on a plane(飛行機の乗客)の形で使う",
+    "example": "The bus carried many passengers.｜バスは多くの乗客を運んだ",
+    "confuse": ""
   },
   {
     "term": "population",
     "meaning": "人口",
-    "reading": "ポピュレーション"
+    "reading": "ポピュレーション",
+    "ipa": "ˌpɑːpjəˈleɪʃn",
+    "phonics": "a → 「エイ」。tionは「ション」の音になる",
+    "core": "ある地域や国に住んでいる人の総数。多いか少ないかを表すときに使う数字",
+    "usage": "the population of 〜(〜の人口)。数の大小は large／small で表す",
+    "example": "The population of Japan is falling.｜日本の人口は減っている",
+    "confuse": ""
   },
   {
     "term": "reason",
     "meaning": "理由",
-    "reading": "リーズン"
+    "reading": "リーズン",
+    "ipa": "ˈriːzn",
+    "phonics": "ea → 「イー」と長くのばす音",
+    "core": "何かが起きたり、そうしたいと思ったりする、その裏側にある根拠や事情のこと",
+    "usage": "the reason why 〜(〜の理由)／for this reason(この理由で)",
+    "example": "Tell me the reason why.｜その理由を教えて",
+    "confuse": ""
   },
   {
     "term": "afraid",
     "meaning": "恐れて、怖がって",
-    "reading": "アフレイド"
+    "reading": "アフレイド",
+    "ipa": "əˈfreɪd",
+    "phonics": "ai → 「エイ」。サイレントEはないが二重母音になる語",
+    "core": "何か悪いことが起きるのではないかと感じて、心が縮こまっている状態",
+    "usage": "be afraid of 〜(〜を恐れる)。afraid to 〜(怖くて〜できない)",
+    "example": "I am afraid of dogs.｜私は犬が怖い",
+    "confuse": "afraid to と afraid of で形が変わる。of の後ろは名詞か〜ing、toの後ろは動詞の原形"
   },
   {
     "term": "boring",
     "meaning": "退屈な",
-    "reading": "ボーリング"
+    "reading": "ボーリング",
+    "ipa": "ˈbɔːrɪŋ",
+    "phonics": "or → 「オー」と口を丸めてのばす音",
+    "core": "何の刺激もなく、時間だけが長く感じられてつまらないと感じさせる性質",
+    "usage": "物が主語なら boring、人の気持ちを言うなら bored を使う",
+    "example": "This movie is really boring.｜この映画は本当につまらない",
+    "confuse": "bored と混同注意。boring は物事の性質、bored は人の気持ち。I am boring.は誤り"
   },
   {
     "term": "careful",
     "meaning": "注意深い",
-    "reading": "ケアフル"
+    "reading": "ケアフル",
+    "ipa": "ˈkerfl",
+    "phonics": "care → 「ケア」。サイレントEでaが名前どおりの音になる",
+    "core": "失敗やけがをしないように、細かいところまで気をつけている様子",
+    "usage": "be careful of/with 〜（〜に気をつける）。Be careful!は決まり文句",
+    "example": "Be careful when you cross the street.｜道を渡るとき気をつけて",
+    "confuse": ""
   },
   {
     "term": "common",
     "meaning": "共通の、ふつうの",
-    "reading": "コモン"
+    "reading": "コモン",
+    "ipa": "ˈkɑːmən",
+    "phonics": "o → 「アー」に近い音。コモンと短く読む",
+    "core": "多くの人や物に同じように当てはまる、特別ではないありふれた性質",
+    "usage": "have 〜 in common(〜を共通して持つ)の形も頻出",
+    "example": "This is a common mistake.｜これはよくある間違いだ",
+    "confuse": ""
   },
   {
     "term": "convenient",
     "meaning": "便利な",
-    "reading": "コンビニエント"
+    "reading": "コンビニエント",
+    "ipa": "kənˈviːniənt",
+    "phonics": "ie → 「イー」。iが先でeが後ろの並び",
+    "core": "使うときに余計な手間がかからず、都合よく役に立ってくれる様子を表す形容詞",
+    "usage": "It is convenient for 人 to 〜。convenience store(コンビニ)は関連語",
+    "example": "This app is very convenient.｜このアプリはとても便利だ",
+    "confuse": ""
   },
   {
     "term": "offer",
     "meaning": "申し出る、提供する",
-    "reading": "オファー"
+    "reading": "オファー",
+    "ipa": "ˈɔːfər",
+    "phonics": "o → 「オー」と口を丸めてのばす音",
+    "core": "相手が欲しがっているかもしれないものを、頼まれる前に自分から差し出す行動",
+    "usage": "offer 人 物／offer to 〜(〜しようと申し出る)",
+    "example": "He offered me some help.｜彼は私に助けを申し出た",
+    "confuse": ""
   },
   {
     "term": "excited",
     "meaning": "わくわくして",
-    "reading": "イクサイティッド"
+    "reading": "イクサイティッド",
+    "ipa": "ɪkˈsaɪtɪd",
+    "phonics": "x → 「クス」／ i → 「アイ」",
+    "core": "楽しみな出来事を前にして、気持ちが高ぶり落ち着かなくなっている状態",
+    "usage": "人が主語で気持ちを表す。物が主語なら exciting を使う",
+    "example": "I am so excited about the trip.｜旅行がとても楽しみだ",
+    "confuse": ""
   },
   {
     "term": "prefer",
     "meaning": "〜のほうを好む",
-    "reading": "プリファー"
+    "reading": "プリファー",
+    "ipa": "prɪˈfɜːr",
+    "phonics": "er → 強く「アー」とのばす音",
+    "core": "いくつかある選択肢の中で、こちらのほうがより好きだと感じて選び取る気持ち",
+    "usage": "prefer A to B(BよりAを好む)。prefer 〜ing to 〜ing の形もある",
+    "example": "I prefer tea to coffee.｜コーヒーより紅茶が好きだ",
+    "confuse": "like better than と同じ意味。prefer の後ろは to で比較相手を示し、than は使わない"
   },
   {
     "term": "reply",
     "meaning": "返事をする",
-    "reading": "リプライ"
+    "reading": "リプライ",
+    "ipa": "rɪˈplaɪ",
+    "phonics": "y → 「アイ」。語尾のyが名前どおりの音になる",
+    "core": "相手から届いた言葉やメール、質問に対して、自分の考えをこたえとして返すこと",
+    "usage": "reply to 〜(〜に返事をする)。answerと違い自動詞で to が必要",
+    "example": "Please reply to my email soon.｜すぐに私のメールに返信して",
+    "confuse": "answer と混同注意。answer は他動詞ですぐ目的語、reply は自動詞で reply to の形になる"
   },
   {
     "term": "support",
     "meaning": "支える、支援する",
-    "reading": "サポート"
+    "reading": "サポート",
+    "ipa": "səˈpɔːrt",
+    "phonics": "or → 「オー」と口を丸めてのばす音",
+    "core": "倒れたり困ったりしないように、下や後ろからそっと力を貸して助け続けること",
+    "usage": "他動詞・名詞どちらも可。support A(Aを支援する)",
+    "example": "My family always supports me.｜家族はいつも私を支えてくれる",
+    "confuse": ""
   },
   {
     "term": "crowd",
     "meaning": "群衆、人ごみ",
-    "reading": "クラウド"
+    "reading": "クラウド",
+    "ipa": "kraʊd",
+    "phonics": "ow → 「アウ」。「オウ」と読む ow もあるので注意",
+    "core": "一つの場所にたくさんの人が集まって、ひとかたまりになっている様子",
+    "usage": "a large crowd(大勢の人)。crowded(形容詞、混雑した)は関連語",
+    "example": "There was a large crowd there.｜そこには大勢の人がいた",
+    "confuse": ""
   },
   {
     "term": "difference",
     "meaning": "違い",
-    "reading": "ディファレンス"
+    "reading": "ディファレンス",
+    "ipa": "ˈdɪfrəns",
+    "phonics": "ffe → 真ん中のeはほとんど読まず「フ」とつまる",
+    "core": "二つ以上のものを比べたときに、同じでない部分。差があるという事実",
+    "usage": "the difference between A and B(AとBの違い)",
+    "example": "What is the difference between them?｜それらの違いは何ですか",
+    "confuse": "different と混同注意。difference は名詞（違い）、different は形容詞（違った）"
   },
   {
     "term": "nervous",
     "meaning": "緊張して、不安で",
-    "reading": "ナーバス"
+    "reading": "ナーバス",
+    "ipa": "ˈnɜːrvəs",
+    "phonics": "er → 強く「アー」とのばす音",
+    "core": "うまくいくかどうか心配で、体や気持ちが落ち着かなくなっている状態のこと",
+    "usage": "be nervous about 〜(〜について緊張する)の形で使う",
+    "example": "I feel nervous before a test.｜テストの前は緊張する",
+    "confuse": ""
   },
   {
     "term": "popular",
     "meaning": "人気のある",
-    "reading": "ポピュラー"
+    "reading": "ポピュラー",
+    "ipa": "ˈpɑːpjələr",
+    "phonics": "u → 弱い「ヤ」。強勢がないので軽く読む",
+    "core": "多くの人から好かれていて、幅広い人たちに選ばれ知られている様子を表す語",
+    "usage": "be popular with/among 〜(〜の間で人気がある)",
+    "example": "This song is popular with teens.｜この歌は十代に人気がある",
+    "confuse": ""
   },
   {
     "term": "discussion",
     "meaning": "議論、話し合い",
-    "reading": "ディスカッション"
+    "reading": "ディスカッション",
+    "ipa": "dɪˈskʌʃn",
+    "phonics": "ss → 「シュ」。sの連続がシ系の音になる",
+    "core": "一つのテーマについて、複数の人が意見を出し合って話し合うこと",
+    "usage": "have a discussion about 〜(〜について話し合う)",
+    "example": "We had a discussion about the plan.｜計画について話し合った",
+    "confuse": ""
   },
   {
     "term": "education",
     "meaning": "教育",
-    "reading": "エデュケーション"
+    "reading": "エデュケーション",
+    "ipa": "ˌedʒuˈkeɪʃn",
+    "phonics": "du → 「ジュ」。dがuの前で濁った音になる",
+    "core": "知識や考え方、生き方などを次の世代に教え、時間をかけて育てていくこと",
+    "usage": "数えられない名詞。higher education(高等教育)などの形で使う",
+    "example": "Education is important for children.｜教育は子どもにとって大切だ",
+    "confuse": ""
   },
   {
     "term": "energy",
     "meaning": "エネルギー、活力",
-    "reading": "エナジー"
+    "reading": "エナジー",
+    "ipa": "ˈenərdʒi",
+    "phonics": "g → 「ジ」。gがyの前でジ系の音になる",
+    "core": "何かを動かしたり働かせたりするもとになる力。体の中にも機械の中にもある",
+    "usage": "数えられない名詞。full of energy(元気いっぱい)の形で使う",
+    "example": "Kids are always full of energy.｜子どもはいつも元気いっぱいだ",
+    "confuse": ""
   },
   {
     "term": "especially",
     "meaning": "特に",
-    "reading": "イスペシャリー"
+    "reading": "イスペシャリー",
+    "ipa": "ɪˈspeʃəli",
+    "phonics": "ci → 「シャ」に近い音。ciはシ系の音になる",
+    "core": "いくつかある中でも、これはとりわけ強く当てはまるということを示す強調の語",
+    "usage": "文中で特に強調したい語句の直前に置いて使う副詞。文末に置くこともできる",
+    "example": "I like fruit, especially apples.｜果物、特にりんごが好きだ",
+    "confuse": ""
   },
   {
     "term": "finally",
     "meaning": "ついに、最後に",
-    "reading": "ファイナリー"
+    "reading": "ファイナリー",
+    "ipa": "ˈfaɪnəli",
+    "phonics": "i → 「アイ」。finの部分は名前どおりの音",
+    "core": "長い時間や順番を経たあと、とうとうそこに行き着くという到達感",
+    "usage": "文頭・文末どちらにも置ける副詞。at last とほぼ同じ意味",
+    "example": "We finally arrived home.｜私たちはついに家に着いた",
+    "confuse": ""
   },
   {
     "term": "suddenly",
     "meaning": "突然",
-    "reading": "サドンリー"
+    "reading": "サドンリー",
+    "ipa": "ˈsʌdnli",
+    "phonics": "u → 「ア」。サドンと短く読む",
+    "core": "何の前触れもなく、思いがけないタイミングで急に物事が起きる様子を表す語",
+    "usage": "文中の動詞を修飾する副詞。文頭に置くこともできる",
+    "example": "Suddenly, it began to rain.｜突然、雨が降り始めた",
+    "confuse": ""
   },
   {
     "term": "achieve",
     "meaning": "達成する",
-    "reading": "アチーブ"
+    "reading": "アチーブ",
+    "ipa": "əˈtʃiːv",
+    "phonics": "ie → 「イー」。iが先でeが後ろの並び",
+    "core": "こつこつ努力を積み重ねて、目指していた目標やゴールにたどり着くこと",
+    "usage": "他動詞。achieve a goal(目標を達成する)の形で頻出",
+    "example": "She achieved her dream.｜彼女は夢を達成した",
+    "confuse": ""
   },
   {
     "term": "admit",
     "meaning": "認める",
-    "reading": "アドミット"
+    "reading": "アドミット",
+    "ipa": "ədˈmɪt",
+    "phonics": "ad → 弱い「アド」。第二音節にアクセントを置く",
+    "core": "本当は隠したかったことでも、事実だと正直に受け入れて口に出して言うこと",
+    "usage": "admit 〜ing／admit that 〜。to不定詞ではなく動名詞をとる",
+    "example": "He admitted making a mistake.｜彼はミスをしたことを認めた",
+    "confuse": ""
   },
   {
     "term": "afford",
     "meaning": "〜する余裕がある",
-    "reading": "アフォード"
+    "reading": "アフォード",
+    "ipa": "əˈfɔːrd",
+    "phonics": "or → 「オー」と口を丸めてのばす音",
+    "core": "お金や時間に無理をしなくても、それをするだけの余裕が自分にあるということ",
+    "usage": "can afford to 〜 の形でほぼ決まって使う。否定文が多い",
+    "example": "I can't afford a new car.｜新しい車を買う余裕がない",
+    "confuse": ""
   },
   {
     "term": "allow",
     "meaning": "許す、許可する",
-    "reading": "アラウ"
+    "reading": "アラウ",
+    "ipa": "əˈlaʊ",
+    "phonics": "ow → 「アウ」。「オウ」と読む ow もあるので注意",
+    "core": "してもよいと相手に対して認めて、その行動をとめずに許可すること",
+    "usage": "allow 人 to 〜(人が〜するのを許す)の形が基本",
+    "example": "My parents allow me to go.｜両親は私が行くのを許してくれる",
+    "confuse": "let と混同注意。let は動詞の原形が続くが、allow は allow 人 to 〜 とto不定詞になる"
   },
   {
     "term": "appear",
     "meaning": "現れる、〜に見える",
-    "reading": "アピア"
+    "reading": "アピア",
+    "ipa": "əˈpɪr",
+    "phonics": "ea → 「イア」。二重母音になる音",
+    "core": "それまで見えなかったものが、視界の中に少しずつ姿を見せてくること",
+    "usage": "自動詞。appear to 〜(〜のように見える)の形もある",
+    "example": "A rainbow appeared in the sky.｜空に虹が現れた",
+    "confuse": ""
   },
   {
     "term": "avoid",
     "meaning": "避ける",
-    "reading": "アボイド"
+    "reading": "アボイド",
+    "ipa": "əˈvɔɪd",
+    "phonics": "oi → 「オイ」の二重母音",
+    "core": "困ったことにならないように、あらかじめそこに近づかないようにすること",
+    "usage": "avoid 〜ing／avoid 物。to不定詞ではなく動名詞をとる",
+    "example": "Try to avoid making noise.｜音を立てないようにして",
+    "confuse": ""
   },
   {
     "term": "compare",
     "meaning": "比較する",
-    "reading": "コンペア"
+    "reading": "コンペア",
+    "ipa": "kəmˈper",
+    "phonics": "pare → 「ペア」。サイレントEでaが名前どおりの音になる",
+    "core": "二つ以上のものを並べて、似ている点や違っている点をよく見きわめること",
+    "usage": "compare A with/to B(AをBと比較する)。名詞は comparison",
+    "example": "Let's compare these two pictures.｜この2枚の絵を比較しよう",
+    "confuse": ""
   },
   {
     "term": "complain",
     "meaning": "不平を言う",
-    "reading": "コンプレイン"
+    "reading": "コンプレイン",
+    "ipa": "kəmˈpleɪn",
+    "phonics": "ai → 「エイ」。二重母音になる音",
+    "core": "気に入らないことがあっても我慢せず、言葉に出して不満を相手に伝えること",
+    "usage": "complain about 〜(〜について不平を言う)の形が基本",
+    "example": "He always complains about work.｜彼はいつも仕事の不満を言う",
+    "confuse": ""
   },
   {
     "term": "consider",
     "meaning": "よく考える、検討する",
-    "reading": "コンシダー"
+    "reading": "コンシダー",
+    "ipa": "kənˈsɪdər",
+    "phonics": "si → 「シ」。sは母音に挟まれても濁らない",
+    "core": "何かを決める前に、いろいろな角度からじっくり時間をかけて考えてみること",
+    "usage": "consider 〜ing／consider that 〜。to不定詞ではなく動名詞をとる",
+    "example": "We should consider other ideas.｜他の考えも検討すべきだ",
+    "confuse": ""
   },
   {
     "term": "encourage",
     "meaning": "励ます、促す",
-    "reading": "インカレッジ"
+    "reading": "インカレッジ",
+    "ipa": "ɪnˈkɜːrɪdʒ",
+    "phonics": "cour → 「カー」。ourは弱い「アー」の音になる",
+    "core": "自信を失いかけている人の背中をそっと押して、前に進む勇気を与えること",
+    "usage": "encourage 人 to 〜(人が〜するよう励ます)の形が基本",
+    "example": "She encouraged me to try again.｜彼女は私にもう一度挑戦するよう励ました",
+    "confuse": ""
   },
   {
     "term": "expect",
     "meaning": "予期する、期待する",
-    "reading": "イクスペクト"
+    "reading": "イクスペクト",
+    "ipa": "ɪkˈspekt",
+    "phonics": "x → 「クス」。expのxはクス＋プの音",
+    "core": "これから先に起こるだろうと、あらかじめ心の中で見込んでおくこと。良い事にも悪い事にも使う",
+    "usage": "expect to 〜(〜するつもりでいる)／expect that 〜。名詞は expectation",
+    "example": "I expect to see you soon.｜すぐに会えると思っている",
+    "confuse": ""
   },
   {
     "term": "include",
     "meaning": "含む",
-    "reading": "インクルード"
+    "reading": "インクルード",
+    "ipa": "ɪnˈkluːd",
+    "phonics": "u → 「ウー」と長くのばす音",
+    "core": "全体の中の一部として、あるものをその中に取り込んで持っていること",
+    "usage": "他動詞。including 〜(〜を含めて)という形もよく使う",
+    "example": "The price includes tax.｜その値段には税金が含まれる",
+    "confuse": ""
   },
   {
     "term": "increase",
     "meaning": "増える、増やす",
-    "reading": "インクリース"
+    "reading": "インクリース",
+    "ipa": "ɪnˈkriːs",
+    "phonics": "ea → 「イー」と長くのばす音。動詞は後ろにアクセントを置く",
+    "core": "数や量、程度がもとの状態より大きく多くなっていくこと。減るの反対の変化",
+    "usage": "自動詞・他動詞どちらも可。名詞のincreaseは前にアクセントが移る",
+    "example": "The number of students increased.｜生徒の数が増えた",
+    "confuse": "decrease と対になる語。increase は増える、decrease は減る。反対の意味をセットで覚える"
   },
   {
     "term": "maintain",
     "meaning": "維持する",
-    "reading": "メインテイン"
+    "reading": "メインテイン",
+    "ipa": "meɪnˈteɪn",
+    "phonics": "ai → 「エイ」が二回続く語。両方とも同じ音になる",
+    "core": "良い状態や今の水準を、崩さずにそのまま保ち続けるように意識して働きかけること",
+    "usage": "他動詞。maintain one's health(健康を維持する)の形で頻出",
+    "example": "It is hard to maintain good health.｜健康を維持するのは難しい",
+    "confuse": ""
   },
   {
     "term": "provide",
     "meaning": "提供する",
-    "reading": "プロバイド"
+    "reading": "プロバイド",
+    "ipa": "prəˈvaɪd",
+    "phonics": "i → 「アイ」。語尾のサイレントEで名前どおりの音になる",
+    "core": "相手が必要としているものを、こちらが用意してわざわざ差し出してあげること",
+    "usage": "provide A with B／provide B for A(AにBを提供する)の形がある",
+    "example": "This school provides free lunch.｜この学校は無料の給食を提供する",
+    "confuse": ""
   },
   {
     "term": "reduce",
     "meaning": "減らす",
-    "reading": "リデュース"
+    "reading": "リデュース",
+    "ipa": "rɪˈduːs",
+    "phonics": "u → 「ウー」と長くのばす音",
+    "core": "量や大きさ、程度をもとより小さく少なくすること。increaseの反対の変化",
+    "usage": "他動詞。reduce the number of 〜(〜の数を減らす)の形で使う",
+    "example": "We should reduce plastic waste.｜プラスチックごみを減らすべきだ",
+    "confuse": ""
   },
   {
     "term": "refuse",
     "meaning": "断る、拒否する",
-    "reading": "リフューズ"
+    "reading": "リフューズ",
+    "ipa": "rɪˈfjuːz",
+    "phonics": "u → 「ユー」。語尾は名前どおりの音",
+    "core": "相手からの申し出や頼みを、受け入れずにはっきりと退けて拒むこと",
+    "usage": "refuse to 〜(〜することを断る)。to不定詞をとる動詞",
+    "example": "He refused to answer the question.｜彼はその質問に答えるのを拒んだ",
+    "confuse": ""
   },
   {
     "term": "replace",
     "meaning": "取り替える、取って代わる",
-    "reading": "リプレイス"
+    "reading": "リプレイス",
+    "ipa": "rɪˈpleɪs",
+    "phonics": "ai → 「エイ」。二重母音になる音",
+    "core": "古いものや今あるものを取り除いて、新しい別のものと入れ替えること",
+    "usage": "replace A with B(AをBと取り替える)の形が基本",
+    "example": "I need to replace the battery.｜電池を交換する必要がある",
+    "confuse": ""
   },
   {
     "term": "require",
     "meaning": "必要とする、要求する",
-    "reading": "リクワイア"
+    "reading": "リクワイア",
+    "ipa": "rɪˈkwaɪər",
+    "phonics": "qu → 「クヮ」。qは常にuとセットでクの音になる",
+    "core": "何かを成り立たせるために、それがどうしても欠かせないと求めること",
+    "usage": "他動詞。require 人 to 〜(人に〜することを求める)の形もある",
+    "example": "This job requires a lot of patience.｜この仕事には多くの忍耐が必要だ",
+    "confuse": "need と混同注意。need より少しかたい語で、規則や状況から必要とされる場合に使う"
   },
   {
     "term": "succeed",
     "meaning": "成功する",
-    "reading": "サクシード"
+    "reading": "サクシード",
+    "ipa": "səkˈsiːd",
+    "phonics": "cc → 「ク」。ccはkとsの2つの音が混ざる語",
+    "core": "目指していたことをやり遂げて、望んでいた結果を手に入れること",
+    "usage": "succeed in 〜ing(〜することに成功する)の形が基本。名詞は success",
+    "example": "She succeeded in passing the exam.｜彼女は試験に合格することに成功した",
+    "confuse": "succeed to は「後を継ぐ」の意味になる。「成功する」なら succeed in を使う"
   },
   {
     "term": "ability",
     "meaning": "能力",
-    "reading": "アビリティ"
+    "reading": "アビリティ",
+    "ipa": "əˈbɪləti",
+    "phonics": "bi → 「ビ」。第二音節にアクセントを置く",
+    "core": "何かをうまくやりとげることができる、その人に備わった力や技量",
+    "usage": "have the ability to 〜(〜する能力がある)の形で使う",
+    "example": "He has the ability to lead others.｜彼には人を導く能力がある",
+    "confuse": ""
   },
   {
     "term": "advantage",
     "meaning": "利点、有利な点",
-    "reading": "アドバンテージ"
+    "reading": "アドバンテージ",
+    "ipa": "ədˈvæntɪdʒ",
+    "phonics": "ad → 弱い「アド」。第二音節にアクセントを置く",
+    "core": "他と比べたときに、自分をより良い立場にしてくれる強みや得な点",
+    "usage": "have an advantage over 〜(〜より有利である)の形で使う",
+    "example": "Speaking English is a big advantage.｜英語が話せることは大きな利点だ",
+    "confuse": "disadvantage と対になる語。advantage は利点、disadvantage は不利な点・欠点"
   },
   {
     "term": "amount",
     "meaning": "量、額",
-    "reading": "アマウント"
+    "reading": "アマウント",
+    "ipa": "əˈmaʊnt",
+    "phonics": "ou → 「アウ」の二重母音",
+    "core": "物の重さや大きさ、お金などをまとめて数字で表したときの全体の大きさ",
+    "usage": "the amount of 〜(〜の量)。数えられない名詞に使う",
+    "example": "A large amount of money was spent.｜多額のお金が使われた",
+    "confuse": "number と混同注意。number は数えられる物の数、amount は数えられない量や額に使う"
   },
   {
     "term": "attention",
     "meaning": "注意、注目",
-    "reading": "アテンション"
+    "reading": "アテンション",
+    "ipa": "əˈtenʃn",
+    "phonics": "tion → 「ション」の音になる語尾",
+    "core": "意識を一つのことだけに向けて、そこに集中させている状態のこと",
+    "usage": "pay attention to 〜(〜に注意を払う)の形で頻出",
+    "example": "Please pay attention to the teacher.｜先生に注意を払ってください",
+    "confuse": ""
   },
   {
     "term": "benefit",
     "meaning": "利益、恩恵",
-    "reading": "ベネフィット"
+    "reading": "ベネフィット",
+    "ipa": "ˈbenɪfɪt",
+    "phonics": "e → 「エ」。第一音節にアクセントを置く",
+    "core": "何かをしたり持っていたりすることで、自分に返ってくる良い結果",
+    "usage": "他動詞・名詞どちらも可。benefit from 〜(〜から利益を得る)",
+    "example": "Exercise has many health benefits.｜運動には多くの健康上の利点がある",
+    "confuse": ""
   },
   {
     "term": "concern",
     "meaning": "心配、関心事",
-    "reading": "コンサーン"
+    "reading": "コンサーン",
+    "ipa": "kənˈsɜːrn",
+    "phonics": "er → 強く「アー」とのばす音",
+    "core": "うまくいかないのではないかと気にかかって、心が落ち着かないこと",
+    "usage": "be concerned about 〜(〜を心配する)の形もよく使う",
+    "example": "Pollution is a growing concern.｜汚染は高まる懸念事項だ",
+    "confuse": ""
   },
   {
     "term": "condition",
     "meaning": "状態、条件",
-    "reading": "コンディション"
+    "reading": "コンディション",
+    "ipa": "kənˈdɪʃn",
+    "phonics": "tion → 「ション」の音になる語尾",
+    "core": "物や人が今どんな様子にあるか、または何かが成り立つために必要な決まりごと",
+    "usage": "in good condition(良い状態で)。on one condition(一つの条件で)",
+    "example": "The car is in good condition.｜その車は良い状態だ",
+    "confuse": ""
   },
   {
     "term": "effect",
     "meaning": "影響、効果",
-    "reading": "イフェクト"
+    "reading": "イフェクト",
+    "ipa": "ɪˈfekt",
+    "phonics": "e → 「エ」。第二音節にアクセントを置く",
+    "core": "何かが原因となって、別の物事に引き起こされる変化や結果のこと",
+    "usage": "have an effect on 〜(〜に影響を与える)の形で頻出",
+    "example": "The medicine had a good effect.｜その薬は良い効果があった",
+    "confuse": "affect と混同注意。effect は名詞(結果・効果)、affect は動詞(影響を与える)"
   },
   {
     "term": "effort",
     "meaning": "努力",
-    "reading": "エフォート"
+    "reading": "エフォート",
+    "ipa": "ˈefərt",
+    "phonics": "e → 「エ」。第一音節にアクセントを置く",
+    "core": "目標に向かって、大変でも途中であきらめずに力を使い続けること",
+    "usage": "make an effort to 〜(〜しようと努力する)の形で頻出",
+    "example": "She made an effort to study hard.｜彼女は熱心に勉強しようと努力した",
+    "confuse": ""
   },
   {
     "term": "equipment",
     "meaning": "装備、機器",
-    "reading": "イクイップメント"
+    "reading": "イクイップメント",
+    "ipa": "ɪˈkwɪpmənt",
+    "phonics": "qu → 「クヮ」。qは常にuとセットでクの音になる",
+    "core": "ある作業や活動をするために必要な、道具や機械をまとめて指す言葉",
+    "usage": "数えられない名詞。sports equipment(スポーツ用具)のように使う",
+    "example": "We need more camping equipment.｜もっとキャンプ用品が必要だ",
+    "confuse": ""
   },
   {
     "term": "evidence",
     "meaning": "証拠",
-    "reading": "エビデンス"
+    "reading": "エビデンス",
+    "ipa": "ˈevɪdəns",
+    "phonics": "e → 「エ」。第一音節にアクセントを置く",
+    "core": "何かが本当だと信じるための、目に見える確かなしるしや根拠となるもの",
+    "usage": "数えられない名詞。a piece of evidence(1つの証拠)で数える",
+    "example": "There is no evidence for this.｜これには証拠がない",
+    "confuse": ""
   },
   {
     "term": "industry",
     "meaning": "産業、業界",
-    "reading": "インダストリー"
+    "reading": "インダストリー",
+    "ipa": "ˈɪndəstri",
+    "phonics": "in → 「イン」。第一音節にアクセントを置く",
+    "core": "物を作ったりサービスを提供したりする活動が、まとまった分野になったもの",
+    "usage": "the car industry(自動車産業)のように前に分野の名前を置く",
+    "example": "The tourism industry is growing fast.｜観光産業は急速に成長している",
+    "confuse": ""
   },
   {
     "term": "issue",
     "meaning": "問題、争点",
-    "reading": "イシュー"
+    "reading": "イシュー",
+    "ipa": "ˈɪʃuː",
+    "phonics": "ss → 「シュ」。ssuはシューの音になる",
+    "core": "解決や議論が必要な、人々の間で意見が分かれるような重要な話題",
+    "usage": "a social issue(社会問題)。動詞では「発行する」の意味にもなる",
+    "example": "This is an important issue for us.｜これは私たちにとって重要な問題だ",
+    "confuse": ""
   },
   {
     "term": "method",
     "meaning": "方法",
-    "reading": "メソッド"
+    "reading": "メソッド",
+    "ipa": "ˈmeθəd",
+    "phonics": "th → 舌を挟む無声音。theの濁る音とは違う",
+    "core": "何かを成し遂げるために決まった手順を踏んで行う、やり方のこと",
+    "usage": "a method of 〜ing(〜する方法)。wayよりややかたい語",
+    "example": "This is a good method to learn words.｜これは単語を覚える良い方法だ",
+    "confuse": ""
   },
   {
     "term": "opportunity",
     "meaning": "機会",
-    "reading": "オポチュニティ"
+    "reading": "オポチュニティ",
+    "ipa": "ˌɑːpərˈtuːnəti",
+    "phonics": "tu → 「トゥー」。opの後は弱く読む",
+    "core": "何かをするのにちょうどよい、めぐってきた好都合なタイミングのこと",
+    "usage": "have an opportunity to 〜(〜する機会がある)の形で頻出",
+    "example": "This is a great opportunity for you.｜これはあなたにとって絶好の機会だ",
+    "confuse": "chance と混同注意。chance は偶然の機会、opportunity は形式的でめぐってきた好機を表す"
   },
   {
     "term": "pressure",
     "meaning": "圧力、重圧",
-    "reading": "プレッシャー"
+    "reading": "プレッシャー",
+    "ipa": "ˈpreʃər",
+    "phonics": "ssu → 「シュ」。sの連続がシ系の音になる",
+    "core": "外側から押しつけられて、心や体にかかる負担や重みのようなもの",
+    "usage": "under pressure(重圧を受けて)。put pressure on 〜(〜に圧力をかける)",
+    "example": "He works well under pressure.｜彼は重圧の中でもよく働く",
+    "confuse": ""
   },
   {
     "term": "progress",
     "meaning": "進歩、前進",
-    "reading": "プログレス"
+    "reading": "プログレス",
+    "ipa": "ˈprɑːɡres",
+    "phonics": "o → 「アー」に近い音。名詞は前にアクセントを置く",
+    "core": "始めたときの状態から、少しずつ良い方向へ前へ前へと進んでいくこと",
+    "usage": "make progress(進歩する)の形で頻出。数えられない名詞",
+    "example": "She is making good progress.｜彼女は順調に進歩している",
+    "confuse": ""
   },
   {
     "term": "quality",
     "meaning": "質",
-    "reading": "クオリティ"
+    "reading": "クオリティ",
+    "ipa": "ˈkwɑːləti",
+    "phonics": "qu → 「クヮ」。qは常にuとセットでクの音になる",
+    "core": "物や人がどれくらい良いか、あるいはどんな特徴を持っているかという中身の程度",
+    "usage": "high quality(高品質)。数えられる名詞・数えられない名詞どちらもある",
+    "example": "This shop sells high quality food.｜この店は高品質な食品を売る",
+    "confuse": "quantity と混同注意。quality は質(良さの程度)、quantity は量(数の多さ)"
   },
   {
     "term": "resource",
     "meaning": "資源",
-    "reading": "リソース"
+    "reading": "リソース",
+    "ipa": "ˈriːsɔːrs",
+    "phonics": "re → 「リー」。第一音節にアクセントを置く",
+    "core": "何かを作ったり生活したりするために利用できる、もとになるものや力",
+    "usage": "natural resources(天然資源)の形で頻出。複数形でよく使う",
+    "example": "Japan has few natural resources.｜日本は天然資源が乏しい",
+    "confuse": ""
   },
   {
     "term": "situation",
     "meaning": "状況",
-    "reading": "シチュエーション"
+    "reading": "シチュエーション",
+    "ipa": "ˌsɪtʃuˈeɪʃn",
+    "phonics": "tion → 「ション」の音になる語尾",
+    "core": "今その場で起きている、いろいろな条件が組み合わさった物事の様子",
+    "usage": "in this situation(この状況で)の形で頻出",
+    "example": "We need to understand the situation.｜私たちは状況を理解する必要がある",
+    "confuse": ""
   },
   {
     "term": "accurate",
     "meaning": "正確な",
-    "reading": "アキュレット"
+    "reading": "アキュレット",
+    "ipa": "ˈækjərət",
+    "phonics": "cu → 「キュ」。curateのように読む",
+    "core": "間違いや誤差がなく、事実や本物にぴったり合っている様子のこと",
+    "usage": "an accurate answer(正確な答え)。反対は inaccurate",
+    "example": "This clock is very accurate.｜この時計はとても正確だ",
+    "confuse": ""
   },
   {
     "term": "available",
     "meaning": "利用できる、手に入る",
-    "reading": "アベイラブル"
+    "reading": "アベイラブル",
+    "ipa": "əˈveɪləbl",
+    "phonics": "ai → 「エイ」。第二音節にアクセントを置く",
+    "core": "必要なときにすぐ使える状態にある、または手に入れることができる様子",
+    "usage": "be available for 〜(〜に利用できる)の形で使う",
+    "example": "This seat is not available now.｜この席は今利用できない",
+    "confuse": ""
   },
   {
     "term": "aware",
     "meaning": "気づいている",
-    "reading": "アウェア"
+    "reading": "アウェア",
+    "ipa": "əˈwer",
+    "phonics": "are → 「エア」。サイレントEでaが名前どおりの音になる",
+    "core": "何かの存在や事実をすでに知っていて、はっきりと意識している状態のこと",
+    "usage": "be aware of 〜(〜に気づいている)の形が基本",
+    "example": "I am aware of the problem.｜私はその問題に気づいている",
+    "confuse": ""
   },
   {
     "term": "confident",
     "meaning": "自信のある",
-    "reading": "コンフィデント"
+    "reading": "コンフィデント",
+    "ipa": "ˈkɑːnfɪdənt",
+    "phonics": "fi → 「フィ」。第一音節にアクセントを置く",
+    "core": "自分の力や判断を信じて、不安がなく落ち着いている気持ちのこと",
+    "usage": "be confident about/in 〜(〜に自信がある)の形で使う",
+    "example": "She is confident about her English.｜彼女は自分の英語に自信がある",
+    "confuse": ""
   },
   {
     "term": "curious",
     "meaning": "好奇心の強い",
-    "reading": "キュリアス"
+    "reading": "キュリアス",
+    "ipa": "ˈkjʊriəs",
+    "phonics": "u → 「ユ」。curは「キュア」に近い音",
+    "core": "まだ知らないことについて、知りたい・調べたいという気持ちが強い様子",
+    "usage": "be curious about 〜(〜に興味を持っている)の形で使う",
+    "example": "Children are curious about everything.｜子どもは何にでも興味を持つ",
+    "confuse": ""
   },
   {
     "term": "efficient",
     "meaning": "効率的な",
-    "reading": "イフィシェント"
+    "reading": "イフィシェント",
+    "ipa": "ɪˈfɪʃnt",
+    "phonics": "ci → 「シ」。cはiの前でサ行の音になる",
+    "core": "限られた時間や力を無駄なく使って、大きな結果を出せる様子のこと",
+    "usage": "an efficient way(効率的な方法)。反対は inefficient",
+    "example": "This is an efficient way to study.｜これは効率的な勉強法だ",
+    "confuse": ""
   },
   {
     "term": "familiar",
     "meaning": "よく知っている、なじみのある",
-    "reading": "ファミリア"
+    "reading": "ファミリア",
+    "ipa": "fəˈmɪljər",
+    "phonics": "iar → 「ヤー」に近い弱い音",
+    "core": "何度も見たり聞いたりしてきて、すでによく知っていて親しみがある様子",
+    "usage": "be familiar with 〜(〜をよく知っている)の形が基本",
+    "example": "This song sounds familiar to me.｜この曲は私にはなじみがある",
+    "confuse": ""
   },
   {
     "term": "obvious",
     "meaning": "明らかな",
-    "reading": "オブビアス"
+    "reading": "オブビアス",
+    "ipa": "ˈɑːbviəs",
+    "phonics": "vi → 「ビ」。第一音節にアクセントを置く",
+    "core": "説明されなくても、誰の目にもすぐに分かるくらいはっきりしている様子",
+    "usage": "It is obvious that 〜(〜は明らかだ)の形で使う",
+    "example": "It is obvious that he is tired.｜彼が疲れているのは明らかだ",
+    "confuse": ""
   },
   {
     "term": "particular",
     "meaning": "特定の、特別の",
-    "reading": "パティキュラー"
+    "reading": "パティキュラー",
+    "ipa": "pərˈtɪkjələr",
+    "phonics": "cu → 「キュ」。tiは弱い「ティ」に近い音",
+    "core": "他の多くの中から、これだと一つに絞り込んで指し示している様子のこと",
+    "usage": "in particular(特に)。this particular 〜(この特定の〜)",
+    "example": "I like this particular design.｜私はこの特定のデザインが好きだ",
+    "confuse": ""
   },
   {
     "term": "previous",
     "meaning": "以前の、前の",
-    "reading": "プリビアス"
+    "reading": "プリビアス",
+    "ipa": "ˈpriːviəs",
+    "phonics": "e → 「イー」。第一音節にアクセントを置く",
+    "core": "今よりも時間的に前にある、すぐ一つ手前の出来事や状態を指す語のこと",
+    "usage": "the previous day(前日)。前置詞を使わず名詞の前に置く形容詞",
+    "example": "I met him the previous week.｜私は前の週に彼に会った",
+    "confuse": ""
   },
   {
     "term": "rapid",
     "meaning": "急速な",
-    "reading": "ラピッド"
+    "reading": "ラピッド",
+    "ipa": "ˈræpɪd",
+    "phonics": "a → 「ア」。短く切る音",
+    "core": "変化や動きのスピードが非常に速く、あっという間に進んでいく様子",
+    "usage": "rapid growth(急速な成長)。fastより硬めでかたい文章に使う",
+    "example": "The city has seen rapid growth.｜その都市は急速な成長を遂げた",
+    "confuse": ""
   },
   {
     "term": "reasonable",
     "meaning": "妥当な、手ごろな",
-    "reading": "リーズナブル"
+    "reading": "リーズナブル",
+    "ipa": "ˈriːznəbl",
+    "phonics": "rea → 「リー」。第一音節にアクセントを置く",
+    "core": "常識から考えて納得できる、無理のないちょうどよい程度である様子",
+    "usage": "a reasonable price(手ごろな値段)。reason(理由)から作られた語",
+    "example": "This price is very reasonable.｜この値段はとても手ごろだ",
+    "confuse": ""
   },
   {
     "term": "responsible",
     "meaning": "責任がある",
-    "reading": "リスポンシブル"
+    "reading": "リスポンシブル",
+    "ipa": "rɪˈspɑːnsəbl",
+    "phonics": "si → 「シ」。sは母音に挟まれても濁らない",
+    "core": "その物事の結果について、自分が答えを引き受けなければならない立場にあること",
+    "usage": "be responsible for 〜(〜に責任がある)の形が基本",
+    "example": "I am responsible for this project.｜私はこの計画に責任がある",
+    "confuse": ""
   },
   {
     "term": "sufficient",
     "meaning": "十分な",
-    "reading": "サフィシェント"
+    "reading": "サフィシェント",
+    "ipa": "səˈfɪʃnt",
+    "phonics": "ci → 「シ」。cはiの前でサ行の音になる",
+    "core": "必要な量や程度をきちんと満たしていて、それ以上を求めなくてよい様子",
+    "usage": "sufficient for 〜(〜に十分な)。enoughよりかたい語",
+    "example": "We have sufficient food for the trip.｜旅行に十分な食料がある",
+    "confuse": "enough と混同注意。sufficient は enough よりかたい書き言葉で、意味はほぼ同じ"
   },
   {
     "term": "various",
     "meaning": "さまざまな",
-    "reading": "ベアリアス"
+    "reading": "ベアリアス",
+    "ipa": "ˈveriəs",
+    "phonics": "a → 「エア」。第一音節にアクセントを置く",
+    "core": "一種類ではなく、いくつもの違った種類が集まって存在している様子のこと",
+    "usage": "various kinds of 〜(さまざまな種類の〜)。複数名詞の前に置く",
+    "example": "The store sells various kinds of tea.｜その店はさまざまな種類のお茶を売る",
+    "confuse": ""
   },
   {
     "term": "apparently",
     "meaning": "見たところ〜らしい",
-    "reading": "アパレントリー"
+    "reading": "アパレントリー",
+    "ipa": "əˈpærəntli",
+    "phonics": "a → 「ア」。第二音節にアクセントを置く",
+    "core": "確かな証拠はないが、見たり聞いたりした感じからすると、そうらしいという判断",
+    "usage": "文頭に置いて文全体を修飾する副詞。伝聞のニュアンスを含む",
+    "example": "Apparently, he already left.｜どうやら彼はもう出発したらしい",
+    "confuse": ""
   },
   {
     "term": "approximately",
     "meaning": "おおよそ、約",
-    "reading": "アプロキシメットリー"
+    "reading": "アプロキシメットリー",
+    "ipa": "əˈprɑːksɪmətli",
+    "phonics": "x → 「クス」。approxの部分にアクセントを置く",
+    "core": "正確な数字ではないが、それに近いだいたいの数量を表すときに使う言葉",
+    "usage": "数字の前に置いて使う。aboutよりかたい書き言葉",
+    "example": "It takes approximately two hours.｜約2時間かかる",
+    "confuse": "about と混同注意。意味はほぼ同じだが approximately はよりかたく、数字表現でよく使う"
   },
   {
     "term": "currently",
     "meaning": "現在は",
-    "reading": "カレントリー"
+    "reading": "カレントリー",
+    "ipa": "ˈkɜːrəntli",
+    "phonics": "u → 強く「アー」とのばす音",
+    "core": "過去でも未来でもなく、まさに今この時点で起きているという状態のこと",
+    "usage": "進行形や現在時制の文でよく使う副詞。nowよりかためのニュアンス",
+    "example": "She is currently living in Tokyo.｜彼女は現在東京に住んでいる",
+    "confuse": ""
   },
   {
     "term": "eventually",
     "meaning": "最終的には、やがて",
-    "reading": "イベンチュアリー"
+    "reading": "イベンチュアリー",
+    "ipa": "ɪˈventʃuəli",
+    "phonics": "tu → 「チュ」。tがuの前で「チ」の音になる",
+    "core": "途中でいろいろあっても、時間が経った末にはそうなる、という結末を表す",
+    "usage": "文中・文頭どちらにも置ける副詞。finallyと似た意味で使う",
+    "example": "He eventually became a doctor.｜彼はやがて医者になった",
+    "confuse": ""
   },
   {
     "term": "immediately",
     "meaning": "すぐに、ただちに",
-    "reading": "イミーディエットリー"
+    "reading": "イミーディエットリー",
+    "ipa": "ɪˈmiːdiətli",
+    "phonics": "ia → 「イア」に近い弱い音",
+    "core": "一瞬も時間を空けずに、その場ですぐさま物事が起きる様子のこと",
+    "usage": "文末や動詞の直後に置くことが多い副詞。at once とほぼ同じ意味",
+    "example": "Please call me immediately.｜すぐに電話してください",
+    "confuse": ""
   }
 ]
