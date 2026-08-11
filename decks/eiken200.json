@@ -1,202 +1,1302 @@
 [
-{"term":"agree","meaning":"同意する","reading":"アグリー"},
-{"term":"return","meaning":"戻る、返す","reading":"リターン"},
-{"term":"become","meaning":"〜になる","reading":"ビカム"},
-{"term":"bring","meaning":"持ってくる","reading":"ブリング"},
-{"term":"build","meaning":"建てる","reading":"ビルド"},
-{"term":"carry","meaning":"運ぶ","reading":"キャリー"},
-{"term":"catch","meaning":"つかまえる、間に合う","reading":"キャッチ"},
-{"term":"cross","meaning":"渡る、横切る","reading":"クロス"},
-{"term":"enjoy","meaning":"楽しむ","reading":"インジョイ"},
-{"term":"fall","meaning":"落ちる、転ぶ","reading":"フォール"},
-{"term":"feel","meaning":"感じる","reading":"フィール"},
-{"term":"finish","meaning":"終える","reading":"フィニッシュ"},
-{"term":"climb","meaning":"登る","reading":"クライム"},
-{"term":"grow","meaning":"育つ、栽培する","reading":"グロウ"},
-{"term":"happen","meaning":"起こる","reading":"ハプン"},
-{"term":"hurry","meaning":"急ぐ","reading":"ハリー"},
-{"term":"join","meaning":"参加する、加わる","reading":"ジョイン"},
-{"term":"keep","meaning":"保つ、〜し続ける","reading":"キープ"},
-{"term":"laugh","meaning":"笑う","reading":"ラフ"},
-{"term":"learn","meaning":"学ぶ、習う","reading":"ラーン"},
-{"term":"leave","meaning":"去る、置き忘れる","reading":"リーブ"},
-{"term":"move","meaning":"動く、引っ越す","reading":"ムーブ"},
-{"term":"pass","meaning":"通る、渡す、合格する","reading":"パス"},
-{"term":"plan","meaning":"計画する","reading":"プラン"},
-{"term":"practice","meaning":"練習する","reading":"プラクティス"},
-{"term":"send","meaning":"送る","reading":"センド"},
-{"term":"show","meaning":"見せる、案内する","reading":"ショウ"},
-{"term":"sound","meaning":"〜に聞こえる","reading":"サウンド"},
-{"term":"stay","meaning":"滞在する、とどまる","reading":"ステイ"},
-{"term":"teach","meaning":"教える","reading":"ティーチ"},
-{"term":"travel","meaning":"旅行する","reading":"トラベル"},
-{"term":"try","meaning":"試す、やってみる","reading":"トライ"},
-{"term":"visit","meaning":"訪れる","reading":"ビジット"},
-{"term":"wait","meaning":"待つ","reading":"ウェイト"},
-{"term":"airport","meaning":"空港","reading":"エアポート"},
-{"term":"bridge","meaning":"橋","reading":"ブリッジ"},
-{"term":"building","meaning":"建物","reading":"ビルディング"},
-{"term":"cafeteria","meaning":"食堂、カフェテリア","reading":"キャフェテリア"},
-{"term":"concert","meaning":"コンサート","reading":"コンサート"},
-{"term":"corner","meaning":"角、隅","reading":"コーナー"},
-{"term":"dream","meaning":"夢","reading":"ドリーム"},
-{"term":"earth","meaning":"地球","reading":"アース"},
-{"term":"festival","meaning":"祭り","reading":"フェスティバル"},
-{"term":"floor","meaning":"床、階","reading":"フロア"},
-{"term":"future","meaning":"未来、将来","reading":"フューチャー"},
-{"term":"group","meaning":"集団、グループ","reading":"グループ"},
-{"term":"hobby","meaning":"趣味","reading":"ホビー"},
-{"term":"holiday","meaning":"休日、祝日","reading":"ホリデイ"},
-{"term":"kitchen","meaning":"台所","reading":"キッチン"},
-{"term":"message","meaning":"伝言、メッセージ","reading":"メッセージ"},
-{"term":"mountain","meaning":"山","reading":"マウンテン"},
-{"term":"nature","meaning":"自然","reading":"ネイチャー"},
-{"term":"news","meaning":"知らせ、ニュース","reading":"ニュース"},
-{"term":"present","meaning":"贈り物","reading":"プレゼント"},
-{"term":"price","meaning":"値段","reading":"プライス"},
-{"term":"problem","meaning":"問題","reading":"プロブレム"},
-{"term":"restaurant","meaning":"レストラン","reading":"レストラン"},
-{"term":"season","meaning":"季節","reading":"シーズン"},
-{"term":"sightseeing","meaning":"観光","reading":"サイトスィーイング"},
-{"term":"subject","meaning":"科目、話題","reading":"サブジェクト"},
-{"term":"ticket","meaning":"切符、チケット","reading":"チケット"},
-{"term":"tourist","meaning":"観光客","reading":"ツーリスト"},
-{"term":"traffic","meaning":"交通、交通量","reading":"トラフィック"},
-{"term":"trip","meaning":"旅行","reading":"トリップ"},
-{"term":"uniform","meaning":"制服","reading":"ユニフォーム"},
-{"term":"village","meaning":"村","reading":"ビレッジ"},
-{"term":"weather","meaning":"天気","reading":"ウェザー"},
-{"term":"delicious","meaning":"とてもおいしい","reading":"デリシャス"},
-{"term":"exciting","meaning":"わくわくさせる","reading":"イクサイティング"},
-{"term":"quickly","meaning":"すばやく、急いで","reading":"クイックリー"},
-{"term":"accept","meaning":"受け入れる","reading":"アクセプト"},
-{"term":"choose","meaning":"選ぶ","reading":"チューズ"},
-{"term":"collect","meaning":"集める","reading":"コレクト"},
-{"term":"continue","meaning":"続ける、続く","reading":"コンティニュー"},
-{"term":"announce","meaning":"発表する、知らせる","reading":"アナウンス"},
-{"term":"develop","meaning":"発展させる、開発する","reading":"ディベロップ"},
-{"term":"discover","meaning":"発見する","reading":"ディスカバー"},
-{"term":"explain","meaning":"説明する","reading":"イクスプレイン"},
-{"term":"hold","meaning":"持つ、開催する","reading":"ホウルド"},
-{"term":"improve","meaning":"改善する、上達する","reading":"インプルーブ"},
-{"term":"introduce","meaning":"紹介する","reading":"イントロデュース"},
-{"term":"contact","meaning":"連絡する","reading":"コンタクト"},
-{"term":"deliver","meaning":"配達する","reading":"デリバー"},
-{"term":"prepare","meaning":"準備する","reading":"プリペア"},
-{"term":"produce","meaning":"生産する","reading":"プロデュース"},
-{"term":"protect","meaning":"守る、保護する","reading":"プロテクト"},
-{"term":"realize","meaning":"気づく、実現する","reading":"リアライズ"},
-{"term":"describe","meaning":"描写する、説明する","reading":"ディスクライブ"},
-{"term":"recommend","meaning":"推薦する、勧める","reading":"レコメンド"},
-{"term":"repair","meaning":"修理する","reading":"リペア"},
-{"term":"respect","meaning":"尊敬する","reading":"リスペクト"},
-{"term":"share","meaning":"共有する、分け合う","reading":"シェア"},
-{"term":"solve","meaning":"解決する、解く","reading":"ソルブ"},
-{"term":"suggest","meaning":"提案する","reading":"サジェスト"},
-{"term":"examine","meaning":"調べる、検査する","reading":"イグザミン"},
-{"term":"accident","meaning":"事故","reading":"アクシデント"},
-{"term":"advice","meaning":"助言、アドバイス","reading":"アドバイス"},
-{"term":"article","meaning":"記事","reading":"アーティクル"},
-{"term":"exchange","meaning":"交換する","reading":"イクスチェンジ"},
-{"term":"chance","meaning":"機会、可能性","reading":"チャンス"},
-{"term":"express","meaning":"表現する","reading":"イクスプレス"},
-{"term":"customer","meaning":"客、顧客","reading":"カスタマー"},
-{"term":"dictionary","meaning":"辞書","reading":"ディクショナリー"},
-{"term":"imagine","meaning":"想像する","reading":"イマジン"},
-{"term":"exam","meaning":"試験","reading":"イグザム"},
-{"term":"invent","meaning":"発明する","reading":"インベント"},
-{"term":"factory","meaning":"工場","reading":"ファクトリー"},
-{"term":"government","meaning":"政府","reading":"ガバメント"},
-{"term":"health","meaning":"健康","reading":"ヘルス"},
-{"term":"information","meaning":"情報","reading":"インフォメーション"},
-{"term":"instrument","meaning":"楽器、器具","reading":"インストゥルメント"},
-{"term":"knowledge","meaning":"知識","reading":"ナレッジ"},
-{"term":"notice","meaning":"気づく","reading":"ノウティス"},
-{"term":"machine","meaning":"機械","reading":"マシーン"},
-{"term":"medicine","meaning":"薬","reading":"メディスン"},
-{"term":"neighbor","meaning":"隣人、近所の人","reading":"ネイバー"},
-{"term":"opinion","meaning":"意見","reading":"オピニオン"},
-{"term":"passenger","meaning":"乗客","reading":"パセンジャー"},
-{"term":"population","meaning":"人口","reading":"ポピュレーション"},
-{"term":"reason","meaning":"理由","reading":"リーズン"},
-{"term":"afraid","meaning":"恐れて、怖がって","reading":"アフレイド"},
-{"term":"boring","meaning":"退屈な","reading":"ボーリング"},
-{"term":"careful","meaning":"注意深い","reading":"ケアフル"},
-{"term":"common","meaning":"共通の、ふつうの","reading":"コモン"},
-{"term":"convenient","meaning":"便利な","reading":"コンビニエント"},
-{"term":"offer","meaning":"申し出る、提供する","reading":"オファー"},
-{"term":"excited","meaning":"わくわくして","reading":"イクサイティッド"},
-{"term":"prefer","meaning":"〜のほうを好む","reading":"プリファー"},
-{"term":"reply","meaning":"返事をする","reading":"リプライ"},
-{"term":"support","meaning":"支える、支援する","reading":"サポート"},
-{"term":"crowd","meaning":"群衆、人ごみ","reading":"クラウド"},
-{"term":"difference","meaning":"違い","reading":"ディファレンス"},
-{"term":"nervous","meaning":"緊張して、不安で","reading":"ナーバス"},
-{"term":"popular","meaning":"人気のある","reading":"ポピュラー"},
-{"term":"discussion","meaning":"議論、話し合い","reading":"ディスカッション"},
-{"term":"education","meaning":"教育","reading":"エデュケーション"},
-{"term":"energy","meaning":"エネルギー、活力","reading":"エナジー"},
-{"term":"especially","meaning":"特に","reading":"イスペシャリー"},
-{"term":"finally","meaning":"ついに、最後に","reading":"ファイナリー"},
-{"term":"suddenly","meaning":"突然","reading":"サドンリー"},
-{"term":"achieve","meaning":"達成する","reading":"アチーブ"},
-{"term":"admit","meaning":"認める","reading":"アドミット"},
-{"term":"afford","meaning":"〜する余裕がある","reading":"アフォード"},
-{"term":"allow","meaning":"許す、許可する","reading":"アラウ"},
-{"term":"appear","meaning":"現れる、〜に見える","reading":"アピア"},
-{"term":"avoid","meaning":"避ける","reading":"アボイド"},
-{"term":"compare","meaning":"比較する","reading":"コンペア"},
-{"term":"complain","meaning":"不平を言う","reading":"コンプレイン"},
-{"term":"consider","meaning":"よく考える、検討する","reading":"コンシダー"},
-{"term":"encourage","meaning":"励ます、促す","reading":"インカレッジ"},
-{"term":"expect","meaning":"予期する、期待する","reading":"イクスペクト"},
-{"term":"include","meaning":"含む","reading":"インクルード"},
-{"term":"increase","meaning":"増える、増やす","reading":"インクリース"},
-{"term":"maintain","meaning":"維持する","reading":"メインテイン"},
-{"term":"provide","meaning":"提供する","reading":"プロバイド"},
-{"term":"reduce","meaning":"減らす","reading":"リデュース"},
-{"term":"refuse","meaning":"断る、拒否する","reading":"リフューズ"},
-{"term":"replace","meaning":"取り替える、取って代わる","reading":"リプレイス"},
-{"term":"require","meaning":"必要とする、要求する","reading":"リクワイア"},
-{"term":"succeed","meaning":"成功する","reading":"サクシード"},
-{"term":"ability","meaning":"能力","reading":"アビリティ"},
-{"term":"advantage","meaning":"利点、有利な点","reading":"アドバンテージ"},
-{"term":"amount","meaning":"量、額","reading":"アマウント"},
-{"term":"attention","meaning":"注意、注目","reading":"アテンション"},
-{"term":"benefit","meaning":"利益、恩恵","reading":"ベネフィット"},
-{"term":"concern","meaning":"心配、関心事","reading":"コンサーン"},
-{"term":"condition","meaning":"状態、条件","reading":"コンディション"},
-{"term":"effect","meaning":"影響、効果","reading":"イフェクト"},
-{"term":"effort","meaning":"努力","reading":"エフォート"},
-{"term":"equipment","meaning":"装備、機器","reading":"イクイップメント"},
-{"term":"evidence","meaning":"証拠","reading":"エビデンス"},
-{"term":"industry","meaning":"産業、業界","reading":"インダストリー"},
-{"term":"issue","meaning":"問題、争点","reading":"イシュー"},
-{"term":"method","meaning":"方法","reading":"メソッド"},
-{"term":"opportunity","meaning":"機会","reading":"オポチュニティ"},
-{"term":"pressure","meaning":"圧力、重圧","reading":"プレッシャー"},
-{"term":"progress","meaning":"進歩、前進","reading":"プログレス"},
-{"term":"quality","meaning":"質","reading":"クオリティ"},
-{"term":"resource","meaning":"資源","reading":"リソース"},
-{"term":"situation","meaning":"状況","reading":"シチュエーション"},
-{"term":"accurate","meaning":"正確な","reading":"アキュレット"},
-{"term":"available","meaning":"利用できる、手に入る","reading":"アベイラブル"},
-{"term":"aware","meaning":"気づいている","reading":"アウェア"},
-{"term":"confident","meaning":"自信のある","reading":"コンフィデント"},
-{"term":"curious","meaning":"好奇心の強い","reading":"キュリアス"},
-{"term":"efficient","meaning":"効率的な","reading":"イフィシェント"},
-{"term":"familiar","meaning":"よく知っている、なじみのある","reading":"ファミリア"},
-{"term":"obvious","meaning":"明らかな","reading":"オブビアス"},
-{"term":"particular","meaning":"特定の、特別の","reading":"パティキュラー"},
-{"term":"previous","meaning":"以前の、前の","reading":"プリビアス"},
-{"term":"rapid","meaning":"急速な","reading":"ラピッド"},
-{"term":"reasonable","meaning":"妥当な、手ごろな","reading":"リーズナブル"},
-{"term":"responsible","meaning":"責任がある","reading":"リスポンシブル"},
-{"term":"sufficient","meaning":"十分な","reading":"サフィシェント"},
-{"term":"various","meaning":"さまざまな","reading":"ベアリアス"},
-{"term":"apparently","meaning":"見たところ〜らしい","reading":"アパレントリー"},
-{"term":"approximately","meaning":"おおよそ、約","reading":"アプロキシメットリー"},
-{"term":"currently","meaning":"現在は","reading":"カレントリー"},
-{"term":"eventually","meaning":"最終的には、やがて","reading":"イベンチュアリー"},
-{"term":"immediately","meaning":"すぐに、ただちに","reading":"イミーディエットリー"}
+  {
+    "term": "agree",
+    "meaning": "同意する",
+    "reading": "アグリー",
+    "ipa": "əˈɡriː",
+    "phonics": "ee → 「イー」と長くのばす音",
+    "core": "相手の考えに自分の考えを重ねてそろえる。同じ方向を向いて足並みがそろうイメージ",
+    "usage": "agree with 人や意見／agree to 提案や計画。反対は disagree",
+    "example": "I agree with you.｜あなたに賛成だ",
+    "confuse": "with と to を使い分ける。with は人や意見に、to は提案や計画に対して使う"
+  },
+  {
+    "term": "return",
+    "meaning": "戻る、返す",
+    "reading": "リターン",
+    "ipa": "rɪˈtɜːrn",
+    "phonics": "ur → 「アー」。r を巻き込むようにのばす音",
+    "core": "もと居た場所やもとの持ち主のところへ戻る、戻す。往復のうち帰り側を表す",
+    "usage": "自動詞なら戻る、他動詞なら返す。return to 場所 の形が基本",
+    "example": "I will return home at six.｜6時に家に帰る",
+    "confuse": ""
+  },
+  {
+    "term": "become",
+    "meaning": "〜になる",
+    "reading": "ビカム",
+    "ipa": "bɪˈkʌm",
+    "phonics": "o → 「ア」。come と同じで「オ」とは読まない",
+    "core": "今の状態から別の状態へ移り変わって、そこに落ち着く。変化した結果を表す",
+    "usage": "後ろに形容詞か名詞をとる。過去形は became、過去分詞は become",
+    "example": "He became a doctor.｜彼は医者になった",
+    "confuse": ""
+  },
+  {
+    "term": "bring",
+    "meaning": "持ってくる",
+    "reading": "ブリング",
+    "ipa": "brɪŋ",
+    "phonics": "ng → 「ング」。鼻に抜ける一つの音になる",
+    "core": "話し手のいる場所へ物や人を連れてくる。こちら向きの移動を表す",
+    "usage": "bring 人 物／bring 物 to 人。過去形と過去分詞は brought",
+    "example": "Please bring me a glass.｜コップを持ってきて",
+    "confuse": "take と向きが逆。bring は話し手の方へ、take は話し手から離れる方へ運ぶ"
+  },
+  {
+    "term": "build",
+    "meaning": "建てる",
+    "reading": "ビルド",
+    "ipa": "bɪld",
+    "phonics": "ui → 「イ」。u は読まない",
+    "core": "材料を下から積み上げて形あるものを作る。時間をかけて組み立てるイメージ",
+    "usage": "他動詞。過去形と過去分詞はどちらも built になる",
+    "example": "They built a new school.｜彼らは新しい学校を建てた",
+    "confuse": ""
+  },
+  {
+    "term": "carry",
+    "meaning": "運ぶ",
+    "reading": "キャリー",
+    "ipa": "ˈkæri",
+    "phonics": "a → 「キャ」。ar だが「アー」とはのばさない",
+    "core": "ものを持った状態のまま移動する。運んでいる間ずっと支えているイメージ",
+    "usage": "他動詞。y で終わるので三単現は carries、過去形は carried",
+    "example": "She carried a big box.｜彼女は大きな箱を運んだ",
+    "confuse": ""
+  },
+  {
+    "term": "catch",
+    "meaning": "つかまえる、間に合う",
+    "reading": "キャッチ",
+    "ipa": "kætʃ",
+    "phonics": "tch → 「チ」。t は読まず ch の音だけになる",
+    "core": "動いているものに手を伸ばして自分のものにする。逃さずつかまえる動き",
+    "usage": "他動詞。過去形と過去分詞は caught。catch a cold で風邪をひく",
+    "example": "I caught the last train.｜最終電車に間に合った",
+    "confuse": ""
+  },
+  {
+    "term": "cross",
+    "meaning": "渡る、横切る",
+    "reading": "クロス",
+    "ipa": "krɔːs",
+    "phonics": "c → 「ク」。a・o・u の前の c はカ行の音になる",
+    "core": "一方の端からもう一方の端へ横切って進む。線を越えていくイメージ",
+    "usage": "他動詞なので前置詞はいらない。cross the street の形で使う",
+    "example": "Do not cross the street here.｜ここで道を渡らないで",
+    "confuse": ""
+  },
+  {
+    "term": "enjoy",
+    "meaning": "楽しむ",
+    "reading": "インジョイ",
+    "ipa": "ɪnˈdʒɔɪ",
+    "phonics": "j → 「ヂ」／ oy → 「オイ」",
+    "core": "その中（en）に入って喜び（joy）を味わう。動作そのものを味わうイメージ",
+    "usage": "enjoy + 〜ing（to不定詞は不可）。入試頻出",
+    "example": "We enjoyed the movie.｜私たちは映画を楽しんだ",
+    "confuse": ""
+  },
+  {
+    "term": "fall",
+    "meaning": "落ちる、転ぶ",
+    "reading": "フォール",
+    "ipa": "fɔːl",
+    "phonics": "al → 「オー」。a が l の前で「オー」の音になる",
+    "core": "高いところから下へ落ちていく。自分の力ではなく重さで下がるイメージ",
+    "usage": "自動詞。過去形は fell、過去分詞は fallen。fall down で転ぶ",
+    "example": "The leaves fall in autumn.｜秋に葉が落ちる",
+    "confuse": ""
+  },
+  {
+    "term": "feel",
+    "meaning": "感じる",
+    "reading": "フィール",
+    "ipa": "fiːl",
+    "phonics": "ee → 「イー」と長くのばす音",
+    "core": "外からの刺激や自分の内側の状態を心と体で受け取る。感じ取るという動き",
+    "usage": "後ろに形容詞をとる。feel good／feel sad。過去形は felt",
+    "example": "I feel very happy today.｜今日はとても幸せだ",
+    "confuse": ""
+  },
+  {
+    "term": "finish",
+    "meaning": "終える",
+    "reading": "フィニッシュ",
+    "ipa": "ˈfɪnɪʃ",
+    "phonics": "sh → 「シュ」。s と h で一つの音になる",
+    "core": "続けていた動作を最後までやりきって終わらせる。終点に着くというイメージ",
+    "usage": "finish + 〜ing（to不定詞は不可）。enjoy と同じ仲間",
+    "example": "I finished my homework.｜宿題を終えた",
+    "confuse": ""
+  },
+  {
+    "term": "climb",
+    "meaning": "登る",
+    "reading": "クライム",
+    "ipa": "klaɪm",
+    "phonics": "b は読まない／ i → 「アイ」",
+    "core": "手足を使って上へよじ登る。ただ上がるのではなく力を使って進むイメージ",
+    "usage": "他動詞でも自動詞でも使う。climb a mountain／climb up の形",
+    "example": "We climbed Mt. Fuji last year.｜昨年富士山に登った",
+    "confuse": ""
+  },
+  {
+    "term": "grow",
+    "meaning": "育つ、栽培する",
+    "reading": "グロウ",
+    "ipa": "ɡroʊ",
+    "phonics": "ow → 「オウ」。「アウ」と読む ow もあるので注意",
+    "core": "小さかったものが時間とともに大きくなる。育つ側にも育てる側にも使う",
+    "usage": "自動詞なら育つ、他動詞なら栽培する。過去形は grew",
+    "example": "Rice grows well in Japan.｜日本では米がよく育つ",
+    "confuse": ""
+  },
+  {
+    "term": "happen",
+    "meaning": "起こる",
+    "reading": "ハプン",
+    "ipa": "ˈhæpən",
+    "phonics": "pp → 「プ」。二つ重なっても一つの音になる",
+    "core": "予定していなかったことが自然に起きる。だれかの意志によらない出来事",
+    "usage": "自動詞なので受け身にしない。happen to 人 で人の身に起きる",
+    "example": "What happened to you?｜あなたに何が起きたの",
+    "confuse": ""
+  },
+  {
+    "term": "hurry",
+    "meaning": "急ぐ",
+    "reading": "ハリー",
+    "ipa": "ˈhɜːri",
+    "phonics": "ur → 「アー」。r を巻き込むようにのばす音",
+    "core": "時間に追われて動きを速める。落ち着かないまま先を急ぐという感じ",
+    "usage": "自動詞。hurry up で急げ。in a hurry で急いでという意味",
+    "example": "Hurry up, or you will be late.｜急がないと遅れるよ",
+    "confuse": ""
+  },
+  {
+    "term": "join",
+    "meaning": "参加する、加わる",
+    "reading": "ジョイン",
+    "ipa": "dʒɔɪn",
+    "phonics": "j → 「ヂ」／ oi → 「オイ」",
+    "core": "別々だったものをつなげて一つにする。自分を集団の中へつなぐイメージ",
+    "usage": "他動詞なので前置詞はいらない。join the club の形で使う",
+    "example": "I want to join the tennis club.｜テニス部に入りたい",
+    "confuse": "他動詞なので join to the club は誤り。前置詞をつけず join the club と言う"
+  },
+  {
+    "term": "keep",
+    "meaning": "保つ、〜し続ける",
+    "reading": "キープ",
+    "ipa": "kiːp",
+    "phonics": "ee → 「イー」と長くのばす音",
+    "core": "手に持ったものを手放さない。そのままの状態でずっと持ち続けるイメージ",
+    "usage": "keep + 名詞（物を持ち続ける）／keep + 〜ing（動作を続ける）",
+    "example": "Keep going.｜そのまま進み続けて",
+    "confuse": ""
+  },
+  {
+    "term": "laugh",
+    "meaning": "笑う",
+    "reading": "ラフ",
+    "ipa": "læf",
+    "phonics": "gh → 「フ」。ここでは f の音になる",
+    "core": "おかしさが声になって外へ出る。体の反応として出てしまう笑いを表す",
+    "usage": "自動詞。laugh at 〜 で〜を見て笑う。名詞は laughter",
+    "example": "We laughed at his joke.｜彼の冗談に笑った",
+    "confuse": "smile と使い分ける。smile は声を出さずほほえむ、laugh は声を出して笑う"
+  },
+  {
+    "term": "learn",
+    "meaning": "学ぶ、習う",
+    "reading": "ラーン",
+    "ipa": "lɜːrn",
+    "phonics": "ear → 「アー」。「イアー」と読む ear もあるので注意",
+    "core": "外にある知識や技術を自分の中に取り込む。身についた結果の側を指す",
+    "usage": "learn to 〜（できるようになる）／learn about 〜（〜について学ぶ）",
+    "example": "I learned to ride a bike.｜自転車に乗れるようになった",
+    "confuse": "study は学んでいる過程、learn は身についた結果。同じ「学ぶ」でも視点が違う"
+  },
+  {
+    "term": "leave",
+    "meaning": "去る、置き忘れる",
+    "reading": "リーブ",
+    "ipa": "liːv",
+    "phonics": "ea → 「イー」。「エ」と読む ea もあるので注意",
+    "core": "その場に置いたまま離れていく。去るも置き忘れるも同じ一つの動きになる",
+    "usage": "leave for 場所（〜へ向けて出発）／leave 物 場所（置いてくる）",
+    "example": "I left my bag at school.｜学校にかばんを忘れた",
+    "confuse": "leave Tokyo は出る場所、leave for Osaka は向かう先。for の有無で意味が逆になる"
+  },
+  {
+    "term": "move",
+    "meaning": "動く、引っ越す",
+    "reading": "ムーブ",
+    "ipa": "muːv",
+    "phonics": "o → 「ウー」。「オー」とは読まない",
+    "core": "ある位置から別の位置へ場所を変える。物の移動にも引っ越しにも使う",
+    "usage": "自動詞なら動く・引っ越す、他動詞なら動かす。move to 場所",
+    "example": "We moved to Tokyo last year.｜昨年東京に引っ越した",
+    "confuse": ""
+  },
+  {
+    "term": "pass",
+    "meaning": "通る、渡す、合格する",
+    "reading": "パス",
+    "ipa": "pæs",
+    "phonics": "a → 「ア」。のばさず短く切る音",
+    "core": "あるものの横を通り過ぎる。通り抜けた結果として合格や手渡しの意味にもなる",
+    "usage": "他動詞なら渡す・合格する、自動詞なら通る。pass 人 物 の形もとる",
+    "example": "Please pass me the salt.｜塩を取ってください",
+    "confuse": ""
+  },
+  {
+    "term": "plan",
+    "meaning": "計画する",
+    "reading": "プラン",
+    "ipa": "plæn",
+    "phonics": "",
+    "core": "これからすることを前もって形にしておく。頭の中に道筋を先に描くイメージ",
+    "usage": "plan to 〜（〜する予定だ）。後ろは to不定詞。過去形は planned",
+    "example": "We plan to visit Kyoto.｜京都を訪れる予定だ",
+    "confuse": ""
+  },
+  {
+    "term": "practice",
+    "meaning": "練習する",
+    "reading": "プラクティス",
+    "ipa": "ˈpræktɪs",
+    "phonics": "ce → 「ス」。e の前の c はサ行の音になる",
+    "core": "同じことを何度も繰り返して体に覚えこませる。うまくなるための積み重ね",
+    "usage": "practice + 〜ing（to不定詞は不可）。名詞でも動詞でも使う",
+    "example": "I practice playing the piano.｜ピアノを弾く練習をする",
+    "confuse": ""
+  },
+  {
+    "term": "send",
+    "meaning": "送る",
+    "reading": "センド",
+    "ipa": "send",
+    "phonics": "",
+    "core": "自分の手を離れて相手のところへ届くように出す。距離を越えて渡す動き",
+    "usage": "send 人 物／send 物 to 人。過去形と過去分詞は sent",
+    "example": "I sent an email to her.｜彼女にメールを送った",
+    "confuse": ""
+  },
+  {
+    "term": "show",
+    "meaning": "見せる、案内する",
+    "reading": "ショウ",
+    "ipa": "ʃoʊ",
+    "phonics": "sh → 「シュ」／ ow → 「オウ」",
+    "core": "相手の目に見えるように差し出す。隠れていたものを表に出すというイメージ",
+    "usage": "show 人 物／show 物 to 人。過去分詞は shown",
+    "example": "Show me your ticket, please.｜切符を見せてください",
+    "confuse": ""
+  },
+  {
+    "term": "sound",
+    "meaning": "〜に聞こえる",
+    "reading": "サウンド",
+    "ipa": "saʊnd",
+    "phonics": "ou → 「アウ」",
+    "core": "耳に届いた感じから判断する。音そのものと、そこから受ける印象の両方を指す",
+    "usage": "後ろに形容詞をとる。sound good／sound like + 名詞 の形",
+    "example": "That sounds good.｜それはよさそうだ",
+    "confuse": ""
+  },
+  {
+    "term": "stay",
+    "meaning": "滞在する、とどまる",
+    "reading": "ステイ",
+    "ipa": "steɪ",
+    "phonics": "ay → 「エイ」",
+    "core": "動かずにその場にとどまり続ける。移動しない状態が続いているイメージ",
+    "usage": "自動詞。stay at ホテル／stay with 人／stay home の形で使う",
+    "example": "I stayed at my uncle's house.｜おじの家に泊まった",
+    "confuse": ""
+  },
+  {
+    "term": "teach",
+    "meaning": "教える",
+    "reading": "ティーチ",
+    "ipa": "tiːtʃ",
+    "phonics": "ea → 「イー」／ ch → 「チ」",
+    "core": "自分の持っている知識を相手の中へ移す。learn とちょうど反対向きの動き",
+    "usage": "teach 人 物／teach 物 to 人。過去形と過去分詞は taught",
+    "example": "She teaches us English.｜彼女は私たちに英語を教える",
+    "confuse": ""
+  },
+  {
+    "term": "travel",
+    "meaning": "旅行する",
+    "reading": "トラベル",
+    "ipa": "ˈtrævl",
+    "phonics": "a → 「ア」。のばさず短く切る音",
+    "core": "遠くまで長い距離を移動する。移動することそのものに重さがある語",
+    "usage": "数えない名詞として旅行全般を指す。動詞としても使う",
+    "example": "I like to travel by train.｜電車で旅行するのが好きだ",
+    "confuse": "trip と使い分ける。travel は移動全般で数えない、trip は一回の旅行で数えられる"
+  },
+  {
+    "term": "try",
+    "meaning": "試す、やってみる",
+    "reading": "トライ",
+    "ipa": "traɪ",
+    "phonics": "y → 「アイ」。語尾の y は i の名前どおりの音になる",
+    "core": "うまくいくか分からないことに力を出してみる。結果より挑む姿勢を表す",
+    "usage": "try to 〜（しようと努める）／try 〜ing（試しにしてみる）",
+    "example": "I tried to open the door.｜ドアを開けようとした",
+    "confuse": "to と 〜ing で意味が変わる。to は努力してやろうとする、〜ing は試しにやってみる"
+  },
+  {
+    "term": "visit",
+    "meaning": "訪れる",
+    "reading": "ビジット",
+    "ipa": "ˈvɪzɪt",
+    "phonics": "s → 「ズ」。母音にはさまれた s は濁ることが多い",
+    "core": "だれかの場所へ出向いて時間を過ごす。行って戻ることが前提になっている",
+    "usage": "他動詞なので前置詞はいらない。visit Kyoto／visit my aunt",
+    "example": "I visited my grandmother.｜祖母を訪ねた",
+    "confuse": ""
+  },
+  {
+    "term": "wait",
+    "meaning": "待つ",
+    "reading": "ウェイト",
+    "ipa": "weɪt",
+    "phonics": "ai → 「エイ」",
+    "core": "何かが来るまで動かずに時間を過ごす。自分からは動かないという状態",
+    "usage": "自動詞。wait for 人（人を待つ）。for を落としやすいので注意",
+    "example": "I waited for the bus.｜バスを待った",
+    "confuse": "自動詞なので wait the bus は誤り。for をつけて wait for the bus と言う"
+  },
+  {
+    "term": "airport",
+    "meaning": "空港",
+    "reading": "エアポート",
+    "ipa": "ˈerpɔːrt",
+    "phonics": "air → 「エア」／ or → 「オー」",
+    "core": "空（air）へ出入りするための港（port）。飛行機が発着する場所を表す",
+    "usage": "数えられる名詞。at the airport（空港で）の形で使う",
+    "example": "I met him at the airport.｜空港で彼に会った",
+    "confuse": ""
+  },
+  {
+    "term": "bridge",
+    "meaning": "橋",
+    "reading": "ブリッジ",
+    "ipa": "brɪdʒ",
+    "phonics": "dge → 「ヂ」。d は読まず一つの音になる",
+    "core": "離れた二つの場所を渡してつなぐもの。間を越えさせる役割を持っている",
+    "usage": "数えられる名詞。cross a bridge／over the bridge の形で使う",
+    "example": "We walked across the bridge.｜橋を歩いて渡った",
+    "confuse": ""
+  },
+  {
+    "term": "building",
+    "meaning": "建物",
+    "reading": "ビルディング",
+    "ipa": "ˈbɪldɪŋ",
+    "phonics": "ui → 「イ」。u は読まない／ ng → 「ング」",
+    "core": "build（建てる）でできあがったもの。人が中に入って使う建物を指す",
+    "usage": "数えられる名詞。tall building／old building の形で使う",
+    "example": "That building is very tall.｜あの建物はとても高い",
+    "confuse": ""
+  },
+  {
+    "term": "cafeteria",
+    "meaning": "食堂、カフェテリア",
+    "reading": "キャフェテリア",
+    "ipa": "ˌkæfəˈtɪriə",
+    "phonics": "ca → 「キャ」／ 2つめの e は弱い「ア」",
+    "core": "自分で料理を取って席まで運ぶ形式の食堂。学校や会社の中にあるもの",
+    "usage": "数えられる名詞。in the cafeteria（食堂で）の形で使う",
+    "example": "We ate lunch in the cafeteria.｜食堂で昼食を食べた",
+    "confuse": ""
+  },
+  {
+    "term": "concert",
+    "meaning": "コンサート",
+    "reading": "コンサート",
+    "ipa": "ˈkɑːnsərt",
+    "phonics": "1つめの c → 「カ」／ 2つめの c → 「サ」。e の前でサ行になる",
+    "core": "大勢の演奏や歌を客の前でまとめて聞かせる催し。人が集まって聴く場",
+    "usage": "数えられる名詞。go to a concert／at the concert の形で使う",
+    "example": "I went to a concert yesterday.｜昨日コンサートに行った",
+    "confuse": ""
+  },
+  {
+    "term": "corner",
+    "meaning": "角、隅",
+    "reading": "コーナー",
+    "ipa": "ˈkɔːrnər",
+    "phonics": "or → 「オー」／ er → 弱い「アー」",
+    "core": "二つの線や面がぶつかって折れ曲がるところ。外側の角にも内側の隅にも使う",
+    "usage": "at the corner（街角で）／in the corner（部屋の隅に）",
+    "example": "Turn right at the next corner.｜次の角を右に曲がって",
+    "confuse": ""
+  },
+  {
+    "term": "dream",
+    "meaning": "夢",
+    "reading": "ドリーム",
+    "ipa": "driːm",
+    "phonics": "ea → 「イー」と長くのばす音",
+    "core": "眠っている間に見るものと、心の中で描く将来の姿。どちらも頭の中に浮かぶ像",
+    "usage": "名詞でも動詞でも使う。my dream is to 〜／dream of 〜",
+    "example": "My dream is to be a teacher.｜私の夢は教師になることだ",
+    "confuse": ""
+  },
+  {
+    "term": "earth",
+    "meaning": "地球",
+    "reading": "アース",
+    "ipa": "ɜːrθ",
+    "phonics": "ear → 「アー」／ th → 舌を歯にはさんで出す音",
+    "core": "人が住んでいるこの惑星。土や地面という意味も同じ語から来ている",
+    "usage": "惑星としては the earth と the をつける。on earth で地球上に",
+    "example": "The earth goes around the sun.｜地球は太陽の周りを回る",
+    "confuse": ""
+  },
+  {
+    "term": "festival",
+    "meaning": "祭り",
+    "reading": "フェスティバル",
+    "ipa": "ˈfestɪvl",
+    "phonics": "e → 「エ」。のばさず短く切る音",
+    "core": "決まった時期に人が集まって祝う催し。日常から切り離された特別な日",
+    "usage": "数えられる名詞。school festival／at the festival の形で使う",
+    "example": "The festival is held every summer.｜祭りは毎年夏に開かれる",
+    "confuse": ""
+  },
+  {
+    "term": "floor",
+    "meaning": "床、階",
+    "reading": "フロア",
+    "ipa": "flɔːr",
+    "phonics": "oo → 「オー」。「ウー」と読む oo もあるので注意",
+    "core": "建物の中で足がのっている平らな面。それが重なることで階数の意味にもなる",
+    "usage": "on the floor（床の上に）／on the second floor（2階に）",
+    "example": "My room is on the third floor.｜私の部屋は3階だ",
+    "confuse": ""
+  },
+  {
+    "term": "future",
+    "meaning": "未来、将来",
+    "reading": "フューチャー",
+    "ipa": "ˈfjuːtʃər",
+    "phonics": "u → 「ユー」／ tu → 「チャ」。t が u の前で「チ」になる",
+    "core": "まだ来ていないこれからの時間。今の先に広がっている時の流れを指す",
+    "usage": "in the future（将来）と the をつける。形容詞としても使う",
+    "example": "I will be a nurse in the future.｜将来看護師になりたい",
+    "confuse": ""
+  },
+  {
+    "term": "group",
+    "meaning": "集団、グループ",
+    "reading": "グループ",
+    "ipa": "ɡruːp",
+    "phonics": "ou → 「ウー」。「アウ」と読む ou もあるので注意",
+    "core": "ばらばらのものが一つのまとまりとして扱われる状態。人にも物にも使う",
+    "usage": "数えられる名詞。in groups でグループに分かれてという意味",
+    "example": "We studied in small groups.｜小さなグループで勉強した",
+    "confuse": ""
+  },
+  {
+    "term": "hobby",
+    "meaning": "趣味",
+    "reading": "ホビー",
+    "ipa": "ˈhɑːbi",
+    "phonics": "bb → 「ブ」。二つ重なっても一つの音／ y → 「イ」",
+    "core": "仕事や勉強とは別に、自分から進んで続けている楽しみ。続いている点が大事",
+    "usage": "数えられる名詞。y を i に変えて hobbies と複数形にする",
+    "example": "My hobby is taking pictures.｜私の趣味は写真を撮ることだ",
+    "confuse": ""
+  },
+  {
+    "term": "holiday",
+    "meaning": "休日、祝日",
+    "reading": "ホリデイ",
+    "ipa": "ˈhɑːlədeɪ",
+    "phonics": "o → 「ア」。「ホリ」ではなく「ハリ」に近い音",
+    "core": "働いたり学校へ行ったりしなくてよい日。もとは聖なる日という意味だった",
+    "usage": "数えられる名詞。national holiday／on holiday で休暇中",
+    "example": "Monday is a national holiday.｜月曜は祝日だ",
+    "confuse": ""
+  },
+  {
+    "term": "kitchen",
+    "meaning": "台所",
+    "reading": "キッチン",
+    "ipa": "ˈkɪtʃɪn",
+    "phonics": "tch → 「チ」。t は読まず ch の音だけになる",
+    "core": "家の中で料理をするための場所。火と水を使って作業をする場を指す",
+    "usage": "数えられる名詞。in the kitchen（台所で）の形で使う",
+    "example": "My mother is in the kitchen.｜母は台所にいる",
+    "confuse": ""
+  },
+  {
+    "term": "message",
+    "meaning": "伝言、メッセージ",
+    "reading": "メッセージ",
+    "ipa": "ˈmesɪdʒ",
+    "phonics": "ge → 「ヂ」。g が e の前で「ジ」の音になる",
+    "core": "相手に伝えたい中身をひとまとまりにして届けるもの。言葉の荷物のイメージ",
+    "usage": "数えられる名詞。leave a message で伝言を残す",
+    "example": "I left a message for him.｜彼に伝言を残した",
+    "confuse": ""
+  },
+  {
+    "term": "mountain",
+    "meaning": "山",
+    "reading": "マウンテン"
+  },
+  {
+    "term": "nature",
+    "meaning": "自然",
+    "reading": "ネイチャー"
+  },
+  {
+    "term": "news",
+    "meaning": "知らせ、ニュース",
+    "reading": "ニュース"
+  },
+  {
+    "term": "present",
+    "meaning": "贈り物",
+    "reading": "プレゼント"
+  },
+  {
+    "term": "price",
+    "meaning": "値段",
+    "reading": "プライス"
+  },
+  {
+    "term": "problem",
+    "meaning": "問題",
+    "reading": "プロブレム"
+  },
+  {
+    "term": "restaurant",
+    "meaning": "レストラン",
+    "reading": "レストラン"
+  },
+  {
+    "term": "season",
+    "meaning": "季節",
+    "reading": "シーズン"
+  },
+  {
+    "term": "sightseeing",
+    "meaning": "観光",
+    "reading": "サイトスィーイング"
+  },
+  {
+    "term": "subject",
+    "meaning": "科目、話題",
+    "reading": "サブジェクト"
+  },
+  {
+    "term": "ticket",
+    "meaning": "切符、チケット",
+    "reading": "チケット"
+  },
+  {
+    "term": "tourist",
+    "meaning": "観光客",
+    "reading": "ツーリスト"
+  },
+  {
+    "term": "traffic",
+    "meaning": "交通、交通量",
+    "reading": "トラフィック"
+  },
+  {
+    "term": "trip",
+    "meaning": "旅行",
+    "reading": "トリップ"
+  },
+  {
+    "term": "uniform",
+    "meaning": "制服",
+    "reading": "ユニフォーム"
+  },
+  {
+    "term": "village",
+    "meaning": "村",
+    "reading": "ビレッジ"
+  },
+  {
+    "term": "weather",
+    "meaning": "天気",
+    "reading": "ウェザー"
+  },
+  {
+    "term": "delicious",
+    "meaning": "とてもおいしい",
+    "reading": "デリシャス"
+  },
+  {
+    "term": "exciting",
+    "meaning": "わくわくさせる",
+    "reading": "イクサイティング"
+  },
+  {
+    "term": "quickly",
+    "meaning": "すばやく、急いで",
+    "reading": "クイックリー"
+  },
+  {
+    "term": "accept",
+    "meaning": "受け入れる",
+    "reading": "アクセプト"
+  },
+  {
+    "term": "choose",
+    "meaning": "選ぶ",
+    "reading": "チューズ"
+  },
+  {
+    "term": "collect",
+    "meaning": "集める",
+    "reading": "コレクト"
+  },
+  {
+    "term": "continue",
+    "meaning": "続ける、続く",
+    "reading": "コンティニュー"
+  },
+  {
+    "term": "announce",
+    "meaning": "発表する、知らせる",
+    "reading": "アナウンス"
+  },
+  {
+    "term": "develop",
+    "meaning": "発展させる、開発する",
+    "reading": "ディベロップ"
+  },
+  {
+    "term": "discover",
+    "meaning": "発見する",
+    "reading": "ディスカバー"
+  },
+  {
+    "term": "explain",
+    "meaning": "説明する",
+    "reading": "イクスプレイン"
+  },
+  {
+    "term": "hold",
+    "meaning": "持つ、開催する",
+    "reading": "ホウルド"
+  },
+  {
+    "term": "improve",
+    "meaning": "改善する、上達する",
+    "reading": "インプルーブ"
+  },
+  {
+    "term": "introduce",
+    "meaning": "紹介する",
+    "reading": "イントロデュース"
+  },
+  {
+    "term": "contact",
+    "meaning": "連絡する",
+    "reading": "コンタクト"
+  },
+  {
+    "term": "deliver",
+    "meaning": "配達する",
+    "reading": "デリバー"
+  },
+  {
+    "term": "prepare",
+    "meaning": "準備する",
+    "reading": "プリペア"
+  },
+  {
+    "term": "produce",
+    "meaning": "生産する",
+    "reading": "プロデュース"
+  },
+  {
+    "term": "protect",
+    "meaning": "守る、保護する",
+    "reading": "プロテクト"
+  },
+  {
+    "term": "realize",
+    "meaning": "気づく、実現する",
+    "reading": "リアライズ"
+  },
+  {
+    "term": "describe",
+    "meaning": "描写する、説明する",
+    "reading": "ディスクライブ"
+  },
+  {
+    "term": "recommend",
+    "meaning": "推薦する、勧める",
+    "reading": "レコメンド"
+  },
+  {
+    "term": "repair",
+    "meaning": "修理する",
+    "reading": "リペア"
+  },
+  {
+    "term": "respect",
+    "meaning": "尊敬する",
+    "reading": "リスペクト"
+  },
+  {
+    "term": "share",
+    "meaning": "共有する、分け合う",
+    "reading": "シェア"
+  },
+  {
+    "term": "solve",
+    "meaning": "解決する、解く",
+    "reading": "ソルブ"
+  },
+  {
+    "term": "suggest",
+    "meaning": "提案する",
+    "reading": "サジェスト"
+  },
+  {
+    "term": "examine",
+    "meaning": "調べる、検査する",
+    "reading": "イグザミン"
+  },
+  {
+    "term": "accident",
+    "meaning": "事故",
+    "reading": "アクシデント"
+  },
+  {
+    "term": "advice",
+    "meaning": "助言、アドバイス",
+    "reading": "アドバイス"
+  },
+  {
+    "term": "article",
+    "meaning": "記事",
+    "reading": "アーティクル"
+  },
+  {
+    "term": "exchange",
+    "meaning": "交換する",
+    "reading": "イクスチェンジ"
+  },
+  {
+    "term": "chance",
+    "meaning": "機会、可能性",
+    "reading": "チャンス"
+  },
+  {
+    "term": "express",
+    "meaning": "表現する",
+    "reading": "イクスプレス"
+  },
+  {
+    "term": "customer",
+    "meaning": "客、顧客",
+    "reading": "カスタマー"
+  },
+  {
+    "term": "dictionary",
+    "meaning": "辞書",
+    "reading": "ディクショナリー"
+  },
+  {
+    "term": "imagine",
+    "meaning": "想像する",
+    "reading": "イマジン"
+  },
+  {
+    "term": "exam",
+    "meaning": "試験",
+    "reading": "イグザム"
+  },
+  {
+    "term": "invent",
+    "meaning": "発明する",
+    "reading": "インベント"
+  },
+  {
+    "term": "factory",
+    "meaning": "工場",
+    "reading": "ファクトリー"
+  },
+  {
+    "term": "government",
+    "meaning": "政府",
+    "reading": "ガバメント"
+  },
+  {
+    "term": "health",
+    "meaning": "健康",
+    "reading": "ヘルス"
+  },
+  {
+    "term": "information",
+    "meaning": "情報",
+    "reading": "インフォメーション"
+  },
+  {
+    "term": "instrument",
+    "meaning": "楽器、器具",
+    "reading": "インストゥルメント"
+  },
+  {
+    "term": "knowledge",
+    "meaning": "知識",
+    "reading": "ナレッジ"
+  },
+  {
+    "term": "notice",
+    "meaning": "気づく",
+    "reading": "ノウティス"
+  },
+  {
+    "term": "machine",
+    "meaning": "機械",
+    "reading": "マシーン"
+  },
+  {
+    "term": "medicine",
+    "meaning": "薬",
+    "reading": "メディスン"
+  },
+  {
+    "term": "neighbor",
+    "meaning": "隣人、近所の人",
+    "reading": "ネイバー"
+  },
+  {
+    "term": "opinion",
+    "meaning": "意見",
+    "reading": "オピニオン"
+  },
+  {
+    "term": "passenger",
+    "meaning": "乗客",
+    "reading": "パセンジャー"
+  },
+  {
+    "term": "population",
+    "meaning": "人口",
+    "reading": "ポピュレーション"
+  },
+  {
+    "term": "reason",
+    "meaning": "理由",
+    "reading": "リーズン"
+  },
+  {
+    "term": "afraid",
+    "meaning": "恐れて、怖がって",
+    "reading": "アフレイド"
+  },
+  {
+    "term": "boring",
+    "meaning": "退屈な",
+    "reading": "ボーリング"
+  },
+  {
+    "term": "careful",
+    "meaning": "注意深い",
+    "reading": "ケアフル"
+  },
+  {
+    "term": "common",
+    "meaning": "共通の、ふつうの",
+    "reading": "コモン"
+  },
+  {
+    "term": "convenient",
+    "meaning": "便利な",
+    "reading": "コンビニエント"
+  },
+  {
+    "term": "offer",
+    "meaning": "申し出る、提供する",
+    "reading": "オファー"
+  },
+  {
+    "term": "excited",
+    "meaning": "わくわくして",
+    "reading": "イクサイティッド"
+  },
+  {
+    "term": "prefer",
+    "meaning": "〜のほうを好む",
+    "reading": "プリファー"
+  },
+  {
+    "term": "reply",
+    "meaning": "返事をする",
+    "reading": "リプライ"
+  },
+  {
+    "term": "support",
+    "meaning": "支える、支援する",
+    "reading": "サポート"
+  },
+  {
+    "term": "crowd",
+    "meaning": "群衆、人ごみ",
+    "reading": "クラウド"
+  },
+  {
+    "term": "difference",
+    "meaning": "違い",
+    "reading": "ディファレンス"
+  },
+  {
+    "term": "nervous",
+    "meaning": "緊張して、不安で",
+    "reading": "ナーバス"
+  },
+  {
+    "term": "popular",
+    "meaning": "人気のある",
+    "reading": "ポピュラー"
+  },
+  {
+    "term": "discussion",
+    "meaning": "議論、話し合い",
+    "reading": "ディスカッション"
+  },
+  {
+    "term": "education",
+    "meaning": "教育",
+    "reading": "エデュケーション"
+  },
+  {
+    "term": "energy",
+    "meaning": "エネルギー、活力",
+    "reading": "エナジー"
+  },
+  {
+    "term": "especially",
+    "meaning": "特に",
+    "reading": "イスペシャリー"
+  },
+  {
+    "term": "finally",
+    "meaning": "ついに、最後に",
+    "reading": "ファイナリー"
+  },
+  {
+    "term": "suddenly",
+    "meaning": "突然",
+    "reading": "サドンリー"
+  },
+  {
+    "term": "achieve",
+    "meaning": "達成する",
+    "reading": "アチーブ"
+  },
+  {
+    "term": "admit",
+    "meaning": "認める",
+    "reading": "アドミット"
+  },
+  {
+    "term": "afford",
+    "meaning": "〜する余裕がある",
+    "reading": "アフォード"
+  },
+  {
+    "term": "allow",
+    "meaning": "許す、許可する",
+    "reading": "アラウ"
+  },
+  {
+    "term": "appear",
+    "meaning": "現れる、〜に見える",
+    "reading": "アピア"
+  },
+  {
+    "term": "avoid",
+    "meaning": "避ける",
+    "reading": "アボイド"
+  },
+  {
+    "term": "compare",
+    "meaning": "比較する",
+    "reading": "コンペア"
+  },
+  {
+    "term": "complain",
+    "meaning": "不平を言う",
+    "reading": "コンプレイン"
+  },
+  {
+    "term": "consider",
+    "meaning": "よく考える、検討する",
+    "reading": "コンシダー"
+  },
+  {
+    "term": "encourage",
+    "meaning": "励ます、促す",
+    "reading": "インカレッジ"
+  },
+  {
+    "term": "expect",
+    "meaning": "予期する、期待する",
+    "reading": "イクスペクト"
+  },
+  {
+    "term": "include",
+    "meaning": "含む",
+    "reading": "インクルード"
+  },
+  {
+    "term": "increase",
+    "meaning": "増える、増やす",
+    "reading": "インクリース"
+  },
+  {
+    "term": "maintain",
+    "meaning": "維持する",
+    "reading": "メインテイン"
+  },
+  {
+    "term": "provide",
+    "meaning": "提供する",
+    "reading": "プロバイド"
+  },
+  {
+    "term": "reduce",
+    "meaning": "減らす",
+    "reading": "リデュース"
+  },
+  {
+    "term": "refuse",
+    "meaning": "断る、拒否する",
+    "reading": "リフューズ"
+  },
+  {
+    "term": "replace",
+    "meaning": "取り替える、取って代わる",
+    "reading": "リプレイス"
+  },
+  {
+    "term": "require",
+    "meaning": "必要とする、要求する",
+    "reading": "リクワイア"
+  },
+  {
+    "term": "succeed",
+    "meaning": "成功する",
+    "reading": "サクシード"
+  },
+  {
+    "term": "ability",
+    "meaning": "能力",
+    "reading": "アビリティ"
+  },
+  {
+    "term": "advantage",
+    "meaning": "利点、有利な点",
+    "reading": "アドバンテージ"
+  },
+  {
+    "term": "amount",
+    "meaning": "量、額",
+    "reading": "アマウント"
+  },
+  {
+    "term": "attention",
+    "meaning": "注意、注目",
+    "reading": "アテンション"
+  },
+  {
+    "term": "benefit",
+    "meaning": "利益、恩恵",
+    "reading": "ベネフィット"
+  },
+  {
+    "term": "concern",
+    "meaning": "心配、関心事",
+    "reading": "コンサーン"
+  },
+  {
+    "term": "condition",
+    "meaning": "状態、条件",
+    "reading": "コンディション"
+  },
+  {
+    "term": "effect",
+    "meaning": "影響、効果",
+    "reading": "イフェクト"
+  },
+  {
+    "term": "effort",
+    "meaning": "努力",
+    "reading": "エフォート"
+  },
+  {
+    "term": "equipment",
+    "meaning": "装備、機器",
+    "reading": "イクイップメント"
+  },
+  {
+    "term": "evidence",
+    "meaning": "証拠",
+    "reading": "エビデンス"
+  },
+  {
+    "term": "industry",
+    "meaning": "産業、業界",
+    "reading": "インダストリー"
+  },
+  {
+    "term": "issue",
+    "meaning": "問題、争点",
+    "reading": "イシュー"
+  },
+  {
+    "term": "method",
+    "meaning": "方法",
+    "reading": "メソッド"
+  },
+  {
+    "term": "opportunity",
+    "meaning": "機会",
+    "reading": "オポチュニティ"
+  },
+  {
+    "term": "pressure",
+    "meaning": "圧力、重圧",
+    "reading": "プレッシャー"
+  },
+  {
+    "term": "progress",
+    "meaning": "進歩、前進",
+    "reading": "プログレス"
+  },
+  {
+    "term": "quality",
+    "meaning": "質",
+    "reading": "クオリティ"
+  },
+  {
+    "term": "resource",
+    "meaning": "資源",
+    "reading": "リソース"
+  },
+  {
+    "term": "situation",
+    "meaning": "状況",
+    "reading": "シチュエーション"
+  },
+  {
+    "term": "accurate",
+    "meaning": "正確な",
+    "reading": "アキュレット"
+  },
+  {
+    "term": "available",
+    "meaning": "利用できる、手に入る",
+    "reading": "アベイラブル"
+  },
+  {
+    "term": "aware",
+    "meaning": "気づいている",
+    "reading": "アウェア"
+  },
+  {
+    "term": "confident",
+    "meaning": "自信のある",
+    "reading": "コンフィデント"
+  },
+  {
+    "term": "curious",
+    "meaning": "好奇心の強い",
+    "reading": "キュリアス"
+  },
+  {
+    "term": "efficient",
+    "meaning": "効率的な",
+    "reading": "イフィシェント"
+  },
+  {
+    "term": "familiar",
+    "meaning": "よく知っている、なじみのある",
+    "reading": "ファミリア"
+  },
+  {
+    "term": "obvious",
+    "meaning": "明らかな",
+    "reading": "オブビアス"
+  },
+  {
+    "term": "particular",
+    "meaning": "特定の、特別の",
+    "reading": "パティキュラー"
+  },
+  {
+    "term": "previous",
+    "meaning": "以前の、前の",
+    "reading": "プリビアス"
+  },
+  {
+    "term": "rapid",
+    "meaning": "急速な",
+    "reading": "ラピッド"
+  },
+  {
+    "term": "reasonable",
+    "meaning": "妥当な、手ごろな",
+    "reading": "リーズナブル"
+  },
+  {
+    "term": "responsible",
+    "meaning": "責任がある",
+    "reading": "リスポンシブル"
+  },
+  {
+    "term": "sufficient",
+    "meaning": "十分な",
+    "reading": "サフィシェント"
+  },
+  {
+    "term": "various",
+    "meaning": "さまざまな",
+    "reading": "ベアリアス"
+  },
+  {
+    "term": "apparently",
+    "meaning": "見たところ〜らしい",
+    "reading": "アパレントリー"
+  },
+  {
+    "term": "approximately",
+    "meaning": "おおよそ、約",
+    "reading": "アプロキシメットリー"
+  },
+  {
+    "term": "currently",
+    "meaning": "現在は",
+    "reading": "カレントリー"
+  },
+  {
+    "term": "eventually",
+    "meaning": "最終的には、やがて",
+    "reading": "イベンチュアリー"
+  },
+  {
+    "term": "immediately",
+    "meaning": "すぐに、ただちに",
+    "reading": "イミーディエットリー"
+  }
 ]

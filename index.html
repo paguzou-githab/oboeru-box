@@ -268,7 +268,12 @@
     overflow:auto;
   }
   .flashcard .front{background:var(--surface);}
-  .flashcard .back{background:var(--surface-2);transform:rotateY(180deg);}
+  .flashcard .back{background:var(--surface-2);transform:rotateY(180deg);justify-content:flex-start;}
+  /* 解説を開くと縦に伸びるため、裏面は上詰め＋auto marginで「入るときは中央・あふれたら上から」にする */
+  .back-inner{
+    margin:auto 0;width:100%;display:flex;flex-direction:column;
+    align-items:center;padding-bottom:24px;
+  }
   .flashcard.flipped .front{transform:rotateY(180deg);}
   .flashcard.flipped .back{transform:rotateY(360deg);}
   .flashcard .face{transition:transform .45s cubic-bezier(.4,.2,.2,1);}
@@ -296,6 +301,26 @@
     border:2px solid #000;padding:10px 12px;background:#FBF9FF;
     color:var(--ink);resize:none;font-family:var(--pixel-font);
   }
+  /* ===== くわしい解説(事前埋め込み) ===== */
+  .detail-wrap{margin-top:14px;width:100%;max-width:300px;}
+  .detail-toggle{
+    width:100%;background:#FFF0BF;color:#6B5200;font-family:var(--pixel-font);
+    font-weight:700;font-size:12.5px;padding:9px 10px;border:2px solid #000;cursor:pointer;
+  }
+  .detail-toggle:active{transform:translateY(2px);}
+  .detail-body{
+    display:none;margin-top:8px;border:2px solid #000;background:#FFFDF2;
+    padding:11px 12px;text-align:left;
+  }
+  .detail-body.open{display:block;}
+  .dt-block{margin-bottom:11px;}
+  .dt-block:last-child{margin-bottom:0;}
+  .dt-head{
+    font-family:var(--pixel-font);font-weight:700;font-size:11.5px;
+    color:#8A6A00;margin-bottom:4px;
+  }
+  .dt-body{font-size:12.5px;line-height:1.65;color:var(--ink);}
+  .dt-en{font-weight:700;color:var(--accent-ink);}
   .hw-wrap{margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;}
   .hw-placeholder{
     width:100%;max-width:280px;min-height:64px;border:3px dashed #7A6BAF;
@@ -462,8 +487,16 @@
 ・termには「用語」、meaningには「意味や答えの説明」を日本語で短く書く
 ・termが英単語・英熟語の場合は、readingに「カタカナの読み方」も入れる（日本語の用語ならreadingは省略してよい）
 
+英単語・英熟語のときは、次の解説フィールドも入れてください（読み手は高校受験を控えた中学生。専門用語は使わず、言い切りの文体で短く。改行とダブルクォートは使わない）:
+・ipa … 発音記号。スラッシュは付けず中身だけ書く（例: kiːp）。アメリカ英語。熟語や文法項目では空文字にする
+・phonics … つまずきやすい綴りを1〜2箇所だけ「綴り → 読み方の説明」の形で。複数は ／ で区切る。熟語や文法項目では空文字にする
+・core … コアイメージを40〜70字。訳語の羅列にせず、複数の訳がなぜ繋がるかを書く
+・usage … 使い方や文型を30〜60字。後ろが動名詞かto不定詞か、自動詞か他動詞か、前置詞は何かを書く
+・example … 例文。「英文｜和訳」の形式で全角の縦棒｜で区切る。英文は8語以内で中学既習の語彙だけ
+・confuse … 間違えやすい点を40〜80字。混同しやすい語がある場合だけ書き、なければ空文字にする
+
 出力形式（これだけを回答してください）:
-[{"term":"用語","meaning":"意味の説明","reading":"カタカナの読み方"}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
+[{"term":"用語","meaning":"意味の説明","reading":"カタカナの読み方","ipa":"発音記号","phonics":"綴り → 読み方","core":"コアイメージ","usage":"使い方","example":"英文｜和訳","confuse":""}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
     <div class="row-actions">
       <button class="btn-sm primary" onclick="copyGeminiPrompt()">📋 プロンプトをコピー</button>
       <button class="btn-sm" onclick="window.open('https://gemini.google.com/app','_blank')">Geminiを開く</button>
@@ -509,6 +542,13 @@
       <div class="section-title" style="font-size:14px;margin-bottom:4px;">デッキ別 習得数</div>
       <div id="deckStatsList"></div>
     </div>
+    <div class="stat-card">
+      <div class="section-title" style="font-size:14px;margin-bottom:4px;">💾 保存領域</div>
+      <div id="storageStat"></div>
+      <div class="hint" style="font-size:12px;margin-top:6px;">
+        カード・進捗・メモはこの端末の中だけに保存されます。90%を超えたら「取込」タブでバックアップを書き出してください。
+      </div>
+    </div>
   </div>
 
   <!-- ===== 使い方タブ ===== -->
@@ -539,9 +579,10 @@
         1. 「今日」タブで「復習スタート」をタップ<br>
         2. カードをタップすると答えが見える(もう一度タップで問題に戻る)<br>
         3. 「覚えた✅」か「まだ😵」を自分で判定してタップ<br>
-        4. 答え面には自由に書き込めるメモ欄もあります<br>
-        5. 問題面の「🔎 Geminiで調べる」で、その場でもっと詳しい解説を調べられます<br>
-        6. 「✏️ ひろく手書き練習」があるデッキでは、全画面の手書きボードで書く練習ができます(自動採点はせず自己チェック用)
+        4. 答え面の「📖 くわしい解説」を開くと、コアイメージ・使い方・例文が読めます<br>
+        5. 答え面には自由に書き込めるメモ欄もあります<br>
+        6. 問題面の「🔎 もっと詳しく」で、その場でGeminiに質問することもできます<br>
+        7. 「✏️ ひろく手書き練習」があるデッキでは、全画面の手書きボードで書く練習ができます(自動採点はせず自己チェック用)
       </div>
     </div>
 
@@ -582,6 +623,32 @@
         ・カタカナはだいたいの目安です。正しい音は🔊で耳から確かめてください<br>
         ・<b>iPhone/iPadの側面にあるサイレントスイッチがONだと音が鳴りません</b>。鳴らない時はスイッチと音量を確認してください<br>
         ・カタカナは公式デッキのカードに付いています。自分で追加したカードでも🔊は使えます
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">📖 くわしい解説</div>
+      <div class="hint" style="font-size:13px;">
+        解説つきのカードでは、答え面に「📖 くわしい解説」ボタンが出ます。タップすると次の内容が開きます。<br>
+        ・🔤 読み方:カタカナ・発音記号・つづりと音のルール(フォニックス)<br>
+        ・💡 コアイメージ:その単語の中心にある1つのイメージ<br>
+        ・🔧 使い方:後ろに〜ingがくるかto不定詞がくるか、前置詞は何かなど<br>
+        ・✏️ 例文:短い英文と和訳<br>
+        ・⚠️ 注意:間違えやすい語との違い(あるカードだけ)<br>
+        <br>
+        <b>解説はアプリの中に最初から入っています。</b>ネットにつながっていなくても開けますし、待ち時間もありません。<br>
+        答えを見る前に解説が目に入らないよう、最初は閉じた状態になっています。<br>
+        解説が入っていないカードでは、ボタン自体が出ません。
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="section-title" style="font-size:15px;">🔎 もっと詳しく(Gemini)</div>
+      <div class="hint" style="font-size:13px;">
+        問題面の「🔎 もっと詳しく」を押すと、その用語をコピーしてGeminiが開きます。埋め込みの解説だけでは足りないときに使ってください。<br>
+        ・<b>Geminiは別途ログインが必要です。</b>ホーム画面から起動したこのアプリからGeminiを開くと、ログインしていない画面になることがあります<br>
+        ・その場合はSafariでGeminiを開き直して、コピーされた用語を貼り付けてください<br>
+        ・ふだんの復習は「📖 くわしい解説」だけで足ります
       </div>
     </div>
 
@@ -663,14 +730,27 @@ function addDays(dateStr, days){
 }
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 
-function makeCard(term, meaning, now, source, reading){
+/* ===== くわしい解説(事前埋め込み) =====
+   デッキJSONに解説を持たせておき、カード裏面で折りたたみ表示する。
+   旧カード(これらのフィールドを持たない)は hasDetail() が false になり、
+   解説ボタン自体が出ないので後方互換が保たれる。                              */
+const DETAIL_KEYS = ['ipa', 'phonics', 'core', 'usage', 'example', 'confuse'];
+function pickDetail(src){
+  const o = {};
+  DETAIL_KEYS.forEach(k => { o[k] = (src && typeof src[k] === 'string') ? src[k].trim() : ''; });
+  return o;
+}
+function hasDetail(c){
+  return !!(c && DETAIL_KEYS.some(k => typeof c[k] === 'string' && c[k].trim()));
+}
+function makeCard(term, meaning, now, source, reading, detail){
   now = now || todayStr();
-  return {
+  return Object.assign({
     id: uid(), term, meaning, reading: reading || '', box: 1, nextReview: now,
     mastered: false, masteredAt: null,
     correctStreak: 0, totalCorrect: 0, totalWrong: 0, lastAnswer: null,
     memo: '', hidden: false, source: source || ''
-  };
+  }, pickDetail(detail));
 }
 
 /* ===== 英単語の読み上げ(Web Speech API・外部通信なし) =====
@@ -782,7 +862,33 @@ function loadCards(deckId){
   } catch(e){}
   return [];
 }
-function saveCards(deckId, cards){ localStorage.setItem(lsCardsKey(deckId), JSON.stringify(cards)); }
+/* 保存領域が足りないと setItem は例外を投げる。黙って進捗が消えるのが一番困るので、
+   失敗をはっきり知らせる。プライベートブラウズやOSのストレージ整理でも起こりうる。 */
+let saveErrorShown = false;
+function saveCards(deckId, cards){
+  try{
+    localStorage.setItem(lsCardsKey(deckId), JSON.stringify(cards));
+    return true;
+  } catch(e){
+    console.error('saveCards失敗:', e);
+    if(!saveErrorShown){
+      saveErrorShown = true;
+      alert('カードを保存できませんでした。\n端末の保存領域がいっぱいの可能性があります。\n\n「取込」タブの「全体バックアップ書き出し」でデータを控えてから、使わないデッキを減らしてください。');
+    }
+    return false;
+  }
+}
+/* localStorage の使用量(UTF-16なので1文字=2バイトで数える) */
+function storageUsedBytes(){
+  let total = 0;
+  try{
+    for(let i = 0; i < localStorage.length; i++){
+      const k = localStorage.key(i);
+      total += (k.length + (localStorage.getItem(k) || '').length) * 2;
+    }
+  } catch(e){ return null; }
+  return total;
+}
 
 function loadActiveDeck(decks){
   const saved = localStorage.getItem(LS_ACTIVE);
@@ -890,7 +996,7 @@ function importPresetDeck(i){
           const term = String(item.term);
           if(existingTerms.has(term)){ skipped++; return; }
           existingTerms.add(term);
-          cards.push(makeCard(term, String(item.meaning), null, sourceTag, item.reading ? String(item.reading) : ''));
+          cards.push(makeCard(term, String(item.meaning), null, sourceTag, item.reading ? String(item.reading) : '', item));
           added++;
         }
       });
@@ -1215,7 +1321,7 @@ function addExtraSamples(){
   let added = 0;
   EXTRA_SAMPLE_CARDS[d.id].forEach(x => {
     if(!existingTerms.has(x.term)){
-      cards.push(makeCard(x.term, x.meaning, null, '', x.reading || ''));
+      cards.push(makeCard(x.term, x.meaning, null, '', x.reading || '', x));
       added++;
     }
   });
@@ -1248,7 +1354,7 @@ function importCards(){
       const term = String(item.term);
       if(existingTerms.has(term)){ skipped++; return; }
       existingTerms.add(term);
-      cards.push(makeCard(term, String(item.meaning), null, '', item.reading ? String(item.reading) : ''));
+      cards.push(makeCard(term, String(item.meaning), null, '', item.reading ? String(item.reading) : '', item));
       added++;
     }
   });
@@ -1259,7 +1365,13 @@ function importCards(){
 }
 function exportDeck(){
   const cards = activeCards();
-  const data = cards.map(c => c.reading ? ({term:c.term, meaning:c.meaning, reading:c.reading}) : ({term:c.term, meaning:c.meaning}));
+  const data = cards.map(c => {
+    const o = {term:c.term, meaning:c.meaning};
+    if(c.reading) o.reading = c.reading;
+    /* 解説フィールドは中身があるものだけ書き出す(空文字は出さない) */
+    DETAIL_KEYS.forEach(k => { if(c[k]) o[k] = c[k]; });
+    return o;
+  });
   downloadJson(data, (activeDeck().name || 'deck') + '.json');
 }
 function exportAll(){
@@ -1315,6 +1427,28 @@ function renderStats(){
   document.getElementById('statMastered').textContent = totalMastered;
   document.getElementById('statTotalCards').textContent = totalCards;
   document.getElementById('deckStatsList').innerHTML = rows || '<div class="hint">デッキがありません</div>';
+  renderStorageStat(totalCards);
+}
+/* 保存領域の使用量を表示する。上限はブラウザ非公開のため、目安として5MBを基準にする */
+const STORAGE_ASSUMED_LIMIT = 5 * 1024 * 1024;
+function renderStorageStat(totalCards){
+  const el = document.getElementById('storageStat');
+  if(!el) return;
+  const used = storageUsedBytes();
+  if(used === null){ el.innerHTML = '<div class="hint">保存領域を読み取れませんでした</div>'; return; }
+  const pct = Math.min(100, used / STORAGE_ASSUMED_LIMIT * 100);
+  const mb = (used / 1024 / 1024).toFixed(2);
+  /* 1枚あたりの実測値から、あと何枚入るかの目安を出す */
+  const perCard = totalCards > 0 ? used / totalCards : 1000;
+  const room = Math.max(0, Math.floor((STORAGE_ASSUMED_LIMIT - used) / perCard));
+  const color = pct >= 90 ? BOX_COLOR[1] : (pct >= 70 ? BOX_COLOR[2] : BOX_COLOR[4]);
+  el.innerHTML =
+    '<div class="deck-stat-row"><span>使用量</span><span>' + mb + ' MB / 約5 MB（' + pct.toFixed(1) + '%）</span></div>'
+    + '<div style="height:14px;border:2px solid #000;background:#FFF;margin:6px 0;">'
+    + '<div style="height:100%;width:' + pct.toFixed(1) + '%;background:' + color + ';"></div></div>'
+    + (totalCards > 0
+        ? '<div class="deck-stat-row"><span>あと入る目安</span><span>約 ' + room.toLocaleString() + ' 枚</span></div>'
+        : '');
 }
 
 /* =====================================================
@@ -1425,7 +1559,7 @@ function showCurrentCard(){
   stage.innerHTML = '<div class="flashcard" id="flashcard" onclick="flipCard()">'
     + '<div class="face front">'
     + '<span class="box-badge" style="background:' + BOX_COLOR[currentCard.box] + '">箱' + currentCard.box + '</span>'
-    + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 Geminiで調べる</button>'
+    + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 もっと詳しく</button>'
     + '<div class="term-txt">' + escapeHtml(currentCard.term) + '</div>'
     + ((currentCard.reading || isEnglishTerm(currentCard.term))
         ? '<div class="reading-row">'
@@ -1437,10 +1571,56 @@ function showCurrentCard(){
     + '<div class="tap-hint">タップして答えを見る</div>'
     + '</div>'
     + '<div class="face back">'
+    + '<div class="back-inner">'
     + '<div class="meaning-txt">' + escapeHtml(currentCard.meaning) + '</div>'
+    + renderDetailSection(currentCard)
     + '<textarea class="memo-input" id="memoInput" placeholder="メモ(自由に書き込めます)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" oninput="saveMemo(this.value)">' + escapeHtml(currentCard.memo || '') + '</textarea>'
+    + '</div>'
     + '<div class="tap-hint">タップして問題に戻る</div>'
     + '</div></div>';
+}
+/* 裏面の「📖 くわしい解説」セクションを組み立てる。
+   解説が1つも無いカードでは空文字を返し、ボタンごと出さない。            */
+function renderDetailSection(c){
+  if(!hasDetail(c)) return '';
+  const block = (head, txt) =>
+    '<div class="dt-block"><div class="dt-head">' + head + '</div>'
+    + '<div class="dt-body">' + escapeHtml(txt) + '</div></div>';
+  let body = '';
+  /* 🔤 読み方: ipa か phonics がある単語だけ。熟語(両方空)では見出しごと出さない */
+  if(c.ipa || c.phonics){
+    const line = [];
+    if(c.reading) line.push(escapeHtml(c.reading));
+    if(c.ipa) line.push('/' + escapeHtml(c.ipa) + '/');
+    body += '<div class="dt-block"><div class="dt-head">🔤 読み方</div>'
+      + (line.length ? '<div class="dt-body">' + line.join(' ／ ') + '</div>' : '')
+      + (c.phonics ? '<div class="dt-body">' + escapeHtml(c.phonics) + '</div>' : '')
+      + '</div>';
+  }
+  if(c.core)  body += block('💡 コアイメージ', c.core);
+  if(c.usage) body += block('🔧 使い方', c.usage);
+  if(c.example){
+    /* example は「英文｜和訳」の形式。区切りが無ければ全体を英文として出す */
+    const parts = String(c.example).split('｜');
+    body += '<div class="dt-block"><div class="dt-head">✏️ 例文</div>'
+      + '<div class="dt-body dt-en">' + escapeHtml(parts[0]) + '</div>'
+      + (parts[1] ? '<div class="dt-body">' + escapeHtml(parts.slice(1).join('｜')) + '</div>' : '')
+      + '</div>';
+  }
+  if(c.confuse) body += block('⚠️ 注意', c.confuse);
+  if(!body) return '';
+  /* 既定は閉じた状態。カードを切り替えるたびにHTMLを作り直すので開閉状態は自然にリセットされる */
+  return '<div class="detail-wrap">'
+    + '<button class="detail-toggle" id="detailToggle" onclick="event.stopPropagation();toggleDetail()">📖 くわしい解説 ▼</button>'
+    + '<div class="detail-body" id="detailBody" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">' + body + '</div>'
+    + '</div>';
+}
+function toggleDetail(){
+  const body = document.getElementById('detailBody');
+  const btn = document.getElementById('detailToggle');
+  if(!body || !btn) return;
+  const open = body.classList.toggle('open');
+  btn.textContent = open ? '📖 くわしい解説 ▲' : '📖 くわしい解説 ▼';
 }
 function drawHwGuide(ctx, w, h){
   ctx.clearRect(0, 0, w, h);
