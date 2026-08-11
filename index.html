@@ -461,7 +461,8 @@
     <div class="section-title">📦 公式デッキ(1タップ取込)</div>
     <div class="hint">
       用意ずみの頻出カードセットです。ボタンを押すだけで、その教科のデッキに追加されます。<br>
-      すでに入っているカードは自動でスキップするので、何度押しても二重登録にはなりません。追加済みカードの進み具合(箱の位置)もそのまま守られます。
+      すでに入っているカードは二重登録されません。何度押しても大丈夫です。<br>
+      同じカードがすでにある場合は、<b>読み方と解説だけが最新の内容に更新されます</b>。箱の位置・メモ・正誤の記録はそのまま守られるので、解説が増えたときはもう一度押すだけで反映できます。
     </div>
     <div class="preset-grid" id="presetDeckBtns"></div>
     <div id="presetMsg"></div>
@@ -987,23 +988,42 @@ function importPresetDeck(i){
       if(!Array.isArray(data)) throw new Error('デッキデータの形式が不正です');
       ensureDeckExists(p.deckId);
       const cards = loadCards(p.deckId);
-      /* 既存カードと二重にならないよう用語でスキップ(進捗は一切触らない) */
-      const existingTerms = new Set(cards.map(c => c.term));
+      /* 用語が一致する既存カードは二重登録せず、読みと解説だけを公式デッキの内容で補う。
+         box / nextReview / memo / mastered などの進捗は一切触らないので、
+         解説を後から足したデッキでもボタンを押し直すだけで反映できる。            */
+      const byTerm = new Map();
+      cards.forEach((c, idx) => { if(!byTerm.has(c.term)) byTerm.set(c.term, idx); });
       const sourceTag = presetLabelSource(p.label);
-      let added = 0, skipped = 0;
+      let added = 0, updated = 0, same = 0;
       data.forEach(item => {
-        if(item && item.term && item.meaning){
-          const term = String(item.term);
-          if(existingTerms.has(term)){ skipped++; return; }
-          existingTerms.add(term);
-          cards.push(makeCard(term, String(item.meaning), null, sourceTag, item.reading ? String(item.reading) : '', item));
-          added++;
+        if(!item || !item.term || !item.meaning) return;
+        const term = String(item.term);
+        if(byTerm.has(term)){
+          const c = cards[byTerm.get(term)];
+          let changed = false;
+          if(item.reading && c.reading !== String(item.reading)){
+            c.reading = String(item.reading); changed = true;
+          }
+          const detail = pickDetail(item);
+          DETAIL_KEYS.forEach(k => {
+            /* 公式デッキ側が空のフィールドで既存の値を消さない */
+            if(detail[k] && c[k] !== detail[k]){ c[k] = detail[k]; changed = true; }
+          });
+          changed ? updated++ : same++;
+          return;
         }
+        byTerm.set(term, cards.length);
+        cards.push(makeCard(term, String(item.meaning), null, sourceTag, item.reading ? String(item.reading) : '', item));
+        added++;
       });
-      saveCards(p.deckId, cards);
+      if(!saveCards(p.deckId, cards)) return;
       markPresetDone(file);
       const deck = decks.find(d => d.id === p.deckId);
-      msgEl.innerHTML = '<div class="msg ok">「' + (deck ? escapeHtml(deck.name) : '') + '」に' + added + '枚追加しました！' + (skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : '') + '</div>';
+      const parts = [];
+      if(added)   parts.push(added + '枚を追加');
+      if(updated) parts.push(updated + '枚に解説を追加');
+      if(same)    parts.push(same + '枚は変更なし');
+      msgEl.innerHTML = '<div class="msg ok">「' + (deck ? escapeHtml(deck.name) : '') + '」に ' + (parts.length ? parts.join('、') : '変更はありませんでした') + '</div>';
       renderToday();
       renderPresetDecks();
     })
