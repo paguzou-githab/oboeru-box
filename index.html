@@ -389,6 +389,15 @@
     font-size:10px;font-weight:700;color:#fff;background:#5B4B8A;
     padding:2px 8px;border:2px solid #000;
   }
+  .detail-tag{
+    font-size:10px;font-weight:700;color:#6B5200;background:#FFD34D;
+    padding:2px 8px;border:2px solid #000;
+  }
+  .detail-summary{
+    background:var(--surface-2);border:3px solid var(--panel-darker);
+    padding:10px 14px;margin-bottom:12px;font-size:12.5px;font-weight:700;
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
 
   /* ===== 実績解除トースト ===== */
   #achToastWrap{
@@ -1792,10 +1801,17 @@ function renderCardList(){
     return;
   }
   const otherDecks = decks.filter(d => d.id !== cardListDeckId);
-  body.innerHTML = cards.map(c => {
+  /* 解説がどれだけ届いているかを一覧の先頭で数字にして出す。
+     取込を押したあとにこの数が増えるかどうかで、データが入ったかを確かめられる。 */
+  const detailCount = cards.filter(hasDetail).length;
+  const summary = '<div class="detail-summary"><span>📖 解説あり</span>'
+    + '<span>' + detailCount + ' / ' + cards.length + ' 枚'
+    + (detailCount === 0 ? '（未取込）' : (detailCount === cards.length ? '（全部そろっています）' : '')) + '</span></div>';
+  body.innerHTML = summary + cards.map(c => {
     const badges = '<span class="box-badge" style="position:static;background:' + (c.mastered ? 'var(--mastered)' : BOX_COLOR[c.box]) + '">' + (c.mastered ? '習得済み' : '箱' + c.box) + '</span>'
       + (c.hidden ? '<span class="hidden-tag">非表示中</span>' : '')
-      + (c.source ? '<span class="source-tag">' + escapeHtml(c.source) + '</span>' : '');
+      + (c.source ? '<span class="source-tag">' + escapeHtml(c.source) + '</span>' : '')
+      + (hasDetail(c) ? '<span class="detail-tag">📖 解説あり</span>' : '');
     const otherOptions = otherDecks.map(d => '<option value="' + d.id + '">' + d.emoji + ' ' + escapeHtml(d.name) + 'へ</option>').join('');
     return '<div class="cardrow' + (c.hidden ? ' is-hidden' : '') + '">'
       + '<div class="crow-top"><div>'
