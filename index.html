@@ -291,11 +291,14 @@
     position:absolute;top:14px;left:14px;font-size:10px;font-weight:400;color:#fff;
     padding:5px 8px;font-family:var(--pixel-display);border:2px solid #000;
   }
+  /* 裏面の解説の下に置く。答えを見たあとの逃げ道なので、
+     表面(問題を見ている段階)には出さない。 */
   .gemini-btn{
-    position:absolute;top:12px;right:12px;
+    margin-top:10px;width:100%;max-width:300px;
     background:#EFEBFF;color:#5B4B8A;font-size:11.5px;font-weight:700;
-    padding:6px 12px;cursor:pointer;font-family:var(--pixel-font);border:2px solid #000;
+    padding:8px 12px;cursor:pointer;font-family:var(--pixel-font);border:2px solid #000;
   }
+  .gemini-btn:active{transform:translateY(2px);}
   .memo-input{
     margin-top:14px;width:100%;max-width:280px;min-height:56px;font-size:13px;
     border:2px solid #000;padding:10px 12px;background:#FBF9FF;
@@ -591,7 +594,7 @@
         3. 「覚えた✅」か「まだ😵」を自分で判定してタップ<br>
         4. 答え面の「📖 くわしい解説」を開くと、コアイメージ・使い方・例文が読めます<br>
         5. 答え面には自由に書き込めるメモ欄もあります<br>
-        6. 問題面の「🔎 もっと詳しく」で、その場でGeminiに質問することもできます<br>
+        6. 答え面の「🔎 もっと詳しく」で、その場でGeminiに質問することもできます<br>
         7. 「✏️ ひろく手書き練習」があるデッキでは、全画面の手書きボードで書く練習ができます(自動採点はせず自己チェック用)
       </div>
     </div>
@@ -655,7 +658,8 @@
     <div class="stat-card">
       <div class="section-title" style="font-size:15px;">🔎 もっと詳しく(Gemini)</div>
       <div class="hint" style="font-size:13px;">
-        問題面の「🔎 もっと詳しく」を押すと、その用語をコピーしてGeminiが開きます。埋め込みの解説だけでは足りないときに使ってください。<br>
+        答え面の「📖 くわしい解説」の下にある「🔎 もっと詳しく」を押すと、その用語をコピーしてGeminiが開きます。埋め込みの解説だけでは足りないときに使ってください。<br>
+        ・<b>答えを見る前には出てきません。</b>先に自分で思い出してから使う流れにしています<br>
         ・<b>Geminiは別途ログインが必要です。</b>ホーム画面から起動したこのアプリからGeminiを開くと、ログインしていない画面になることがあります<br>
         ・その場合はSafariでGeminiを開き直して、コピーされた用語を貼り付けてください<br>
         ・ふだんの復習は「📖 くわしい解説」だけで足ります
@@ -1588,7 +1592,6 @@ function showCurrentCard(){
   stage.innerHTML = '<div class="flashcard" id="flashcard" onclick="flipCard()">'
     + '<div class="face front">'
     + '<span class="box-badge" style="background:' + BOX_COLOR[currentCard.box] + '">箱' + currentCard.box + '</span>'
-    + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 もっと詳しく</button>'
     + '<div class="term-txt">' + escapeHtml(currentCard.term) + '</div>'
     + ((currentCard.reading || isEnglishTerm(currentCard.term))
         ? '<div class="reading-row">'
@@ -1603,6 +1606,7 @@ function showCurrentCard(){
     + '<div class="back-inner">'
     + '<div class="meaning-txt">' + escapeHtml(currentCard.meaning) + '</div>'
     + renderDetailSection(currentCard)
+    + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 もっと詳しく</button>'
     + '<textarea class="memo-input" id="memoInput" placeholder="メモ(自由に書き込めます)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" oninput="saveMemo(this.value)">' + escapeHtml(currentCard.memo || '') + '</textarea>'
     + '</div>'
     + '<div class="tap-hint">タップして問題に戻る</div>'
