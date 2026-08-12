@@ -133,6 +133,30 @@
     box-shadow:inset 2px 2px 0 rgba(255,255,255,.55),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
   }
   .start-btn:disabled{background:#9AA08F;color:#5c6152;box-shadow:none;}
+  /* ===== 聞き流しモード(運転中など、画面を見ずに音声だけ聞く用) =====
+     学習記録(箱・ストリーク)には一切影響しない。読み上げのみを行う。 */
+  .listen-btn{
+    margin-top:10px;width:100%;padding:13px;
+    background:#4A6FA5;color:#fff;font-family:var(--pixel-font);font-weight:700;
+    font-size:14px;cursor:pointer;border:none;text-shadow:1px 1px 0 rgba(0,0,0,.35);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
+  }
+  .listen-btn:disabled{background:#9AA08F;color:#5c6152;box-shadow:none;}
+  #listenOverlay{z-index:70;}
+  .listen-stage{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+     text-align:center;gap:18px;padding:10px 6px;
+  }
+  .listen-term{font-family:var(--pixel-font);font-weight:700;font-size:30px;line-height:1.35;color:var(--ink);word-break:break-word;}
+  .listen-reading{font-family:var(--pixel-font);font-weight:700;font-size:15px;color:var(--muted);}
+  .listen-meaning{font-family:var(--pixel-font);font-weight:700;font-size:21px;line-height:1.5;color:var(--accent-ink);word-break:break-word;}
+  .listen-progress{font-family:var(--pixel-font);font-weight:700;font-size:13px;color:var(--muted);}
+  .listen-stop{
+    width:100%;padding:20px;background:#C0392B;color:#fff;font-family:var(--pixel-font);
+    font-weight:700;font-size:19px;cursor:pointer;border:none;text-shadow:1px 1px 0 rgba(0,0,0,.35);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
+  }
+  .listen-stop:active{transform:translateY(2px);}
   .start-btn:active:not(:disabled){transform:translateY(2px);box-shadow:inset 2px 2px 0 rgba(0,0,0,.35);}
 
   /* ===== Box shelf → チェスト列(signature element) ===== */
@@ -448,6 +472,7 @@
       <div><span class="due-count" id="dueCount">0</span><span class="due-unit">枚</span></div>
       <div class="xp-bar" id="dueXpBar"><div class="xp-fill" id="dueXpFill"></div><div class="xp-txt" id="dueXpTxt"></div></div>
       <button class="start-btn pixel-btn" id="startBtn" onclick="startReview()">復習スタート</button>
+      <button class="listen-btn pixel-btn" id="listenBtn" onclick="startListenMode()">🚗 聞き流しモード</button>
 
       <div class="shelf-title"><span>箱の中身(このデッキ)</span><span id="shelfTotal"></span></div>
       <div class="shelf" id="shelf"></div>
@@ -721,6 +746,18 @@
   </div>
 </div>
 
+<!-- ===== 聞き流しモード全画面 =====
+     運転中などに画面を見ずに音声だけ聞く用。学習記録には影響しない。 -->
+<div class="review-overlay" id="listenOverlay">
+  <div class="review-top">
+    <button class="close-btn" onclick="stopListenMode()">✕</button>
+    <div class="listen-progress" id="listenProgress">0/0</div>
+    <div style="width:22px;"></div>
+  </div>
+  <div class="listen-stage" id="listenStage"></div>
+  <button class="listen-stop" onclick="stopListenMode()">■ 停止</button>
+</div>
+
 <div id="achToastWrap"></div>
 
 <div class="tabbar">
@@ -815,6 +852,99 @@ function speakText(term){
 }
 function speakCurrentTerm(){
   if(currentCard) speakText(currentCard.term);
+}
+
+/* ===== 聞き流しモード =====
+   運転中など画面を見られない場面で、デッキ全カードを音声で流し続けるモード。
+   「覚えた/まだ」の判定は一切行わず、箱・ストリーク・XPなどの学習記録には触らない。
+   仕様: シャッフル順 / 用語→(間)→意味 / 1枚ごとに3秒あけて次へ / 1周したら自動終了。
+   画面はつけたまま音声だけ聞く使い方を想定(iOSは画面消灯・アプリ切替で発話が止まる)。 */
+var listenQueue = [];
+var listenIndex = 0;
+var listenTimers = [];
+var listenActive = false;
+const LISTEN_GAP_AFTER_TERM_MS = 1200;  /* 用語を読んだあと、意味を読むまでの間 */
+const LISTEN_GAP_AFTER_CARD_MS = 3000;  /* 意味を読み終えてから次のカードまでの間 */
+
+function listenClearTimers(){
+  listenTimers.forEach(id => clearTimeout(id));
+  listenTimers = [];
+}
+function listenLater(fn, ms){
+  const id = setTimeout(() => {
+    if(!listenActive) return;
+    fn();
+  }, ms);
+  listenTimers.push(id);
+  return id;
+}
+/* 聞き流し用の発話。既存のspeakTextは英語限定なので、言語を指定して読めるようにする。
+   onEndは発話終了(または失敗)時に必ず1回呼ぶ。 */
+function listenSpeak(text, lang, onEnd){
+  if(!text){ onEnd(); return; }
+  if(!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined'){
+    onEnd();
+    return;
+  }
+  try{
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = lang;
+    u.rate = 0.9;
+    let done = false;
+    const finish = () => { if(done) return; done = true; onEnd(); };
+    u.onend = finish;
+    u.onerror = finish;
+    /* 読み上げイベントが来ない端末向けの保険。文字数から概算した時間で先に進める。 */
+    listenLater(finish, 1500 + text.length * 130);
+    window.speechSynthesis.speak(u);
+  } catch(e){ onEnd(); }
+}
+function startListenMode(){
+  const cards = activeCards().filter(c => !c.hidden);
+  if(cards.length === 0){
+    alert('このデッキにはカードがありません。');
+    return;
+  }
+  listenQueue = shuffleArray(cards);
+  listenIndex = 0;
+  listenActive = true;
+  listenClearTimers();
+  try{ window.speechSynthesis.cancel(); } catch(e){}
+  document.getElementById('listenOverlay').classList.add('active');
+  listenPlayCurrent();
+}
+function stopListenMode(){
+  listenActive = false;
+  listenClearTimers();
+  try{ window.speechSynthesis.cancel(); } catch(e){}
+  document.getElementById('listenOverlay').classList.remove('active');
+  switchTab('today');
+  renderToday();
+}
+function listenPlayCurrent(){
+  if(!listenActive) return;
+  if(listenIndex >= listenQueue.length){  /* 1周したら自動で終了 */
+    stopListenMode();
+    return;
+  }
+  const card = listenQueue[listenIndex];
+  const stage = document.getElementById('listenStage');
+  document.getElementById('listenProgress').textContent = (listenIndex + 1) + '/' + listenQueue.length;
+  stage.innerHTML = '<div class="listen-term">' + escapeHtml(card.term) + '</div>'
+    + (card.reading ? '<div class="listen-reading">' + escapeHtml(card.reading) + '</div>' : '')
+    + '<div class="listen-meaning">' + escapeHtml(card.meaning) + '</div>';
+  /* 用語 → 間 → 意味 → 間 → 次のカード */
+  const termLang = isEnglishTerm(card.term) ? 'en-US' : 'ja-JP';
+  listenSpeak(speechTextOf(card.term), termLang, () => {
+    listenLater(() => {
+      listenSpeak(card.meaning, 'ja-JP', () => {
+        listenLater(() => {
+          listenIndex += 1;
+          listenPlayCurrent();
+        }, LISTEN_GAP_AFTER_CARD_MS);
+      });
+    }, LISTEN_GAP_AFTER_TERM_MS);
+  });
 }
 
 function answerCard(card, isCorrect, now){
@@ -1251,6 +1381,8 @@ function renderToday(){
   document.getElementById('dueCount').textContent = due.length;
   document.getElementById('startBtn').disabled = due.length === 0;
   document.getElementById('startBtn').textContent = due.length === 0 ? '今日の分は完了！🎉' : '復習スタート';
+  /* 聞き流しはデッキ全体が対象なので、今日の復習が0枚でも使える */
+  document.getElementById('listenBtn').disabled = cards.filter(c => !c.hidden).length === 0;
 
   /* XPバー: 今日の開始時点の枚数を基準に、片付けた分だけ緑ゲージが伸びる */
   if(activeDeckId){
