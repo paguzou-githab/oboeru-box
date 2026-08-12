@@ -1432,7 +1432,7 @@ function exportAll(){
      XP基準が失われないようにする。旧バックアップとの互換のためversionを付与。 */
   const backup = {version:2, exportedAt:todayStr(), decks, streak, cards:{}, presetDone:loadPresetDone()};
   decks.forEach(d => { backup.cards[d.id] = loadCards(d.id); });
-  downloadJson(backup, 'wordbox-backup-' + todayStr() + '.json');
+  downloadJson(backup, 'おぼえるBOX-backup-' + todayStr() + '.json');
   document.getElementById('backupMsg').innerHTML = '<div class="msg ok">バックアップを書き出しました</div>';
 }
 function restoreAll(evt){
