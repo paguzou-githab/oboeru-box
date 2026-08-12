@@ -559,7 +559,7 @@
       <div class="section-title" style="font-size:14px;margin-bottom:4px;">💾 保存領域</div>
       <div id="storageStat"></div>
       <div class="hint" style="font-size:12px;margin-top:6px;">
-        カード・進捗・メモはこの端末の中だけに保存されます。90%を超えたら「取込」タブでバックアップを書き出してください。
+        カード・進捗・メモはこの端末の中だけに保存されます。90%を超えたら「取込」タブでバックアップを書き出してください。同じサイトの他のアプリ(TaskFlowなど)と保存領域の上限を共有しています。
       </div>
     </div>
   </div>
@@ -571,7 +571,7 @@
     <div class="stat-card">
       <div class="section-title" style="font-size:15px;">📦 このアプリについて</div>
       <div class="hint" style="font-size:13px;">
-        忘却曲線(エビングハウスの実験)をもとにした「5箱式」の暗記アプリです。正解した単語は間隔を空けながら少しずつ「習得済み」に近づき、間違えた単語はすぐまた出題されます。
+        忘却曲線(エビングハウスの実験)をもとにした「5箱式」の暗記アプリです。正解した単語は間隔を空けながら少しずつ「習得済み」に近づき、間違えた単語は箱1に戻って翌日また出題されます。
       </div>
     </div>
 
@@ -649,7 +649,7 @@
         ・✏️ 例文:短い英文と和訳<br>
         ・⚠️ 注意:間違えやすい語との違い(あるカードだけ)<br>
         <br>
-        <b>解説はアプリの中に最初から入っています。</b>ネットにつながっていなくても開けますし、待ち時間もありません。<br>
+        <b>解説はアプリの中に最初から入っています。</b>表示するのに通信は使わないので、待ち時間なしで開けます。<br>
         答えを見る前に解説が目に入らないよう、最初は閉じた状態になっています。<br>
         解説が入っていないカードでは、ボタン自体が出ません。
       </div>
@@ -743,6 +743,11 @@ function addDays(dateStr, days){
   return todayStr(d);
 }
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+/* 取込時の用語キー正規化。前後の空白・全角スペースの差だけで
+   同じ単語が二重登録されるのを防ぐ。取込経路すべてでこれを通す。 */
+function normTerm(s){
+  return String(s == null ? '' : s).replace(/[\s\u3000]+/g, ' ').trim();
+}
 
 /* ===== くわしい解説(事前埋め込み) =====
    デッキJSONに解説を持たせておき、カード裏面で折りたたみ表示する。
@@ -867,7 +872,24 @@ function loadDecks(){
   saveDecks(initial);
   return initial;
 }
-function saveDecks(decks){ localStorage.setItem(LS_DECKS, JSON.stringify(decks)); }
+/* 保存領域が足りないと setItem は例外を投げる。黙って進捗が消えるのが一番困るので、
+   すべての書き込みをここに集約し、失敗をはっきり知らせる。プライベートブラウズや
+   OSのストレージ整理でも起こりうる。 */
+let saveErrorShown = false;
+function safeSet(key, value){
+  try{
+    localStorage.setItem(key, value);
+    return true;
+  } catch(e){
+    console.error('保存失敗:', key, e);
+    if(!saveErrorShown){
+      saveErrorShown = true;
+      alert('データを保存できませんでした。\n端末の保存領域がいっぱいの可能性があります。\n\n「取込」タブの「全体バックアップ書き出し」でデータを控えてから、使わないデッキを減らしてください。');
+    }
+    return false;
+  }
+}
+function saveDecks(decks){ return safeSet(LS_DECKS, JSON.stringify(decks)); }
 
 function loadCards(deckId){
   try{
@@ -876,28 +898,16 @@ function loadCards(deckId){
   } catch(e){}
   return [];
 }
-/* 保存領域が足りないと setItem は例外を投げる。黙って進捗が消えるのが一番困るので、
-   失敗をはっきり知らせる。プライベートブラウズやOSのストレージ整理でも起こりうる。 */
-let saveErrorShown = false;
-function saveCards(deckId, cards){
-  try{
-    localStorage.setItem(lsCardsKey(deckId), JSON.stringify(cards));
-    return true;
-  } catch(e){
-    console.error('saveCards失敗:', e);
-    if(!saveErrorShown){
-      saveErrorShown = true;
-      alert('カードを保存できませんでした。\n端末の保存領域がいっぱいの可能性があります。\n\n「取込」タブの「全体バックアップ書き出し」でデータを控えてから、使わないデッキを減らしてください。');
-    }
-    return false;
-  }
-}
-/* localStorage の使用量(UTF-16なので1文字=2バイトで数える) */
+function saveCards(deckId, cards){ return safeSet(lsCardsKey(deckId), JSON.stringify(cards)); }
+/* localStorage の使用量(UTF-16なので1文字=2バイトで数える)。
+   同一オリジンにTaskFlowが同居しているため、wordbox: プレフィックスのキーのみを対象にする。
+   ただし容量の上限そのものは引き続き共有されている。 */
 function storageUsedBytes(){
   let total = 0;
   try{
     for(let i = 0; i < localStorage.length; i++){
       const k = localStorage.key(i);
+      if(k.indexOf('wordbox:') !== 0) continue;
       total += (k.length + (localStorage.getItem(k) || '').length) * 2;
     }
   } catch(e){ return null; }
@@ -909,7 +919,7 @@ function loadActiveDeck(decks){
   if(saved && decks.some(d => d.id === saved)) return saved;
   return decks[0] ? decks[0].id : null;
 }
-function saveActiveDeck(id){ localStorage.setItem(LS_ACTIVE, id); }
+function saveActiveDeck(id){ return safeSet(LS_ACTIVE, id); }
 
 function loadStreak(){
   try{
@@ -918,7 +928,7 @@ function loadStreak(){
   } catch(e){}
   return {currentStreak:0, longestStreak:0, lastStudyDate:null};
 }
-function saveStreak(s){ localStorage.setItem(LS_STREAK, JSON.stringify(s)); }
+function saveStreak(s){ return safeSet(LS_STREAK, JSON.stringify(s)); }
 
 /* =====================================================
    公式デッキ(GitHub Pagesのdecksフォルダから1タップ取込)
@@ -962,7 +972,7 @@ function markPresetDone(file){
   const done = loadPresetDone();
   if(done.indexOf(file) === -1){
     done.push(file);
-    localStorage.setItem(LS_PRESET_DONE, JSON.stringify(done));
+    safeSet(LS_PRESET_DONE, JSON.stringify(done));
   }
 }
 function presetLabelSource(label){
@@ -1005,12 +1015,12 @@ function importPresetDeck(i){
          box / nextReview / memo / mastered などの進捗は一切触らないので、
          解説を後から足したデッキでもボタンを押し直すだけで反映できる。            */
       const byTerm = new Map();
-      cards.forEach((c, idx) => { if(!byTerm.has(c.term)) byTerm.set(c.term, idx); });
+      cards.forEach((c, idx) => { const t = normTerm(c.term); if(!byTerm.has(t)) byTerm.set(t, idx); });
       const sourceTag = presetLabelSource(p.label);
       let added = 0, updated = 0, same = 0;
       data.forEach(item => {
         if(!item || !item.term || !item.meaning) return;
-        const term = String(item.term);
+        const term = normTerm(item.term);
         if(byTerm.has(term)){
           const c = cards[byTerm.get(term)];
           let changed = false;
@@ -1173,7 +1183,7 @@ function seedSampleDataIfNeeded(decks){
       saveCards(d.id, cards);
     }
   });
-  localStorage.setItem('wordbox:seeded', '1');
+  safeSet('wordbox:seeded', '1');
 }
 
 /* =====================================================
@@ -1199,7 +1209,7 @@ function getTodaySessionTotal(deckId, dueLen){
   try{ rec = JSON.parse(localStorage.getItem(xpTotalKey(deckId)) || 'null'); } catch(e){}
   if(!rec || rec.date !== now || dueLen > rec.total){
     rec = { date: now, total: dueLen };
-    localStorage.setItem(xpTotalKey(deckId), JSON.stringify(rec));
+    safeSet(xpTotalKey(deckId), JSON.stringify(rec));
   }
   return rec.total;
 }
@@ -1350,15 +1360,15 @@ function addExtraSamples(){
   const d = activeDeck();
   if(!d || !EXTRA_SAMPLE_CARDS[d.id]) return;
   const cards = activeCards();
-  const existingTerms = new Set(cards.map(c => c.term));
+  const existingTerms = new Set(cards.map(c => normTerm(c.term)));
   let added = 0;
   EXTRA_SAMPLE_CARDS[d.id].forEach(x => {
-    if(!existingTerms.has(x.term)){
+    if(!existingTerms.has(normTerm(x.term))){
       cards.push(makeCard(x.term, x.meaning, null, '', x.reading || '', x));
       added++;
     }
   });
-  saveCards(activeDeckId, cards);
+  if(!saveCards(activeDeckId, cards)) return;
   document.getElementById('importMsg').innerHTML = added > 0
     ? '<div class="msg ok">' + added + '枚のサンプルを追加しました!</div>'
     : '<div class="msg ok">追加できるサンプルはもうありません(すでに全部入っています)</div>';
@@ -1379,19 +1389,23 @@ function importCards(){
     return;
   }
   const cards = activeCards();
-  /* 修正: 同じ用語の二重登録を防止(既存カード+今回貼り付け分の中の重複もスキップ) */
-  const existingTerms = new Set(cards.map(c => c.term));
+  /* 修正: 同じ用語の二重登録を防止(既存カード+今回貼り付け分の中の重複もスキップ)。
+     前後の空白・全角スペースの差だけで別カード扱いにならないようnormTermで正規化する。 */
+  const existingTerms = new Set(cards.map(c => normTerm(c.term)));
   let added = 0, skipped = 0;
   data.forEach(item => {
     if(item && item.term && item.meaning){
-      const term = String(item.term);
+      const term = normTerm(item.term);
       if(existingTerms.has(term)){ skipped++; return; }
       existingTerms.add(term);
       cards.push(makeCard(term, String(item.meaning), null, '', item.reading ? String(item.reading) : '', item));
       added++;
     }
   });
-  saveCards(activeDeckId, cards);
+  if(!saveCards(activeDeckId, cards)){
+    msgEl.innerHTML = '<div class="msg err">保存に失敗しました。空き容量を確認してください。</div>';
+    return;
+  }
   msgEl.innerHTML = '<div class="msg ok">' + added + '枚のカードを追加しました！' + (skipped > 0 ? '(すでにある' + skipped + '枚はスキップ)' : '') + '</div>';
   area.value = '';
   renderToday();
@@ -1408,9 +1422,11 @@ function exportDeck(){
   downloadJson(data, (activeDeck().name || 'deck') + '.json');
 }
 function exportAll(){
-  const backup = {decks, streak, cards:{}};
+  /* presetDone(公式デッキの✅済バッジ)も含めることで、機種変更後にバッジと
+     XP基準が失われないようにする。旧バックアップとの互換のためversionを付与。 */
+  const backup = {version:2, exportedAt:todayStr(), decks, streak, cards:{}, presetDone:loadPresetDone()};
   decks.forEach(d => { backup.cards[d.id] = loadCards(d.id); });
-  downloadJson(backup, 'wordbox-backup.json');
+  downloadJson(backup, 'wordbox-backup-' + todayStr() + '.json');
   document.getElementById('backupMsg').innerHTML = '<div class="msg ok">バックアップを書き出しました</div>';
 }
 function restoreAll(evt){
@@ -1420,13 +1436,25 @@ function restoreAll(evt){
   reader.onload = () => {
     try{
       const data = JSON.parse(reader.result);
-      if(!data.decks) throw new Error('バックアップ形式が不正です');
+      /* decksが配列でないと後続のforEach/decks[0]で例外になり、復元途中の
+         壊れた状態で止まってしまうため、形式を厳密にチェックする。 */
+      if(!Array.isArray(data.decks) || data.decks.length === 0){
+        throw new Error('バックアップ形式が不正です');
+      }
       decks = data.decks; saveDecks(decks);
       streak = data.streak || streak; saveStreak(streak);
-      Object.keys(data.cards || {}).forEach(id => saveCards(id, data.cards[id]));
+      let cardsSaveFailed = false;
+      Object.keys(data.cards || {}).forEach(id => {
+        if(!saveCards(id, data.cards[id])) cardsSaveFailed = true;
+      });
+      if(Array.isArray(data.presetDone)){
+        safeSet(LS_PRESET_DONE, JSON.stringify(data.presetDone));
+      }
       activeDeckId = decks[0] ? decks[0].id : null;
       saveActiveDeck(activeDeckId);
-      document.getElementById('backupMsg').innerHTML = '<div class="msg ok">復元が完了しました</div>';
+      document.getElementById('backupMsg').innerHTML = cardsSaveFailed
+        ? '<div class="msg err">一部のデッキは保存領域の不足で復元できませんでした。空き容量を確認してください。</div>'
+        : '<div class="msg ok">復元が完了しました</div>';
       renderAll();
     } catch(e){
       document.getElementById('backupMsg').innerHTML = '<div class="msg err">復元に失敗しました: ' + escapeHtml(e.message) + '</div>';
@@ -1771,7 +1799,7 @@ function answer(isCorrect){
     justMastered = !before.mastered && updated.mastered;
     masteredTerm = before.term;
     cards[idx] = updated;
-    saveCards(activeDeckId, cards);
+    if(!saveCards(activeDeckId, cards)) return;   // 保存できなければ次のカードへ進めない
   }
   const prevStreak = streak.currentStreak || 0;
   streak = updateStreak(streak);
