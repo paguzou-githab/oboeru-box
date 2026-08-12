@@ -1557,9 +1557,19 @@ function shuffleArray(arr){
   }
   return a;
 }
+/* 前回「覚えた/まだ」の判定が付いているカード(lastAnswerがcorrect/wrong)を、
+   まだ一度も判定されていないカード(lastAnswerがnull)より先に出す。
+   得意・不得意ではなく「前回の判定があるかどうか」だけで並べ替えるので、
+   前回不正解だった単語も前回正解だった単語も同じ優先度で先頭寄りになる。
+   バックログが大きいと新規カードに埋もれて箱移動のチャンスが来ない問題への対策。 */
+function prioritizeDueCards(cards){
+  const judged = [], unjudged = [];
+  cards.forEach(c => (c.lastAnswer ? judged : unjudged).push(c));
+  return shuffleArray(judged).concat(shuffleArray(unjudged));
+}
 function startReview(){
   const cards = activeCards();
-  reviewQueue = shuffleArray(dueCards(cards));
+  reviewQueue = prioritizeDueCards(dueCards(cards));
   if(reviewQueue.length === 0) return;
   reviewTotal = reviewQueue.length;
   reviewIndex = 0;
