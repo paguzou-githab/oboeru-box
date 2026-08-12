@@ -706,7 +706,7 @@
     <div class="progress-txt" id="progressTxt">0/0</div>
   </div>
   <div class="card-stage" id="cardStage"></div>
-  <div class="answer-row" id="answerRow" style="display:none;">
+  <div class="answer-row" id="answerRow" style="visibility:hidden;">
     <button class="ans-btn wrong" onclick="answer(false)">まだ 😵</button>
     <button class="ans-btn correct" onclick="answer(true)">覚えた ✅</button>
   </div>
@@ -1584,7 +1584,7 @@ function showCurrentCard(){
   const stage = document.getElementById('cardStage');
   const answerRow = document.getElementById('answerRow');
   if(reviewIndex >= reviewQueue.length){
-    answerRow.style.display = 'none';
+    answerRow.style.visibility = 'hidden';
     document.getElementById('progressFill').style.width = '100%';
     document.getElementById('progressTxt').textContent = reviewTotal + '/' + reviewTotal;
     stage.innerHTML = '<div class="done-screen"><div class="emoji">🎉</div><h2>今日の分、おつかれさま！</h2><p>' + reviewTotal + '枚を復習しました</p><button class="done-close pixel-btn" onclick="closeReview()">閉じる</button></div>';
@@ -1596,7 +1596,7 @@ function showCurrentCard(){
   isFlipped = false;
   document.getElementById('progressFill').style.width = Math.round((reviewIndex / reviewTotal) * 100) + '%';
   document.getElementById('progressTxt').textContent = (reviewIndex + 1) + '/' + reviewTotal;
-  answerRow.style.display = 'none';
+  answerRow.style.visibility = 'hidden';
   const deck = activeDeck();
   const hwEnabled = !!(deck && deck.handwriting);
   stage.innerHTML = '<div class="flashcard" id="flashcard" onclick="flipCard()">'
@@ -1745,7 +1745,7 @@ function clearHwFullCanvas(){
 function flipCard(){
   isFlipped = !isFlipped;
   document.getElementById('flashcard').classList.toggle('flipped', isFlipped);
-  document.getElementById('answerRow').style.display = isFlipped ? 'flex' : 'none';
+  document.getElementById('answerRow').style.visibility = isFlipped ? 'visible' : 'hidden';
 }
 function saveMemo(text){
   if(!currentCard) return;
