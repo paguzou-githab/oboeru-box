@@ -672,6 +672,12 @@
         毎日1回でも復習すると連続日数(ストリーク)が増えていきます。1日でもサボると1に戻るので、「今日の分だけ終わらせる」を毎日の習慣にするための目印です。
       </div>
     </div>
+
+    <!-- バージョン表示: 起動時にGitHub Pagesが返すLast-Modifiedヘッダーを取得して
+         自動で埋める(initVersionLabel参照)。手で書き換える必要はない。 -->
+    <div class="hint" style="font-size:11px;color:var(--muted);text-align:center;opacity:.6;margin:14px 0 4px;" id="appVersionLabel">
+      バージョン確認中...
+    </div>
   </div>
 
 </div>
@@ -1941,8 +1947,28 @@ function renderAll(){
   renderImportTab();
   renderStats();
 }
+/* バージョン表示(使い方タブ下部): 自分自身(index.html)をキャッシュ無視で取り直し、
+   GitHub Pagesが返すLast-Modifiedヘッダーの日時をそのまま表示する。
+   pushするたびに自動で最新の日時に変わるので、手で書き換える必要はない。
+   オフラインなど取得できない場合はその旨を表示するだけで、アプリ本体には影響しない。 */
+function formatDisplayDateTime(d){
+  return d.getFullYear() + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + String(d.getDate()).padStart(2, '0')
+    + ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+}
+function initVersionLabel(){
+  const el = document.getElementById('appVersionLabel');
+  if(!el) return;
+  const url = location.pathname + '?_v=' + Date.now(); // CDN/ブラウザキャッシュを避けるための毎回違うURL
+  fetch(url, {cache: 'no-store'})
+    .then(r => {
+      const lm = r.headers.get('last-modified');
+      el.textContent = lm ? ('バージョン: ' + formatDisplayDateTime(new Date(lm))) : 'バージョン情報を取得できませんでした';
+    })
+    .catch(() => { el.textContent = 'バージョン情報を取得できませんでした(オフラインの可能性)'; });
+}
 renderAll();
 loadPresetManifest();
+initVersionLabel();
 </script>
 </body>
 </html>
