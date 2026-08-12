@@ -287,6 +287,9 @@
   .speak-btn:active{transform:translateY(2px);}
   .meaning-txt{font-family:var(--pixel-font);font-weight:700;font-size:20px;line-height:1.5;color:var(--accent-ink);}
   .tap-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:700;}
+  .back > .tap-hint{position:static;margin-top:12px;}
+  .flashcard.tall{height:auto;}
+  .flashcard.tall .back{position:relative;overflow-y:auto;max-height:75vh;}
   .box-badge{
     position:absolute;top:14px;left:14px;font-size:10px;font-weight:400;color:#fff;
     padding:5px 8px;font-family:var(--pixel-display);border:2px solid #000;
@@ -1697,6 +1700,8 @@ function toggleDetail(){
   const btn = document.getElementById('detailToggle');
   if(!body || !btn) return;
   const open = body.classList.toggle('open');
+  const card = document.getElementById('flashcard');
+  if(card) card.classList.toggle('tall', open);
   btn.textContent = open ? '📖 くわしい解説 ▲' : '📖 くわしい解説 ▼';
 }
 function drawHwGuide(ctx, w, h){
@@ -1780,6 +1785,9 @@ function flipCard(){
   isFlipped = !isFlipped;
   document.getElementById('flashcard').classList.toggle('flipped', isFlipped);
   document.getElementById('answerRow').style.visibility = isFlipped ? 'visible' : 'hidden';
+  const detailBody = document.getElementById('detailBody');
+  const card = document.getElementById('flashcard');
+  card.classList.toggle('tall', isFlipped && !!(detailBody && detailBody.classList.contains('open')));
 }
 function saveMemo(text){
   if(!currentCard) return;
