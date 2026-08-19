@@ -142,6 +142,29 @@
     box-shadow:inset 2px 2px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
   }
   .listen-btn:disabled{background:#9AA08F;color:#5c6152;box-shadow:none;}
+  /* ===== 苦手20 特訓(箱1の間違い回数トップ20を叩くモード) =====
+     学習記録(箱・正誤カウント・次回出題日)には一切影響しない。連続日数だけ更新する。 */
+  .drill-btn{
+    margin-top:10px;width:100%;padding:13px;
+    background:#A8452F;color:#fff;font-family:var(--pixel-font);font-weight:700;
+    font-size:14px;cursor:pointer;border:none;text-shadow:1px 1px 0 rgba(0,0,0,.35);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.3);
+  }
+  .drill-btn:disabled{background:#9AA08F;color:#5c6152;box-shadow:none;}
+  .drill-btn:active:not(:disabled){transform:translateY(2px);box-shadow:inset 2px 2px 0 rgba(0,0,0,.35);}
+  /* ===== 間違えた回数バッジ ===== */
+  .wrong-badge{
+    position:absolute;top:14px;right:14px;font-size:10px;font-weight:400;color:#fff;
+    padding:5px 8px;font-family:var(--pixel-display);border:2px solid #000;background:#A8352C;
+  }
+  .wrong-pill{
+    display:inline-block;margin-bottom:10px;font-size:10px;color:#fff;
+    padding:5px 8px;font-family:var(--pixel-display);border:2px solid #000;background:#A8352C;
+  }
+  .drill-tag{
+    display:inline-block;margin-bottom:10px;padding:5px 9px;font-size:10px;color:#fff;
+    font-family:var(--pixel-display);border:2px solid #000;background:#A8452F;
+  }
   #listenOverlay{z-index:70;}
   .listen-stage{
     flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -487,6 +510,7 @@
       <div class="xp-bar" id="dueXpBar"><div class="xp-fill" id="dueXpFill"></div><div class="xp-txt" id="dueXpTxt"></div></div>
       <button class="start-btn pixel-btn" id="startBtn" onclick="startReview()">復習スタート</button>
       <button class="listen-btn pixel-btn" id="listenBtn" onclick="startListenMode()">🚗 聞き流しモード</button>
+      <button class="drill-btn pixel-btn" id="drillBtn" onclick="startWeakDrill()">🔥 苦手20 特訓</button>
 
       <div class="shelf-title"><span>箱の中身(このデッキ)</span><span id="shelfTotal"></span></div>
       <div class="shelf" id="shelf"></div>
@@ -1406,6 +1430,14 @@ function renderToday(){
   /* 聞き流しはデッキ全体が対象なので、今日の復習が0枚でも使える */
   document.getElementById('listenBtn').disabled = cards.filter(c => !c.hidden).length === 0;
 
+  /* 苦手20 特訓も出題日に関係なく使える。対象が0枚のときだけ押せないようにする */
+  const weak = weakDrillCards(cards);
+  const drillBtn = document.getElementById('drillBtn');
+  drillBtn.disabled = weak.length === 0;
+  drillBtn.textContent = weak.length === 0
+    ? '🔥 苦手20 特訓（対象なし）'
+    : '🔥 苦手20 特訓（' + weak.length + '枚）';
+
   /* XPバー: 今日の開始時点の枚数を基準に、片付けた分だけ緑ゲージが伸びる */
   if(activeDeckId){
     todaySessionTotal = getTodaySessionTotal(activeDeckId, due.length);
@@ -1741,6 +1773,8 @@ let currentCard = null;
 let isFlipped = false;
 /* 表示中のカードでヒントを開いたか。カードを切り替えるたびにfalseへ戻す。 */
 let hintUsed = false;
+/* 「苦手20 特訓」で出題中か。trueのあいだは回答を保存しない。 */
+let drillMode = false;
 
 function shuffleArray(arr){
   const a = arr.slice();
@@ -1762,6 +1796,7 @@ function prioritizeDueCards(cards){
 }
 function startReview(){
   const cards = activeCards();
+  drillMode = false;
   reviewQueue = prioritizeDueCards(dueCards(cards));
   if(reviewQueue.length === 0) return;
   reviewTotal = reviewQueue.length;
@@ -1769,8 +1804,32 @@ function startReview(){
   document.getElementById('reviewOverlay').classList.add('active');
   showCurrentCard();
 }
+
+/* ===== 苦手20 特訓 =====
+   箱1に留まっていて間違えた回数が多いカードを、多い順に最大20枚だけ出す。
+   出題日(nextReview)は見ないので、今日の復習を終えたあとでも何度でも回せる。
+   このモードの「覚えた/まだ」は保存しない ＝ 箱・正誤カウント・次回出題日は一切動かない。 */
+const WEAK_DRILL_LIMIT = 20;
+function weakDrillCards(cards){
+  return cards
+    .filter(c => !c.hidden && !c.mastered && c.box === 1 && (c.totalWrong || 0) > 0)
+    .sort((a, b) => (b.totalWrong || 0) - (a.totalWrong || 0))
+    .slice(0, WEAK_DRILL_LIMIT);
+}
+function startWeakDrill(){
+  const queue = weakDrillCards(activeCards());
+  if(queue.length === 0) return;
+  drillMode = true;
+  reviewQueue = queue;
+  reviewTotal = queue.length;
+  reviewIndex = 0;
+  document.getElementById('reviewOverlay').classList.add('active');
+  showCurrentCard();
+}
+
 function closeReview(){
   document.getElementById('reviewOverlay').classList.remove('active');
+  drillMode = false;
   renderToday();
 }
 function showCurrentCard(){
@@ -1780,6 +1839,12 @@ function showCurrentCard(){
     answerRow.style.visibility = 'hidden';
     document.getElementById('progressFill').style.width = '100%';
     document.getElementById('progressTxt').textContent = reviewTotal + '/' + reviewTotal;
+    /* 特訓モードは「今日の分」ではないので、終了画面もデイリークリアの実績も別扱いにする */
+    if(drillMode){
+      stage.innerHTML = '<div class="done-screen"><div class="emoji">🔥</div><h2>特訓おつかれさま！</h2><p>苦手カード' + reviewTotal + '枚を回しました<br>（学習記録は変わっていません）</p><button class="done-close pixel-btn" onclick="closeReview()">閉じる</button></div>';
+      playSound('achievement');
+      return;
+    }
     stage.innerHTML = '<div class="done-screen"><div class="emoji">🎉</div><h2>今日の分、おつかれさま！</h2><p>' + reviewTotal + '枚を復習しました</p><button class="done-close pixel-btn" onclick="closeReview()">閉じる</button></div>';
     playSound('achievement');
     showAchievement('デイリークリア', '今日の分をぜんぶ終わらせた！', '🏆');
@@ -1796,6 +1861,7 @@ function showCurrentCard(){
   stage.innerHTML = '<div class="flashcard" id="flashcard" onclick="flipCard()">'
     + '<div class="face front">'
     + '<span class="box-badge" style="background:' + BOX_COLOR[currentCard.box] + '">箱' + currentCard.box + '</span>'
+    + wrongBadge(currentCard)
     + '<div class="term-txt">' + escapeHtml(currentCard.term) + '</div>'
     + ((currentCard.reading || isEnglishTerm(currentCard.term))
         ? '<div class="reading-row">'
@@ -1809,6 +1875,8 @@ function showCurrentCard(){
     + '</div>'
     + '<div class="face back">'
     + '<div class="back-inner">'
+    + (drillMode ? '<div class="drill-tag">🔥 特訓中（記録は変わりません）</div>' : '')
+    + wrongPill(currentCard)
     + '<div class="meaning-txt">' + escapeHtml(currentCard.meaning) + '</div>'
     + renderDetailSection(currentCard)
     + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 もっと詳しく</button>'
@@ -1817,6 +1885,17 @@ function showCurrentCard(){
     + '<div class="tap-hint">タップして問題に戻る</div>'
     + '</div></div>';
 }
+/* 間違えた回数のバッジ。0回のカードには何も出さない(まっさらなカードを萎えさせないため)。
+   表面は右上の角、裏面は意味の上にインラインで置く。                          */
+function wrongBadge(c){
+  const n = (c && c.totalWrong) || 0;
+  return n > 0 ? '<span class="wrong-badge">✕' + n + '</span>' : '';
+}
+function wrongPill(c){
+  const n = (c && c.totalWrong) || 0;
+  return n > 0 ? '<div class="wrong-pill">✕ まちがえた回数 ' + n + '</div>' : '';
+}
+
 /* 表面の「💡 ヒント」セクションを組み立てる。
    出す条件は「箱1」かつ「coreを持つ」の両方。箱2以上に上がったカードや、
    解説フィールドを持たないデッキ(理社国数)ではボタンごと出さない。            */
@@ -1985,6 +2064,17 @@ function lookupOnGemini(){
   window.open('https://gemini.google.com/app?q=' + encodeURIComponent(prompt), '_blank');
 }
 function answer(isCorrect){
+  /* 苦手20 特訓は完全ノーカウント。カードの保存を丸ごと飛ばすので、
+     箱・正誤カウント・連続正解・前回判定・次回出題日のどれも変わらない。
+     ただし「今日も学習した」事実は残すので、連続日数(ストリーク)だけは更新する。 */
+  if(drillMode){
+    streak = updateStreak(streak);
+    saveStreak(streak);
+    playSound(isCorrect ? 'correct' : 'wrong');
+    reviewIndex++;
+    showCurrentCard();
+    return;
+  }
   const cards = activeCards();
   const idx = cards.findIndex(c => c.id === currentCard.id);
   let justMastered = false;
@@ -2048,6 +2138,7 @@ function renderCardList(){
   body.innerHTML = summary + cards.map(c => {
     const badges = '<span class="box-badge" style="position:static;background:' + (c.mastered ? 'var(--mastered)' : BOX_COLOR[c.box]) + '">' + (c.mastered ? '習得済み' : '箱' + c.box) + '</span>'
       + (c.hidden ? '<span class="hidden-tag">非表示中</span>' : '')
+      + ((c.totalWrong || 0) > 0 ? '<span class="box-badge" style="position:static;background:#A8352C">✕' + c.totalWrong + '</span>' : '')
       + (c.source ? '<span class="source-tag">' + escapeHtml(c.source) + '</span>' : '')
       + (hasDetail(c) ? '<span class="detail-tag">📖 解説あり</span>' : '');
     const otherOptions = otherDecks.map(d => '<option value="' + d.id + '">' + d.emoji + ' ' + escapeHtml(d.name) + 'へ</option>').join('');
