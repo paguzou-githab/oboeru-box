@@ -367,6 +367,7 @@
     padding:10px 11px;text-align:left;font-size:12.5px;line-height:1.65;color:var(--ink);
   }
   .hint-body.open{display:block;}
+  .hint-en{font-weight:700;color:var(--accent-ink);font-size:13.5px;line-height:1.6;}
   .hint-note{margin-top:7px;font-size:11px;font-weight:700;color:#0A4B66;}
   /* ===== くわしい解説(事前埋め込み) ===== */
   .detail-wrap{margin-top:14px;width:100%;max-width:300px;}
@@ -1896,16 +1897,30 @@ function wrongPill(c){
   return n > 0 ? '<div class="wrong-pill">✕ まちがえた回数 ' + n + '</div>' : '';
 }
 
+/* ヒントに出す文言を決める。
+   第1候補は例文の英文。example は「英文｜和訳」の形式で、和訳には答え(日本語の意味)が
+   そのまま入っているため、和訳は絶対に出さない。英文だけなら、単語は表面に見えている
+   以上ヒントとして成立する。例文を持たないカードのみコアイメージにフォールバックする。 */
+function hintTextOf(c){
+  if(!c) return '';
+  const ex = (typeof c.example === 'string') ? c.example.trim() : '';
+  if(ex){
+    const en = ex.split('｜')[0].trim();
+    if(en) return en;
+  }
+  return (typeof c.core === 'string') ? c.core.trim() : '';
+}
+
 /* 表面の「💡 ヒント」セクションを組み立てる。
-   出す条件は「箱1」かつ「coreを持つ」の両方。箱2以上に上がったカードや、
+   出す条件は「箱1」かつ「ヒントに出せる文がある」の両方。箱2以上に上がったカードや、
    解説フィールドを持たないデッキ(理社国数)ではボタンごと出さない。            */
 function renderHintSection(c){
   if(!c || c.box !== 1) return '';
-  const core = (c.core && typeof c.core === 'string') ? c.core.trim() : '';
-  if(!core) return '';
+  const text = hintTextOf(c);
+  if(!text) return '';
   return '<div class="hint-wrap" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">'
     + '<button class="hint-btn" id="hintBtn" onclick="event.stopPropagation();showHint()">💡 ヒント</button>'
-    + '<div class="hint-body" id="hintBody">' + escapeHtml(core)
+    + '<div class="hint-body" id="hintBody"><div class="hint-en">' + escapeHtml(text) + '</div>'
     + '<div class="hint-note">※ヒントを見て正解しても箱は進みません</div>'
     + '</div></div>';
 }
