@@ -11,3 +11,7 @@ desktop.ini
 .idea/
 *.swp
 *~
+
+# 作業用の退避フォルダ（旧版HTML・バッチJSON・バックアップ）
+archive/
+_to_delete/

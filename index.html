@@ -331,6 +331,20 @@
     border:2px solid #000;padding:10px 12px;background:#FBF9FF;
     color:var(--ink);resize:none;font-family:var(--pixel-font);
   }
+  /* ===== ヒント(箱1のカードのみ・表面) ===== */
+  .hint-wrap{margin-top:14px;width:100%;max-width:280px;}
+  .hint-btn{
+    width:100%;background:#D9F0FF;color:#0A4B66;font-family:var(--pixel-font);
+    font-weight:700;font-size:12.5px;padding:9px 10px;border:2px solid #000;cursor:pointer;
+  }
+  .hint-btn:active{transform:translateY(2px);}
+  .hint-btn.used{background:#BFE4F7;color:#053549;}
+  .hint-body{
+    display:none;margin-top:8px;border:2px solid #000;background:#F4FBFF;
+    padding:10px 11px;text-align:left;font-size:12.5px;line-height:1.65;color:var(--ink);
+  }
+  .hint-body.open{display:block;}
+  .hint-note{margin-top:7px;font-size:11px;font-weight:700;color:#0A4B66;}
   /* ===== くわしい解説(事前埋め込み) ===== */
   .detail-wrap{margin-top:14px;width:100%;max-width:300px;}
   .detail-toggle{
@@ -947,9 +961,17 @@ function listenPlayCurrent(){
   });
 }
 
-function answerCard(card, isCorrect, now){
+function answerCard(card, isCorrect, now, hintUsed){
   now = now || todayStr();
   const c = Object.assign({}, card);
+  /* ヒント(コアイメージ)を見たうえでの「覚えた」はノーカウント。
+     箱・正誤カウント・連続正解・前回判定はすべて据え置きにして、翌日もう一度出すだけにする。
+     ヒントなしで正解しない限り箱2へ上がらないので、苦手カードが箱1に留まる。
+     ※「まだ」を押した場合はヒントの有無にかかわらず通常どおり不正解として処理する。 */
+  if(isCorrect && hintUsed){
+    c.nextReview = addDays(now, BOX_INTERVAL_DAYS[1]);
+    return c;
+  }
   if(isCorrect){
     c.totalCorrect += 1; c.correctStreak += 1; c.lastAnswer = 'correct';
     if(c.box >= 5){
@@ -1717,6 +1739,8 @@ let reviewIndex = 0;
 let reviewTotal = 0;
 let currentCard = null;
 let isFlipped = false;
+/* 表示中のカードでヒントを開いたか。カードを切り替えるたびにfalseへ戻す。 */
+let hintUsed = false;
 
 function shuffleArray(arr){
   const a = arr.slice();
@@ -1763,6 +1787,7 @@ function showCurrentCard(){
   }
   currentCard = reviewQueue[reviewIndex];
   isFlipped = false;
+  hintUsed = false;
   document.getElementById('progressFill').style.width = Math.round((reviewIndex / reviewTotal) * 100) + '%';
   document.getElementById('progressTxt').textContent = (reviewIndex + 1) + '/' + reviewTotal;
   answerRow.style.visibility = 'hidden';
@@ -1779,6 +1804,7 @@ function showCurrentCard(){
           + '</div>'
         : '')
     + (hwEnabled ?'<div class="hw-wrap" onclick="event.stopPropagation();openHwFull()"><div class="hw-placeholder">✏️ タップして<br>ひろく手書き練習</div></div>' : '')
+    + renderHintSection(currentCard)
     + '<div class="tap-hint">タップして答えを見る</div>'
     + '</div>'
     + '<div class="face back">'
@@ -1791,6 +1817,28 @@ function showCurrentCard(){
     + '<div class="tap-hint">タップして問題に戻る</div>'
     + '</div></div>';
 }
+/* 表面の「💡 ヒント」セクションを組み立てる。
+   出す条件は「箱1」かつ「coreを持つ」の両方。箱2以上に上がったカードや、
+   解説フィールドを持たないデッキ(理社国数)ではボタンごと出さない。            */
+function renderHintSection(c){
+  if(!c || c.box !== 1) return '';
+  const core = (c.core && typeof c.core === 'string') ? c.core.trim() : '';
+  if(!core) return '';
+  return '<div class="hint-wrap" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">'
+    + '<button class="hint-btn" id="hintBtn" onclick="event.stopPropagation();showHint()">💡 ヒント</button>'
+    + '<div class="hint-body" id="hintBody">' + escapeHtml(core)
+    + '<div class="hint-note">※ヒントを見て正解しても箱は進みません</div>'
+    + '</div></div>';
+}
+function showHint(){
+  const body = document.getElementById('hintBody');
+  const btn = document.getElementById('hintBtn');
+  if(!body || body.classList.contains('open')) return;
+  body.classList.add('open');
+  if(btn){ btn.classList.add('used'); btn.textContent = '💡 ヒント(使用中)'; }
+  hintUsed = true;   /* このカードの「覚えた」はノーカウントになる */
+}
+
 /* 裏面の「📖 くわしい解説」セクションを組み立てる。
    解説が1つも無いカードでは空文字を返し、ボタンごと出さない。            */
 function renderDetailSection(c){
@@ -1821,10 +1869,12 @@ function renderDetailSection(c){
   }
   if(c.confuse) body += block('⚠️ 注意', c.confuse);
   if(!body) return '';
-  /* 既定は閉じた状態。カードを切り替えるたびにHTMLを作り直すので開閉状態は自然にリセットされる */
+  /* 既定は開いた状態。裏返した瞬間に解説まで読めるようにする。畳みたいときはボタンで閉じられる。
+     カードを切り替えるたびにHTMLを作り直すので、次のカードでは再び開いた状態に戻る。
+     カードを縦に伸ばす .tall は flipCard() 側で「裏面 かつ 解説が開いている」ときに付く。 */
   return '<div class="detail-wrap">'
-    + '<button class="detail-toggle" id="detailToggle" onclick="event.stopPropagation();toggleDetail()">📖 くわしい解説 ▼</button>'
-    + '<div class="detail-body" id="detailBody" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">' + body + '</div>'
+    + '<button class="detail-toggle" id="detailToggle" onclick="event.stopPropagation();toggleDetail()">📖 くわしい解説 ▲</button>'
+    + '<div class="detail-body open" id="detailBody" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">' + body + '</div>'
     + '</div>';
 }
 function toggleDetail(){
@@ -1941,7 +1991,7 @@ function answer(isCorrect){
   let masteredTerm = '';
   if(idx !== -1){
     const before = cards[idx];
-    const updated = answerCard(before, isCorrect);
+    const updated = answerCard(before, isCorrect, undefined, hintUsed);
     justMastered = !before.mastered && updated.mastered;
     masteredTerm = before.term;
     cards[idx] = updated;
