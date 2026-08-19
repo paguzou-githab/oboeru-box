@@ -808,6 +808,11 @@
 </div>
 
 <script>
+/* いま動いているコードの識別子。index.htmlを変更したら必ずここも更新する。
+   使い方タブ下部のバージョン表示が、サーバー上の値とこの値を突き合わせて
+   古いキャッシュで動いていないかを判定する。 */
+const APP_BUILD = '2026-08-19-d';
+
 /* =====================================================
    コアロジック(忘却曲線ベース 5箱ライトナー方式)
    ===================================================== */
@@ -2251,16 +2256,28 @@ function formatDisplayDateTime(d){
   return d.getFullYear() + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + String(d.getDate()).padStart(2, '0')
     + ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
 }
+/* サーバー上のHTMLからAPP_BUILDを抜き出し、いま動いているコードのAPP_BUILDと比べる。
+   Last-Modifiedだけを見ていた頃は「サーバーは新しいが画面は古いキャッシュ」という状態を
+   見抜けなかった(PWAで起きやすい)。両者がズレていたら再読み込みを促す。 */
 function initVersionLabel(){
   const el = document.getElementById('appVersionLabel');
   if(!el) return;
+  el.textContent = 'バージョン: ' + APP_BUILD + '（確認中...）';
   const url = location.pathname + '?_v=' + Date.now(); // CDN/ブラウザキャッシュを避けるための毎回違うURL
   fetch(url, {cache: 'no-store'})
-    .then(r => {
-      const lm = r.headers.get('last-modified');
-      el.textContent = lm ? ('バージョン: ' + formatDisplayDateTime(new Date(lm))) : 'バージョン情報を取得できませんでした';
+    .then(r => r.text().then(txt => ({ lm: r.headers.get('last-modified'), txt: txt })))
+    .then(o => {
+      const m = o.txt.match(/APP_BUILD\s*=\s*'([0-9a-z\-]+)'/);
+      const latest = m ? m[1] : null;
+      const when = o.lm ? formatDisplayDateTime(new Date(o.lm)) : '';
+      if(latest && latest !== APP_BUILD){
+        el.innerHTML = '⚠️ 古い画面を表示中です（実行中: ' + APP_BUILD + ' ／ 最新: ' + latest + '）<br>'
+          + 'ページを再読み込みしてください。ホーム画面のアプリの場合は一度閉じてから開き直してください。';
+        return;
+      }
+      el.textContent = 'バージョン: ' + APP_BUILD + '（最新です）' + (when ? ' / 更新 ' + when : '');
     })
-    .catch(() => { el.textContent = 'バージョン情報を取得できませんでした(オフラインの可能性)'; });
+    .catch(() => { el.textContent = 'バージョン: ' + APP_BUILD + '（最新かどうかは確認できませんでした・オフラインの可能性）'; });
 }
 renderAll();
 loadPresetManifest();
