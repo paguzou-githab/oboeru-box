@@ -389,6 +389,7 @@
   }
   .dt-body{font-size:12.5px;line-height:1.65;color:var(--ink);}
   .dt-en{font-weight:700;color:var(--accent-ink);}
+    .dt-pfx{font-weight:700;letter-spacing:.5px;}
   .hw-wrap{margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;}
   .hw-placeholder{
     width:100%;max-width:280px;min-height:64px;border:3px dashed #7A6BAF;
@@ -570,13 +571,15 @@
 英単語・英熟語のときは、次の解説フィールドも入れてください（読み手は高校受験を控えた中学生。専門用語は使わず、言い切りの文体で短く。改行とダブルクォートは使わない）:
 ・ipa … 発音記号。スラッシュは付けず中身だけ書く（例: kiːp）。アメリカ英語。熟語や文法項目では空文字にする
 ・phonics … つまずきやすい綴りを1〜2箇所だけ「綴り → 読み方の説明」の形で。複数は ／ で区切る。熟語や文法項目では空文字にする
+・prefix … 接頭辞がある単語だけ。「re-（再び）」のように接頭辞と意味を書く。変形は「im-（＝in-／中へ）」の形。接頭辞を持たない語では空文字にする
+・prefixImage … prefixを書いたときだけ。「語根＝意味。「イメージの説明」→ 訳語」の形で30〜60字。prefixが空文字なら空文字にする
 ・core … コアイメージを40〜70字。訳語の羅列にせず、複数の訳がなぜ繋がるかを書く
 ・usage … 使い方や文型を30〜60字。後ろが動名詞かto不定詞か、自動詞か他動詞か、前置詞は何かを書く
 ・example … 例文。「英文｜和訳」の形式で全角の縦棒｜で区切る。英文は8語以内で中学既習の語彙だけ
 ・confuse … 間違えやすい点を40〜80字。混同しやすい語がある場合だけ書き、なければ空文字にする
 
 出力形式（これだけを回答してください）:
-[{"term":"用語","meaning":"意味の説明","reading":"カタカナの読み方","ipa":"発音記号","phonics":"綴り → 読み方","core":"コアイメージ","usage":"使い方","example":"英文｜和訳","confuse":""}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
+[{"term":"用語","meaning":"意味の説明","reading":"カタカナの読み方","ipa":"発音記号","phonics":"綴り → 読み方","prefix":"接頭辞（意味）","prefixImage":"語根と成り立ちの説明","core":"コアイメージ","usage":"使い方","example":"英文｜和訳","confuse":""}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
     <div class="row-actions">
       <button class="btn-sm primary" onclick="copyGeminiPrompt()">📋 プロンプトをコピー</button>
       <button class="btn-sm" onclick="window.open('https://gemini.google.com/app','_blank')">Geminiを開く</button>
@@ -659,7 +662,7 @@
         1. 「今日」タブで「復習スタート」をタップ<br>
         2. カードをタップすると答えが見える(もう一度タップで問題に戻る)<br>
         3. 「覚えた✅」か「まだ😵」を自分で判定してタップ<br>
-        4. 答え面の「📖 くわしい解説」を開くと、コアイメージ・使い方・例文が読めます<br>
+        4. 答え面の「📖 くわしい解説」を開くと、接頭辞・コアイメージ・使い方・例文が読めます<br>
         5. 答え面には自由に書き込めるメモ欄もあります<br>
         6. 答え面の「🔎 もっと詳しく」で、その場でGeminiに質問することもできます<br>
         7. 「✏️ ひろく手書き練習」があるデッキでは、全画面の手書きボードで書く練習ができます(自動採点はせず自己チェック用)
@@ -711,6 +714,7 @@
       <div class="hint" style="font-size:13px;">
         解説つきのカードでは、答え面に「📖 くわしい解説」ボタンが出ます。タップすると次の内容が開きます。<br>
         ・🔤 読み方:カタカナ・発音記号・つづりと音のルール(フォニックス)<br>
+        ・🧩 接頭辞:単語の頭についた部品の意味と、そこから訳語がどう出てくるか(あるカードだけ)<br>
         ・💡 コアイメージ:その単語の中心にある1つのイメージ<br>
         ・🔧 使い方:後ろに〜ingがくるかto不定詞がくるか、前置詞は何かなど<br>
         ・✏️ 例文:短い英文と和訳<br>
@@ -843,7 +847,7 @@ function normTerm(s){
    デッキJSONに解説を持たせておき、カード裏面で折りたたみ表示する。
    旧カード(これらのフィールドを持たない)は hasDetail() が false になり、
    解説ボタン自体が出ないので後方互換が保たれる。                              */
-const DETAIL_KEYS = ['ipa', 'phonics', 'core', 'usage', 'example', 'confuse'];
+const DETAIL_KEYS = ['ipa', 'phonics', 'prefix', 'prefixImage', 'core', 'usage', 'example', 'confuse'];
 function pickDetail(src){
   const o = {};
   DETAIL_KEYS.forEach(k => { o[k] = (src && typeof src[k] === 'string') ? src[k].trim() : ''; });
@@ -1954,6 +1958,13 @@ function renderDetailSection(c){
     body += '<div class="dt-block"><div class="dt-head">🔤 読み方</div>'
       + (line.length ? '<div class="dt-body">' + line.join(' ／ ') + '</div>' : '')
       + (c.phonics ? '<div class="dt-body">' + escapeHtml(c.phonics) + '</div>' : '')
+      + '</div>';
+  }
+  /* 🧩 接頭辞: prefix を持つ単語だけ。接頭辞を持たない語では見出しごと出さない */
+  if(c.prefix || c.prefixImage){
+    body += '<div class="dt-block"><div class="dt-head">🧩 接頭辞</div>'
+      + (c.prefix ? '<div class="dt-body dt-pfx">' + escapeHtml(c.prefix) + '</div>' : '')
+      + (c.prefixImage ? '<div class="dt-body">' + escapeHtml(c.prefixImage) + '</div>' : '')
       + '</div>';
   }
   if(c.core)  body += block('💡 コアイメージ', c.core);
