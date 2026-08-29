@@ -333,8 +333,15 @@
   }
   .speak-btn:active{transform:translateY(2px);}
   .meaning-txt{font-family:var(--pixel-font);font-weight:700;font-size:20px;line-height:1.5;color:var(--accent-ink);}
+  /* 答え面の上に出す「もとの問題」。解説を読んでいる間に何の問題か見失わないため */
+  .back-term{
+    display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+    width:100%;margin-bottom:10px;padding-bottom:9px;border-bottom:2px dotted var(--line);
+  }
+  .back-term-txt{font-family:var(--pixel-font);font-weight:700;font-size:15px;color:var(--muted);line-height:1.4;word-break:break-word;}
+  .back-term .reading-txt{font-size:12px;}
+  .back-term .speak-btn{font-size:13px;padding:4px 9px;}
   .tap-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:700;}
-  .back > .tap-hint{position:static;margin-top:12px;}
   .flashcard.tall{height:auto;}
   .flashcard.tall .back{position:relative;overflow-y:auto;max-height:75vh;}
   .box-badge{
@@ -354,6 +361,22 @@
     border:2px solid #000;padding:10px 12px;background:#FBF9FF;
     color:var(--ink);resize:none;font-family:var(--pixel-font);
   }
+  /* ===== メモ(既定は畳む。メモが入っているカードだけ開いて出す) ===== */
+  .memo-wrap{width:100%;max-width:300px;margin-top:10px;}
+  .memo-toggle{
+    width:100%;background:#FBF9FF;color:var(--ink);font-size:11.5px;font-weight:700;
+    padding:8px 12px;cursor:pointer;font-family:var(--pixel-font);border:2px solid #000;
+  }
+  .memo-input{display:none;margin-top:8px;max-width:none;}
+  .memo-input.open{display:block;}
+  /* ===== 答え面の「問題に戻る」ボタン(指で押しやすい大きさにする) ===== */
+  .back-return{
+    width:100%;max-width:300px;margin-top:14px;padding:15px 12px;
+    font-family:var(--pixel-font);font-weight:700;font-size:13.5px;color:var(--ink);
+    background:var(--panel-light);border:2px solid #000;box-shadow:var(--shadow);
+    cursor:pointer;text-align:center;
+  }
+  .back-return:active{transform:translateY(2px);box-shadow:none;}
   /* ===== ヒント(箱1のカードのみ・表面) ===== */
   .hint-wrap{margin-top:14px;width:100%;max-width:280px;}
   .hint-btn{
@@ -661,10 +684,10 @@
       <div class="section-title" style="font-size:15px;">👆 復習のやり方</div>
       <div class="hint" style="font-size:13px;">
         1. 「今日」タブで「復習スタート」をタップ<br>
-        2. カードをタップすると答えが見える(もう一度タップで問題に戻る)<br>
+        2. カードをタップすると答えが見える(もう一度タップで問題に戻る)。答え面の上にはもとの問題も小さく出ます<br>
         3. 「覚えた✅」か「まだ😵」を自分で判定してタップ<br>
         4. 答え面の「📖 くわしい解説」を開くと、接頭辞・コアイメージ・使い方・例文が読めます<br>
-        5. 答え面には自由に書き込めるメモ欄もあります<br>
+        5. 答え面の「📝 メモ」を押すと書き込み欄が開きます(ふだんは畳んであり、記入済みのカードでは開いた状態で出ます)<br>
         6. 答え面の「🔎 もっと詳しく」で、その場でGeminiに質問することもできます<br>
         7. 「✏️ ひろく手書き練習」があるデッキでは、全画面の手書きボードで書く練習ができます(自動採点はせず自己チェック用)
       </div>
@@ -1890,13 +1913,18 @@ function showCurrentCard(){
     + '<div class="face back">'
     + '<div class="back-inner">'
     + (drillMode ? '<div class="drill-tag">🔥 特訓中（記録は変わりません）</div>' : '')
+    + '<div class="back-term">'
+      + '<span class="back-term-txt">' + escapeHtml(currentCard.term) + '</span>'
+      + (currentCard.reading ? '<span class="reading-txt">' + escapeHtml(currentCard.reading) + '</span>' : '')
+      + (isEnglishTerm(currentCard.term) ? '<button class="speak-btn" onclick="event.stopPropagation();speakCurrentTerm()">🔊</button>' : '')
+      + '</div>'
     + wrongPill(currentCard)
     + '<div class="meaning-txt">' + escapeHtml(currentCard.meaning) + '</div>'
     + renderDetailSection(currentCard)
     + '<button class="gemini-btn" onclick="event.stopPropagation();lookupOnGemini()">🔎 もっと詳しく</button>'
-    + '<textarea class="memo-input" id="memoInput" placeholder="メモ(自由に書き込めます)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" oninput="saveMemo(this.value)">' + escapeHtml(currentCard.memo || '') + '</textarea>'
+    + renderMemoSection(currentCard)
+    + '<button class="back-return" onclick="event.stopPropagation();flipCard()">↩ タップして問題に戻る</button>'
     + '</div>'
-    + '<div class="tap-hint">タップして問題に戻る</div>'
     + '</div></div>';
 }
 /* 間違えた回数のバッジ。0回のカードには何も出さない(まっさらなカードを萎えさせないため)。
@@ -2019,8 +2047,7 @@ function toggleDetail(){
   const btn = document.getElementById('detailToggle');
   if(!body || !btn) return;
   const open = body.classList.toggle('open');
-  const card = document.getElementById('flashcard');
-  if(card) card.classList.toggle('tall', open);
+  syncCardHeight();
   btn.textContent = open ? '📖 くわしい解説 ▲' : '📖 くわしい解説 ▼';
 }
 function drawHwGuide(ctx, w, h){
@@ -2100,13 +2127,48 @@ function clearHwFullCanvas(){
   if(!canvas) return;
   drawHwGuide(canvas.getContext('2d'), canvas.width, canvas.height);
 }
+/* メモ欄。ふだん使わない人のために既定は畳んだ状態で出す。
+   すでにメモが入っているカードだけ開いた状態にして、書いた内容を見落とさないようにする。 */
+function memoToggleLabel(open, hasText){
+  return '📝 メモ' + (hasText ? '(記入あり)' : '') + (open ? ' ▲' : ' ▼');
+}
+function renderMemoSection(c){
+  const memo = (c && c.memo) || '';
+  const open = !!memo.trim();
+  return '<div class="memo-wrap" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">'
+    + '<button class="memo-toggle" id="memoToggle" onclick="toggleMemo()">' + memoToggleLabel(open, open) + '</button>'
+    + '<textarea class="memo-input' + (open ? ' open' : '') + '" id="memoInput" placeholder="メモ(自由に書き込めます)" oninput="saveMemo(this.value);refreshMemoLabel()">' + escapeHtml(memo) + '</textarea>'
+    + '</div>';
+}
+function refreshMemoLabel(){
+  const ta = document.getElementById('memoInput');
+  const btn = document.getElementById('memoToggle');
+  if(!ta || !btn) return;
+  btn.textContent = memoToggleLabel(ta.classList.contains('open'), !!ta.value.trim());
+}
+function toggleMemo(){
+  const ta = document.getElementById('memoInput');
+  if(!ta) return;
+  const open = ta.classList.toggle('open');
+  refreshMemoLabel();
+  syncCardHeight();
+  if(open) ta.focus();
+}
+/* 裏面で解説かメモが開いているあいだはカードを縦に伸ばす */
+function syncCardHeight(){
+  const card = document.getElementById('flashcard');
+  if(!card) return;
+  const detailBody = document.getElementById('detailBody');
+  const memo = document.getElementById('memoInput');
+  const opened = !!(detailBody && detailBody.classList.contains('open'))
+              || !!(memo && memo.classList.contains('open'));
+  card.classList.toggle('tall', isFlipped && opened);
+}
 function flipCard(){
   isFlipped = !isFlipped;
   document.getElementById('flashcard').classList.toggle('flipped', isFlipped);
   document.getElementById('answerRow').style.visibility = isFlipped ? 'visible' : 'hidden';
-  const detailBody = document.getElementById('detailBody');
-  const card = document.getElementById('flashcard');
-  card.classList.toggle('tall', isFlipped && !!(detailBody && detailBody.classList.contains('open')));
+  syncCardHeight();
 }
 function saveMemo(text){
   if(!currentCard) return;
