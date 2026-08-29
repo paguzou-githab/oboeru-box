@@ -1,0 +1,770 @@
+[
+  {
+    "term": "re-",
+    "meaning": "再び／元へ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "一度あった場所へもう一度。くり返す動きと、元の位置へ引き戻す動きの両方を表す",
+    "usage": "動詞の頭につくことが多い。「しっかり〜する」と意味を強めるだけの場合もある",
+    "words": "return 戻る ／ repair 修理する ／ reply 返事する ／ receive 受け取る ／ reduce 減らす ／ replace 取り替える"
+  },
+  {
+    "term": "ad-",
+    "meaning": "〜へ／方向",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "あるものの方へ近づいていく。矢印が対象に向かって伸びていくイメージ",
+    "usage": "次の文字に合わせて形が変わる。ac- af- ag- al- an- ap- ar- as- at- はすべて ad- の変形",
+    "words": "accept 受け入れる ／ appear 現れる ／ attention 注意 ／ admit 認める ／ afford 余裕がある ／ arrive 到着する",
+    "confuse": "直後の子音に同化するので見た目が大きく変わる。ap- や at- を見たら ad- を疑う"
+  },
+  {
+    "term": "ex-",
+    "meaning": "外へ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "内側から外側へ出す。押し出す、引き出す、はみ出す動きすべてに使う",
+    "usage": "e- ef- も同じ仲間。ex- のあとに母音が来ると x の音が残り、子音だと e- になりやすい",
+    "words": "express 表現する ／ export 輸出する ／ exit 出口 ／ effect 効果 ／ education 教育 ／ evidence 証拠"
+  },
+  {
+    "term": "in-（中へ）",
+    "meaning": "中へ／上に",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "外から内側へ入っていく。容器の中に入れる、上に乗せるイメージ",
+    "usage": "im- il- ir- に変形する。b m p の前は im-、l の前は il-、r の前は ir-",
+    "words": "include 含む ／ invite 招待する ／ import 輸入する ／ important 重要な ／ increase 増える",
+    "confuse": "否定の in- とつづりが同じ。意味から見分けるしかない"
+  },
+  {
+    "term": "in-（否定）",
+    "meaning": "〜でない（否定）",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "あとに続く語の意味を打ち消す。「ない」とはっきり言い切る否定",
+    "usage": "im- il- ir- に変形する。impossible、illegal、irregular はすべてこの仲間",
+    "words": "impossible 不可能な ／ incorrect 正しくない ／ independent 独立した ／ immediately ただちに ／ invisible 目に見えない",
+    "confuse": "「中へ」の in- と同じつづり。include（含む）は中へ、incorrect（正しくない）は否定"
+  },
+  {
+    "term": "un-",
+    "meaning": "〜でない／逆の動作",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "打ち消しに加えて、いったんした動作を元へ戻す働きもある。ほどく、開ける、外す",
+    "usage": "形容詞につくと否定、動詞につくと逆の動作になる。英語本来の接頭辞で、変形しない",
+    "words": "unhappy 幸せでない ／ unknown 知られていない ／ unlock 鍵を開ける ／ unusual ふつうでない",
+    "confuse": "in- が否定のときと役割は同じ。un- はゲルマン系、in- はラテン系の語につく"
+  },
+  {
+    "term": "con-",
+    "meaning": "共に／すっかり",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "複数のものが一か所に集まる。または「すっかり、しっかり」と意味を強める",
+    "usage": "com- col- cor- co- に変形する。b m p の前は com-、l の前は col-、r の前は cor-",
+    "words": "connect つなぐ ／ company 会社 ／ collect 集める ／ compare 比べる ／ consider よく考える ／ convenient 便利な"
+  },
+  {
+    "term": "sub-",
+    "meaning": "下に／すぐ後に",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "あるものの下側。上から見えない位置と、順番があとに続く位置の両方を指す",
+    "usage": "suc- suf- sug- sup- sus- に変形する。支える、こっそり差し出す動作によく使われる",
+    "words": "subway 地下鉄 ／ subject 科目 ／ support 支える ／ suggest 提案する ／ succeed 成功する ／ sufficient 十分な"
+  },
+  {
+    "term": "pro-",
+    "meaning": "前へ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "前方へ押し出す。人より先に出る、これから先の時間へ向かう動き",
+    "usage": "時間の「先」と場所の「前」の両方に使う。pur- になることもある（purpose）",
+    "words": "produce 生産する ／ progress 進歩 ／ protect 守る ／ provide 供給する ／ promise 約束する ／ program 番組"
+  },
+  {
+    "term": "pre-",
+    "meaning": "前もって／〜より先に",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "時間の上で先回りする。何かが起こる前に手を打っておくイメージ",
+    "usage": "pro- が場所の前なのに対し、pre- は時間の前。名詞にも動詞にもつく",
+    "words": "prepare 準備する ／ prefer より好む ／ previous 以前の ／ predict 予測する ／ present 出席している"
+  },
+  {
+    "term": "post-",
+    "meaning": "〜のあとに",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "pre- のちょうど反対。ある時点より後ろの時間に位置する",
+    "usage": "時代や出来事を表す語につくことが多い",
+    "words": "postwar 戦後の ／ postpone 延期する ／ postscript 追伸（PS）"
+  },
+  {
+    "term": "de-",
+    "meaning": "下へ／離れて／すっかり",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "上から下へ落とす、切り離して取り去る。強めて「すっかり〜する」にもなる",
+    "usage": "3つの働きがある。取り去る意味では dis- と近い",
+    "words": "decide 決める ／ decrease 減る ／ deliver 配達する ／ develop 発達させる ／ delicious おいしい ／ describe 描写する"
+  },
+  {
+    "term": "dis-",
+    "meaning": "離れて／〜でない",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "くっついていたものを引きはがしてバラバラにする。そこから否定にもなる",
+    "usage": "dif- di- に変形する。f の前は dif-",
+    "words": "discover 発見する ／ disagree 反対する ／ discussion 議論 ／ different 異なる ／ difficult 難しい"
+  },
+  {
+    "term": "en-",
+    "meaning": "〜の状態にする／中に",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "名詞や形容詞につけて「その状態へ入れる」動詞にする。中に閉じ込めるイメージ",
+    "usage": "em- に変形する。b m p の前は em-。語尾につく -en と役割は似ている",
+    "words": "enjoy 楽しむ ／ encourage 励ます ／ enable 可能にする ／ energy エネルギー ／ employ 雇う"
+  },
+  {
+    "term": "ob-",
+    "meaning": "〜に向かって／逆らって",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "何かの正面に立ちはだかる。ぶつかる方向、じゃまをする方向を表す",
+    "usage": "oc- of- op- に変形する。反対や妨害の意味になることが多い",
+    "words": "object 反対する ／ obvious 明らかな ／ offer 提供する ／ opportunity 好機 ／ oppose 反対する"
+  },
+  {
+    "term": "trans-",
+    "meaning": "越えて／移して",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "境界線をまたいで、向こう側へ移す。位置も状態も別のものへ変わる",
+    "usage": "tra- tran- に短くなることもある。乗り物や変化の語に多い",
+    "words": "transport 輸送する ／ transfer 移す ／ translate 翻訳する ／ transform 変形させる"
+  },
+  {
+    "term": "inter-",
+    "meaning": "間に／互いに",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "2つ以上のものにはさまれた空間。そこから「やりとりする」意味が出る",
+    "usage": "intel- になることもある（intelligent）。国や人の間の関係を表す語に多い",
+    "words": "international 国際的な ／ internet インターネット ／ interview 面接 ／ interest 興味"
+  },
+  {
+    "term": "mis-",
+    "meaning": "誤って／悪く",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "やり方をまちがえる。正しい道から外れた行動を表す",
+    "usage": "動詞や名詞の頭につく。英語本来の接頭辞で変形しない",
+    "words": "mistake まちがい ／ misunderstand 誤解する ／ miss 逃す ／ misuse 誤用する"
+  },
+  {
+    "term": "se-",
+    "meaning": "離して",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "全体から切り分けて別にする。そばに置かず脇へどける動き",
+    "usage": "so- になることもある（solve）。数は少ないが重要語に含まれる",
+    "words": "separate 分ける ／ select 選び出す ／ secret 秘密 ／ solve 解く"
+  },
+  {
+    "term": "ab-",
+    "meaning": "離れて／〜から遠くへ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "元の場所から遠ざかっていく。その場から抜け出すイメージ",
+    "usage": "a- abs- に変形する。ad-（〜へ）とちょうど逆向き",
+    "words": "absent 欠席の ／ abroad 海外へ ／ absolute 絶対の ／ abstract 抽象的な",
+    "confuse": "ad-（〜へ）と1文字違いで向きが逆。b と d を見分けること"
+  },
+  {
+    "term": "per-",
+    "meaning": "通して／すっかり",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "端から端まで貫き通す。途中でやめず最後までやりきる",
+    "usage": "par- pel- に変形することもある。完全さを表す語に多い",
+    "words": "perfect 完全な ／ perform 行う ／ permit 許可する ／ person 人 ／ persuade 説得する"
+  },
+  {
+    "term": "super-",
+    "meaning": "上に／超えて",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "普通の水準より上へ抜け出る。人の上に立つ、限度を超える",
+    "usage": "sur- sover- に変形する。supermarket、surface はどちらもこの仲間",
+    "words": "supermarket スーパー ／ superior 優れた ／ surface 表面 ／ surprise 驚かせる"
+  },
+  {
+    "term": "anti-",
+    "meaning": "反対の／〜に逆らう",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "正面から向き合って対抗する。相手の力を打ち消す立場",
+    "usage": "ant- になることもある。contra- counter- も同じ「反対」の仲間",
+    "words": "antique 骨董品 ／ Antarctic 南極の ／ contrast 対比 ／ contrary 反対の"
+  },
+  {
+    "term": "bene-",
+    "meaning": "良く",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "相手にとって良いことをする。恵みを与える方向の行い",
+    "usage": "bon- ben- の形もある。反対は mal-（悪く）",
+    "words": "benefit 利益 ／ beneficial 有益な ／ bonus ボーナス"
+  },
+  {
+    "term": "mal-",
+    "meaning": "悪く",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "bene- の反対。うまくいかない、具合が悪い状態を表す",
+    "usage": "male- の形もある。医療や機械の不調を表す語に多い",
+    "words": "malfunction 故障 ／ malnutrition 栄養失調"
+  },
+  {
+    "term": "auto-",
+    "meaning": "自分で／自動の",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "外から手を加えなくても自分の力で動く。自分自身に関わること",
+    "usage": "ギリシャ語由来。機械の自動化と、自分自身の両方に使う",
+    "words": "automatic 自動の ／ automobile 自動車 ／ autograph サイン"
+  },
+  {
+    "term": "tele-",
+    "meaning": "遠くへ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "離れた場所まで届かせる。距離を越えて伝わるイメージ",
+    "usage": "ギリシャ語由来。通信や映像の語に多い",
+    "words": "telephone 電話 ／ television テレビ ／ telescope 望遠鏡"
+  },
+  {
+    "term": "uni-",
+    "meaning": "一つの",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "ばらばらのものを1つにまとめる。ただ1つしかない状態",
+    "usage": "mono- も同じ「1」。uni- はラテン語、mono- はギリシャ語由来",
+    "words": "uniform 制服 ／ unique 独特の ／ unite 結合する ／ monorail モノレール"
+  },
+  {
+    "term": "bi-",
+    "meaning": "二つの",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "2つで1組。左右一対、2回くり返すイメージ",
+    "usage": "du- di- も「2」。tri- は「3」、multi- poly- は「多い」",
+    "words": "bicycle 自転車 ／ bilingual 二か国語の ／ double 二重の ／ triangle 三角形"
+  },
+  {
+    "term": "multi-",
+    "meaning": "多くの",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "数がたくさんある。1つや2つでは足りない多さ",
+    "usage": "poly- も「多い」。反対は uni- mono-（1つ）",
+    "words": "multiple 多数の ／ multiply かける ／ multimedia マルチメディア"
+  },
+  {
+    "term": "semi-",
+    "meaning": "半分／なかば",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "完全ではなく中間の状態。半分だけそうであること",
+    "usage": "hemi- half- も同じ。時間や程度の中間に使う",
+    "words": "semifinal 準決勝 ／ semicircle 半円"
+  },
+  {
+    "term": "non-",
+    "meaning": "〜でない",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "un- や in- より中立に「そうではない」と言うだけの否定",
+    "usage": "良い悪いの判断を含まない。ハイフンでつなぐことも多い",
+    "words": "nonsense 意味がない ／ nonstop 直行の ／ nonfiction ノンフィクション",
+    "confuse": "un- は「望ましくない」響きが出ることがあるが、non- はただの否定"
+  },
+  {
+    "term": "port",
+    "meaning": "運ぶ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "荷物をある場所から別の場所へ運ぶ。港（port）は荷を運び入れる場所",
+    "usage": "接頭辞と組んで運ぶ方向が決まる。im-（中へ）＋port で輸入",
+    "words": "import 輸入する ／ export 輸出する ／ support 支える ／ transport 輸送する ／ portable 持ち運べる ／ report 報告する"
+  },
+  {
+    "term": "duc / duce",
+    "meaning": "導く",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "手を引いて連れていく。相手をある方向へ引っぱっていく動き",
+    "usage": "duct の形にもなる。接頭辞で引く方向が決まる",
+    "words": "produce 生産する ／ reduce 減らす ／ introduce 紹介する ／ education 教育 ／ conduct 行う"
+  },
+  {
+    "term": "fer",
+    "meaning": "運ぶ／持っていく",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "port と同じ「運ぶ」だが、気持ちや情報など目に見えないものにも使える",
+    "usage": "名詞になると -ference の形（difference、preference）",
+    "words": "transfer 移す ／ prefer より好む ／ offer 提供する ／ different 異なる ／ suffer 苦しむ"
+  },
+  {
+    "term": "spect / spic",
+    "meaning": "見る",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "じっと目を向ける。ただ見えるのではなく、意識して見つめる",
+    "usage": "名詞は -spection の形。眼鏡（spectacles）も仲間",
+    "words": "respect 尊敬する ／ expect 予期する ／ inspect 検査する ／ suspect 疑う ／ spectator 観客"
+  },
+  {
+    "term": "vid / vis",
+    "meaning": "見る／見える",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "spect が「見る動作」なのに対し、こちらは「見える」状態に重心がある",
+    "usage": "vid はラテン語の原形、vis は変化形。どちらも同じ仲間",
+    "words": "video 映像 ／ visible 目に見える ／ evidence 証拠 ／ provide 供給する ／ television テレビ"
+  },
+  {
+    "term": "dic / dict",
+    "meaning": "言う／示す",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "言葉にして口に出す。宣言する、言い渡すという強さがある",
+    "usage": "辞書（dictionary）は言葉を集めたもの。predict は前もって言う",
+    "words": "dictionary 辞書 ／ predict 予測する ／ condition 条件 ／ dictation 書き取り"
+  },
+  {
+    "term": "scrib / script",
+    "meaning": "書く",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "文字を刻みつける。線でなぞって形を残すイメージ",
+    "usage": "動詞は scrib、名詞は script の形になりやすい",
+    "words": "describe 描写する ／ subscribe 定期購読する ／ prescription 処方箋 ／ script 台本"
+  },
+  {
+    "term": "mit / miss",
+    "meaning": "送る／行かせる",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "手元から放して相手のところへ行かせる。手放す動き",
+    "usage": "動詞は mit、名詞は -mission の形。message も仲間",
+    "words": "admit 認める ／ permit 許可する ／ submit 提出する ／ mission 任務 ／ message 伝言"
+  },
+  {
+    "term": "ced / ceed / cess",
+    "meaning": "行く／進む",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "歩を進めて前へ出る。ゆずる、退くという逆向きの動きにもなる",
+    "usage": "つづりが3通りに変わる。名詞は -cess（process、success）",
+    "words": "succeed 成功する ／ proceed 進む ／ process 過程 ／ necessary 必要な ／ exceed 超える"
+  },
+  {
+    "term": "ven / vent",
+    "meaning": "来る",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "こちらへやって来る。出来事が向こうから訪れるイメージ",
+    "usage": "名詞は -vention の形。event、adventure も仲間",
+    "words": "convenient 便利な ／ prevent 防ぐ ／ invent 発明する ／ event 出来事 ／ adventure 冒険"
+  },
+  {
+    "term": "tract",
+    "meaning": "引く",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "力をこめて手前へ引っぱる。引き寄せる、引き抜く動き",
+    "usage": "トラクター（tractor）は引っぱる機械",
+    "words": "attract 引きつける ／ subtract 引く ／ extract 抜き出す ／ contract 契約"
+  },
+  {
+    "term": "press",
+    "meaning": "押す",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "上や外から力を加えて押しつける。圧力をかける動き",
+    "usage": "名詞は pressure。感情を押し出せば express、押さえつければ depress",
+    "words": "express 表現する ／ pressure 圧力 ／ impress 感動させる ／ depress 落ち込ませる"
+  },
+  {
+    "term": "pos / pon",
+    "meaning": "置く",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "ものをある場所に据える。位置を決めて配置する",
+    "usage": "動詞は -pose、名詞は -position の形になりやすい",
+    "words": "position 位置 ／ propose 提案する ／ compose 構成する ／ opposite 反対の ／ purpose 目的"
+  },
+  {
+    "term": "fac / fic / fect",
+    "meaning": "作る／する",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "手を動かして何かを生み出す。工場（factory）は物を作る場所",
+    "usage": "つづりが3通りに変わる。-fic は形容詞（efficient）になりやすい",
+    "words": "factory 工場 ／ effect 効果 ／ efficient 効率的な ／ perfect 完全な ／ difficult 難しい"
+  },
+  {
+    "term": "cap / cept / ceive",
+    "meaning": "取る／つかむ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "手を伸ばしてつかみ取る。自分のものとして受け入れる",
+    "usage": "動詞は -ceive、名詞は -ception の形（reception、conception）",
+    "words": "accept 受け入れる ／ receive 受け取る ／ capture 捕らえる ／ concept 概念 ／ except 〜を除いて"
+  },
+  {
+    "term": "tend / tens",
+    "meaning": "伸ばす／張る",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "ぴんと引き伸ばす。心を張りつめれば注意、体を伸ばせば拡張",
+    "usage": "名詞は -tention -tension の形",
+    "words": "attention 注意 ／ extend 延長する ／ intend 意図する ／ tension 緊張"
+  },
+  {
+    "term": "struct / stru",
+    "meaning": "積み上げる／組み立てる",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "部品を重ねて形あるものを建てる。構造を組み上げる",
+    "usage": "名詞は structure。de- がつくと壊す（destroy）",
+    "words": "structure 構造 ／ construct 建設する ／ instrument 器具 ／ instruction 指示"
+  },
+  {
+    "term": "form",
+    "meaning": "形",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "外から見える形やかたち。型にはめて整えるイメージ",
+    "usage": "動詞にも名詞にもなる。頭に部品がつくと形の変化を表す",
+    "words": "form 形 ／ uniform 制服 ／ information 情報 ／ transform 変形させる ／ perform 行う"
+  },
+  {
+    "term": "gress / grad",
+    "meaning": "歩く／段階",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "一歩ずつ足を進める。階段を上がるように段階が進む",
+    "usage": "grad は「段階」寄り、gress は「歩く」寄り",
+    "words": "progress 進歩 ／ graduate 卒業する ／ degree 程度・学位 ／ gradually 徐々に"
+  },
+  {
+    "term": "cur / curs",
+    "meaning": "走る／流れる",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "止まらずに走り続ける。川や時間が流れていくイメージ",
+    "usage": "current は「流れている今」。occur は目の前に走り出てくること",
+    "words": "current 現在の・流れ ／ occur 起こる ／ curriculum 教育課程 ／ excursion 遠足"
+  },
+  {
+    "term": "par / pare",
+    "meaning": "等しい／整える",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "2つを並べて同じ高さにそろえる。きちんと整える動き",
+    "usage": "pair（一対）も仲間。compare は並べて等しさを見ること",
+    "words": "compare 比べる ／ prepare 準備する ／ repair 修理する ／ separate 分ける ／ pair 一対"
+  },
+  {
+    "term": "sist / st",
+    "meaning": "立つ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "その場にしっかり立って動かない。支える、持ちこたえる",
+    "usage": "stand と同じ仲間。-sist は「立ち続ける」動きを表す",
+    "words": "assist 手伝う ／ insist 主張する ／ exist 存在する ／ resist 抵抗する ／ stand 立つ"
+  },
+  {
+    "term": "plic / ply",
+    "meaning": "折る／重ねる",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "紙を折り重ねる。重なりが多いほど複雑になる",
+    "usage": "simple は「一重」、complicated は「重なりが多い」",
+    "words": "reply 返事する ／ simple 単純な ／ complicated 複雑な ／ multiply かける ／ apply 応用する"
+  },
+  {
+    "term": "voc / vok",
+    "meaning": "声／呼ぶ",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "声を出して呼びかける。相手の注意を引き寄せる",
+    "usage": "名詞は voice、vocabulary。動詞は -voke の形",
+    "words": "voice 声 ／ vocabulary 語彙 ／ vocal 声の ／ provoke 引き起こす"
+  },
+  {
+    "term": "man / manu",
+    "meaning": "手",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "手で扱う、手で操る。人の手が直接関わることを表す",
+    "usage": "manual は手作業の。maintain は手で保つこと",
+    "words": "manual 手動の ／ manage 管理する ／ maintain 維持する ／ manufacture 製造する"
+  },
+  {
+    "term": "-tion / -sion",
+    "meaning": "〜すること／〜の状態（名詞）",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "動詞を「そのおこない」「その結果」を表す名詞に変える。いちばん数が多い名詞の語尾",
+    "usage": "直前が t や s だと -sion になりやすい。アクセントは -tion の直前の母音に来る",
+    "words": "information 情報 ／ education 教育 ／ discussion 議論 ／ decision 決定 ／ population 人口"
+  },
+  {
+    "term": "-ment",
+    "meaning": "〜すること／〜したもの（名詞）",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "動詞を名詞に変える。行為そのものより、その結果できたものを指すことが多い",
+    "usage": "動詞にそのままつく。government、movement のように語形をあまり変えない",
+    "words": "government 政府 ／ movement 動き ／ equipment 装備 ／ development 発達 ／ agreement 合意"
+  },
+  {
+    "term": "-ness",
+    "meaning": "〜であること（名詞）",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "形容詞を「その性質」を表す名詞に変える。目に見えない状態を名詞にする",
+    "usage": "形容詞にそのままつく。y で終わる語は i に変えて -iness",
+    "words": "kindness 親切 ／ happiness 幸福 ／ darkness 暗さ ／ illness 病気 ／ business 仕事"
+  },
+  {
+    "term": "-ity / -ty",
+    "meaning": "〜であること（名詞）",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "-ness と同じく形容詞を名詞にするが、ラテン系の語につく硬い語尾",
+    "usage": "直前の形容詞の形が変わることが多い（able → ability）",
+    "words": "ability 能力 ／ quality 質 ／ safety 安全 ／ activity 活動 ／ opportunity 好機"
+  },
+  {
+    "term": "-ance / -ence",
+    "meaning": "〜すること／〜の状態（名詞）",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "動詞や形容詞を名詞にする。継続している状態を表すことが多い",
+    "usage": "-ant の語は -ance、-ent の語は -ence になる（important → importance）",
+    "words": "importance 重要さ ／ difference 違い ／ experience 経験 ／ evidence 証拠 ／ performance 演技"
+  },
+  {
+    "term": "-er / -or",
+    "meaning": "〜する人／〜するもの",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "動詞を「それをする人・道具」に変える。人にも機械にも使える",
+    "usage": "ラテン系の語は -or になりやすい（actor、visitor）。-er のほうが数は多い",
+    "words": "teacher 教師 ／ writer 作家 ／ visitor 訪問者 ／ passenger 乗客 ／ computer コンピューター"
+  },
+  {
+    "term": "-ist",
+    "meaning": "〜する人／〜主義の人",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "専門としてそれをやる人。職業や思想の担い手を表す",
+    "usage": "名詞につく。対応する主義は -ism（artist / art、tourist / tour）",
+    "words": "artist 芸術家 ／ tourist 観光客 ／ scientist 科学者 ／ dentist 歯科医"
+  },
+  {
+    "term": "-ship",
+    "meaning": "〜の状態／〜の関係",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "人と人のつながりや、その立場にあること。形のない関係を名詞にする",
+    "usage": "人を表す名詞につくことが多い",
+    "words": "friendship 友情 ／ relationship 関係 ／ membership 会員であること ／ leadership 統率力"
+  },
+  {
+    "term": "-able / -ible",
+    "meaning": "〜できる／〜されうる",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "「その動作を受けられる」という可能性。受け身の意味が入っている",
+    "usage": "ラテン系の語は -ible。able（できる）がそのまま語尾になったもの",
+    "words": "available 利用できる ／ comfortable 快適な ／ possible 可能な ／ reasonable 妥当な ／ valuable 価値のある"
+  },
+  {
+    "term": "-ful",
+    "meaning": "〜に満ちた",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "full（いっぱいの）から来た語尾。その性質でいっぱいの状態",
+    "usage": "名詞につけて形容詞にする。l は1つだけ（× -full）",
+    "words": "useful 役に立つ ／ careful 注意深い ／ beautiful 美しい ／ helpful 助けになる ／ successful 成功した",
+    "confuse": "反対は -less（〜がない）。careful ⇔ careless"
+  },
+  {
+    "term": "-less",
+    "meaning": "〜がない",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "-ful のちょうど反対。その性質を持っていない状態",
+    "usage": "名詞につけて形容詞にする。less（より少ない）とは別の語源",
+    "words": "careless 不注意な ／ useless 役に立たない ／ homeless 家のない ／ endless 終わりのない"
+  },
+  {
+    "term": "-ous",
+    "meaning": "〜に満ちた／〜の性質の",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "-ful と近いが、ラテン系の語につく。そういう性質を持っていること",
+    "usage": "-ious -eous の形もある。名詞の語形が変わることが多い",
+    "words": "famous 有名な ／ dangerous 危険な ／ delicious おいしい ／ nervous 緊張した ／ various さまざまな"
+  },
+  {
+    "term": "-ive",
+    "meaning": "〜する性質の",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "その動作をしがちな、その働きを持っている、という積極的な性質",
+    "usage": "動詞につけて形容詞にする。名詞として使うこともある（native）",
+    "words": "active 活動的な ／ expensive 高価な ／ creative 創造的な ／ positive 前向きな ／ effective 効果的な"
+  },
+  {
+    "term": "-al",
+    "meaning": "〜の／〜に関する",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "名詞を「それに関係する」形容詞に変える。いちばん素直な形容詞の語尾",
+    "usage": "名詞にそのままつく。-ally で副詞になる（finally、especially）",
+    "words": "national 国の ／ personal 個人の ／ natural 自然の ／ final 最後の ／ international 国際的な"
+  },
+  {
+    "term": "-ic",
+    "meaning": "〜の／〜的な",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "-al と近いが、ギリシャ語由来の語につく。学問や分野の語に多い",
+    "usage": "-ical の形もある。副詞は -ically",
+    "words": "basic 基本的な ／ economic 経済の ／ scientific 科学的な ／ automatic 自動の ／ historic 歴史的な"
+  },
+  {
+    "term": "-ize",
+    "meaning": "〜にする／〜化する",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "名詞や形容詞を「その状態にする」動詞に変える",
+    "usage": "イギリス式では -ise とも書く。名詞は -ization",
+    "words": "realize 実現する・気づく ／ organize 組織する ／ apologize 謝る ／ memorize 暗記する"
+  },
+  {
+    "term": "-en",
+    "meaning": "〜にする／〜になる",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "-ize と同じ働きだが、英語本来の短い語につく素朴な語尾",
+    "usage": "形容詞につくことが多い。頭につく en- とは位置が違うだけで役割は同じ",
+    "words": "strengthen 強くする ／ widen 広げる ／ shorten 短くする ／ deepen 深める"
+  },
+  {
+    "term": "-ate",
+    "meaning": "〜にする／〜の状態の",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "動詞にも形容詞にもなる。「その状態に持っていく」働き",
+    "usage": "動詞のときは最後を強く読み、形容詞のときは弱く読むことが多い",
+    "words": "create 創造する ／ separate 分ける ／ graduate 卒業する ／ immediate 即座の ／ accurate 正確な"
+  },
+  {
+    "term": "-ly",
+    "meaning": "〜に（副詞）／〜のような",
+    "reading": "",
+    "ipa": "",
+    "phonics": "",
+    "core": "形容詞を副詞に変える、いちばん基本の語尾。動作の仕方を説明する",
+    "usage": "名詞につくと形容詞になる例外がある（friendly、lovely）。y で終わる語は -ily",
+    "words": "quickly 速く ／ finally ついに ／ especially 特に ／ immediately ただちに ／ friendly 親しみやすい",
+    "confuse": "friendly、lovely は -ly でも形容詞。副詞と決めつけないこと"
+  }
+]

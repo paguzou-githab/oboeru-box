@@ -576,10 +576,11 @@
 ・core … コアイメージを40〜70字。訳語の羅列にせず、複数の訳がなぜ繋がるかを書く
 ・usage … 使い方や文型を30〜60字。後ろが動名詞かto不定詞か、自動詞か他動詞か、前置詞は何かを書く
 ・example … 例文。「英文｜和訳」の形式で全角の縦棒｜で区切る。英文は8語以内で中学既習の語彙だけ
+・words … その部品を持つ語を並べるときだけ。「英語 和訳 ／ 英語 和訳」の形で全角スラッシュ／区切り。ふつうの単語カードでは空文字にする
 ・confuse … 間違えやすい点を40〜80字。混同しやすい語がある場合だけ書き、なければ空文字にする
 
 出力形式（これだけを回答してください）:
-[{"term":"用語","meaning":"意味の説明","reading":"カタカナの読み方","ipa":"発音記号","phonics":"綴り → 読み方","prefix":"接頭辞（意味）","prefixImage":"語根と成り立ちの説明","core":"コアイメージ","usage":"使い方","example":"英文｜和訳","confuse":""}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
+[{"term":"用語","meaning":"意味の説明","reading":"カタカナの読み方","ipa":"発音記号","phonics":"綴り → 読み方","prefix":"接頭辞（意味）","prefixImage":"語根と成り立ちの説明","core":"コアイメージ","usage":"使い方","example":"英文｜和訳","words":"","confuse":""}, {"term":"用語2","meaning":"意味の説明2"}]</textarea>
     <div class="row-actions">
       <button class="btn-sm primary" onclick="copyGeminiPrompt()">📋 プロンプトをコピー</button>
       <button class="btn-sm" onclick="window.open('https://gemini.google.com/app','_blank')">Geminiを開く</button>
@@ -718,6 +719,7 @@
         ・💡 コアイメージ:その単語の中心にある1つのイメージ<br>
         ・🔧 使い方:後ろに〜ingがくるかto不定詞がくるか、前置詞は何かなど<br>
         ・✏️ 例文:短い英文と和訳<br>
+        ・📚 この部品を持つ語:接頭辞や語根のカードで、その部品を使った単語の例(部品デッキだけ)<br>
         ・⚠️ 注意:間違えやすい語との違い(あるカードだけ)<br>
         <br>
         <b>解説はアプリの中に最初から入っています。</b>表示するのに通信は使わないので、待ち時間なしで開けます。<br>
@@ -847,7 +849,7 @@ function normTerm(s){
    デッキJSONに解説を持たせておき、カード裏面で折りたたみ表示する。
    旧カード(これらのフィールドを持たない)は hasDetail() が false になり、
    解説ボタン自体が出ないので後方互換が保たれる。                              */
-const DETAIL_KEYS = ['ipa', 'phonics', 'prefix', 'prefixImage', 'core', 'usage', 'example', 'confuse'];
+const DETAIL_KEYS = ['ipa', 'phonics', 'prefix', 'prefixImage', 'core', 'usage', 'example', 'words', 'confuse'];
 function pickDetail(src){
   const o = {};
   DETAIL_KEYS.forEach(k => { o[k] = (src && typeof src[k] === 'string') ? src[k].trim() : ''; });
@@ -1136,6 +1138,7 @@ const PRESET_DECKS = [
   {file:'decks/rika50.json',   deckId:'sci',  label:'🧪 理科 頻出50'},
   {file:'decks/shakai50.json', deckId:'soc',  label:'🗾 社会 頻出50'},
   {file:'decks/kokugo50.json', deckId:'kok',  label:'📖 国語 頻出50'},
+  {file:'decks/parts.json',    deckId:'parts',label:'🧩 単語の部品76'},
 ];
 const PRESET_MANIFEST_URL = 'decks/manifest.json';
 const LS_PRESET_DONE = 'wordbox:presetDone';
@@ -1147,6 +1150,7 @@ const DEFAULT_DECK_META = {
   sci:  {id:'sci',  name:'理科', emoji:'🧪', color:'#3EC6E0'},
   kok:  {id:'kok',  name:'国語', emoji:'📖', color:'#FF5D8F', handwriting:true},
   math: {id:'math', name:'数学', emoji:'➗', color:'#8B6BFF', handwriting:false},
+  parts:{id:'parts',name:'単語の部品', emoji:'🧩', color:'#F2C14E', handwriting:false},
 };
 function ensureDeckExists(deckId){
   if(decks.some(d => d.id === deckId)) return;
@@ -1917,6 +1921,17 @@ function hintTextOf(c){
     const en = ex.split('｜')[0].trim();
     if(en) return en;
   }
+  /* 部品デッキ(接頭辞・語根・接尾辞)では core がほぼ答えそのものになるため、
+     例文を持たないカードは先に words(その部品を持つ語)をヒントに使う。       */
+  const w = (typeof c.words === 'string') ? c.words.trim() : '';
+  if(w){
+    /* 和訳まで出すと答えになるので、英語の部分だけを3つまで並べる */
+    const en = w.split('／').map(t => {
+      const m = t.trim().match(/^[A-Za-z][A-Za-z\-]*/);
+      return m ? m[0] : '';
+    }).filter(Boolean).slice(0, 3);
+    if(en.length) return en.join(' ／ ');
+  }
   return (typeof c.core === 'string') ? c.core.trim() : '';
 }
 
@@ -1975,6 +1990,18 @@ function renderDetailSection(c){
     body += '<div class="dt-block"><div class="dt-head">✏️ 例文</div>'
       + '<div class="dt-body dt-en">' + escapeHtml(parts[0]) + '</div>'
       + (parts[1] ? '<div class="dt-body">' + escapeHtml(parts.slice(1).join('｜')) + '</div>' : '')
+      + '</div>';
+  }
+  /* 📚 この部品を持つ語: 部品デッキ用。「英語 和訳」を全角スラッシュ／で区切って並べる */
+  if(c.words){
+    const items = String(c.words).split('／').map(t => t.trim()).filter(Boolean);
+    body += '<div class="dt-block"><div class="dt-head">📚 この部品を持つ語</div>'
+      + items.map(it => {
+          const m = it.match(/^([A-Za-z][A-Za-z\- ]*?)\s+(.+)$/);
+          return '<div class="dt-body">' + (m
+            ? '<span class="dt-en">' + escapeHtml(m[1]) + '</span> ' + escapeHtml(m[2])
+            : escapeHtml(it)) + '</div>';
+        }).join('')
       + '</div>';
   }
   if(c.confuse) body += block('⚠️ 注意', c.confuse);

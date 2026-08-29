@@ -1,8 +1,44 @@
 [
-  {"file": "eigo50.json",   "deckId": "eng",  "label": "🇬🇧 英語 頻出50", "batch": 1},
-  {"file": "sugaku50.json", "deckId": "math", "label": "➗ 数学 頻出50", "batch": 1},
-  {"file": "rika50.json",   "deckId": "sci",  "label": "🧪 理科 頻出50", "batch": 1},
-  {"file": "shakai50.json", "deckId": "soc",  "label": "🗾 社会 頻出50", "batch": 1},
-  {"file": "kokugo50.json", "deckId": "kok",  "label": "📖 国語 頻出50", "batch": 1},
-  {"file": "eiken200.json", "deckId": "eng",  "label": "📘 英検4→準2級 200", "batch": 2}
+  {
+    "file": "eigo50.json",
+    "deckId": "eng",
+    "label": "🇬🇧 英語 頻出50",
+    "batch": 1
+  },
+  {
+    "file": "sugaku50.json",
+    "deckId": "math",
+    "label": "➗ 数学 頻出50",
+    "batch": 1
+  },
+  {
+    "file": "rika50.json",
+    "deckId": "sci",
+    "label": "🧪 理科 頻出50",
+    "batch": 1
+  },
+  {
+    "file": "shakai50.json",
+    "deckId": "soc",
+    "label": "🗾 社会 頻出50",
+    "batch": 1
+  },
+  {
+    "file": "kokugo50.json",
+    "deckId": "kok",
+    "label": "📖 国語 頻出50",
+    "batch": 1
+  },
+  {
+    "file": "eiken200.json",
+    "deckId": "eng",
+    "label": "📘 英検4→準2級 200",
+    "batch": 2
+  },
+  {
+    "file": "parts.json",
+    "deckId": "parts",
+    "label": "🧩 単語の部品76",
+    "batch": 3
+  }
 ]
