@@ -40,5 +40,11 @@
     "deckId": "parts",
     "label": "🧩 単語の部品76",
     "batch": 3
+  },
+  {
+    "file": "eiken3_p1.json",
+    "deckId": "e3p1",
+    "label": "📗 英検3級 Part1",
+    "batch": 4
   }
 ]

@@ -1162,6 +1162,7 @@ const PRESET_DECKS = [
   {file:'decks/shakai50.json', deckId:'soc',  label:'🗾 社会 頻出50'},
   {file:'decks/kokugo50.json', deckId:'kok',  label:'📖 国語 頻出50'},
   {file:'decks/parts.json',    deckId:'parts',label:'🧩 単語の部品76'},
+  {file:'decks/eiken3_p1.json', deckId:'e3p1', label:'📗 英検3級 Part1'},
 ];
 const PRESET_MANIFEST_URL = 'decks/manifest.json';
 const LS_PRESET_DONE = 'wordbox:presetDone';
@@ -1174,6 +1175,12 @@ const DEFAULT_DECK_META = {
   kok:  {id:'kok',  name:'国語', emoji:'📖', color:'#FF5D8F', handwriting:true},
   math: {id:'math', name:'数学', emoji:'➗', color:'#8B6BFF', handwriting:false},
   parts:{id:'parts',name:'単語の部品', emoji:'🧩', color:'#F2C14E', handwriting:false},
+  e3p1: {id:'e3p1', name:'英検3級①', emoji:'📗', color:'#2E9E6A', handwriting:false},
+  e3p2: {id:'e3p2', name:'英検3級②', emoji:'📗', color:'#3BAF7A', handwriting:false},
+  e3p3: {id:'e3p3', name:'英検3級③', emoji:'📗', color:'#4FBF8B', handwriting:false},
+  e3p4: {id:'e3p4', name:'英検3級④', emoji:'📗', color:'#67CC9C', handwriting:false},
+  e3p5: {id:'e3p5', name:'英検3級⑤', emoji:'📗', color:'#82D8AE', handwriting:false},
+  e3irr:{id:'e3irr',name:'不規則動詞', emoji:'🔁', color:'#E07A5F', handwriting:false},
 };
 function ensureDeckExists(deckId){
   if(decks.some(d => d.id === deckId)) return;
