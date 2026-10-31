@@ -46,5 +46,11 @@
     "deckId": "e3p1",
     "label": "📗 英検3級 Part1",
     "batch": 4
+  },
+  {
+    "file": "eiken3_p2.json",
+    "deckId": "e3p2",
+    "label": "📗 英検3級 Part2",
+    "batch": 4
   }
 ]
